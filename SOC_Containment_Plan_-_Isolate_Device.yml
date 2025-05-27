@@ -1,0 +1,675 @@
+contentitemexportablefields:
+  contentitemfields:
+    definitionid: ""
+    fromServerVersion: 6.6.0
+    isoverridable: false
+    itemVersion: 2.6.55
+    packID: ""
+    packName: Common Playbooks
+    prevname: ""
+    toServerVersion: ""
+description: |-
+  ## Containment Plan - Isolate Device
+
+  This playbook is a sub-playbook within the containment plan playbook.
+  The playbook isolates devices using core commands.
+id: 'SOC Containment Plan - Isolate Device'
+inputs:
+- description: Whether to execute endpoint isolation.
+  key: HostContainment
+  playbookInputQuery: null
+  required: false
+  value:
+    simple: "True"
+- description: The endpoint ID to run commands over.
+  key: EndpointID
+  playbookInputQuery: null
+  required: false
+  value: {}
+- description: The endpoint hostname.
+  key: EndpointHostName
+  playbookInputQuery: null
+  required: false
+  value: {}
+name: SOC Containment Plan - Isolate Device
+outputs:
+- contextPath: Core.Isolation.endpoint_id
+  description: The isolated endpoint ID.
+sourceplaybookid: Containment Plan - Isolate Device
+starttaskid: "0"
+tasks:
+  "0":
+    continueonerrortype: ""
+    id: "0"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#none#':
+      - "23"
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      id: 972c3692-925c-4f6f-8d88-9f4c2598429d
+      iscommand: false
+      name: ""
+      version: -1
+    taskid: 972c3692-925c-4f6f-8d88-9f4c2598429d
+    timertriggers: []
+    type: start
+    view: |-
+      {
+        "position": {
+          "x": 290.5,
+          "y": 50
+        }
+      }
+  "2":
+    continueonerror: true
+    continueonerrortype: errorPath
+    id: "2"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#error#':
+      - "26"
+      '#none#':
+      - "8"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      endpoint_id:
+        complex:
+          root: EndpointsIDToIsolate
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      description: Isolates the specified endpoint.
+      id: 15700e4e-70f6-4599-9a4c-4763c63a4592
+      iscommand: true
+      name: Auto endpoint isolation
+      script: '|||core-isolate-endpoint'
+      type: regular
+      version: -1
+    taskid: 15700e4e-70f6-4599-9a4c-4763c63a4592
+    timertriggers: []
+    type: regular
+    view: |-
+      {
+        "position": {
+          "x": 1307.25,
+          "y": 1230
+        }
+      }
+  "8":
+    continueonerror: true
+    continueonerrortype: errorPath
+    id: "8"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#error#':
+      - "26"
+      '#none#':
+      - "10"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      key:
+        simple: IsolatedEndpointsID
+      value:
+        complex:
+          accessor: endpoint_id
+          root: Core.Isolation
+          transformers:
+          - operator: uniq
+    separatecontext: false
+    skipunavailable: true
+    task:
+      brand: Builtin
+      description: commands.local.cmd.set.parent.alert.context
+      id: afdfa535-e2c1-4249-b6b1-ed02327c342c
+      iscommand: true
+      name: Set Isolated endpoint ID to the Alert context
+      script: Builtin|||setParentIncidentContext
+      type: regular
+      version: -1
+    taskid: afdfa535-e2c1-4249-b6b1-ed02327c342c
+    timertriggers: []
+    type: regular
+    view: |-
+      {
+        "position": {
+          "x": 826.25,
+          "y": 1400
+        }
+      }
+  "10":
+    continueonerrortype: ""
+    id: "10"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      id: 6c786033-9c64-4365-83af-dec8a718764c
+      iscommand: false
+      name: Done
+      type: title
+      version: -1
+    taskid: 6c786033-9c64-4365-83af-dec8a718764c
+    timertriggers: []
+    type: title
+    view: |-
+      {
+        "position": {
+          "x": 195.25,
+          "y": 1740
+        }
+      }
+  "13":
+    continueonerror: true
+    continueonerrortype: errorPath
+    id: "13"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#error#':
+      - "26"
+      '#none#':
+      - "17"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      endpoint_id_list:
+        complex:
+          root: inputs.EndpointID
+          transformers:
+          - args:
+              applyIfEmpty: {}
+              defaultValue:
+                value:
+                  simple: "null"
+            operator: SetIfEmpty
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      description: Gets a list of endpoints, according to the passed filters. If there
+        are no filters, all endpoints are returned. Filtering by multiple fields is
+        concatenated using the AND condition (OR is not supported). Maximum result
+        set size is 100. Offset is the zero-based number of endpoints from the start
+        of the result set (start by counting from 0).
+      id: db87e3ae-b9ba-467d-9c9b-981ab11529e1
+      iscommand: true
+      name: Get endpoint info by endpoint ID
+      script: '|||core-get-endpoints'
+      type: regular
+      version: -1
+    taskid: db87e3ae-b9ba-467d-9c9b-981ab11529e1
+    timertriggers: []
+    type: regular
+    view: |-
+      {
+        "position": {
+          "x": 435.75,
+          "y": 550
+        }
+      }
+  "16":
+    continueonerror: true
+    continueonerrortype: errorPath
+    id: "16"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#error#':
+      - "26"
+      '#none#':
+      - "27"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      key:
+        simple: EndpointsIDToIsolate
+      value:
+        complex:
+          accessor: endpoint_id
+          root: Core.Endpoint
+          transformers:
+          - operator: uniq
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      description: "Set a value in context under the key you entered. If no value
+        is entered, the script doesn't do anything.\n\nThis automation runs using
+        the default Limited User role, unless you explicitly change the permissions.\nFor
+        more information, see the section about permissions here:\n- For Cortex XSOAR
+        6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+      id: 047b2863-8f46-4e6e-b632-b03bf6720d4f
+      iscommand: false
+      name: Set endpoints ID to isolate
+      script: SetAndHandleEmpty
+      type: regular
+      version: -1
+    taskid: 047b2863-8f46-4e6e-b632-b03bf6720d4f
+    timertriggers: []
+    type: regular
+    view: |-
+      {
+        "position": {
+          "x": 921.5,
+          "y": 890
+        }
+      }
+  "17":
+    conditions:
+    - condition:
+      - - ignorecase: true
+          left:
+            iscontext: true
+            value:
+              complex:
+                root: inputs.HostContainment
+          operator: isEqualString
+          right:
+            value:
+              simple: "True"
+      - - ignorecase: true
+          left:
+            iscontext: true
+            value:
+              complex:
+                accessor: endpoint_type
+                root: Core.Endpoint
+          operator: containsString
+          right:
+            value:
+              simple: WORKSTATION
+      - - ignorecase: true
+          left:
+            iscontext: true
+            value:
+              complex:
+                accessor: is_isolated
+                root: Core.Endpoint
+          operator: isEqualString
+          right:
+            value:
+              simple: AGENT_UNISOLATED
+      - - ignorecase: true
+          left:
+            iscontext: true
+            value:
+              complex:
+                accessor: endpoint_status
+                root: Core.Endpoint
+          operator: isNotEqualString
+          right:
+            value:
+              simple: DISCONNECTED
+      label: "Yes"
+    continueonerrortype: ""
+    id: "17"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#default#':
+      - "25"
+      "Yes":
+      - "16"
+    note: false
+    quietmode: 2
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      description: Whether to isolate the endpoint based on the input values.
+      id: 1b35e319-899a-4a2b-80e4-591c3b92a9ae
+      iscommand: false
+      name: Should isolate the device?
+      type: condition
+      version: -1
+    taskid: 1b35e319-899a-4a2b-80e4-591c3b92a9ae
+    timertriggers: []
+    type: condition
+    view: |-
+      {
+        "position": {
+          "x": 581,
+          "y": 720
+        }
+      }
+  "22":
+    continueonerror: true
+    continueonerrortype: errorPath
+    id: "22"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#error#':
+      - "26"
+      '#none#':
+      - "10"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      key:
+        simple: IsolatedEndpointsID
+      value:
+        complex:
+          accessor: endpoint_id
+          root: Core.Endpoint
+          transformers:
+          - args:
+              applyIfEmpty: {}
+              defaultValue:
+                value:
+                  simple: No Values
+            operator: SetIfEmpty
+          - operator: uniq
+    separatecontext: false
+    skipunavailable: true
+    task:
+      brand: Builtin
+      description: commands.local.cmd.set.parent.alert.context
+      id: 9215464a-5a37-4602-a53f-1664d3b6d0ff
+      iscommand: true
+      name: Set Isolated endpoint ID to the Alert context
+      script: Builtin|||setParentIncidentContext
+      type: regular
+      version: -1
+    taskid: 9215464a-5a37-4602-a53f-1664d3b6d0ff
+    timertriggers: []
+    type: regular
+    view: |-
+      {
+        "position": {
+          "x": 195.25,
+          "y": 1400
+        }
+      }
+  "23":
+    conditions:
+    - condition:
+      - - left:
+            iscontext: true
+            value:
+              complex:
+                root: inputs.EndpointID
+          operator: isNotEmpty
+        - left:
+            iscontext: true
+            value:
+              complex:
+                root: inputs.EndpointHostName
+          operator: isNotEmpty
+      label: "yes"
+    continueonerrortype: ""
+    id: "23"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      "yes":
+      - "24"
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      description: Checks if the endpoint ID or name defined.
+      id: 65bfa257-2884-4787-8dd5-64589ea2ad55
+      iscommand: false
+      name: Is the endpoint ID or the endpoint name defined?
+      type: condition
+      version: -1
+    taskid: 65bfa257-2884-4787-8dd5-64589ea2ad55
+    timertriggers: []
+    type: condition
+    view: |-
+      {
+        "position": {
+          "x": 290.5,
+          "y": 210
+        }
+      }
+  "24":
+    continueonerror: true
+    continueonerrortype: errorPath
+    id: "24"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#error#':
+      - "26"
+      '#none#':
+      - "13"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      hostname:
+        complex:
+          root: inputs.EndpointHostName
+          transformers:
+          - args:
+              applyIfEmpty: {}
+              defaultValue:
+                value:
+                  simple: "null"
+            operator: SetIfEmpty
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      description: Gets a list of endpoints, according to the passed filters. If there
+        are no filters, all endpoints are returned. Filtering by multiple fields is
+        concatenated using the AND condition (OR is not supported). Maximum result
+        set size is 100. Offset is the zero-based number of endpoints from the start
+        of the result set (start by counting from 0).
+      id: 10c79443-6c72-4824-b37a-aa78aef610ae
+      iscommand: true
+      name: Get endpoint info by endpoint name
+      script: '|||core-get-endpoints'
+      type: regular
+      version: -1
+    taskid: 10c79443-6c72-4824-b37a-aa78aef610ae
+    timertriggers: []
+    type: regular
+    view: |-
+      {
+        "position": {
+          "x": 290.5,
+          "y": 380
+        }
+      }
+  "25":
+    conditions:
+    - condition:
+      - - ignorecase: true
+          left:
+            iscontext: true
+            value:
+              complex:
+                accessor: is_isolated
+                root: Core.Endpoint
+          operator: isEqualString
+          right:
+            value:
+              simple: AGENT_ISOLATED
+      label: "yes"
+    continueonerrortype: ""
+    id: "25"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#default#':
+      - "10"
+      "yes":
+      - "22"
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      description: Checks if the endpoint is already isolated.
+      id: 28a11db5-8870-402e-8fee-8d815b2fc6a9
+      iscommand: false
+      name: is the endpoint already isolated?
+      type: condition
+      version: -1
+    taskid: 28a11db5-8870-402e-8fee-8d815b2fc6a9
+    timertriggers: []
+    type: condition
+    view: |-
+      {
+        "position": {
+          "x": 50,
+          "y": 1230
+        }
+      }
+  "26":
+    continueonerrortype: ""
+    id: "26"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#none#':
+      - "10"
+    note: false
+    quietmode: 0
+    separatecontext: true
+    skipunavailable: false
+    task:
+      brand: ""
+      id: 94e98ca0-d5f4-4f57-8c1c-5517d7999568
+      iscommand: false
+      name: Foundation - Error Handling
+      playbookId: Foundation - Error Handling
+      type: playbook
+      version: -1
+    taskid: 94e98ca0-d5f4-4f57-8c1c-5517d7999568
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": 50,
+          "y": 1570
+        }
+      }
+  "27":
+    conditions:
+    - condition:
+      - - left:
+            iscontext: true
+            value:
+              simple: shadow_mode
+          operator: isFalse
+      label: "no"
+    continueonerrortype: ""
+    id: "27"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#default#':
+      - "28"
+      "no":
+      - "2"
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      id: 9fc6ea03-2c13-40e1-a16b-ee40c5c34335
+      iscommand: false
+      name: Shadow Mode?
+      type: condition
+      version: -1
+    taskid: 9fc6ea03-2c13-40e1-a16b-ee40c5c34335
+    timertriggers: []
+    type: condition
+    view: |-
+      {
+        "position": {
+          "x": 1066.75,
+          "y": 1060
+        }
+      }
+  "28":
+    continueonerrortype: ""
+    id: "28"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#none#':
+      - "8"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      value:
+        simple: |-
+          Shadow Mode: Auto endpoint Isolation
+          Command: core-isolate-endpoint
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      description: Prints text to war room (Markdown supported)
+      id: 0d8c4aa8-bf52-4433-80fc-a5ab05658623
+      iscommand: false
+      name: Print To WarRoom
+      script: Print
+      type: regular
+      version: -1
+    taskid: 0d8c4aa8-bf52-4433-80fc-a5ab05658623
+    timertriggers: []
+    type: regular
+    view: |-
+      {
+        "position": {
+          "x": 826.25,
+          "y": 1230
+        }
+      }
+version: -1
+view: |-
+  {
+    "linkLabelsPosition": {
+      "17_16_Yes": 0.55,
+      "25_22_yes": 0.48
+    },
+    "paper": {
+      "dimensions": {
+        "height": 1750,
+        "width": 1638.25,
+        "x": 50,
+        "y": 50
+      }
+    }
+  }
