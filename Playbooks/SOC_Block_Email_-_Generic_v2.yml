@@ -1,0 +1,917 @@
+contentitemexportablefields:
+  contentitemfields:
+    definitionid: ""
+    fromServerVersion: 6.5.0
+    isoverridable: false
+    itemVersion: 2.6.55
+    packID: ""
+    packName: Common Playbooks
+    prevname: ""
+    toServerVersion: ""
+description: |
+  This playbook will block emails at your mail relay integration.
+
+  Supported integrations for this playbook:
+  * Mimecast
+  * FireEye Email Security (EX)
+  * Cisco Email Security
+  * Symantec Email Security
+id: 'SOC Block Email - Generic v2'
+inputs:
+- description: The email address that will be blocked.
+  key: EmailToBlock
+  playbookInputQuery: null
+  required: false
+  value: {}
+name: SOC Block Email - Generic v2
+outputs: []
+sourceplaybookid: Block Email - Generic v2
+starttaskid: "0"
+tasks:
+  "0":
+    continueonerrortype: ""
+    id: "0"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#none#':
+      - "18"
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      id: d583e596-e160-4401-8bbf-544e34372f9e
+      iscommand: false
+      name: ""
+      version: -1
+    taskid: d583e596-e160-4401-8bbf-544e34372f9e
+    timertriggers: []
+    type: start
+    view: |-
+      {
+        "position": {
+          "x": 1162,
+          "y": 50
+        }
+      }
+  "2":
+    continueonerrortype: ""
+    id: "2"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      id: 2a7524dc-dfcd-4dce-8978-5bbb1ba94a67
+      iscommand: false
+      name: Done
+      type: title
+      version: -1
+    taskid: 2a7524dc-dfcd-4dce-8978-5bbb1ba94a67
+    timertriggers: []
+    type: title
+    view: |-
+      {
+        "position": {
+          "x": 1402.5,
+          "y": 1220
+        }
+      }
+  "3":
+    continueonerrortype: ""
+    id: "3"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
+    nexttasks:
+      '#none#':
+      - "2"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      EmailToBlock:
+        complex:
+          root: inputs.EmailToBlock
+    separatecontext: true
+    skipunavailable: true
+    task:
+      brand: ""
+      id: f2f94ec5-a4ef-4963-8382-9e334fc350c7
+      iscommand: false
+      name: Symantec block Email
+      playbookName: Symantec block Email
+      type: playbook
+      version: -1
+    taskid: f2f94ec5-a4ef-4963-8382-9e334fc350c7
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": 2855,
+          "y": 1050
+        }
+      }
+  "5":
+    continueonerrortype: ""
+    id: "5"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#default#':
+      - "2"
+      "yes":
+      - "22"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      brandname:
+        simple: FireEye Email Security
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      description: Returns 'yes' if integration brand is available. Otherwise returns
+        'no'
+      id: 2c065c72-23f4-41d6-8391-027a43640107
+      iscommand: false
+      name: Is FireEye Email Security (EX) Available?
+      script: IsIntegrationAvailable
+      type: condition
+      version: -1
+    taskid: 2c065c72-23f4-41d6-8391-027a43640107
+    timertriggers: []
+    type: condition
+    view: |-
+      {
+        "position": {
+          "x": 1162,
+          "y": 540
+        }
+      }
+  "6":
+    continueonerrortype: ""
+    id: "6"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#default#':
+      - "2"
+      "yes":
+      - "24"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      brandname:
+        simple: MimecastV2
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      description: Returns 'yes' if integration brand is available. Otherwise returns
+        'no'
+      id: 75132291-3638-4f49-8d91-26b4021a87a7
+      iscommand: false
+      name: Is Mimecast v2 Available?
+      script: IsIntegrationAvailable
+      type: condition
+      version: -1
+    taskid: 75132291-3638-4f49-8d91-26b4021a87a7
+    timertriggers: []
+    type: condition
+    view: |-
+      {
+        "position": {
+          "x": 2178.75,
+          "y": 540
+        }
+      }
+  "9":
+    continueonerror: true
+    continueonerrortype: errorPath
+    id: "9"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#error#':
+      - "19"
+      '#none#':
+      - "2"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      entry_value:
+        complex:
+          root: inputs.EmailToBlock
+      type:
+        simple: sender_email_address
+    separatecontext: false
+    skipunavailable: true
+    task:
+      brand: ""
+      description: Updates the blocked sender domain.
+      id: 8ee00672-a83a-46c2-ae74-97e0f809eed1
+      iscommand: true
+      name: FireEye Update Blocklist
+      script: '|||fireeye-ex-update-blockedlist'
+      type: regular
+      version: -1
+    taskid: 8ee00672-a83a-46c2-ae74-97e0f809eed1
+    timertriggers: []
+    type: regular
+    view: |-
+      {
+        "position": {
+          "x": 1547.75,
+          "y": 880
+        }
+      }
+  "10":
+    continueonerror: true
+    continueonerrortype: errorPath
+    id: "10"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#error#':
+      - "19"
+      '#none#':
+      - "2"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      description:
+        simple: Blocked accounts
+      fromType:
+        simple: individual_email_address
+      fromValue:
+        complex:
+          root: inputs.EmailToBlock
+      option:
+        simple: block_sender
+      toType:
+        simple: everyone
+    separatecontext: false
+    skipunavailable: true
+    task:
+      brand: ""
+      description: Create a Blocked Sender Policy
+      id: 43ce61d1-4702-4466-b990-866903f27f0f
+      iscommand: true
+      name: Mimecast - Block Sender Policy
+      script: '|||mimecast-create-policy'
+      type: regular
+      version: -1
+    taskid: 43ce61d1-4702-4466-b990-866903f27f0f
+    timertriggers: []
+    type: regular
+    view: |-
+      {
+        "position": {
+          "x": 2469.25,
+          "y": 880
+        }
+      }
+  "11":
+    continueonerrortype: ""
+    id: "11"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#none#':
+      - "6"
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      id: ba2daa5c-96f8-462d-8a50-86c84d4d80e8
+      iscommand: false
+      name: Mimecast
+      type: title
+      version: -1
+    taskid: ba2daa5c-96f8-462d-8a50-86c84d4d80e8
+    timertriggers: []
+    type: title
+    view: |-
+      {
+        "position": {
+          "x": 2178.75,
+          "y": 380
+        }
+      }
+  "12":
+    continueonerrortype: ""
+    id: "12"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#none#':
+      - "5"
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      id: e38a8e79-0254-4d88-8e98-8d023766523d
+      iscommand: false
+      name: FireEye Email Security (EX)
+      type: title
+      version: -1
+    taskid: e38a8e79-0254-4d88-8e98-8d023766523d
+    timertriggers: []
+    type: title
+    view: |-
+      {
+        "position": {
+          "x": 1162,
+          "y": 380
+        }
+      }
+  "14":
+    continueonerrortype: ""
+    id: "14"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#none#':
+      - "26"
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      id: 45e2cbf1-08bc-4085-8d3e-a0fe2fd4553e
+      iscommand: false
+      name: Symantec Email Security
+      type: title
+      version: -1
+    taskid: 45e2cbf1-08bc-4085-8d3e-a0fe2fd4553e
+    timertriggers: []
+    type: title
+    view: |-
+      {
+        "position": {
+          "x": 3095.5,
+          "y": 715
+        }
+      }
+  "15":
+    continueonerrortype: ""
+    id: "15"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#none#':
+      - "16"
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      id: ebbab30d-ccb0-4d3b-8eba-9c953cb7bdb3
+      iscommand: false
+      name: Cisco Security Management Appliance
+      type: title
+      version: -1
+    taskid: ebbab30d-ccb0-4d3b-8eba-9c953cb7bdb3
+    timertriggers: []
+    type: title
+    view: |-
+      {
+        "position": {
+          "x": 50,
+          "y": 380
+        }
+      }
+  "16":
+    conditions:
+    - condition:
+      - - left:
+            iscontext: true
+            value:
+              complex:
+                accessor: brand
+                filters:
+                - - left:
+                      iscontext: true
+                      value:
+                        simple: modules.brand
+                    operator: isEqualString
+                    right:
+                      value:
+                        simple: CiscoSMA
+                - - left:
+                      iscontext: true
+                      value:
+                        simple: modules.state
+                    operator: isEqualString
+                    right:
+                      value:
+                        simple: active
+                root: modules
+          operator: isExists
+          right:
+            value: {}
+      label: "yes"
+    continueonerrortype: ""
+    id: "16"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#default#':
+      - "2"
+      "yes":
+      - "20"
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      description: Returns 'yes' if integration brand is available. Otherwise returns
+        'no'.
+      id: 614bc2e7-b289-44d7-8350-5bc69ace90fa
+      iscommand: false
+      name: Is Cisco Security Management Appliance Available?
+      type: condition
+      version: -1
+    taskid: 614bc2e7-b289-44d7-8350-5bc69ace90fa
+    timertriggers: []
+    type: condition
+    view: |-
+      {
+        "position": {
+          "x": 50,
+          "y": 540
+        }
+      }
+  "17":
+    continueonerror: true
+    continueonerrortype: errorPath
+    id: "17"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#error#':
+      - "19"
+      '#none#':
+      - "2"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      entry_type:
+        simple: blocklist
+      sender_addresses:
+        complex:
+          root: inputs.EmailToBlock
+      view_by:
+        simple: sender
+    separatecontext: false
+    skipunavailable: true
+    task:
+      brand: ""
+      description: Append spam quarantine blocklist/safelist entry.
+      id: 9481ea4a-879c-46bb-b513-7dfbcf69e042
+      iscommand: true
+      name: Cisco SMA - Append to Blocklist
+      script: '|||cisco-sma-list-entry-append'
+      type: regular
+      version: -1
+    taskid: 9481ea4a-879c-46bb-b513-7dfbcf69e042
+    timertriggers: []
+    type: regular
+    view: |-
+      {
+        "position": {
+          "x": 340.5,
+          "y": 880
+        }
+      }
+  "18":
+    conditions:
+    - condition:
+      - - left:
+            iscontext: true
+            value:
+              complex:
+                root: inputs.EmailToBlock
+          operator: isNotEmpty
+      label: "yes"
+    continueonerrortype: ""
+    id: "18"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#default#':
+      - "2"
+      "yes":
+      - "15"
+      - "12"
+      - "11"
+      - "14"
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      id: 9e4f3f09-0897-4f18-86ce-22dd8a09b18c
+      iscommand: false
+      name: Has emails to block?
+      type: condition
+      version: -1
+    taskid: 9e4f3f09-0897-4f18-86ce-22dd8a09b18c
+    timertriggers: []
+    type: condition
+    view: |-
+      {
+        "position": {
+          "x": 1162,
+          "y": 210
+        }
+      }
+  "19":
+    continueonerrortype: ""
+    id: "19"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#none#':
+      - "2"
+    note: false
+    quietmode: 0
+    separatecontext: true
+    skipunavailable: false
+    task:
+      brand: ""
+      id: 739708a3-9db6-4088-88a1-9d1af2da07d3
+      iscommand: false
+      name: Foundation - Error Handling
+      playbookId: Foundation - Error Handling
+      type: playbook
+      version: -1
+    taskid: 739708a3-9db6-4088-88a1-9d1af2da07d3
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": 1402.5,
+          "y": 1050
+        }
+      }
+  "20":
+    conditions:
+    - condition:
+      - - left:
+            iscontext: true
+            value:
+              simple: shadow_mode
+          operator: isFalse
+      label: "no"
+    continueonerrortype: ""
+    id: "20"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#default#':
+      - "21"
+      "no":
+      - "17"
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      id: ad701100-acbd-45dd-8201-bdd54661871b
+      iscommand: false
+      name: Shadow Mode?
+      type: condition
+      version: -1
+    taskid: ad701100-acbd-45dd-8201-bdd54661871b
+    timertriggers: []
+    type: condition
+    view: |-
+      {
+        "position": {
+          "x": 195.25,
+          "y": 710
+        }
+      }
+  "21":
+    continueonerrortype: ""
+    id: "21"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#none#':
+      - "2"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      value:
+        simple: |-
+          Shadow Mode: Cisco SMA - Append to Blocklist
+          Command: cisco-sma-list-entry-append
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      description: Prints text to war room (Markdown supported)
+      id: e0e088f2-f470-46cf-864e-c34d155648fe
+      iscommand: false
+      name: Print To WarRoom
+      script: Print
+      type: regular
+      version: -1
+    taskid: e0e088f2-f470-46cf-864e-c34d155648fe
+    timertriggers: []
+    type: regular
+    view: |-
+      {
+        "position": {
+          "x": 50,
+          "y": 1050
+        }
+      }
+  "22":
+    conditions:
+    - condition:
+      - - left:
+            iscontext: true
+            value:
+              simple: shadow_mode
+          operator: isFalse
+      label: "no"
+    continueonerrortype: ""
+    id: "22"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#default#':
+      - "23"
+      "no":
+      - "9"
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      id: 18b69ad5-0a66-4abe-81d3-9975375890f4
+      iscommand: false
+      name: Shadow Mode?
+      type: condition
+      version: -1
+    taskid: 18b69ad5-0a66-4abe-81d3-9975375890f4
+    timertriggers: []
+    type: condition
+    view: |-
+      {
+        "position": {
+          "x": 1307.25,
+          "y": 710
+        }
+      }
+  "23":
+    continueonerrortype: ""
+    id: "23"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#none#':
+      - "2"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      value:
+        simple: |-
+          Shadow Mode: FIreEye Update Blocklist
+          Command: fireeye-ex-update-blockedlist
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      description: Prints text to war room (Markdown supported)
+      id: 2128338f-a1fa-4c78-8b71-fa48d40da571
+      iscommand: false
+      name: Print To WarRoom
+      script: Print
+      type: regular
+      version: -1
+    taskid: 2128338f-a1fa-4c78-8b71-fa48d40da571
+    timertriggers: []
+    type: regular
+    view: |-
+      {
+        "position": {
+          "x": 921.5,
+          "y": 1050
+        }
+      }
+  "24":
+    conditions:
+    - condition:
+      - - left:
+            iscontext: true
+            value:
+              simple: shadow_mode
+          operator: isFalse
+      label: "no"
+    continueonerrortype: ""
+    id: "24"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#default#':
+      - "25"
+      "no":
+      - "10"
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      id: 2cbd4ecb-3f1a-4c8e-8062-dec8654a2566
+      iscommand: false
+      name: Shadow Mode?
+      type: condition
+      version: -1
+    taskid: 2cbd4ecb-3f1a-4c8e-8062-dec8654a2566
+    timertriggers: []
+    type: condition
+    view: |-
+      {
+        "position": {
+          "x": 2324,
+          "y": 710
+        }
+      }
+  "25":
+    continueonerrortype: ""
+    id: "25"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#none#':
+      - "2"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      value:
+        simple: |-
+          Shadow Mode: Mimecast - Block Sender Policy
+          Command: mimecast-create-policy
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      description: Prints text to war room (Markdown supported)
+      id: 05aff0bd-f6df-4270-a1d2-cc93b60810bd
+      iscommand: false
+      name: Print To WarRoom
+      script: Print
+      type: regular
+      version: -1
+    taskid: 05aff0bd-f6df-4270-a1d2-cc93b60810bd
+    timertriggers: []
+    type: regular
+    view: |-
+      {
+        "position": {
+          "x": 2178.75,
+          "y": 1050
+        }
+      }
+  "26":
+    conditions:
+    - condition:
+      - - left:
+            iscontext: true
+            value:
+              simple: shadow_mode
+          operator: isFalse
+      label: "no"
+    continueonerrortype: ""
+    id: "26"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#default#':
+      - "27"
+      "no":
+      - "3"
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      id: 56c13a70-a13c-4538-802b-d3b4847ce5e4
+      iscommand: false
+      name: Shadow Mode?
+      type: condition
+      version: -1
+    taskid: 56c13a70-a13c-4538-802b-d3b4847ce5e4
+    timertriggers: []
+    type: condition
+    view: |-
+      {
+        "position": {
+          "x": 3095.5,
+          "y": 880
+        }
+      }
+  "27":
+    continueonerrortype: ""
+    id: "27"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#none#':
+      - "2"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      value:
+        simple: "Shadow Mode: Symantec block Email\nCommand: "
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      description: Prints text to war room (Markdown supported)
+      id: 60d9b74a-2e13-4e8b-91e9-4d65c29a600c
+      iscommand: false
+      name: Print To WarRoom
+      script: Print
+      type: regular
+      version: -1
+    taskid: 60d9b74a-2e13-4e8b-91e9-4d65c29a600c
+    timertriggers: []
+    type: regular
+    view: |-
+      {
+        "position": {
+          "x": 3336,
+          "y": 1050
+        }
+      }
+version: -1
+view: |-
+  {
+    "linkLabelsPosition": {
+      "16_2_#default#": 0.24,
+      "18_2_#default#": 0.12,
+      "5_22_yes": 0.72,
+      "5_2_#default#": 0.16,
+      "6_24_yes": 0.78,
+      "6_2_#default#": 0.18
+    },
+    "paper": {
+      "dimensions": {
+        "height": 1230,
+        "width": 3667,
+        "x": 50,
+        "y": 50
+      }
+    }
+  }

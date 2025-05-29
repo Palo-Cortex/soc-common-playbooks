@@ -1,0 +1,304 @@
+contentitemexportablefields:
+  contentitemfields:
+    definitionid: ""
+    fromServerVersion: 6.5.0
+    isoverridable: false
+    itemVersion: 3.3.12
+    packID: ""
+    packName: Generic Export Indicators Service
+    prevname: ""
+    toServerVersion: ""
+description: |-
+  This playbook blocks domains using External Dynamic Link.
+  The playbook adds a tag to the inputs domain indicators. the tagged domains can be publish as External Dynamic list that can be added to blocklist using products like Panorama by Palo Alto Networks.
+  For Panorama - You can block the tagged domains by creating EDL(in Panorama) with the XSOAR EDL Url, and assign it to Anti-Spyware profile under "DNS Signature Policies"
+id: 'SOC Block Domain - External Dynamic List'
+inputs:
+- description: The domains to block
+  key: Domains
+  playbookInputQuery: null
+  required: false
+  value: {}
+- description: Indicator tag to assign
+  key: Tag
+  playbookInputQuery: null
+  required: false
+  value: {}
+name: SOC Block Domain - External Dynamic List
+outputs: []
+quiet: true
+sourceplaybookid: Block Domain - External Dynamic List
+starttaskid: "0"
+tasks:
+  "0":
+    continueonerrortype: ""
+    id: "0"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#none#':
+      - "1"
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      id: b91dfe71-e177-4ca7-895f-1026172f5dea
+      iscommand: false
+      name: ""
+      version: -1
+    taskid: b91dfe71-e177-4ca7-895f-1026172f5dea
+    timertriggers: []
+    type: start
+    view: |-
+      {
+        "position": {
+          "x": 145.25,
+          "y": 50
+        }
+      }
+  "1":
+    conditions:
+    - condition:
+      - - left:
+            iscontext: true
+            value:
+              complex:
+                root: inputs.Tag
+          operator: isNotEmpty
+          right:
+            value: {}
+      - - left:
+            iscontext: true
+            value:
+              complex:
+                root: inputs.Domains
+          operator: isNotEmpty
+      label: "yes"
+    continueonerrortype: ""
+    id: "1"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#default#':
+      - "3"
+      "yes":
+      - "5"
+    note: false
+    quietmode: 2
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      id: 609eb07b-eea9-4735-83a6-3376a68b64af
+      iscommand: false
+      name: Use External Dynamic List?
+      type: condition
+      version: -1
+    taskid: 609eb07b-eea9-4735-83a6-3376a68b64af
+    timertriggers: []
+    type: condition
+    view: |-
+      {
+        "position": {
+          "x": 145.25,
+          "y": 210
+        }
+      }
+  "2":
+    continueonerror: true
+    continueonerrortype: errorPath
+    id: "2"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#error#':
+      - "4"
+      '#none#':
+      - "3"
+    note: false
+    quietmode: 2
+    scriptarguments:
+      field:
+        simple: tags
+      fieldValue:
+        complex:
+          root: inputs.Tag
+      indicatorsValues:
+        complex:
+          root: inputs.Domains
+          transformers:
+          - operator: uniq
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: Builtin
+      description: commands.local.cmd.add.values.to.indicator.multi.select.field
+      id: c85070cf-aac4-4b46-957f-d24667f878a6
+      iscommand: true
+      name: Update Indicator Tag for EDL
+      script: Builtin|||appendIndicatorField
+      type: regular
+      version: -1
+    taskid: c85070cf-aac4-4b46-957f-d24667f878a6
+    timertriggers: []
+    type: regular
+    view: |-
+      {
+        "position": {
+          "x": 50,
+          "y": 550
+        }
+      }
+  "3":
+    continueonerrortype: ""
+    id: "3"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      id: bc8d3853-6554-4315-8a49-ebe6496d6160
+      iscommand: false
+      name: Done
+      type: title
+      version: -1
+    taskid: bc8d3853-6554-4315-8a49-ebe6496d6160
+    timertriggers: []
+    type: title
+    view: |-
+      {
+        "position": {
+          "x": 50,
+          "y": 890
+        }
+      }
+  "4":
+    continueonerrortype: ""
+    id: "4"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#none#':
+      - "3"
+    note: false
+    quietmode: 0
+    separatecontext: true
+    skipunavailable: false
+    task:
+      brand: ""
+      id: 0b940d80-073a-4774-8200-d400fde81680
+      iscommand: false
+      name: Foundation - Error Handling
+      playbookId: Foundation - Error Handling
+      type: playbook
+      version: -1
+    taskid: 0b940d80-073a-4774-8200-d400fde81680
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": 195.25,
+          "y": 720
+        }
+      }
+  "5":
+    conditions:
+    - condition:
+      - - left:
+            iscontext: true
+            value:
+              simple: shadow_mode
+          operator: isFalse
+      label: "no"
+    continueonerrortype: ""
+    id: "5"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#default#':
+      - "6"
+      "no":
+      - "2"
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      id: 61bc4f65-5054-42e8-94d4-c686f7f3e08a
+      iscommand: false
+      name: Shadow Run?
+      type: condition
+      version: -1
+    taskid: 61bc4f65-5054-42e8-94d4-c686f7f3e08a
+    timertriggers: []
+    type: condition
+    view: |-
+      {
+        "position": {
+          "x": 290.5,
+          "y": 380
+        }
+      }
+  "6":
+    continueonerrortype: ""
+    id: "6"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#none#':
+      - "3"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      value:
+        simple: |-
+          Shadow Run: Update Indicator Tag for EDL
+          Command: appendIndicatorField
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      description: Prints text to war room (Markdown supported)
+      id: 03e26c28-07cc-4209-a014-47334cc1f3c3
+      iscommand: false
+      name: Print To WarRoom
+      script: Print
+      type: regular
+      version: -1
+    taskid: 03e26c28-07cc-4209-a014-47334cc1f3c3
+    timertriggers: []
+    type: regular
+    view: |-
+      {
+        "position": {
+          "x": 676.25,
+          "y": 720
+        }
+      }
+version: -1
+view: |-
+  {
+    "linkLabelsPosition": {},
+    "paper": {
+      "dimensions": {
+        "height": 900,
+        "width": 1007.25,
+        "x": 50,
+        "y": 50
+      }
+    }
+  }

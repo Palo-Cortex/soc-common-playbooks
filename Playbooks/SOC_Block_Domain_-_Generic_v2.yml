@@ -1,0 +1,422 @@
+contentitemexportablefields:
+  contentitemfields:
+    definitionid: ""
+    fromServerVersion: 6.5.0
+    isoverridable: false
+    itemVersion: 2.6.55
+    packID: ""
+    packName: Common Playbooks
+    prevname: ""
+    toServerVersion: ""
+description: |
+  This playbook blocks malicious Domains using all integrations that are enabled.
+
+  Supported integrations for this playbook:
+  * Zscaler
+  * Symantec Messaging Gateway
+  * FireEye EX
+  * Trend Micro Apex One
+  * Proofpoint Threat Response
+  * Cisco Stealthwatch Cloud
+id: 'SOC Block Domain - Generic v2'
+inputs:
+- description: The Domain to block.
+  key: Domain
+  playbookInputQuery: null
+  required: false
+  value: {}
+- description: |-
+    The Domain List ID to add the Domain to.
+    product: Proofpoint Threat Response
+  key: DomainBlackListID
+  playbookInputQuery: null
+  required: false
+  value: {}
+- description: |-
+    Tag to assign Domain to the External Dynamic List.
+    sub-playbook: Block Domain - External Dynamic List
+  key: Tag
+  playbookInputQuery: null
+  required: false
+  value: {}
+- description: "The UTC expiration date and time of the suspicious object, for example:
+    2020-01-25T09:00:00Z.\nProducts: \nTrend Micro Apex One\nProofpoint Threat Response"
+  key: Expiration
+  playbookInputQuery: null
+  required: false
+  value: {}
+name: SOC Block Domain - Generic v2
+outputs: []
+sourceplaybookid: Block Domain - Generic v2
+starttaskid: "0"
+tasks:
+  "0":
+    continueonerrortype: ""
+    id: "0"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#none#':
+      - "2"
+      - "3"
+      - "4"
+      - "6"
+      - "7"
+      - "9"
+      - "11"
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      id: 806d142e-f679-48c3-8e95-1bbc49ace64a
+      iscommand: false
+      name: ""
+      version: -1
+    taskid: 806d142e-f679-48c3-8e95-1bbc49ace64a
+    timertriggers: []
+    type: start
+    view: |-
+      {
+        "position": {
+          "x": 1493,
+          "y": 50
+        }
+      }
+  "2":
+    continueonerrortype: ""
+    id: "2"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
+    nexttasks:
+      '#none#':
+      - "5"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      Domain:
+        complex:
+          root: inputs.Domain
+    separatecontext: true
+    skipunavailable: true
+    task:
+      brand: ""
+      description: |-
+        This playbook blocks domains using Symantec Messaging Gateway.
+        The playbook checks whether the Symantec Messaging Gateway integration is enabled, whether the Domain input has been provided and if so, blocks the domain.
+      id: 1b928832-eb02-47c7-8aed-4a5248e72b7a
+      iscommand: false
+      name: Block Domain - Symantec Messaging Gateway
+      playbookName: Block Domain - Symantec Messaging Gateway
+      type: playbook
+      version: -1
+    taskid: 1b928832-eb02-47c7-8aed-4a5248e72b7a
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": 50,
+          "y": 210
+        }
+      }
+  "3":
+    continueonerrortype: ""
+    id: "3"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
+    nexttasks:
+      '#none#':
+      - "5"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      Domain:
+        complex:
+          root: inputs.Domain
+    separatecontext: true
+    skipunavailable: true
+    task:
+      brand: ""
+      id: 21ff4831-4836-424f-8aa7-e7b596743b91
+      iscommand: false
+      name: Block Domain - FireEye Email Security
+      playbookName: Block Domain - FireEye Email Security
+      type: playbook
+      version: -1
+    taskid: 21ff4831-4836-424f-8aa7-e7b596743b91
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": 531,
+          "y": 210
+        }
+      }
+  "4":
+    continueonerrortype: ""
+    id: "4"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
+    nexttasks:
+      '#none#':
+      - "5"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      Domain:
+        complex:
+          root: inputs.Domain
+    separatecontext: true
+    skipunavailable: true
+    task:
+      brand: ""
+      description: |-
+        This playbook blocks domains using Zscaler.
+        The playbook checks whether the Zscaler integration is enabled, whether the Domain input has been provided and if so, blocks the domain.
+      id: 0cc3c7da-178a-4039-807e-d07f04c57ed8
+      iscommand: false
+      name: Block Domain - Zscaler
+      playbookName: Block Domain - Zscaler
+      type: playbook
+      version: -1
+    taskid: 0cc3c7da-178a-4039-807e-d07f04c57ed8
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": 1012,
+          "y": 210
+        }
+      }
+  "5":
+    continueonerrortype: ""
+    id: "5"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      id: 3c45a271-d018-4dfc-8673-429fb09bc06e
+      iscommand: false
+      name: Done
+      type: title
+      version: -1
+    taskid: 3c45a271-d018-4dfc-8673-429fb09bc06e
+    timertriggers: []
+    type: title
+    view: |-
+      {
+        "position": {
+          "x": 1493,
+          "y": 380
+        }
+      }
+  "6":
+    continueonerrortype: ""
+    id: "6"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
+    nexttasks:
+      '#none#':
+      - "5"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      Domain:
+        complex:
+          root: inputs.Domain
+      Expiration:
+        complex:
+          root: inputs.Expiration
+    separatecontext: true
+    skipunavailable: true
+    task:
+      brand: ""
+      description: |-
+        This playbook blocks domains using Trend Micro Apex One.
+        The playbook checks whether the Trend Micro Apex One integration is enabled, whether the Domain input has been provided and if so, blocks the domain.
+      id: dc5cbc8e-0fdb-4833-8cc1-8ad26fc9e2f0
+      iscommand: false
+      name: Block Domain - Trend Micro Apex One
+      playbookName: Block Domain - Trend Micro Apex One
+      type: playbook
+      version: -1
+    taskid: dc5cbc8e-0fdb-4833-8cc1-8ad26fc9e2f0
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": 1493,
+          "y": 210
+        }
+      }
+  "7":
+    continueonerrortype: ""
+    id: "7"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
+    nexttasks:
+      '#none#':
+      - "5"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      Domain:
+        complex:
+          root: inputs.Domain
+      DomainBlackListID:
+        complex:
+          root: inputs.DomainBlackListID
+      Expiration:
+        complex:
+          root: inputs.Expiration
+    separatecontext: true
+    skipunavailable: true
+    task:
+      brand: ""
+      description: |-
+        This playbook blocks domains using Proofpoint Threat Response.
+        The playbook checks whether the Proofpoint Threat Response integration is enabled, whether the Domain input has been provided and if so, blocks the domain.
+      id: e8232ce9-4ce3-4342-8139-5bc01c3acb1b
+      iscommand: false
+      name: Block Domain - Proofpoint Threat Response
+      playbookName: Block Domain - Proofpoint Threat Response
+      type: playbook
+      version: -1
+    taskid: e8232ce9-4ce3-4342-8139-5bc01c3acb1b
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": 1974,
+          "y": 210
+        }
+      }
+  "9":
+    continueonerrortype: ""
+    id: "9"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
+    nexttasks:
+      '#none#':
+      - "5"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      Domain:
+        complex:
+          root: inputs.Domain
+    separatecontext: true
+    skipunavailable: true
+    task:
+      brand: ""
+      description: |-
+        This playbook blocks domains using Cisco Stealthwatch.
+        The playbook checks whether the Cisco Stealthwatch integration is enabled, whether the Domain input has been provided and if so, blocks the domain.
+      id: 8e83a1ed-519c-44ae-8466-86207f1e0d31
+      iscommand: false
+      name: Block Domain - Cisco Stealthwatch
+      playbookName: Block Domain - Cisco Stealthwatch
+      type: playbook
+      version: -1
+    taskid: 8e83a1ed-519c-44ae-8466-86207f1e0d31
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": 2455,
+          "y": 210
+        }
+      }
+  "11":
+    continueonerrortype: ""
+    id: "11"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#none#':
+      - "5"
+    note: false
+    quietmode: 0
+    separatecontext: true
+    skipunavailable: false
+    task:
+      brand: ""
+      id: cca5d4c7-de81-429e-82e0-1b021ca40171
+      iscommand: false
+      name: SOC Block Domain - External Dynamic List
+      playbookId: 'SOC Block Domain - External Dynamic List'
+      type: playbook
+      version: -1
+    taskid: cca5d4c7-de81-429e-82e0-1b021ca40171
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": 2936,
+          "y": 210
+        }
+      }
+version: -1
+view: |-
+  {
+    "linkLabelsPosition": {},
+    "paper": {
+      "dimensions": {
+        "height": 390,
+        "width": 3267,
+        "x": 50,
+        "y": 50
+      }
+    }
+  }
