@@ -3,9 +3,9 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 6.6.0
     isoverridable: false
-    itemVersion: 2.6.55
+    itemVersion: 1.0.0
     packID: ""
-    packName: Common Playbooks
+    packName: SOC Common Playbooks
     prevname: ""
     toServerVersion: ""
 description: "This playbook checks the file reputation and sets the verdict as a new
@@ -87,7 +87,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2364.5,
+          "x": 2269.25,
           "y": 50
         }
       }
@@ -114,8 +114,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2028.75,
-          "y": 1220
+          "x": 2509.75,
+          "y": 1055
         }
       }
   "4":
@@ -144,7 +144,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1978.75,
+          "x": 1307.25,
           "y": 210
         }
       }
@@ -183,7 +183,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1978.75,
+          "x": 1307.25,
           "y": 370
         }
       }
@@ -261,7 +261,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2314.5,
+          "x": 2509.75,
           "y": 710
         }
       }
@@ -433,7 +433,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 531,
+          "x": 581,
           "y": 880
         }
       }
@@ -473,7 +473,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2605,
+          "x": 2750.25,
           "y": 880
         }
       }
@@ -533,7 +533,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1352.5,
+          "x": 1547.75,
           "y": 710
         }
       }
@@ -573,7 +573,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1593,
+          "x": 1743,
           "y": 880
         }
       }
@@ -613,7 +613,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2074,
+          "x": 2269.25,
           "y": 880
         }
       }
@@ -643,7 +643,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3426.5,
+          "x": 3471.75,
           "y": 545
         }
       }
@@ -711,7 +711,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3426.5,
+          "x": 3471.75,
           "y": 710
         }
       }
@@ -751,7 +751,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3667,
+          "x": 3712.25,
           "y": 880
         }
       }
@@ -831,7 +831,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1112,
+          "x": 1262,
           "y": 880
         }
       }
@@ -871,7 +871,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3186,
+          "x": 3231.25,
           "y": 880
         }
       }
@@ -914,7 +914,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1352.5,
+          "x": 1502.5,
           "y": 540
         }
       }
@@ -945,20 +945,18 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 4388.5,
+          "x": 4483.75,
           "y": 715
         }
       }
   "27":
     continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "27"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "29"
       '#none#':
       - "3"
     note: false
@@ -972,19 +970,19 @@ tasks:
     task:
       brand: ""
       description: Retrieves results for a file hash using WildFire.
-      id: 610edd39-69d9-4963-ab86-2162b342f724
+      id: 04e3f233-3ddf-4ed1-bf58-a298d46658cd
       iscommand: true
       name: Get WildFire report
       script: '|||wildfire-report'
       type: regular
       version: -1
-    taskid: 610edd39-69d9-4963-ab86-2162b342f724
+    taskid: 04e3f233-3ddf-4ed1-bf58-a298d46658cd
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 4148,
+          "x": 4193.25,
           "y": 880
         }
       }
@@ -1023,7 +1021,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 4629,
+          "x": 4724.25,
           "y": 880
         }
       }
@@ -1033,28 +1031,30 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
-    nexttasks:
-      '#none#':
-      - "3"
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
     note: false
     quietmode: 0
     separatecontext: true
-    skipunavailable: false
+    skipunavailable: true
     task:
       brand: ""
-      id: bd717bfd-70ab-4251-8e49-866f2d8f5ee4
+      id: 2bb432ff-39d1-444e-b9e8-d002d7bd6cae
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
       type: playbook
       version: -1
-    taskid: bd717bfd-70ab-4251-8e49-866f2d8f5ee4
+    taskid: 2bb432ff-39d1-444e-b9e8-d002d7bd6cae
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 2219.25,
+          "x": 1838.25,
           "y": 1050
         }
       }
@@ -1074,8 +1074,8 @@ view: |-
     },
     "paper": {
       "dimensions": {
-        "height": 1230,
-        "width": 4960,
+        "height": 1070,
+        "width": 5055.25,
         "x": 50,
         "y": 50
       }

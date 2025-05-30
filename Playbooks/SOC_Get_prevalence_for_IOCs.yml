@@ -3,9 +3,9 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 6.6.0
     isoverridable: false
-    itemVersion: 2.6.55
+    itemVersion: 1.0.0
     packID: ""
-    packName: Common Playbooks
+    packName: SOC Common Playbooks
     prevname: ""
     toServerVersion: ""
 description: |+
@@ -214,7 +214,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1647.75,
+          "x": 1552.5,
           "y": 50
         }
       }
@@ -274,7 +274,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 631,
+          "x": 681,
           "y": 210
         }
       }
@@ -304,7 +304,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1212,
+          "x": 1262,
           "y": 210
         }
       }
@@ -334,7 +334,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2133.5,
+          "x": 1888.25,
           "y": 210
         }
       }
@@ -364,7 +364,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2714.5,
+          "x": 2469.25,
           "y": 210
         }
       }
@@ -394,7 +394,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3295.5,
+          "x": 3050.25,
           "y": 210
         }
       }
@@ -477,7 +477,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 195.25,
+          "x": 245.25,
           "y": 540
         }
       }
@@ -504,8 +504,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1697.75,
-          "y": 880
+          "x": 1602.5,
+          "y": 715
         }
       }
   "10":
@@ -548,7 +548,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 631,
+          "x": 681,
           "y": 370
         }
       }
@@ -587,7 +587,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 776.25,
+          "x": 826.25,
           "y": 540
         }
       }
@@ -631,7 +631,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1212,
+          "x": 1262,
           "y": 370
         }
       }
@@ -670,7 +670,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1357.25,
+          "x": 1407.25,
           "y": 540
         }
       }
@@ -714,7 +714,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3295.5,
+          "x": 3050.25,
           "y": 370
         }
       }
@@ -753,7 +753,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3440.75,
+          "x": 3295.5,
           "y": 540
         }
       }
@@ -803,7 +803,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2714.5,
+          "x": 2469.25,
           "y": 370
         }
       }
@@ -846,7 +846,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2859.75,
+          "x": 2714.5,
           "y": 540
         }
       }
@@ -890,7 +890,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2133.5,
+          "x": 1888.25,
           "y": 370
         }
       }
@@ -929,7 +929,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2278.75,
+          "x": 2133.5,
           "y": 540
         }
       }
@@ -939,28 +939,30 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
-    nexttasks:
-      '#none#':
-      - "9"
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
     note: false
     quietmode: 0
     separatecontext: true
-    skipunavailable: false
+    skipunavailable: true
     task:
       brand: ""
-      id: ed698b0b-0024-45aa-865f-b5065ce45475
+      id: b28e99f5-3cac-4e32-b6c2-b6f365f8f556
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
       type: playbook
       version: -1
-    taskid: ed698b0b-0024-45aa-865f-b5065ce45475
+    taskid: b28e99f5-3cac-4e32-b6c2-b6f365f8f556
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 1697.75,
+          "x": 2083.5,
           "y": 710
         }
       }
@@ -978,8 +980,8 @@ view: |-
     },
     "paper": {
       "dimensions": {
-        "height": 890,
-        "width": 3771.75,
+        "height": 730,
+        "width": 3626.5,
         "x": 50,
         "y": 50
       }

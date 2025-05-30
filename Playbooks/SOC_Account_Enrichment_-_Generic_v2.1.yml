@@ -3,9 +3,9 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 6.5.0
     isoverridable: false
-    itemVersion: 2.6.55
+    itemVersion: 1.0.0
     packID: ""
-    packName: Common Playbooks
+    packName: SOC Common Playbooks
     prevname: ""
     toServerVersion: ""
 description: |-
@@ -526,7 +526,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3300.25,
+          "x": 3681.25,
           "y": 50
         }
       }
@@ -579,7 +579,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1893,
+          "x": 5669.5,
           "y": 210
         }
       }
@@ -606,8 +606,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3586,
-          "y": 1730
+          "x": 3250.25,
+          "y": 1565
         }
       }
   "4":
@@ -666,7 +666,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 4748,
+          "x": 2328.75,
           "y": 1220
         }
       }
@@ -709,7 +709,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 4893.25,
+          "x": 2183.5,
           "y": 1390
         }
       }
@@ -739,7 +739,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 5910,
+          "x": 1166.75,
           "y": 1055
         }
       }
@@ -769,7 +769,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 4167,
+          "x": 3490.75,
           "y": 1055
         }
       }
@@ -799,7 +799,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 4748,
+          "x": 2328.75,
           "y": 1055
         }
       }
@@ -837,7 +837,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 5910,
+          "x": 1166.75,
           "y": 1220
         }
       }
@@ -875,7 +875,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 4167,
+          "x": 3490.75,
           "y": 1220
         }
       }
@@ -917,7 +917,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 6055.25,
+          "x": 1021.5,
           "y": 1390
         }
       }
@@ -959,7 +959,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 4312.25,
+          "x": 3345.5,
           "y": 1390
         }
       }
@@ -989,7 +989,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3245.5,
+          "x": 4071.75,
           "y": 1055
         }
       }
@@ -1027,7 +1027,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3245.5,
+          "x": 4071.75,
           "y": 1220
         }
       }
@@ -1069,7 +1069,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3390.75,
+          "x": 3926.5,
           "y": 1390
         }
       }
@@ -1099,7 +1099,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2664.5,
+          "x": 4652.75,
           "y": 1055
         }
       }
@@ -1137,7 +1137,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2664.5,
+          "x": 4652.75,
           "y": 1220
         }
       }
@@ -1179,7 +1179,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2809.75,
+          "x": 4507.5,
           "y": 1390
         }
       }
@@ -1209,7 +1209,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 290.5,
+          "x": 6495.75,
           "y": 1055
         }
       }
@@ -1239,7 +1239,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 5329,
+          "x": 1747.75,
           "y": 1055
         }
       }
@@ -1277,7 +1277,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 5329,
+          "x": 1747.75,
           "y": 1220
         }
       }
@@ -1318,7 +1318,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 5474.25,
+          "x": 1602.5,
           "y": 1390
         }
       }
@@ -1342,7 +1342,7 @@ tasks:
       '#default#':
       - "3"
       "yes":
-      - "54"
+      - "71"
     note: false
     quietmode: 0
     separatecontext: false
@@ -1361,61 +1361,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1552.5,
-          "y": 1390
-        }
-      }
-  "54":
-    continueonerrortype: ""
-    id: "54"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    loop:
-      exitCondition: ""
-      iscommand: false
-      max: 100
-      wait: 1
-    nexttasks:
-      '#none#':
-      - "3"
-    note: false
-    quietmode: 0
-    scriptarguments:
-      UserEmail:
-        complex:
-          accessor: Email
-          root: Account
-          transformers:
-          - operator: uniq
-          - operator: FirstArrayElement
-      Username:
-        complex:
-          accessor: Username
-          root: Account
-          transformers:
-          - operator: uniq
-          - operator: FirstArrayElement
-    separatecontext: true
-    skipunavailable: true
-    task:
-      brand: ""
-      description: Takes an email address or a username of a user account in Active
-        Directory, and returns the email address of the user's manager.
-      id: 82a4d18b-fcb9-416a-87e9-0c1b07255560
-      iscommand: false
-      name: Active Directory - Get User Manager Details
-      playbookName: Active Directory - Get User Manager Details
-      type: playbook
-      version: -1
-    taskid: 82a4d18b-fcb9-416a-87e9-0c1b07255560
-    timertriggers: []
-    type: playbook
-    view: |-
-      {
-        "position": {
-          "x": 1743,
-          "y": 1560
+          "x": 2909.75,
+          "y": 1220
         }
       }
   "55":
@@ -1444,7 +1391,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1502.5,
+          "x": 5669.5,
           "y": 550
         }
       }
@@ -1482,7 +1429,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1502.5,
+          "x": 5669.5,
           "y": 710
         }
       }
@@ -1523,7 +1470,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1647.75,
+          "x": 5524.25,
           "y": 880
         }
       }
@@ -1571,7 +1518,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1502.5,
+          "x": 5379,
           "y": 1050
         }
       }
@@ -1611,7 +1558,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1647.75,
+          "x": 5233.75,
           "y": 1220
         }
       }
@@ -1653,7 +1600,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2033.5,
+          "x": 5088.5,
           "y": 1390
         }
       }
@@ -1716,7 +1663,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 50,
+          "x": 6736.25,
           "y": 1390
         }
       }
@@ -1786,7 +1733,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 531,
+          "x": 6255.25,
           "y": 1390
         }
       }
@@ -1829,7 +1776,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 290.5,
+          "x": 6495.75,
           "y": 1220
         }
       }
@@ -1859,7 +1806,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 6881.5,
+          "x": 195.25,
           "y": 1055
         }
       }
@@ -1897,7 +1844,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 6881.5,
+          "x": 195.25,
           "y": 1220
         }
       }
@@ -1947,7 +1894,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 7026.75,
+          "x": 50,
           "y": 1390
         }
       }
@@ -1994,9 +1941,9 @@ tasks:
       description: "Saves the usernames without domain prefixes under a new context
         key.\n\nThis automation runs using the default Limited User role, unless you
         explicitly change the permissions.\nFor more information, see the section
-        about permissions here:\n- For Cortex XSOAR 6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+        about permissions here:\n- For Cortex see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
       id: 3b077e00-6754-4787-8f93-de453f29d2a4
       iscommand: false
       name: Save account usernames
@@ -2009,7 +1956,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 4167,
+          "x": 4071.75,
           "y": 380
         }
       }
@@ -2062,7 +2009,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 6881.5,
+          "x": 485.75,
           "y": 710
         }
       }
@@ -2102,9 +2049,9 @@ tasks:
       description: "Saves the usernames with domain prefixes under a new context key.\n\nThis
         automation runs using the default Limited User role, unless you explicitly
         change the permissions.\nFor more information, see the section about permissions
-        here:\n- For Cortex XSOAR 6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+        here:\n- For Cortex see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
       id: e4b7c203-d49f-4a5d-a005-9eda7a79ad04
       iscommand: false
       name: Save account usernames with domains
@@ -2117,7 +2064,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 7026.75,
+          "x": 340.5,
           "y": 880
         }
       }
@@ -2127,29 +2074,82 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
-    nexttasks:
-      '#none#':
-      - "3"
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
     note: false
     quietmode: 0
     separatecontext: true
-    skipunavailable: false
+    skipunavailable: true
     task:
       brand: ""
-      id: 9ebcbbdf-8bf8-4da7-8e42-6f11fe62c92f
+      id: 8ee49e2f-882e-4e4a-975f-8bb5faad2935
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
       type: playbook
       version: -1
-    taskid: 9ebcbbdf-8bf8-4da7-8e42-6f11fe62c92f
+    taskid: 8ee49e2f-882e-4e4a-975f-8bb5faad2935
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 3731.25,
+          "x": 4312.25,
           "y": 1560
+        }
+      }
+  "71":
+    continueonerrortype: ""
+    id: "71"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
+    nexttasks:
+      '#none#':
+      - "3"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      UserEmail:
+        complex:
+          accessor: Email
+          root: Account
+          transformers:
+          - operator: uniq
+          - operator: FirstArrayElement
+      Username:
+        complex:
+          accessor: Username
+          root: Account
+          transformers:
+          - operator: uniq
+          - operator: FirstArrayElement
+    separatecontext: true
+    skipunavailable: true
+    task:
+      brand: ""
+      id: 342df73a-46ad-4f03-a7b7-2aa71faa4ded
+      iscommand: false
+      name: SOC Active Directory - Get User Manager Details
+      playbookId: 'SOC Active Directory - Get User Manager Details'
+      type: playbook
+      version: -1
+    taskid: 342df73a-46ad-4f03-a7b7-2aa71faa4ded
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": 2759.5,
+          "y": 1390
         }
       }
 version: -1
@@ -2163,6 +2163,7 @@ view: |-
       "43_3_#default#": 0.1,
       "4_3_#default#": 0.1,
       "51_3_#default#": 0.1,
+      "53_71_yes": 0.9,
       "56_3_#default#": 0.1,
       "58_3_#default#": 0.1,
       "65_66_yes": 0.59,
@@ -2171,8 +2172,8 @@ view: |-
     },
     "paper": {
       "dimensions": {
-        "height": 1740,
-        "width": 7357.75,
+        "height": 1580,
+        "width": 7067.25,
         "x": 50,
         "y": 50
       }

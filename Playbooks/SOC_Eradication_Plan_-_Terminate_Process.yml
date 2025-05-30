@@ -3,9 +3,9 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 6.6.0
     isoverridable: false
-    itemVersion: 2.6.55
+    itemVersion: 1.0.0
     packID: ""
-    packName: Common Playbooks
+    packName: SOC Common Playbooks
     prevname: ""
     toServerVersion: ""
 description: "This playbook is one of the sub-playbooks in the eradication plan. \nThis
@@ -71,7 +71,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 50,
+          "x": 485.75,
           "y": 50
         }
       }
@@ -168,7 +168,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 50,
+          "x": 485.75,
           "y": 210
         }
       }
@@ -196,7 +196,7 @@ tasks:
       {
         "position": {
           "x": 1457.25,
-          "y": 1740
+          "y": 1575
         }
       }
   "8":
@@ -235,7 +235,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 290.5,
+          "x": 921.5,
           "y": 890
         }
       }
@@ -289,7 +289,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 50,
+          "x": 776.25,
           "y": 720
         }
       }
@@ -336,7 +336,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 581,
+          "x": 1112,
           "y": 1060
         }
       }
@@ -404,7 +404,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 731,
+          "x": 1262,
           "y": 1230
         }
       }
@@ -447,7 +447,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 876.25,
+          "x": 1407.25,
           "y": 1400
         }
       }
@@ -488,7 +488,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2859.75,
+          "x": 2764.5,
           "y": 720
         }
       }
@@ -528,7 +528,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3005,
+          "x": 3000.25,
           "y": 890
         }
       }
@@ -575,7 +575,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3150.25,
+          "x": 3245.5,
           "y": 1060
         }
       }
@@ -643,7 +643,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3295.5,
+          "x": 3390.75,
           "y": 1230
         }
       }
@@ -686,7 +686,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3440.75,
+          "x": 3536,
           "y": 1400
         }
       }
@@ -724,7 +724,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2859.75,
+          "x": 2955,
           "y": 1400
         }
       }
@@ -762,7 +762,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 295.25,
+          "x": 826.25,
           "y": 1400
         }
       }
@@ -821,7 +821,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2569.25,
+          "x": 2474,
           "y": 380
         }
       }
@@ -880,7 +880,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 50,
+          "x": 485.75,
           "y": 380
         }
       }
@@ -890,28 +890,30 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
-    nexttasks:
-      '#none#':
-      - "5"
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
     note: false
     quietmode: 0
     separatecontext: true
-    skipunavailable: false
+    skipunavailable: true
     task:
       brand: ""
-      id: 4126b12a-8fe5-4761-8466-1733183389f9
+      id: b7df908e-dfb8-4d89-9baf-cbe2e3960eb2
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
       type: playbook
       version: -1
-    taskid: 4126b12a-8fe5-4761-8466-1733183389f9
+    taskid: b7df908e-dfb8-4d89-9baf-cbe2e3960eb2
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 1316.75,
+          "x": 1938.25,
           "y": 1570
         }
       }
@@ -951,7 +953,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 195.25,
+          "x": 631,
           "y": 550
         }
       }
@@ -988,8 +990,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1797.75,
-          "y": 1570
+          "x": 50,
+          "y": 1400
         }
       }
   "26":
@@ -1028,7 +1030,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2714.5,
+          "x": 2619.25,
           "y": 550
         }
       }
@@ -1065,8 +1067,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2278.75,
-          "y": 1570
+          "x": 2178.75,
+          "y": 1400
         }
       }
 version: -1
@@ -1078,8 +1080,8 @@ view: |-
     },
     "paper": {
       "dimensions": {
-        "height": 1750,
-        "width": 3771.75,
+        "height": 1590,
+        "width": 3867,
         "x": 50,
         "y": 50
       }

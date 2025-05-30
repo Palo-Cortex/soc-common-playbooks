@@ -3,9 +3,9 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 6.6.0
     isoverridable: false
-    itemVersion: 2.6.55
+    itemVersion: 1.0.0
     packID: ""
-    packName: Common Playbooks
+    packName: SOC Malware Investigation Response
     prevname: ""
     toServerVersion: ""
 description: |
@@ -158,7 +158,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1974,
+          "x": 2455,
           "y": 1050
         }
       }
@@ -204,7 +204,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 5341,
+          "x": 5391,
           "y": 710
         }
       }
@@ -476,7 +476,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3512.25,
+          "x": 3993.25,
           "y": 1550
         }
       }
@@ -503,8 +503,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2409.75,
-          "y": 1890
+          "x": 2936,
+          "y": 1725
         }
       }
   "12":
@@ -636,7 +636,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 5341,
+          "x": 5822,
           "y": 1050
         }
       }
@@ -730,7 +730,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1012,
+          "x": 1493,
           "y": 1050
         }
       }
@@ -819,7 +819,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 50,
+          "x": 531,
           "y": 1050
         }
       }
@@ -860,7 +860,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3898,
+          "x": 4379,
           "y": 1050
         }
       }
@@ -907,7 +907,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3657.5,
+          "x": 3707.5,
           "y": 710
         }
       }
@@ -938,7 +938,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2936,
+          "x": 3417,
           "y": 1050
         }
       }
@@ -948,28 +948,30 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
-    nexttasks:
-      '#none#':
-      - "11"
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
     note: false
     quietmode: 0
     separatecontext: true
-    skipunavailable: false
+    skipunavailable: true
     task:
       brand: ""
-      id: 9f985bfd-98aa-45ae-81d0-93224b6fd538
+      id: c8c27874-7a67-40f8-93c6-7590843476ca
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
       type: playbook
       version: -1
-    taskid: 9f985bfd-98aa-45ae-81d0-93224b6fd538
+    taskid: c8c27874-7a67-40f8-93c6-7590843476ca
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 1593,
+          "x": 2264.5,
           "y": 1720
         }
       }
@@ -1049,7 +1051,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 531,
+          "x": 50,
           "y": 1050
         }
       }
@@ -1132,7 +1134,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1493,
+          "x": 1012,
           "y": 1050
         }
       }
@@ -1172,7 +1174,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3176.5,
+          "x": 3226.5,
           "y": 880
         }
       }
@@ -1207,7 +1209,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3417,
+          "x": 2936,
           "y": 1050
         }
       }
@@ -1247,7 +1249,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 4138.5,
+          "x": 4188.5,
           "y": 880
         }
       }
@@ -1284,7 +1286,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 4379,
+          "x": 3898,
           "y": 1050
         }
       }
@@ -1324,7 +1326,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 5581.5,
+          "x": 5631.5,
           "y": 880
         }
       }
@@ -1363,7 +1365,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 5822,
+          "x": 5341,
           "y": 1050
         }
       }
@@ -1461,7 +1463,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2455,
+          "x": 1974,
           "y": 1050
         }
       }
@@ -1478,7 +1480,7 @@ view: |-
     },
     "paper": {
       "dimensions": {
-        "height": 1900,
+        "height": 1740,
         "width": 6153,
         "x": 50,
         "y": 50

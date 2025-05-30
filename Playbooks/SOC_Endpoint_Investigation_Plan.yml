@@ -3,9 +3,9 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 6.6.0
     isoverridable: false
-    itemVersion: 2.6.55
+    itemVersion: 1.0.0
     packID: ""
-    packName: Common Playbooks
+    packName: SOC Malware Investigation Response
     prevname: ""
     toServerVersion: ""
 description: "This playbook handles all the endpoint investigation actions by performing
@@ -170,8 +170,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 880,
-          "y": -1090
+          "x": 2133.5,
+          "y": 50
         }
       }
   "1":
@@ -215,8 +215,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 450,
-          "y": 2070
+          "x": 726.25,
+          "y": 3370
         }
       }
   "2":
@@ -261,8 +261,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 450,
-          "y": 650
+          "x": 1047.75,
+          "y": 1870
         }
       }
   "3":
@@ -307,8 +307,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 450,
-          "y": -290
+          "x": 1212,
+          "y": 870
         }
       }
   "4":
@@ -353,8 +353,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 450,
-          "y": 1120
+          "x": 1016.75,
+          "y": 2370
         }
       }
   "5":
@@ -399,8 +399,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 450,
-          "y": 1590
+          "x": 871.5,
+          "y": 2870
         }
       }
   "6":
@@ -445,8 +445,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 450,
-          "y": 180
+          "x": 1066.75,
+          "y": 1370
         }
       }
   "7":
@@ -491,8 +491,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 450,
-          "y": 2550
+          "x": 581,
+          "y": 3870
         }
       }
   "8":
@@ -537,8 +537,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 450,
-          "y": 3045
+          "x": 435.75,
+          "y": 4370
         }
       }
   "9":
@@ -589,8 +589,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1310,
-          "y": -290
+          "x": 2874,
+          "y": 3870
         }
       }
   "10":
@@ -640,8 +640,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1310,
-          "y": -770
+          "x": 3019.25,
+          "y": 3370
         }
       }
   "11":
@@ -692,8 +692,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1310,
-          "y": 670
+          "x": 2819.25,
+          "y": 4870
         }
       }
   "12":
@@ -744,8 +744,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1310,
-          "y": 1140
+          "x": 2678.75,
+          "y": 5370
         }
       }
   "13":
@@ -771,8 +771,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1310,
-          "y": 1625
+          "x": 2819.25,
+          "y": 5875
         }
       }
   "14":
@@ -801,17 +801,20 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 40,
-          "y": 820
+          "x": 1657.25,
+          "y": 2040
         }
       }
   "15":
-    continueonerrortype: ""
+    continueonerror: true
+    continueonerrortype: errorPath
     id: "15"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
+      '#error#':
+      - "56"
       '#none#':
       - "4"
     note: false
@@ -830,24 +833,23 @@ tasks:
       brand: ""
       description: "Searches Demisto alerts.\n\nThis automation runs using the default
         Limited User role, unless you explicitly change the permissions.\nFor more
-        information, see the section about permissions here:\n- For Cortex XSOAR 6
-        see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
-      id: c171f1d7-1909-4e3e-8e4d-66761315d8d6
+        information, see the section about permissions here:\n- For Cortex see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+      id: 127f2ad3-0a3c-4c0d-b272-991ea790c85a
       iscommand: false
       name: Hunt Persistence techniques
       script: SearchAlertsV2
       type: regular
       version: -1
-    taskid: c171f1d7-1909-4e3e-8e4d-66761315d8d6
+    taskid: 127f2ad3-0a3c-4c0d-b272-991ea790c85a
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 40,
-          "y": 950
+          "x": 1657.25,
+          "y": 2200
         }
       }
   "16":
@@ -876,8 +878,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 40,
-          "y": -120
+          "x": 2047.75,
+          "y": 1040
         }
       }
   "17":
@@ -906,8 +908,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 40,
-          "y": 350
+          "x": 1852.5,
+          "y": 1540
         }
       }
   "18":
@@ -936,8 +938,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 40,
-          "y": 1290
+          "x": 1462,
+          "y": 2540
         }
       }
   "19":
@@ -966,8 +968,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 40,
-          "y": 1760
+          "x": 1266.75,
+          "y": 3040
         }
       }
   "20":
@@ -996,8 +998,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 40,
-          "y": 2240
+          "x": 1071.5,
+          "y": 3540
         }
       }
   "21":
@@ -1026,8 +1028,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 40,
-          "y": 2720
+          "x": 876.25,
+          "y": 4040
         }
       }
   "22":
@@ -1056,8 +1058,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 50,
-          "y": 3220
+          "x": 681,
+          "y": 4540
         }
       }
   "23":
@@ -1102,8 +1104,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 450,
-          "y": 3530
+          "x": 290.5,
+          "y": 4870
         }
       }
   "24":
@@ -1148,8 +1150,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 450,
-          "y": 4000
+          "x": 145.25,
+          "y": 5370
         }
       }
   "25":
@@ -1178,8 +1180,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 40,
-          "y": 3700
+          "x": 485.75,
+          "y": 5040
         }
       }
   "26":
@@ -1208,8 +1210,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 40,
-          "y": 4170
+          "x": 290.5,
+          "y": 5540
         }
       }
   "27":
@@ -1254,8 +1256,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 450,
-          "y": -770
+          "x": 1357.25,
+          "y": 370
         }
       }
   "28":
@@ -1284,17 +1286,20 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 40,
-          "y": -600
+          "x": 2288.25,
+          "y": 540
         }
       }
   "29":
-    continueonerrortype: ""
+    continueonerror: true
+    continueonerrortype: errorPath
     id: "29"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
+      '#error#':
+      - "56"
       '#none#':
       - "3"
     note: false
@@ -1308,33 +1313,36 @@ tasks:
       brand: ""
       description: "Searches Cortex XSIAM alerts.\n\nThis automation runs using the
         default Limited User role, unless you explicitly change the permissions.\nFor
-        more information, see the section about permissions here:\n- For Cortex XSOAR
-        6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
-      id: fe8a2a21-ea37-4a7d-8c9c-156ae13b2c3a
+        more information, see the section about permissions here:\n- For Cortex see
+        https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+      id: b2ff01c0-8cd1-4985-979b-d68cb23798f0
       iscommand: false
       name: Hunt Reconnaissance techniques
       script: SearchAlertsV2
       type: regular
       version: -1
-    taskid: fe8a2a21-ea37-4a7d-8c9c-156ae13b2c3a
+    taskid: b2ff01c0-8cd1-4985-979b-d68cb23798f0
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 40,
-          "y": -470
+          "x": 2288.25,
+          "y": 700
         }
       }
   "30":
-    continueonerrortype: ""
+    continueonerror: true
+    continueonerrortype: errorPath
     id: "30"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
+      '#error#':
+      - "56"
       '#none#':
       - "6"
     note: false
@@ -1349,33 +1357,36 @@ tasks:
       brand: ""
       description: "Searches Cortex XSIAM alerts.\n\nThis automation runs using the
         default Limited User role, unless you explicitly change the permissions.\nFor
-        more information, see the section about permissions here:\n- For Cortex XSOAR
-        6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
-      id: fcaf59e8-6da8-4276-8d68-01bbf4b32ad8
+        more information, see the section about permissions here:\n- For Cortex see
+        https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+      id: 748540b2-59d7-41a2-9e5e-ae35e8e0db80
       iscommand: false
       name: Hunt Initial Access techniques
       script: SearchAlertsV2
       type: regular
       version: -1
-    taskid: fcaf59e8-6da8-4276-8d68-01bbf4b32ad8
+    taskid: 748540b2-59d7-41a2-9e5e-ae35e8e0db80
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 40,
-          "y": 10
+          "x": 2047.75,
+          "y": 1200
         }
       }
   "31":
-    continueonerrortype: ""
+    continueonerror: true
+    continueonerrortype: errorPath
     id: "31"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
+      '#error#':
+      - "56"
       '#none#':
       - "2"
     note: false
@@ -1391,33 +1402,35 @@ tasks:
       brand: ""
       description: "Searches Demisto alerts.\n\nThis automation runs using the default
         Limited User role, unless you explicitly change the permissions.\nFor more
-        information, see the section about permissions here:\n- For Cortex XSOAR 6
-        see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
-      id: a9a020af-3724-46e0-8895-d9ac8b8db88a
+        information, see the section about permissions here:\n- For Cortex see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+      id: 4c827ae7-967f-40b0-a7e8-c751991ec72b
       iscommand: false
       name: Hunt Execution techniques
       script: SearchAlertsV2
       type: regular
       version: -1
-    taskid: a9a020af-3724-46e0-8895-d9ac8b8db88a
+    taskid: 4c827ae7-967f-40b0-a7e8-c751991ec72b
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 40,
-          "y": 480
+          "x": 1852.5,
+          "y": 1700
         }
       }
   "32":
-    continueonerrortype: ""
+    continueonerror: true
+    continueonerrortype: errorPath
     id: "32"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
+      '#error#':
+      - "56"
       '#none#':
       - "5"
     note: false
@@ -1432,33 +1445,35 @@ tasks:
       brand: ""
       description: "Searches Demisto alerts.\n\nThis automation runs using the default
         Limited User role, unless you explicitly change the permissions.\nFor more
-        information, see the section about permissions here:\n- For Cortex XSOAR 6
-        see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
-      id: fc87d063-74fb-4c8a-8fbf-59b6f64fbf26
+        information, see the section about permissions here:\n- For Cortex see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+      id: 247c596f-72bf-4bf1-bcfb-fa7227f5bb43
       iscommand: false
       name: Hunt Privilege Escalation techniques
       script: SearchAlertsV2
       type: regular
       version: -1
-    taskid: fc87d063-74fb-4c8a-8fbf-59b6f64fbf26
+    taskid: 247c596f-72bf-4bf1-bcfb-fa7227f5bb43
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 40,
-          "y": 1420
+          "x": 1462,
+          "y": 2700
         }
       }
   "33":
-    continueonerrortype: ""
+    continueonerror: true
+    continueonerrortype: errorPath
     id: "33"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
+      '#error#':
+      - "56"
       '#none#':
       - "1"
     note: false
@@ -1475,33 +1490,35 @@ tasks:
       brand: ""
       description: "Searches Demisto alerts.\n\nThis automation runs using the default
         Limited User role, unless you explicitly change the permissions.\nFor more
-        information, see the section about permissions here:\n- For Cortex XSOAR 6
-        see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
-      id: e7403fe7-b8b6-4a35-88d8-d78b140cc703
+        information, see the section about permissions here:\n- For Cortex see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+      id: ce3765cc-4bc3-4a8c-ab8e-2d2cd522af92
       iscommand: false
       name: Hunt Defense Evasion techniques
       script: SearchAlertsV2
       type: regular
       version: -1
-    taskid: e7403fe7-b8b6-4a35-88d8-d78b140cc703
+    taskid: ce3765cc-4bc3-4a8c-ab8e-2d2cd522af92
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 40,
-          "y": 1900
+          "x": 1266.75,
+          "y": 3200
         }
       }
   "34":
-    continueonerrortype: ""
+    continueonerror: true
+    continueonerrortype: errorPath
     id: "34"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
+      '#error#':
+      - "56"
       '#none#':
       - "7"
     note: false
@@ -1517,33 +1534,35 @@ tasks:
       brand: ""
       description: "Searches Demisto alerts.\n\nThis automation runs using the default
         Limited User role, unless you explicitly change the permissions.\nFor more
-        information, see the section about permissions here:\n- For Cortex XSOAR 6
-        see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
-      id: 9f0fdace-ea0d-4667-80b3-192681279a76
+        information, see the section about permissions here:\n- For Cortex see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+      id: 11327813-3c03-4658-b4be-aec0441a0cb0
       iscommand: false
       name: Hunt Discovery techniques
       script: SearchAlertsV2
       type: regular
       version: -1
-    taskid: 9f0fdace-ea0d-4667-80b3-192681279a76
+    taskid: 11327813-3c03-4658-b4be-aec0441a0cb0
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 40,
-          "y": 2380
+          "x": 1071.5,
+          "y": 3700
         }
       }
   "35":
-    continueonerrortype: ""
+    continueonerror: true
+    continueonerrortype: errorPath
     id: "35"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
+      '#error#':
+      - "56"
       '#none#':
       - "8"
     note: false
@@ -1559,33 +1578,35 @@ tasks:
       brand: ""
       description: "Searches Demisto alerts.\n\nThis automation runs using the default
         Limited User role, unless you explicitly change the permissions.\nFor more
-        information, see the section about permissions here:\n- For Cortex XSOAR 6
-        see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
-      id: e5c9f989-be36-4539-8b14-b452403671a1
+        information, see the section about permissions here:\n- For Cortex see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+      id: 9fa43400-a490-4c75-a327-96ce340533e7
       iscommand: false
       name: Hunt Lateral Movement techniques
       script: SearchAlertsV2
       type: regular
       version: -1
-    taskid: e5c9f989-be36-4539-8b14-b452403671a1
+    taskid: 9fa43400-a490-4c75-a327-96ce340533e7
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 40,
-          "y": 2870
+          "x": 876.25,
+          "y": 4200
         }
       }
   "36":
-    continueonerrortype: ""
+    continueonerror: true
+    continueonerrortype: errorPath
     id: "36"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
+      '#error#':
+      - "56"
       '#none#':
       - "23"
     note: false
@@ -1600,33 +1621,35 @@ tasks:
       brand: ""
       description: "Searches Demisto alerts.\n\nThis automation runs using the default
         Limited User role, unless you explicitly change the permissions.\nFor more
-        information, see the section about permissions here:\n- For Cortex XSOAR 6
-        see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
-      id: 4229a499-c399-49db-8be6-e72102760e0a
+        information, see the section about permissions here:\n- For Cortex see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+      id: b3d1fe50-3317-4fa5-a870-66fb6442a3a0
       iscommand: false
       name: Hunt Collection techniques
       script: SearchAlertsV2
       type: regular
       version: -1
-    taskid: 4229a499-c399-49db-8be6-e72102760e0a
+    taskid: b3d1fe50-3317-4fa5-a870-66fb6442a3a0
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 50,
-          "y": 3360
+          "x": 681,
+          "y": 4700
         }
       }
   "37":
-    continueonerrortype: ""
+    continueonerror: true
+    continueonerrortype: errorPath
     id: "37"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
+      '#error#':
+      - "56"
       '#none#':
       - "24"
     note: false
@@ -1641,33 +1664,35 @@ tasks:
       brand: ""
       description: "Searches Demisto alerts.\n\nThis automation runs using the default
         Limited User role, unless you explicitly change the permissions.\nFor more
-        information, see the section about permissions here:\n- For Cortex XSOAR 6
-        see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
-      id: c31cce38-c1cd-4b87-8ea8-ab7d1962d945
+        information, see the section about permissions here:\n- For Cortex see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+      id: 20c5f551-5508-4b74-8b5a-68020f7e5135
       iscommand: false
       name: Hunt Command and Control techniques
       script: SearchAlertsV2
       type: regular
       version: -1
-    taskid: c31cce38-c1cd-4b87-8ea8-ab7d1962d945
+    taskid: 20c5f551-5508-4b74-8b5a-68020f7e5135
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 40,
-          "y": 3830
+          "x": 485.75,
+          "y": 5200
         }
       }
   "38":
-    continueonerrortype: ""
+    continueonerror: true
+    continueonerrortype: errorPath
     id: "38"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
+      '#error#':
+      - "56"
       '#none#':
       - "52"
     note: false
@@ -1683,24 +1708,23 @@ tasks:
       brand: ""
       description: "Searches Demisto alerts.\n\nThis automation runs using the default
         Limited User role, unless you explicitly change the permissions.\nFor more
-        information, see the section about permissions here:\n- For Cortex XSOAR 6
-        see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
-      id: cb04294c-829c-492d-89f7-3bd67e3031b8
+        information, see the section about permissions here:\n- For Cortex see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+      id: 662fd232-ca97-4f41-aeff-0c62b691dbb6
       iscommand: false
       name: Hunt Impact techniques
       script: SearchAlertsV2
       type: regular
       version: -1
-    taskid: cb04294c-829c-492d-89f7-3bd67e3031b8
+    taskid: 662fd232-ca97-4f41-aeff-0c62b691dbb6
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 40,
-          "y": 4310
+          "x": 290.5,
+          "y": 5700
         }
       }
   "39":
@@ -1729,17 +1753,20 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1710,
-          "y": -600
+          "x": 3600.25,
+          "y": 3540
         }
       }
   "41":
-    continueonerrortype: ""
+    continueonerror: true
+    continueonerrortype: errorPath
     id: "41"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
+      '#error#':
+      - "56"
       '#none#':
       - "9"
     note: false
@@ -1753,24 +1780,23 @@ tasks:
       brand: ""
       description: "Searches Demisto alerts.\n\nThis automation runs using the default
         Limited User role, unless you explicitly change the permissions.\nFor more
-        information, see the section about permissions here:\n- For Cortex XSOAR 6
-        see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
-      id: 51eb1abc-7166-45d8-83c0-9829258bb17d
+        information, see the section about permissions here:\n- For Cortex see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+      id: 7342b644-e281-482c-9192-e5a16cb1aac2
       iscommand: false
       name: Hunt by host ID
       script: SearchAlertsV2
       type: regular
       version: -1
-    taskid: 51eb1abc-7166-45d8-83c0-9829258bb17d
+    taskid: 7342b644-e281-482c-9192-e5a16cb1aac2
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 1710,
-          "y": -470
+          "x": 3600.25,
+          "y": 3700
         }
       }
   "43":
@@ -1799,17 +1825,20 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1710,
-          "y": -120
+          "x": 3409.75,
+          "y": 4040
         }
       }
   "44":
-    continueonerrortype: ""
+    continueonerror: true
+    continueonerrortype: errorPath
     id: "44"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
+      '#error#':
+      - "56"
       '#none#':
       - "53"
     note: false
@@ -1823,24 +1852,23 @@ tasks:
       brand: ""
       description: "Searches Demisto alerts.\n\nThis automation runs using the default
         Limited User role, unless you explicitly change the permissions.\nFor more
-        information, see the section about permissions here:\n- For Cortex XSOAR 6
-        see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
-      id: 5f2ba1a9-54c3-4c18-8332-31e820dc3238
+        information, see the section about permissions here:\n- For Cortex see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+      id: 5337a785-fed4-4c15-ba4a-ce4eb0127bbf
       iscommand: false
       name: Hunt by attacker source IP
       script: SearchAlertsV2
       type: regular
       version: -1
-    taskid: 5f2ba1a9-54c3-4c18-8332-31e820dc3238
+    taskid: 5337a785-fed4-4c15-ba4a-ce4eb0127bbf
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 1710,
-          "y": 10
+          "x": 3409.75,
+          "y": 4200
         }
       }
   "46":
@@ -1869,17 +1897,20 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1710,
-          "y": 840
+          "x": 3019.25,
+          "y": 5040
         }
       }
   "47":
-    continueonerrortype: ""
+    continueonerror: true
+    continueonerrortype: errorPath
     id: "47"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
+      '#error#':
+      - "56"
       '#none#':
       - "12"
     note: false
@@ -1893,24 +1924,23 @@ tasks:
       brand: ""
       description: "Searches Demisto alerts.\n\nThis automation runs using the default
         Limited User role, unless you explicitly change the permissions.\nFor more
-        information, see the section about permissions here:\n- For Cortex XSOAR 6
-        see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
-      id: 90e12387-bcbb-4341-85e2-22f89ede1b50
+        information, see the section about permissions here:\n- For Cortex see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+      id: 47b86828-cfb5-4565-87c4-75de727d5077
       iscommand: false
       name: Hunt by technique ID
       script: SearchAlertsV2
       type: regular
       version: -1
-    taskid: 90e12387-bcbb-4341-85e2-22f89ede1b50
+    taskid: 47b86828-cfb5-4565-87c4-75de727d5077
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 1710,
-          "y": 970
+          "x": 3019.25,
+          "y": 5200
         }
       }
   "48":
@@ -1939,17 +1969,20 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1710,
-          "y": 1310
+          "x": 2824,
+          "y": 5540
         }
       }
   "49":
-    continueonerrortype: ""
+    continueonerror: true
+    continueonerrortype: errorPath
     id: "49"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
+      '#error#':
+      - "56"
       '#none#':
       - "13"
     note: false
@@ -1965,24 +1998,23 @@ tasks:
       brand: ""
       description: "Searches Demisto alerts.\n\nThis automation runs using the default
         Limited User role, unless you explicitly change the permissions.\nFor more
-        information, see the section about permissions here:\n- For Cortex XSOAR 6
-        see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
-      id: 6a9284a2-6372-48c8-83ef-5588d41fca18
+        information, see the section about permissions here:\n- For Cortex see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+      id: 9e428155-7fc5-4488-b559-c5b309d2f215
       iscommand: false
       name: Hunt by file hash
       script: SearchAlertsV2
       type: regular
       version: -1
-    taskid: 6a9284a2-6372-48c8-83ef-5588d41fca18
+    taskid: 9e428155-7fc5-4488-b559-c5b309d2f215
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 1710,
-          "y": 1440
+          "x": 2824,
+          "y": 5700
         }
       }
   "50":
@@ -2011,8 +2043,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 450,
-          "y": -940
+          "x": 1357.25,
+          "y": 210
         }
       }
   "51":
@@ -2041,8 +2073,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1310,
-          "y": -940
+          "x": 3019.25,
+          "y": 3205
         }
       }
   "52":
@@ -2068,8 +2100,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 450,
-          "y": 4480
+          "x": 50,
+          "y": 5875
         }
       }
   "53":
@@ -2120,8 +2152,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1310,
-          "y": 180
+          "x": 2819.25,
+          "y": 4370
         }
       }
   "54":
@@ -2150,17 +2182,20 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1710,
-          "y": 350
+          "x": 3214.5,
+          "y": 4540
         }
       }
   "55":
-    continueonerrortype: ""
+    continueonerror: true
+    continueonerrortype: errorPath
     id: "55"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
+      '#error#':
+      - "56"
       '#none#':
       - "11"
     note: false
@@ -2174,24 +2209,56 @@ tasks:
       brand: ""
       description: "Searches Demisto alerts.\n\nThis automation runs using the default
         Limited User role, unless you explicitly change the permissions.\nFor more
-        information, see the section about permissions here:\n- For Cortex XSOAR 6
-        see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
-      id: 82c5b670-b168-4827-818e-917e725f93b8
+        information, see the section about permissions here:\n- For Cortex see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+      id: 52a684dd-6d0c-43d8-a288-a8f9845cee1b
       iscommand: false
       name: Hunt by attacker source external host
       script: SearchAlertsV2
       type: regular
       version: -1
-    taskid: 82c5b670-b168-4827-818e-917e725f93b8
+    taskid: 52a684dd-6d0c-43d8-a288-a8f9845cee1b
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 1710,
-          "y": 490
+          "x": 3214.5,
+          "y": 4700
+        }
+      }
+  "56":
+    continueonerrortype: ""
+    id: "56"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
+    note: false
+    quietmode: 0
+    separatecontext: true
+    skipunavailable: true
+    task:
+      brand: ""
+      id: a4864e48-659e-4d74-823a-3d5abf74261f
+      iscommand: false
+      name: Foundation - Error Handling
+      playbookId: Foundation - Error Handling
+      type: playbook
+      version: -1
+    taskid: a4864e48-659e-4d74-823a-3d5abf74261f
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": 1897.75,
+          "y": 5870
         }
       }
 version: -1
@@ -2200,10 +2267,10 @@ view: |-
     "linkLabelsPosition": {},
     "paper": {
       "dimensions": {
-        "height": 5630,
-        "width": 2051,
-        "x": 40,
-        "y": -1090
+        "height": 5890,
+        "width": 3931.25,
+        "x": 50,
+        "y": 50
       }
     }
   }

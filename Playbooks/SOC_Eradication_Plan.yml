@@ -3,9 +3,9 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 6.6.0
     isoverridable: false
-    itemVersion: 2.6.55
+    itemVersion: 1.0.0
     packID: ""
-    packName: Common Playbooks
+    packName: SOC Malware Investigation Response
     prevname: ""
     toServerVersion: ""
 description: "This playbook handles all the eradication actions available with Cortex
@@ -222,7 +222,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 916.75,
+          "x": 531,
           "y": 720
         }
       }
@@ -254,7 +254,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1012,
+          "x": 531,
           "y": 890
         }
       }
@@ -300,7 +300,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1012,
+          "x": 531,
           "y": 550
         }
       }
@@ -330,7 +330,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1493,
+          "x": 50,
           "y": 1050
         }
       }
@@ -360,7 +360,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1012,
+          "x": 531,
           "y": 1050
         }
       }
@@ -390,7 +390,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 50,
+          "x": 1012,
           "y": 1050
         }
       }
@@ -417,7 +417,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 771.5,
+          "x": 290.5,
           "y": 1380
         }
       }
@@ -488,7 +488,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 531,
+          "x": 962,
           "y": 380
         }
       }
@@ -560,7 +560,7 @@ tasks:
       id: f1c8bf69-c8c9-4ace-8b29-70723157ad97
       iscommand: false
       name: SOC Eradication Plan - Terminate Process
-      playbookId: 'SOC Eradication Plan - Terminate Process'
+      playbookId: SOC Eradication Plan - Terminate Process
       type: playbook
       version: -1
     taskid: f1c8bf69-c8c9-4ace-8b29-70723157ad97
@@ -569,7 +569,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 50,
+          "x": 1012,
           "y": 1210
         }
       }
@@ -579,29 +579,31 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
-    nexttasks:
-      '#none#':
-      - "55"
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
     note: false
     quietmode: 0
     separatecontext: true
-    skipunavailable: false
+    skipunavailable: true
     task:
       brand: ""
-      id: 99b60fd4-2e6f-42b6-88dd-5a0398ccbbb9
+      id: f4eed107-abe3-43fe-8a55-10ee6345385b
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
       type: playbook
       version: -1
-    taskid: 99b60fd4-2e6f-42b6-88dd-5a0398ccbbb9
+    taskid: f4eed107-abe3-43fe-8a55-10ee6345385b
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 531,
-          "y": 1210
+          "x": 1012,
+          "y": 550
         }
       }
   "60":
@@ -622,7 +624,7 @@ tasks:
       id: 60f0ccf0-52e4-4557-847a-5429ec791267
       iscommand: false
       name: SOC Eradication Plan - Delete File
-      playbookId: 'SOC Eradication Plan - Delete File'
+      playbookId: SOC Eradication Plan - Delete File
       type: playbook
       version: -1
     taskid: 60f0ccf0-52e4-4557-847a-5429ec791267
@@ -631,7 +633,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1012,
+          "x": 531,
           "y": 1210
         }
       }
@@ -653,7 +655,7 @@ tasks:
       id: d7c92058-25eb-4bdc-8109-86819f747596
       iscommand: false
       name: SOC Eradication Plan - Reset Password
-      playbookId: 'SOC Eradication Plan - Reset Password'
+      playbookId: SOC Eradication Plan - Reset Password
       type: playbook
       version: -1
     taskid: d7c92058-25eb-4bdc-8109-86819f747596
@@ -662,7 +664,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1493,
+          "x": 50,
           "y": 1210
         }
       }
@@ -675,7 +677,7 @@ view: |-
     "paper": {
       "dimensions": {
         "height": 1390,
-        "width": 1824,
+        "width": 1343,
         "x": 50,
         "y": 50
       }

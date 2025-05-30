@@ -3,9 +3,9 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 5.0.0
     isoverridable: false
-    itemVersion: 2.6.55
+    itemVersion: 1.0.0
     packID: ""
-    packName: Common Playbooks
+    packName: SOC Common Playbooks
     prevname: ""
     toServerVersion: ""
 description: |-
@@ -159,7 +159,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 50,
+          "x": 54.75,
           "y": 50
         }
       }
@@ -204,7 +204,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 50,
+          "x": 54.75,
           "y": 210
         }
       }
@@ -231,8 +231,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 195.25,
-          "y": 1050
+          "x": 50,
+          "y": 885
         }
       }
   "29":
@@ -274,7 +274,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1157.25,
+          "x": 340.5,
           "y": 710
         }
       }
@@ -339,7 +339,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 50,
+          "x": 95.25,
           "y": 540
         }
       }
@@ -369,7 +369,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 531,
+          "x": 781,
           "y": 380
         }
       }
@@ -399,7 +399,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 50,
+          "x": 95.25,
           "y": 380
         }
       }
@@ -445,7 +445,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 531,
+          "x": 781,
           "y": 540
         }
       }
@@ -484,7 +484,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 676.25,
+          "x": 926.25,
           "y": 710
         }
       }
@@ -494,28 +494,30 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
-    nexttasks:
-      '#none#':
-      - "24"
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
     note: false
     quietmode: 0
     separatecontext: true
-    skipunavailable: false
+    skipunavailable: true
     task:
       brand: ""
-      id: b26ca40c-86be-4b1f-86fc-be88d6357efe
+      id: 1a30ec18-e26d-4c55-96a0-9accdc422fb5
       iscommand: false
       name: Foundation - Upon Trigger
       playbookId: Foundation - Upon Trigger
       type: playbook
       version: -1
-    taskid: b26ca40c-86be-4b1f-86fc-be88d6357efe
+    taskid: 1a30ec18-e26d-4c55-96a0-9accdc422fb5
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 871.5,
+          "x": 976.25,
           "y": 880
         }
       }
@@ -531,8 +533,8 @@ view: |-
     },
     "paper": {
       "dimensions": {
-        "height": 1060,
-        "width": 1488.25,
+        "height": 900,
+        "width": 1307.25,
         "x": 50,
         "y": 50
       }

@@ -3,9 +3,9 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 6.6.0
     isoverridable: false
-    itemVersion: 2.6.55
+    itemVersion: 1.0.0
     packID: ""
-    packName: Common Playbooks
+    packName: SOC Malware Investigation Response
     prevname: ""
     toServerVersion: ""
 description: This playbook checks prior alert closing reasons and performs enrichment
@@ -279,7 +279,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2233.5,
+          "x": 1947.75,
           "y": 50
         }
       }
@@ -307,10 +307,9 @@ tasks:
       brand: ""
       description: "Searches XSIAM alerts.\n\nThis automation runs using the default
         Limited User role, unless you explicitly change the permissions.\nFor more
-        information, see the section about permissions here:\n- For Cortex XSOAR 6
-        see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+        information, see the section about permissions here:\n- For Cortex see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
       id: ab567db5-ec6d-4185-92e9-0a0b06ae30ab
       iscommand: false
       name: 'Check previous alerts '
@@ -323,7 +322,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2378.75,
+          "x": 2093,
           "y": 370
         }
       }
@@ -389,7 +388,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3686,
+          "x": 3300.25,
           "y": 540
         }
       }
@@ -449,7 +448,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1066.75,
+          "x": 1016.75,
           "y": 1380
         }
       }
@@ -502,7 +501,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 921.5,
+          "x": 826.25,
           "y": 1040
         }
       }
@@ -555,7 +554,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1793,
+          "x": 1788.25,
           "y": 1040
         }
       }
@@ -643,8 +642,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2714.5,
-          "y": 1890
+          "x": 2519.25,
+          "y": 1725
         }
       }
   "26":
@@ -685,7 +684,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2909.75,
+          "x": 2664.5,
           "y": 1040
         }
       }
@@ -746,7 +745,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3055,
+          "x": 2809.75,
           "y": 1380
         }
       }
@@ -866,7 +865,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3200.25,
+          "x": 2955,
           "y": 1550
         }
       }
@@ -908,7 +907,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 4943.25,
+          "x": 4652.75,
           "y": 710
         }
       }
@@ -942,7 +941,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2909.75,
+          "x": 2474,
           "y": 880
         }
       }
@@ -972,8 +971,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3681.25,
-          "y": 1385
+          "x": 3390.75,
+          "y": 1215
         }
       }
   "44":
@@ -1016,7 +1015,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 4312.25,
+          "x": 4021.75,
           "y": 1040
         }
       }
@@ -1077,7 +1076,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 4457.5,
+          "x": 4167,
           "y": 1380
         }
       }
@@ -1117,7 +1116,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 4602.75,
+          "x": 4312.25,
           "y": 1550
         }
       }
@@ -1159,8 +1158,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3681.25,
-          "y": 1550
+          "x": 3390.75,
+          "y": 1380
         }
       }
   "50":
@@ -1219,7 +1218,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2378.75,
+          "x": 2093,
           "y": 210
         }
       }
@@ -1269,28 +1268,30 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
-    nexttasks:
-      '#none#':
-      - "25"
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
     note: false
     quietmode: 0
     separatecontext: true
-    skipunavailable: false
+    skipunavailable: true
     task:
       brand: ""
-      id: e1d28c4f-4b7c-481f-8da3-66217324f002
+      id: 4af26032-e8ee-4a63-b87f-23b401a881d2
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
       type: playbook
       version: -1
-    taskid: e1d28c4f-4b7c-481f-8da3-66217324f002
+    taskid: 4af26032-e8ee-4a63-b87f-23b401a881d2
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 2424,
+          "x": 1988.25,
           "y": 1720
         }
       }
@@ -1312,7 +1313,7 @@ tasks:
       id: 0e7079de-3b58-4f61-8abb-123650bb7c05
       iscommand: false
       name: SOC Get prevalence for IOCs
-      playbookId: 'SOC Get prevalence for IOCs'
+      playbookId: SOC Get prevalence for IOCs
       type: playbook
       version: -1
     taskid: 0e7079de-3b58-4f61-8abb-123650bb7c05
@@ -1343,7 +1344,7 @@ tasks:
       id: 90eb98c1-cc95-4860-8141-a8605091de6f
       iscommand: false
       name: SOC File Reputation
-      playbookId: 'SOC File Reputation'
+      playbookId: SOC File Reputation
       type: playbook
       version: -1
     taskid: 90eb98c1-cc95-4860-8141-a8605091de6f
@@ -1352,7 +1353,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1066.75,
+          "x": 1016.75,
           "y": 1210
         }
       }
@@ -1374,7 +1375,7 @@ tasks:
       id: 336776c1-9e5d-47ec-8fee-30508f968dc9
       iscommand: false
       name: SOC IP Enrichment - Generic v2
-      playbookId: 'SOC IP Enrichment - Generic v2'
+      playbookId: SOC IP Enrichment - Generic v2
       type: playbook
       version: -1
     taskid: 336776c1-9e5d-47ec-8fee-30508f968dc9
@@ -1405,7 +1406,7 @@ tasks:
       id: b07049cb-53cb-4c13-8ebb-6b14858f3882
       iscommand: false
       name: SOC URL Enrichment - Generic v2
-      playbookId: 'SOC URL Enrichment - Generic v2'
+      playbookId: SOC URL Enrichment - Generic v2
       type: playbook
       version: -1
     taskid: b07049cb-53cb-4c13-8ebb-6b14858f3882
@@ -1414,7 +1415,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3055,
+          "x": 2809.75,
           "y": 1210
         }
       }
@@ -1436,7 +1437,7 @@ tasks:
       id: d61d22a4-5995-4dcb-8304-358aab750c3d
       iscommand: false
       name: SOC Account Enrichment - Generic v2.1
-      playbookId: 'SOC Account Enrichment - Generic v2.1'
+      playbookId: SOC Account Enrichment - Generic v2.1
       type: playbook
       version: -1
     taskid: d61d22a4-5995-4dcb-8304-358aab750c3d
@@ -1445,8 +1446,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3826.5,
-          "y": 1720
+          "x": 3536,
+          "y": 1550
         }
       }
   "61":
@@ -1467,7 +1468,7 @@ tasks:
       id: d545e1bd-3637-4384-8aad-c80aa8a8e011
       iscommand: false
       name: SOC Domain Enrichment - Generic v2
-      playbookId: 'SOC Domain Enrichment - Generic v2'
+      playbookId: SOC Domain Enrichment - Generic v2
       type: playbook
       version: -1
     taskid: d545e1bd-3637-4384-8aad-c80aa8a8e011
@@ -1476,7 +1477,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 4457.5,
+          "x": 4167,
           "y": 1210
         }
       }
@@ -1502,8 +1503,8 @@ view: |-
     },
     "paper": {
       "dimensions": {
-        "height": 1900,
-        "width": 5274.25,
+        "height": 1740,
+        "width": 4983.75,
         "x": 50,
         "y": 50
       }

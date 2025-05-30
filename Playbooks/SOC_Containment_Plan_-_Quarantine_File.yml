@@ -3,9 +3,9 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 6.6.0
     isoverridable: false
-    itemVersion: 2.6.55
+    itemVersion: 1.0.0
     packID: ""
-    packName: Common Playbooks
+    packName: SOC Common Playbooks
     prevname: ""
     toServerVersion: ""
 description: |-
@@ -82,7 +82,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 50,
+          "x": 776.25,
           "y": 50
         }
       }
@@ -109,20 +109,18 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1793,
-          "y": 2080
+          "x": 50,
+          "y": 1915
         }
       }
   "7":
     continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "7"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "27"
       '#none#':
       - "13"
     note: false
@@ -160,32 +158,30 @@ tasks:
     task:
       brand: ""
       description: Retrieves the quarantine status for a selected file.
-      id: de8e8f82-f9f5-44d9-bc04-dd5ca5e82bb9
+      id: 49dbf339-a09a-422e-bb44-b1c06e8527fb
       iscommand: true
       name: Get file quarantine status
       script: '|||core-get-quarantine-status'
       type: regular
       version: -1
-    taskid: de8e8f82-f9f5-44d9-bc04-dd5ca5e82bb9
+    taskid: 49dbf339-a09a-422e-bb44-b1c06e8527fb
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 50,
+          "x": 776.25,
           "y": 720
         }
       }
   "8":
     continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "8"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "27"
       '#none#':
       - "15"
     note: false
@@ -247,19 +243,19 @@ tasks:
       brand: ""
       description: Quarantines a file on selected endpoints. You can select up to
         1000 endpoints.
-      id: e67ccd83-f9ae-4948-b8dc-c39b38b69c82
+      id: c44233da-01c2-4828-afc3-9438a37f0131
       iscommand: true
       name: File quarantine
       script: '|||core-quarantine-files'
       type: regular
       version: -1
-    taskid: e67ccd83-f9ae-4948-b8dc-c39b38b69c82
+    taskid: c44233da-01c2-4828-afc3-9438a37f0131
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 390.5,
+          "x": 921.5,
           "y": 1230
         }
       }
@@ -301,7 +297,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2324,
+          "x": 340.5,
           "y": 1740
         }
       }
@@ -370,7 +366,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 485.75,
+          "x": 776.25,
           "y": 890
         }
       }
@@ -424,7 +420,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1943,
+          "x": 1883.5,
           "y": 1400
         }
       }
@@ -466,7 +462,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2178.75,
+          "x": 921.5,
           "y": 1570
         }
       }
@@ -563,20 +559,18 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 50,
+          "x": 776.25,
           "y": 210
         }
       }
   "18":
     continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "18"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "27"
       '#none#':
       - "19"
     note: false
@@ -605,19 +599,19 @@ tasks:
     task:
       brand: ""
       description: Retrieves the quarantine status for a selected file.
-      id: 5075480b-23d3-4449-bd25-2dd001efaaf6
+      id: 9d65f400-2196-4de0-8689-4722561009c1
       iscommand: true
       name: Get file quarantine status
       script: '|||core-get-quarantine-status'
       type: regular
       version: -1
-    taskid: 5075480b-23d3-4449-bd25-2dd001efaaf6
+    taskid: 9d65f400-2196-4de0-8689-4722561009c1
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 3100.25,
+          "x": 1978.75,
           "y": 720
         }
       }
@@ -685,20 +679,18 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3195.5,
+          "x": 1978.75,
           "y": 890
         }
       }
   "20":
     continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "20"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "27"
       '#none#':
       - "15"
     note: false
@@ -732,19 +724,19 @@ tasks:
       brand: ""
       description: Quarantines a file on selected endpoints. You can select up to
         1000 endpoints.
-      id: d3159c67-71ba-49a8-ab04-f46833123c88
+      id: 5d349562-f3d4-4f83-b995-91d00c16197e
       iscommand: true
       name: File quarantine
       script: '|||core-quarantine-files'
       type: regular
       version: -1
-    taskid: d3159c67-71ba-49a8-ab04-f46833123c88
+    taskid: 5d349562-f3d4-4f83-b995-91d00c16197e
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 3581.25,
+          "x": 1547.75,
           "y": 1230
         }
       }
@@ -811,7 +803,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2374,
+          "x": 2174,
           "y": 380
         }
       }
@@ -869,7 +861,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2519.25,
+          "x": 1978.75,
           "y": 550
         }
       }
@@ -908,8 +900,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1171.5,
-          "y": 1910
+          "x": 2409.75,
+          "y": 1740
         }
       }
   "27":
@@ -918,28 +910,30 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
-    nexttasks:
-      '#none#':
-      - "2"
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
     note: false
     quietmode: 0
     separatecontext: true
-    skipunavailable: false
+    skipunavailable: true
     task:
       brand: ""
-      id: 87899c28-ba4d-4eba-836e-c35baf65277f
+      id: 81b7b22a-25de-4400-8e76-23d8db26e172
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
       type: playbook
       version: -1
-    taskid: 87899c28-ba4d-4eba-836e-c35baf65277f
+    taskid: 81b7b22a-25de-4400-8e76-23d8db26e172
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 1652.5,
+          "x": 2750.25,
           "y": 1910
         }
       }
@@ -979,7 +973,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 821.5,
+          "x": 1593,
           "y": 1060
         }
       }
@@ -1016,7 +1010,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 871.5,
+          "x": 2028.75,
           "y": 1230
         }
       }
@@ -1056,7 +1050,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3340.75,
+          "x": 2074,
           "y": 1060
         }
       }
@@ -1093,7 +1087,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3100.25,
+          "x": 2509.75,
           "y": 1230
         }
       }
@@ -1111,8 +1105,8 @@ view: |-
     },
     "paper": {
       "dimensions": {
-        "height": 2090,
-        "width": 3912.25,
+        "height": 1930,
+        "width": 3081.25,
         "x": 50,
         "y": 50
       }

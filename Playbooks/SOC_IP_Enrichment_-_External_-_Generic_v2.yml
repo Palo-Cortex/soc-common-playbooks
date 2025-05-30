@@ -3,9 +3,9 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 5.0.0
     isoverridable: false
-    itemVersion: 2.6.55
+    itemVersion: 1.0.0
     packID: ""
-    packName: Common Playbooks
+    packName: SOC Common Playbooks
     prevname: ""
     toServerVersion: ""
 description: |-
@@ -216,7 +216,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 535.75,
+          "x": 776.25,
           "y": 50
         }
       }
@@ -284,7 +284,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 681,
+          "x": 921.5,
           "y": 710
         }
       }
@@ -311,8 +311,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1266.75,
-          "y": 2050
+          "x": 1166.75,
+          "y": 1885
         }
       }
   "27":
@@ -342,7 +342,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1412,
+          "x": 1262,
           "y": 1220
         }
       }
@@ -391,7 +391,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 535.75,
+          "x": 776.25,
           "y": 540
         }
       }
@@ -436,20 +436,18 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 731,
+          "x": 971.5,
           "y": 880
         }
       }
   "35":
     continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "35"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "49"
       '#none#':
       - "27"
     note: false
@@ -485,19 +483,19 @@ tasks:
     task:
       brand: ""
       description: Convert the IP address to a hostname using DNS query.
-      id: 4f9ea4af-0e7a-472d-b33f-db0fb1d487b7
+      id: 64c574cd-e05b-405a-a3a5-3c627c7fd7a7
       iscommand: false
       name: IP to Hostname (DNS)
       script: IPToHost
       type: regular
       version: -1
-    taskid: 4f9ea4af-0e7a-472d-b33f-db0fb1d487b7
+    taskid: 64c574cd-e05b-405a-a3a5-3c627c7fd7a7
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 1021.5,
+          "x": 1166.75,
           "y": 1050
         }
       }
@@ -527,7 +525,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1266.75,
+          "x": 876.25,
           "y": 1380
         }
       }
@@ -591,7 +589,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1266.75,
+          "x": 876.25,
           "y": 1540
         }
       }
@@ -662,7 +660,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1412,
+          "x": 1021.5,
           "y": 1710
         }
       }
@@ -722,7 +720,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1897.75,
+          "x": 1697.75,
           "y": 1380
         }
       }
@@ -796,7 +794,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2043,
+          "x": 1843,
           "y": 1710
         }
       }
@@ -841,7 +839,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1897.75,
+          "x": 1697.75,
           "y": 1540
         }
       }
@@ -903,7 +901,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 535.75,
+          "x": 776.25,
           "y": 210
         }
       }
@@ -933,7 +931,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 535.75,
+          "x": 776.25,
           "y": 380
         }
       }
@@ -943,28 +941,30 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
-    nexttasks:
-      '#none#':
-      - "24"
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
     note: false
     quietmode: 0
     separatecontext: true
-    skipunavailable: false
+    skipunavailable: true
     task:
       brand: ""
-      id: de10ae7e-5b85-41c8-8e4b-adc00a8a077f
+      id: 706276a3-807d-4e73-ab86-7c172019d944
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
       type: playbook
       version: -1
-    taskid: de10ae7e-5b85-41c8-8e4b-adc00a8a077f
+    taskid: 706276a3-807d-4e73-ab86-7c172019d944
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 1266.75,
+          "x": 685.75,
           "y": 1880
         }
       }
@@ -984,8 +984,8 @@ view: |-
     },
     "paper": {
       "dimensions": {
-        "height": 2060,
-        "width": 2374,
+        "height": 1900,
+        "width": 2174,
         "x": 50,
         "y": 50
       }

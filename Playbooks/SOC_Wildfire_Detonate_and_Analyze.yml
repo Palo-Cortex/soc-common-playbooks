@@ -3,9 +3,9 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 6.5.0
     isoverridable: false
-    itemVersion: 2.1.58
+    itemVersion: 1.0.0
     packID: ""
-    packName: WildFire by Palo Alto Networks
+    packName: SOC Malware Investigation Response
     prevname: ""
     toServerVersion: ""
 description: |
@@ -50,7 +50,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 195.25,
+          "x": 245.25,
           "y": 50
         }
       }
@@ -78,7 +78,7 @@ tasks:
       {
         "position": {
           "x": 50,
-          "y": 1400
+          "y": 1235
         }
       }
   "5":
@@ -114,7 +114,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 195.25,
+          "x": 245.25,
           "y": 210
         }
       }
@@ -188,7 +188,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 340.5,
+          "x": 390.5,
           "y": 720
         }
       }
@@ -229,7 +229,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 485.75,
+          "x": 535.75,
           "y": 550
         }
       }
@@ -280,7 +280,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 485.75,
+          "x": 1116.75,
           "y": 890
         }
       }
@@ -321,7 +321,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 340.5,
+          "x": 390.5,
           "y": 380
         }
       }
@@ -365,7 +365,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 631,
+          "x": 971.5,
           "y": 1060
         }
       }
@@ -375,28 +375,30 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
-    nexttasks:
-      '#none#':
-      - "3"
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
     note: false
     quietmode: 0
     separatecontext: true
-    skipunavailable: false
+    skipunavailable: true
     task:
       brand: ""
-      id: dcdb9a8b-607d-4e61-81f5-b3b477498ba9
+      id: 0ba936ff-337a-4ec3-b026-05ef630d57d2
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
       type: playbook
       version: -1
-    taskid: dcdb9a8b-607d-4e61-81f5-b3b477498ba9
+    taskid: 0ba936ff-337a-4ec3-b026-05ef630d57d2
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 340.5,
+          "x": 1262,
           "y": 1230
         }
       }
@@ -406,8 +408,8 @@ view: |-
     "linkLabelsPosition": {},
     "paper": {
       "dimensions": {
-        "height": 1410,
-        "width": 962,
+        "height": 1250,
+        "width": 1593,
         "x": 50,
         "y": 50
       }

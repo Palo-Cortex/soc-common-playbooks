@@ -3,9 +3,9 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 6.6.0
     isoverridable: false
-    itemVersion: 2.6.55
+    itemVersion: 1.0.0
     packID: ""
-    packName: Common Playbooks
+    packName: SOC Common Playbooks
     prevname: ""
     toServerVersion: ""
 description: |-
@@ -116,7 +116,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 871.5,
+          "x": 921.5,
           "y": 1230
         }
       }
@@ -143,8 +143,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 631,
-          "y": 1740
+          "x": 490.5,
+          "y": 1575
         }
       }
   "7":
@@ -224,7 +224,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 390.5,
+          "x": 440.5,
           "y": 1400
         }
       }
@@ -415,7 +415,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1697.75,
+          "x": 1797.75,
           "y": 380
         }
       }
@@ -455,7 +455,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1988.25,
+          "x": 2038.25,
           "y": 720
         }
       }
@@ -495,7 +495,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2519.25,
+          "x": 2569.25,
           "y": 1230
         }
       }
@@ -535,7 +535,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2038.25,
+          "x": 2088.25,
           "y": 1400
         }
       }
@@ -578,7 +578,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2133.5,
+          "x": 2183.5,
           "y": 890
         }
       }
@@ -633,7 +633,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 485.75,
+          "x": 531,
           "y": 890
         }
       }
@@ -695,7 +695,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1843,
+          "x": 1902.5,
           "y": 550
         }
       }
@@ -705,28 +705,30 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
-    nexttasks:
-      '#none#':
-      - "2"
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
     note: false
     quietmode: 0
     separatecontext: true
-    skipunavailable: false
+    skipunavailable: true
     task:
       brand: ""
-      id: 8cc156bc-2b67-43a0-8a24-c6d000cbb4c7
+      id: f8c8928c-9edc-444e-8bf0-4baa9ac64565
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
       type: playbook
       version: -1
-    taskid: 8cc156bc-2b67-43a0-8a24-c6d000cbb4c7
+    taskid: f8c8928c-9edc-444e-8bf0-4baa9ac64565
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 776.25,
+          "x": 1166.75,
           "y": 1570
         }
       }
@@ -766,7 +768,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 631,
+          "x": 681,
           "y": 1060
         }
       }
@@ -803,7 +805,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 390.5,
+          "x": 440.5,
           "y": 1230
         }
       }
@@ -843,7 +845,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2278.75,
+          "x": 2328.75,
           "y": 1060
         }
       }
@@ -880,7 +882,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2038.25,
+          "x": 2088.25,
           "y": 1230
         }
       }
@@ -898,8 +900,8 @@ view: |-
     },
     "paper": {
       "dimensions": {
-        "height": 1750,
-        "width": 2850.25,
+        "height": 1590,
+        "width": 2900.25,
         "x": 50,
         "y": 50
       }

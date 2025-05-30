@@ -3,9 +3,9 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 5.0.0
     isoverridable: false
-    itemVersion: 2.6.55
+    itemVersion: 1.0.0
     packID: ""
-    packName: Common Playbooks
+    packName: SOC Common Playbooks
     prevname: ""
     toServerVersion: ""
 description: |-
@@ -611,8 +611,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 340.5,
-          "y": 55
+          "x": 485.75,
+          "y": 225
         }
       }
   "24":
@@ -639,7 +639,7 @@ tasks:
       {
         "position": {
           "x": 290.5,
-          "y": 900
+          "y": 895
         }
       }
   "26":
@@ -668,8 +668,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1362,
-          "y": 565
+          "x": 1012,
+          "y": 560
         }
       }
   "28":
@@ -730,8 +730,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 435.75,
-          "y": 220
+          "x": 485.75,
+          "y": 390
         }
       }
   "34":
@@ -775,7 +775,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1357.25,
+          "x": 1162,
           "y": 220
         }
       }
@@ -836,7 +836,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1212,
+          "x": 1302.5,
           "y": 390
         }
       }
@@ -893,7 +893,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1312,
+          "x": 485.75,
           "y": 50
         }
       }
@@ -942,8 +942,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 340.5,
-          "y": 560
+          "x": 531,
+          "y": 720
         }
       }
   "41":
@@ -973,7 +973,7 @@ tasks:
       {
         "position": {
           "x": 50,
-          "y": 735
+          "y": 725
         }
       }
   "44":
@@ -1002,8 +1002,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 340.5,
-          "y": 395
+          "x": 531,
+          "y": 560
         }
       }
   "45":
@@ -1012,29 +1012,31 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
-    nexttasks:
-      '#none#':
-      - "24"
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
     note: false
     quietmode: 0
     separatecontext: true
-    skipunavailable: false
+    skipunavailable: true
     task:
       brand: ""
-      id: 54e5908a-e823-43d9-8825-ef8f615da6f9
+      id: d750682a-6437-450e-aa2f-b77a45a999ef
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
       type: playbook
       version: -1
-    taskid: 54e5908a-e823-43d9-8825-ef8f615da6f9
+    taskid: d750682a-6437-450e-aa2f-b77a45a999ef
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 731,
-          "y": 730
+          "x": 1402.5,
+          "y": 890
         }
       }
   "46":
@@ -1055,7 +1057,7 @@ tasks:
       id: 931f2eec-1a46-4f3d-8f19-76935ea2fbde
       iscommand: false
       name: SOC Endpoint Enrichment - Generic v2.1
-      playbookId: 'SOC Endpoint Enrichment - Generic v2.1'
+      playbookId: SOC Endpoint Enrichment - Generic v2.1
       type: playbook
       version: -1
     taskid: 931f2eec-1a46-4f3d-8f19-76935ea2fbde
@@ -1064,8 +1066,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1362,
-          "y": 730
+          "x": 1012,
+          "y": 720
         }
       }
 version: -1
@@ -1080,7 +1082,7 @@ view: |-
     "paper": {
       "dimensions": {
         "height": 910,
-        "width": 1693,
+        "width": 1733.5,
         "x": 50,
         "y": 50
       }

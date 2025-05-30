@@ -3,9 +3,9 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 6.6.0
     isoverridable: false
-    itemVersion: 2.6.55
+    itemVersion: 1.0.0
     packID: ""
-    packName: Common Playbooks
+    packName: SOC Malware Investigation Response
     prevname: ""
     toServerVersion: ""
 description: "This playbook handles the main containment actions available with Cortex
@@ -166,7 +166,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 195.25,
+          "x": 1347.75,
           "y": 50
         }
       }
@@ -196,7 +196,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1112,
+          "x": 531,
           "y": 1220
         }
       }
@@ -226,7 +226,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 631,
+          "x": 50,
           "y": 1220
         }
       }
@@ -256,7 +256,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2555,
+          "x": 1974,
           "y": 1220
         }
       }
@@ -286,7 +286,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2074,
+          "x": 1493,
           "y": 1220
         }
       }
@@ -316,7 +316,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1593,
+          "x": 1012,
           "y": 1220
         }
       }
@@ -364,7 +364,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1593,
+          "x": 1012,
           "y": 720
         }
       }
@@ -587,7 +587,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1738.25,
+          "x": 1157.25,
           "y": 890
         }
       }
@@ -637,7 +637,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 195.25,
+          "x": 1347.75,
           "y": 550
         }
       }
@@ -671,7 +671,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1593,
+          "x": 1012,
           "y": 1060
         }
       }
@@ -698,7 +698,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1452.5,
+          "x": 771.5,
           "y": 1550
         }
       }
@@ -759,7 +759,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 50,
+          "x": 1202.5,
           "y": 380
         }
       }
@@ -809,7 +809,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 195.25,
+          "x": 1347.75,
           "y": 210
         }
       }
@@ -819,28 +819,30 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
-    nexttasks:
-      '#none#':
-      - "148"
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
     note: false
     quietmode: 0
     separatecontext: true
-    skipunavailable: false
+    skipunavailable: true
     task:
       brand: ""
-      id: 8c6c5822-a936-4a5e-809b-f48eb14dc23a
+      id: aced94f7-fbd0-45d2-a5b7-73ea951d0758
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
       type: playbook
       version: -1
-    taskid: 8c6c5822-a936-4a5e-809b-f48eb14dc23a
+    taskid: aced94f7-fbd0-45d2-a5b7-73ea951d0758
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 340.5,
+          "x": 1733.5,
           "y": 720
         }
       }
@@ -862,7 +864,7 @@ tasks:
       id: 76ae6be2-70ac-4ce7-8c08-5f8612bdff50
       iscommand: false
       name: SOC Containment Plan - Disable Account
-      playbookId: 'SOC Containment Plan - Disable Account'
+      playbookId: SOC Containment Plan - Disable Account
       type: playbook
       version: -1
     taskid: 76ae6be2-70ac-4ce7-8c08-5f8612bdff50
@@ -871,7 +873,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 631,
+          "x": 50,
           "y": 1380
         }
       }
@@ -893,7 +895,7 @@ tasks:
       id: a6660bfe-0cc3-4883-82eb-cb61acea2f3a
       iscommand: false
       name: SOC Containment Plan - Isolate Device
-      playbookId: 'SOC Containment Plan - Isolate Device'
+      playbookId: SOC Containment Plan - Isolate Device
       type: playbook
       version: -1
     taskid: a6660bfe-0cc3-4883-82eb-cb61acea2f3a
@@ -902,7 +904,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1112,
+          "x": 531,
           "y": 1380
         }
       }
@@ -924,7 +926,7 @@ tasks:
       id: d472fa8c-cb52-4a1f-8ac5-c49f8c646cb0
       iscommand: false
       name: SOC Containment Plan - Clear User Sessions
-      playbookId: 'SOC Containment Plan - Clear User Sessions'
+      playbookId: SOC Containment Plan - Clear User Sessions
       type: playbook
       version: -1
     taskid: d472fa8c-cb52-4a1f-8ac5-c49f8c646cb0
@@ -933,7 +935,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1593,
+          "x": 1012,
           "y": 1380
         }
       }
@@ -955,7 +957,7 @@ tasks:
       id: 62b7e05b-3730-455f-8ed7-8f0d14062f23
       iscommand: false
       name: SOC Containment Plan - Block Indicators
-      playbookId: 'SOC Containment Plan - Block Indicators'
+      playbookId: SOC Containment Plan - Block Indicators
       type: playbook
       version: -1
     taskid: 62b7e05b-3730-455f-8ed7-8f0d14062f23
@@ -964,7 +966,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2074,
+          "x": 1493,
           "y": 1380
         }
       }
@@ -986,7 +988,7 @@ tasks:
       id: 4dc27d4f-d93c-446f-816a-1386feb3d684
       iscommand: false
       name: SOC Containment Plan - Quarantine File
-      playbookId: 'SOC Containment Plan - Quarantine File'
+      playbookId: SOC Containment Plan - Quarantine File
       type: playbook
       version: -1
     taskid: 4dc27d4f-d93c-446f-816a-1386feb3d684
@@ -995,7 +997,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2555,
+          "x": 1974,
           "y": 1380
         }
       }
@@ -1009,7 +1011,7 @@ view: |-
     "paper": {
       "dimensions": {
         "height": 1560,
-        "width": 2886,
+        "width": 2305,
         "x": 50,
         "y": 50
       }

@@ -3,9 +3,9 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 6.6.0
     isoverridable: false
-    itemVersion: 2.6.55
+    itemVersion: 1.0.0
     packID: ""
-    packName: Common Playbooks
+    packName: SOC Common Playbooks
     prevname: ""
     toServerVersion: ""
 description: "This playbook is one of the sub-playbooks in the eradication plan. \nThis
@@ -65,7 +65,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 195.25,
+          "x": 631,
           "y": 50
         }
       }
@@ -108,7 +108,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 195.25,
+          "x": 776.25,
           "y": 550
         }
       }
@@ -135,8 +135,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 195.25,
-          "y": 1060
+          "x": 340.5,
+          "y": 895
         }
       }
   "19":
@@ -175,7 +175,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 340.5,
+          "x": 631,
           "y": 720
         }
       }
@@ -233,7 +233,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 195.25,
+          "x": 631,
           "y": 210
         }
       }
@@ -243,28 +243,30 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
-    nexttasks:
-      '#none#':
-      - "5"
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
     note: false
     quietmode: 0
     separatecontext: true
-    skipunavailable: false
+    skipunavailable: true
     task:
       brand: ""
-      id: a0bad630-4da5-45c2-899c-e22739548024
+      id: 48a372ef-38cb-49a1-b1fc-23ecc648094b
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
       type: playbook
       version: -1
-    taskid: a0bad630-4da5-45c2-899c-e22739548024
+    taskid: 48a372ef-38cb-49a1-b1fc-23ecc648094b
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 50,
+          "x": 871.5,
           "y": 890
         }
       }
@@ -304,7 +306,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 340.5,
+          "x": 776.25,
           "y": 380
         }
       }
@@ -341,8 +343,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 681,
-          "y": 890
+          "x": 50,
+          "y": 720
         }
       }
 version: -1
@@ -351,8 +353,8 @@ view: |-
     "linkLabelsPosition": {},
     "paper": {
       "dimensions": {
-        "height": 1070,
-        "width": 1012,
+        "height": 910,
+        "width": 1202.5,
         "x": 50,
         "y": 50
       }

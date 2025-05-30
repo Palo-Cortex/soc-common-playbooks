@@ -3,9 +3,9 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 6.6.0
     isoverridable: false
-    itemVersion: 2.6.55
+    itemVersion: 1.0.0
     packID: ""
-    packName: Common Playbooks
+    packName: SOC Common Playbooks
     prevname: ""
     toServerVersion: ""
 description: |-
@@ -114,20 +114,18 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1162,
+          "x": 631,
           "y": 50
         }
       }
   "1":
     continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "1"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "33"
       '#none#':
       - "32"
     note: false
@@ -166,19 +164,19 @@ tasks:
       brand: ""
       description: Block lists requested files which have not already been block listed
         or added to allow list.
-      id: f83a5d7b-5430-4cae-9d75-7624b0c316e1
+      id: 4cebd75a-d892-4e09-860c-6788e4c303dd
       iscommand: true
       name: Add to XSIAM hash block list
       script: '|||core-blocklist-files'
       type: regular
       version: -1
-    taskid: f83a5d7b-5430-4cae-9d75-7624b0c316e1
+    taskid: 4cebd75a-d892-4e09-860c-6788e4c303dd
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 1307.25,
+          "x": 1888.25,
           "y": 890
         }
       }
@@ -205,8 +203,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1021.5,
-          "y": 2080
+          "x": 631,
+          "y": 1915
         }
       }
   "3":
@@ -251,7 +249,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1162,
+          "x": 631,
           "y": 210
         }
       }
@@ -293,7 +291,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 631,
+          "x": 2033.5,
           "y": 1230
         }
       }
@@ -334,7 +332,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1262,
+          "x": 1066.75,
           "y": 1740
         }
       }
@@ -385,7 +383,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 50,
+          "x": 1647.75,
           "y": 550
         }
       }
@@ -432,7 +430,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1357.25,
+          "x": 776.25,
           "y": 380
         }
       }
@@ -476,20 +474,18 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1597.75,
+          "x": 50,
           "y": 550
         }
       }
   "27":
     continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "27"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "33"
       '#none#':
       - "31"
     note: false
@@ -528,19 +524,19 @@ tasks:
       brand: ""
       description: Block lists requested files which have not already been block listed
         or added to allow list.
-      id: b3e02036-372f-4ac2-bed9-5593fa00cbfe
+      id: a5655007-331c-4e93-8dbb-d3f0afc9631d
       iscommand: true
       name: Add to XSIAM hash block list
       script: '|||core-blocklist-files'
       type: regular
       version: -1
-    taskid: b3e02036-372f-4ac2-bed9-5593fa00cbfe
+    taskid: a5655007-331c-4e93-8dbb-d3f0afc9631d
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 1788.25,
+          "x": 390.5,
           "y": 890
         }
       }
@@ -582,7 +578,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1502.5,
+          "x": 535.75,
           "y": 1230
         }
       }
@@ -623,7 +619,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 290.5,
+          "x": 921.5,
           "y": 1570
         }
       }
@@ -666,7 +662,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1307.25,
+          "x": 390.5,
           "y": 1060
         }
       }
@@ -709,7 +705,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 826.25,
+          "x": 1888.25,
           "y": 1060
         }
       }
@@ -719,28 +715,30 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
-    nexttasks:
-      '#none#':
-      - "2"
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
     note: false
     quietmode: 0
     separatecontext: true
-    skipunavailable: false
+    skipunavailable: true
     task:
       brand: ""
-      id: 412b8382-0f77-40e1-824b-65c70252fdc1
+      id: 09bb88a7-66e1-4353-b749-1b8b1ed715fe
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
       type: playbook
       version: -1
-    taskid: 412b8382-0f77-40e1-824b-65c70252fdc1
+    taskid: 09bb88a7-66e1-4353-b749-1b8b1ed715fe
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 2083.5,
+          "x": 1162,
           "y": 1910
         }
       }
@@ -762,7 +760,7 @@ tasks:
       id: 29129bce-6d7b-401a-8b5c-3042e91302e6
       iscommand: false
       name: SOC Block Indicators - Generic v3
-      playbookId: 'SOC Block Indicators - Generic v3'
+      playbookId: SOC Block Indicators - Generic v3
       type: playbook
       version: -1
     taskid: 29129bce-6d7b-401a-8b5c-3042e91302e6
@@ -771,7 +769,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 290.5,
+          "x": 921.5,
           "y": 1400
         }
       }
@@ -811,7 +809,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1743,
+          "x": 195.25,
           "y": 720
         }
       }
@@ -848,8 +846,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2574,
-          "y": 1910
+          "x": 50,
+          "y": 1740
         }
       }
   "37":
@@ -888,7 +886,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2814.5,
+          "x": 1743,
           "y": 720
         }
       }
@@ -925,8 +923,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3055,
-          "y": 1910
+          "x": 1547.75,
+          "y": 1740
         }
       }
 version: -1
@@ -947,8 +945,8 @@ view: |-
     },
     "paper": {
       "dimensions": {
-        "height": 2090,
-        "width": 3386,
+        "height": 1930,
+        "width": 2364.5,
         "x": 50,
         "y": 50
       }

@@ -3,9 +3,9 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 6.6.0
     isoverridable: false
-    itemVersion: 2.6.55
+    itemVersion: 1.0.0
     packID: ""
-    packName: Common Playbooks
+    packName: SOC Common Playbooks
     prevname: ""
     toServerVersion: ""
 description: |-
@@ -63,7 +63,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 290.5,
+          "x": 340.5,
           "y": 50
         }
       }
@@ -102,7 +102,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1307.25,
+          "x": 50,
           "y": 1230
         }
       }
@@ -146,7 +146,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 826.25,
+          "x": 631,
           "y": 1400
         }
       }
@@ -173,8 +173,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 195.25,
-          "y": 1740
+          "x": 1262,
+          "y": 1575
         }
       }
   "13":
@@ -223,7 +223,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 435.75,
+          "x": 50,
           "y": 550
         }
       }
@@ -257,10 +257,10 @@ tasks:
       description: "Set a value in context under the key you entered. If no value
         is entered, the script doesn't do anything.\n\nThis automation runs using
         the default Limited User role, unless you explicitly change the permissions.\nFor
-        more information, see the section about permissions here:\n- For Cortex XSOAR
-        6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+        more information, see the section about permissions here:\n- For Cortex see
+        https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
       id: 047b2863-8f46-4e6e-b632-b03bf6720d4f
       iscommand: false
       name: Set endpoints ID to isolate
@@ -273,7 +273,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 921.5,
+          "x": 195.25,
           "y": 890
         }
       }
@@ -352,7 +352,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 581,
+          "x": 195.25,
           "y": 720
         }
       }
@@ -402,7 +402,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 195.25,
+          "x": 1262,
           "y": 1400
         }
       }
@@ -448,7 +448,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 290.5,
+          "x": 340.5,
           "y": 210
         }
       }
@@ -498,7 +498,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 290.5,
+          "x": 340.5,
           "y": 380
         }
       }
@@ -545,7 +545,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 50,
+          "x": 1407.25,
           "y": 1230
         }
       }
@@ -555,22 +555,24 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
-    nexttasks:
-      '#none#':
-      - "10"
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
     note: false
     quietmode: 0
     separatecontext: true
-    skipunavailable: false
+    skipunavailable: true
     task:
       brand: ""
-      id: 94e98ca0-d5f4-4f57-8c1c-5517d7999568
+      id: a6fa784b-7ca8-46c8-a26e-3034fb8b0b01
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
       type: playbook
       version: -1
-    taskid: 94e98ca0-d5f4-4f57-8c1c-5517d7999568
+    taskid: a6fa784b-7ca8-46c8-a26e-3034fb8b0b01
     timertriggers: []
     type: playbook
     view: |-
@@ -616,7 +618,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1066.75,
+          "x": 50,
           "y": 1060
         }
       }
@@ -653,7 +655,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 826.25,
+          "x": 681,
           "y": 1230
         }
       }
@@ -666,8 +668,8 @@ view: |-
     },
     "paper": {
       "dimensions": {
-        "height": 1750,
-        "width": 1638.25,
+        "height": 1590,
+        "width": 1738.25,
         "x": 50,
         "y": 50
       }
