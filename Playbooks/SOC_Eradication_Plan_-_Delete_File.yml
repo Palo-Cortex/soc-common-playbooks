@@ -11,6 +11,7 @@ contentitemexportablefields:
 description: "This playbook is one of the sub-playbooks in the eradication plan. \nThis
   playbook executes actions of file deletion, which is a crucial step in the eradication
   process."
+adopted: true
 id: 'SOC Eradication Plan - Delete File'
 inputs:
 - description: "Choose 'Quarantine' or 'Delete' to avoid file remediation conflicts.

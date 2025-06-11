@@ -18,6 +18,7 @@ description: |
   * Trend Micro Apex One
   * Proofpoint Threat Response
   * Cisco Stealthwatch Cloud
+adopted: true
 id: 'SOC Block Domain - Generic v2'
 inputs:
 - description: The Domain to block.

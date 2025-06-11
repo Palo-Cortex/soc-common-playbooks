@@ -9,6 +9,7 @@ contentitemexportablefields:
     prevname: ""
     toServerVersion: ""
 description: Creates or edits a Panorama rule and moves it into the desired position
+adopted: true
 id: 'SOC PAN-OS - Create Or Edit Rule'
 inputs:
 - description: The device group to work on. Exists only in panorama!

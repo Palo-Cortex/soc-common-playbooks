@@ -16,6 +16,7 @@ description: |-
   * Threat information.
   * Providing of URL screenshots.
   * URL Reputation using !url.
+adopted: true
 id: 'SOC URL Enrichment - Generic v2'
 inputs:
 - description: The URLs to enrich.

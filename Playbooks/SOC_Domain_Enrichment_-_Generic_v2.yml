@@ -13,6 +13,7 @@ description: |-
   Domain enrichment includes:
   * Threat information
   * Domain reputation using !domain command
+adopted: true
 id: 'SOC Domain Enrichment - Generic v2'
 inputs:
 - description: The domain name to enrich.

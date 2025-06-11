@@ -13,6 +13,7 @@ description: |-
 
   This playbook is a sub-playbook within the containment plan playbook.
   The playbook uses the 'Okta v2' and 'MSGraph User' integrations to clear user sessions.
+adopted: true
 id: 'SOC Containment Plan - Clear User Sessions'
 inputSections:
 - description: Generic group for inputs.

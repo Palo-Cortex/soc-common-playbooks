@@ -10,6 +10,7 @@ contentitemexportablefields:
     toServerVersion: ""
 description: This playbook is responsible for collecting and enriching data on Identity
   Access Management (IAM) in cloud environments (AWS, Azure, and GCP).
+adopted: true
 id: 'SOC Cloud IAM Enrichment - Generic'
 inputs:
 - description: User name.

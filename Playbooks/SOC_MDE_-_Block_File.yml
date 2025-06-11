@@ -11,6 +11,7 @@ contentitemexportablefields:
 description: "This playbook receives an MD5 or a SHA256 hash and adds it to the block
   list in Microsoft Defender for Endpoint. \nThe playbook uses the integration \"Microsoft
   Defender for Endpoint\"."
+adopted: true
 id: 'SOC MDE - Block File'
 inputs:
 - description: The severity of the malicious behavior identified by the data within

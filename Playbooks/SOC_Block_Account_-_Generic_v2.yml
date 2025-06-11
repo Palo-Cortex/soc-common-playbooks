@@ -29,6 +29,7 @@ description: |-
   * Zoom IAM
   * Atlassian IAM
   * GitHub IAM.
+adopted: true
 id: 'SOC Block Account - Generic v2'
 inputs:
 - description: Array of malicious usernames to block.

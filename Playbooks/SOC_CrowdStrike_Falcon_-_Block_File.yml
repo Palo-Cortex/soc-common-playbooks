@@ -11,6 +11,7 @@ contentitemexportablefields:
 description: "This playbook receives an MD5 or a SHA256 hash and adds it to the block
   list in CrowdStrike Falcon. \nThe playbook uses the integration \"CrowdStrike Falcon\"."
 dirtyInputs: true
+adopted: true
 id: 'SOC CrowdStrike Falcon - Block File'
 inputs:
 - description: 'The severity of the indicator (informational, low, medium, high and

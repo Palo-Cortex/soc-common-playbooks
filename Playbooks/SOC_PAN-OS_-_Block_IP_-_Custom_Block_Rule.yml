@@ -11,6 +11,7 @@ contentitemexportablefields:
 description: |-
   This playbook blocks IP addresses using Custom Block Rules in Palo Alto Networks Panorama or Firewall.
   The playbook receives malicious IP addresses as inputs, creates a custom bi-directional rule to block them, and commits the configuration.
+adopted: true
 id: 'SOC PAN-OS - Block IP - Custom Block Rule'
 inputs:
 - description: Panorama log forwarding object name

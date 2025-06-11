@@ -15,6 +15,7 @@ description: "This playbook utilizes the Dynamic Address Group (DAG) capability 
   If the tag exists, then the IP address is added to the tag.\n\nIf the tag does not
   exist, a new address group is created with the given tag and a matching rule, and
   the configuration is committed. \n"
+adopted: true
 id: 'SOC PAN-OS DAG Configuration'
 inputs:
 - description: The name of the tag to add to PAN-OS. This can be a single tag.

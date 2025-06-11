@@ -19,6 +19,7 @@ description: |+
   - CMD
   - Registry (require key and value)
 
+adopted: true
 id: 'SOC Get prevalence for IOCs'
 inputs:
 - description: ""

@@ -13,6 +13,7 @@ description: |-
 
   This playbook is a sub-playbook within the containment plan playbook.
   The playbook isolates devices using core commands.
+adopted: true
 id: 'SOC Containment Plan - Isolate Device'
 inputs:
 - description: Whether to execute endpoint isolation.

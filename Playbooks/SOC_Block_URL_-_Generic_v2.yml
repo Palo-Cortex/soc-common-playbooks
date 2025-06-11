@@ -18,6 +18,7 @@ description: |-
   * Forcepoint
   * Checkpoint
   * Netcraft.
+adopted: true
 id: 'SOC Block URL - Generic v2'
 inputs:
 - description: Array of malicious URLs to block.

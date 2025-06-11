@@ -10,6 +10,7 @@ contentitemexportablefields:
     toServerVersion: ""
 description: Takes an email address or a username of a user account in Active Directory,
   and returns the email address of the user's manager.
+adopted: true
 id: 'SOC Active Directory - Get User Manager Details'
 inputs:
 - description: Search for user by the sAMAccountName attribute in Active Directory.

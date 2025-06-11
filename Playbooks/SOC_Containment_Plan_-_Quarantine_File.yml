@@ -13,6 +13,7 @@ description: |-
 
   This playbook is a sub-playbook within the containment plan playbook.
   The playbook quarantines files using core commands.
+adopted: true
 id: 'SOC Containment Plan - Quarantine File'
 inputs:
 - description: Set to 'True' to quarantine the identified file.

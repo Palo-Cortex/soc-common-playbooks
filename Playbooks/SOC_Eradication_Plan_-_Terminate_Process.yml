@@ -13,6 +13,7 @@ description: "This playbook is one of the sub-playbooks in the eradication plan.
   action.\nThe playbook executes actions of process termination, which is a crucial
   step in the eradication process.\nThe process termination can be performed based
   on either the process ID or the process name."
+adopted: true
 id: 'SOC Eradication Plan - Terminate Process'
 inputs:
 - description: "Choose 'PID' to terminate the process by PID or 'Name' to terminate

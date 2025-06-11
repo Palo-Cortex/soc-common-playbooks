@@ -12,6 +12,7 @@ description: "This playbook checks the file reputation and sets the verdict as a
   context key.\n\nThe verdict is composed by 3 main components:\n\n* VirusTotal detection
   rate\n* Digital certificate signers\n* NSRL DB\n\nNote: a user can provide a list
   of trusted signers of his own using the playbook inputs\n "
+adopted: true
 id: 'SOC File Reputation'
 inputs:
 - description: The minimum number of positive engines needed to mark file as malicious.

@@ -14,6 +14,7 @@ description: |-
   - Resolve IP address to hostname (DNS)
   - Separate internal and external IP addresses
   - Get host information for IP addresses.
+adopted: true
 id: 'SOC IP Enrichment - Internal - Generic v2'
 inputs:
 - description: The IP address to enrich.

@@ -19,6 +19,7 @@ description: |-
   - ExtraHop Reveal(x)
   - Cortex XDR / Core (endpoint enrichment, reputation and risk)
   - Endpoint reputation using !endpoint command.
+adopted: true
 id: 'SOC Endpoint Enrichment - Generic v2.1'
 inputs:
 - description: The hostname of the endpoint to enrich.

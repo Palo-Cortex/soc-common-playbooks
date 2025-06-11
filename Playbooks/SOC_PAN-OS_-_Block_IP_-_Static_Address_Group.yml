@@ -13,6 +13,7 @@ description: |-
   The playbook receives malicious IP addresses and an address group name as inputs, verifies that the addresses are not already a part of the address group, adds them and commits the configuration.
 
   ***Note - The playbook does not block the address group communication using a policy block rule. This step will be taken once outside of the playbook.
+adopted: true
 id: 'SOC PAN-OS - Block IP - Static Address Group'
 inputSections:
 - description: Generic group for inputs

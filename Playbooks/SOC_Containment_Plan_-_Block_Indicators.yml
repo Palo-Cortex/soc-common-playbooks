@@ -19,6 +19,7 @@ description: |-
 
   1. It adds the malicious hashes into the XSIAM hash block list
   2. It utilizes the sub-playbook "Block Indicators - Generic v3"
+adopted: true
 id: 'SOC Containment Plan - Block Indicators'
 inputs:
 - description: Set to 'True' to block the indicators.

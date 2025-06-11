@@ -15,6 +15,7 @@ description: |-
   - Provide threat information.
   - IP address reputation using !ip command.
   - Separate internal and external addresses.
+adopted: true
 id: 'SOC IP Enrichment - External - Generic v2'
 inputs:
 - description: The IP address to enrich.

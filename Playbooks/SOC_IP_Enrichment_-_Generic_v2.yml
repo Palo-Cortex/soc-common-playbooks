@@ -18,6 +18,7 @@ description: |-
   - For internal IP addresses, get host information.
 
   When executing this playbook through IP Enrichment - Generic v2, IP classification and resolution will be handled by the main playbook, improving performance.
+adopted: true
 id: 'SOC IP Enrichment - Generic v2'
 inputs:
 - description: The IP address to enrich.
