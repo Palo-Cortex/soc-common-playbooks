@@ -3,9 +3,9 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 6.5.0
     isoverridable: false
-    itemVersion: 2.6.55
+    itemVersion: 1.0.0
     packID: ""
-    packName: Common Playbooks
+    packName: SOC Common Playbooks
     prevname: ""
     toServerVersion: ""
 description: |
@@ -16,15 +16,32 @@ description: |
   * FireEye Email Security (EX)
   * Cisco Email Security
   * Symantec Email Security
-adopted: true
+dirtyInputs: true
 id: 'SOC Block Email - Generic v2'
+inputSections:
+- description: Generic group for inputs
+  inputs:
+  - EmailToBlock
+  - ShadowMode
+  name: General (Inputs group)
 inputs:
 - description: The email address that will be blocked.
   key: EmailToBlock
   playbookInputQuery: null
   required: false
   value: {}
+- description: Shadow Mode is a key safety mechanism. It ensures actions like isolate_endpoint
+    or disable_user are logged but not executed in test scenarios.
+  key: ShadowMode
+  playbookInputQuery: null
+  required: false
+  value:
+    simple: "true"
 name: SOC Block Email - Generic v2
+outputSections:
+- description: Generic group for outputs
+  name: General (Outputs group)
+  outputs: []
 outputs: []
 sourceplaybookid: Block Email - Generic v2
 starttaskid: "0"
@@ -596,8 +613,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "20"
@@ -615,12 +634,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: ad701100-acbd-45dd-8201-bdd54661871b
+      id: 0b0d9ea0-be01-41ef-bc3d-a6aa228f6e21
       iscommand: false
       name: Shadow Mode?
       type: condition
       version: -1
-    taskid: ad701100-acbd-45dd-8201-bdd54661871b
+    taskid: 0b0d9ea0-be01-41ef-bc3d-a6aa228f6e21
     timertriggers: []
     type: condition
     view: |-
@@ -673,8 +692,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "22"
@@ -692,12 +713,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 18b69ad5-0a66-4abe-81d3-9975375890f4
+      id: e9c8e021-22ae-4035-965b-71ffe9ddc90a
       iscommand: false
       name: Shadow Mode?
       type: condition
       version: -1
-    taskid: 18b69ad5-0a66-4abe-81d3-9975375890f4
+    taskid: e9c8e021-22ae-4035-965b-71ffe9ddc90a
     timertriggers: []
     type: condition
     view: |-
@@ -750,8 +771,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "24"
@@ -769,12 +792,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 2cbd4ecb-3f1a-4c8e-8062-dec8654a2566
+      id: c4321494-1173-4b3a-9e55-8b90d3905100
       iscommand: false
       name: Shadow Mode?
       type: condition
       version: -1
-    taskid: 2cbd4ecb-3f1a-4c8e-8062-dec8654a2566
+    taskid: c4321494-1173-4b3a-9e55-8b90d3905100
     timertriggers: []
     type: condition
     view: |-
@@ -827,8 +850,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "26"
@@ -846,12 +871,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 56c13a70-a13c-4538-802b-d3b4847ce5e4
+      id: e8bd7d32-ea89-4086-8f88-7ccd238bae1f
       iscommand: false
       name: Shadow Mode?
       type: condition
       version: -1
-    taskid: 56c13a70-a13c-4538-802b-d3b4847ce5e4
+    taskid: e8bd7d32-ea89-4086-8f88-7ccd238bae1f
     timertriggers: []
     type: condition
     view: |-
@@ -910,7 +935,7 @@ view: |-
     "paper": {
       "dimensions": {
         "height": 1230,
-        "width": 3667,
+        "width": 3666,
         "x": 50,
         "y": 50
       }

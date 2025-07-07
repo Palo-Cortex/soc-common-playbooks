@@ -13,7 +13,7 @@ description: |-
 
   This playbook is a sub-playbook within the containment plan playbook.
   The playbook uses the 'Okta v2' and 'MSGraph User' integrations to clear user sessions.
-adopted: true
+dirtyInputs: true
 id: 'SOC Containment Plan - Clear User Sessions'
 inputSections:
 - description: Generic group for inputs.
@@ -21,6 +21,7 @@ inputSections:
   - ClearUserSessions
   - Username
   - IAMUserDomain
+  - ShadowMode
   name: General (Inputs group)
 inputs:
 - description: Set to 'True' to clear the user active sessions.
@@ -40,6 +41,13 @@ inputs:
   playbookInputQuery: null
   required: false
   value: {}
+- description: Shadow Mode is a key safety mechanism. It ensures actions like isolate_endpoint
+    or disable_user are logged but not executed in test scenarios.
+  key: ShadowMode
+  playbookInputQuery: null
+  required: false
+  value:
+    simple: "true"
 name: SOC Containment Plan - Clear User Sessions
 outputSections:
 - description: Generic group for outputs
@@ -739,8 +747,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "29"
@@ -758,12 +768,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 102fc3da-0578-40ec-87bb-553eed286dc2
+      id: 6a93d720-d943-4523-86c9-97db1fb139ec
       iscommand: false
       name: Shadow Mode?
       type: condition
       version: -1
-    taskid: 102fc3da-0578-40ec-87bb-553eed286dc2
+    taskid: 6a93d720-d943-4523-86c9-97db1fb139ec
     timertriggers: []
     type: condition
     view: |-
@@ -816,8 +826,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "31"
@@ -835,12 +847,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 9212ba75-4f8e-4e1b-8f38-499428537957
+      id: cf67634f-f1b7-46b3-863f-9c2d5fcb0477
       iscommand: false
       name: Shadow Mode?
       type: condition
       version: -1
-    taskid: 9212ba75-4f8e-4e1b-8f38-499428537957
+    taskid: cf67634f-f1b7-46b3-863f-9c2d5fcb0477
     timertriggers: []
     type: condition
     view: |-
@@ -902,7 +914,7 @@ view: |-
     "paper": {
       "dimensions": {
         "height": 1590,
-        "width": 2900.25,
+        "width": 2899.25,
         "x": 50,
         "y": 50
       }

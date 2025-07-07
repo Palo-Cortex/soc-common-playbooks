@@ -11,8 +11,16 @@ contentitemexportablefields:
 description: "This playbook is one of the sub-playbooks in the eradication plan. \nThis
   playbook executes actions of file deletion, which is a crucial step in the eradication
   process."
-adopted: true
+dirtyInputs: true
 id: 'SOC Eradication Plan - Delete File'
+inputSections:
+- description: Generic group for inputs
+  inputs:
+  - FileRemediation
+  - EndpointID
+  - FilePath
+  - ShadowMode
+  name: General (Inputs group)
 inputs:
 - description: "Choose 'Quarantine' or 'Delete' to avoid file remediation conflicts.
     \nFor example, choosing 'Delete' ignores the 'Quarantine file' task under the
@@ -36,7 +44,18 @@ inputs:
   value:
     complex:
       root: Path
+- description: Shadow Mode is a key safety mechanism. It ensures actions like isolate_endpoint
+    or disable_user are logged but not executed in test scenarios.
+  key: ShadowMode
+  playbookInputQuery: null
+  required: false
+  value:
+    simple: "true"
 name: SOC Eradication Plan - Delete File
+outputSections:
+- description: Generic group for outputs
+  name: General (Outputs group)
+  outputs: []
 outputs: []
 sourceplaybookid: Eradication Plan - Delete File
 starttaskid: "0"
@@ -277,8 +296,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "23"
@@ -296,12 +317,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: aba58725-cd5e-4878-96ce-5afeea71b050
+      id: 8c55417c-e150-4336-b9f3-e3d8a9931845
       iscommand: false
       name: Shadow Run?
       type: condition
       version: -1
-    taskid: aba58725-cd5e-4878-96ce-5afeea71b050
+    taskid: 8c55417c-e150-4336-b9f3-e3d8a9931845
     timertriggers: []
     type: condition
     view: |-
@@ -355,7 +376,7 @@ view: |-
     "paper": {
       "dimensions": {
         "height": 910,
-        "width": 1202.5,
+        "width": 1201.5,
         "x": 50,
         "y": 50
       }

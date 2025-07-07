@@ -19,8 +19,23 @@ description: |-
 
   1. It adds the malicious hashes into the XSIAM hash block list
   2. It utilizes the sub-playbook "Block Indicators - Generic v3"
-adopted: true
+dirtyInputs: true
 id: 'SOC Containment Plan - Block Indicators'
+inputSections:
+- description: Generic group for inputs
+  inputs:
+  - BlockIndicators
+  - UserVerification
+  - AutoBlockIndicators
+  - FileHash
+  - IP
+  - Domain
+  - URL
+  - Username
+  - FilePath
+  - AutoContainment
+  - ShadowMode
+  name: General (Inputs group)
 inputs:
 - description: Set to 'True' to block the indicators.
   key: BlockIndicators
@@ -83,7 +98,19 @@ inputs:
   playbookInputQuery: null
   required: false
   value: {}
+- description: Shadow Mode is a key safety mechanism. It ensures actions like isolate_endpoint
+    or disable_user are logged but not executed in test scenarios.
+  key: ShadowMode
+  playbookInputQuery: null
+  required: false
+  value:
+    simple: "true"
 name: SOC Containment Plan - Block Indicators
+outputSections:
+- description: Generic group for outputs
+  name: General (Outputs group)
+  outputs:
+  - Core.blocklist.added_hashes
 outputs:
 - contextPath: Core.blocklist.added_hashes
   description: The file Hash that was added to the blocklist.
@@ -780,8 +807,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "35"
@@ -799,12 +828,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: ef50ac2b-2975-4f12-aaa6-a9029b4a8635
+      id: 8110fd8e-2778-4642-9e63-f6afbadb7d0c
       iscommand: false
       name: Shadow Run?
       type: condition
       version: -1
-    taskid: ef50ac2b-2975-4f12-aaa6-a9029b4a8635
+    taskid: 8110fd8e-2778-4642-9e63-f6afbadb7d0c
     timertriggers: []
     type: condition
     view: |-
@@ -857,8 +886,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "37"
@@ -876,12 +907,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: cde780a3-b5d7-4b03-85a7-d8bebe44cccf
+      id: 85c1a0ec-74dd-42e3-8f2b-c86280278b8a
       iscommand: false
       name: Shadow Run?
       type: condition
       version: -1
-    taskid: cde780a3-b5d7-4b03-85a7-d8bebe44cccf
+    taskid: 85c1a0ec-74dd-42e3-8f2b-c86280278b8a
     timertriggers: []
     type: condition
     view: |-
@@ -947,7 +978,7 @@ view: |-
     "paper": {
       "dimensions": {
         "height": 1930,
-        "width": 2364.5,
+        "width": 2363.5,
         "x": 50,
         "y": 50
       }

@@ -3,9 +3,9 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 6.0.0
     isoverridable: false
-    itemVersion: 2.6.55
+    itemVersion: 1.0.0
     packID: ""
-    packName: Common Playbooks
+    packName: SOC Common Playbooks
     prevname: ""
     toServerVersion: ""
 description: "This playbook blocks malicious IP addresses using all integrations that
@@ -19,8 +19,29 @@ description: "This playbook blocks malicious IP addresses using all integrations
   PAN-OS\n* Zscaler\n* FortiGate\n* Aria Packet Intelligence\n* Cisco Firepower \n*
   Cisco Secure Cloud Analytics\n* Cisco ASA\n* Akamai WAF\n* F5 SilverLine\n* ThreatX\n*
   Signal Sciences WAF\n* Sophos Firewall."
-adopted: true
+dirtyInputs: true
 id: 'SOC Block IP - Generic v3'
+inputSections:
+- description: Generic group for inputs
+  inputs:
+  - IP
+  - CustomBlockRule
+  - LogForwarding
+  - AutoCommit
+  - StaticAddressGroup
+  - Tag
+  - DAG
+  - UserVerification
+  - InternalRange
+  - SiteName
+  - AkamaiNetworkListID
+  - InputEnrichment
+  - RuleName
+  - RuleDirection
+  - DAGName
+  - Folder
+  - ShadowMode
+  name: General (Inputs group)
 inputs:
 - description: 'An array of malicious IPs to block. Enter a comma-separated list of
     IPs (i.e.: 1.1.1.1,2.2.2.2).'
@@ -160,7 +181,35 @@ inputs:
   required: false
   value:
     simple: Shared
+- description: Shadow Mode is a key safety mechanism. It ensures actions like isolate_endpoint
+    or disable_user are logged but not executed in test scenarios.
+  key: ShadowMode
+  playbookInputQuery: null
+  required: false
+  value:
+    simple: "true"
 name: SOC Block IP - Generic v3
+outputSections:
+- description: Generic group for outputs
+  name: General (Outputs group)
+  outputs:
+  - Aria.BlockDestSubnet.Rule
+  - Aria.BlockDestSubnet.Status
+  - Stealthwatch.IP.id
+  - Stealthwatch.IP.identifier
+  - CiscoASA.Rules.ID
+  - CiscoASA.Rules.Source
+  - CiscoASA.Rules.Dest
+  - CiscoASA.Rules.IsActive
+  - SigSciences.Corp.Site.Blacklist.ID
+  - SigSciences.Corp.Site.Blacklist.Source
+  - SigSciences.Corp.Site.Blacklist.CreatedBy
+  - PrismaSase
+  - PrismaSase.AddressGroup
+  - PrismaSase.SecurityRule
+  - PrismaSase.SecurityRule.profile_setting
+  - PrismaSase.CandidateConfig
+  - PrismaSase.Address
 outputs:
 - contextPath: Aria.BlockDestSubnet.Rule
   description: The rule name/ID which was created in the system for this playbook.
@@ -930,7 +979,7 @@ tasks:
       id: e306cb07-b682-40af-8644-632cde5aa588
       iscommand: false
       name: Checkpoint - Block IP - Custom Block Rule
-      playbookName: Checkpoint - Block IP - Custom Block Rule
+      playbookId: Checkpoint - Block IP - Custom Block Rule
       type: playbook
       version: -1
     taskid: e306cb07-b682-40af-8644-632cde5aa588
@@ -3696,7 +3745,7 @@ tasks:
       id: 7a34ea03-f70c-4354-8fcf-015185787ec1
       iscommand: false
       name: SOC PAN-OS DAG Configuration
-      playbookId: 'SOC PAN-OS DAG Configuration'
+      playbookId: SOC PAN-OS DAG Configuration
       type: playbook
       version: -1
     taskid: 7a34ea03-f70c-4354-8fcf-015185787ec1
@@ -3727,7 +3776,7 @@ tasks:
       id: ba67efbf-9ee6-4500-8cf1-ea5ac090816b
       iscommand: false
       name: SOC PAN-OS - Block IP - Custom Block Rule
-      playbookId: 'SOC PAN-OS - Block IP - Custom Block Rule'
+      playbookId: SOC PAN-OS - Block IP - Custom Block Rule
       type: playbook
       version: -1
     taskid: ba67efbf-9ee6-4500-8cf1-ea5ac090816b
@@ -3758,7 +3807,7 @@ tasks:
       id: 02bf7a1c-4217-4f3a-8501-8ee5b313f041
       iscommand: false
       name: SOC PAN-OS - Block IP - Static Address Group
-      playbookId: 'SOC PAN-OS - Block IP - Static Address Group'
+      playbookId: SOC PAN-OS - Block IP - Static Address Group
       type: playbook
       version: -1
     taskid: 02bf7a1c-4217-4f3a-8501-8ee5b313f041
@@ -3777,8 +3826,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "113"
@@ -3796,12 +3847,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 2a2ed895-95c3-410d-80ce-1790e1f213bd
+      id: 04ea642b-c0ea-4878-80c2-316819ebb066
       iscommand: false
       name: Shadow Run?
       type: condition
       version: -1
-    taskid: 2a2ed895-95c3-410d-80ce-1790e1f213bd
+    taskid: 04ea642b-c0ea-4878-80c2-316819ebb066
     timertriggers: []
     type: condition
     view: |-
@@ -3854,8 +3905,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "115"
@@ -3873,12 +3926,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: ff84cd43-5b05-4c35-8580-d44003e1cbf2
+      id: f45aa7e0-e268-46b6-9ffe-70bd5e585226
       iscommand: false
       name: Shadow Run?
       type: condition
       version: -1
-    taskid: ff84cd43-5b05-4c35-8580-d44003e1cbf2
+    taskid: f45aa7e0-e268-46b6-9ffe-70bd5e585226
     timertriggers: []
     type: condition
     view: |-
@@ -3931,8 +3984,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "117"
@@ -3950,12 +4005,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: ea7e1ecd-4bae-48c1-8a6c-a4860b3d4486
+      id: 9c180da7-ad10-4832-886d-eaa3a7848319
       iscommand: false
       name: Shadow Run?
       type: condition
       version: -1
-    taskid: ea7e1ecd-4bae-48c1-8a6c-a4860b3d4486
+    taskid: 9c180da7-ad10-4832-886d-eaa3a7848319
     timertriggers: []
     type: condition
     view: |-
@@ -4008,8 +4063,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "119"
@@ -4027,12 +4084,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 27be7c3b-0cd7-4427-8c65-a5b0caa22fe5
+      id: ebf8d15c-b196-494c-bd53-73013091c317
       iscommand: false
       name: Shadow Run?
       type: condition
       version: -1
-    taskid: 27be7c3b-0cd7-4427-8c65-a5b0caa22fe5
+    taskid: ebf8d15c-b196-494c-bd53-73013091c317
     timertriggers: []
     type: condition
     view: |-
@@ -4085,8 +4142,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "121"
@@ -4104,12 +4163,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: ad4c57c7-ef9e-4834-85a5-1be8c9204059
+      id: bbd7a144-6ad4-4342-8d97-3439d95f2bbf
       iscommand: false
       name: Shadow Run?
       type: condition
       version: -1
-    taskid: ad4c57c7-ef9e-4834-85a5-1be8c9204059
+    taskid: bbd7a144-6ad4-4342-8d97-3439d95f2bbf
     timertriggers: []
     type: condition
     view: |-
@@ -4162,8 +4221,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "123"
@@ -4181,12 +4242,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: c93187cb-6957-4772-8da5-44f6eb3e75de
+      id: a46e5ed5-b8ea-4cd3-a64e-00118145164e
       iscommand: false
       name: Shadow Run?
       type: condition
       version: -1
-    taskid: c93187cb-6957-4772-8da5-44f6eb3e75de
+    taskid: a46e5ed5-b8ea-4cd3-a64e-00118145164e
     timertriggers: []
     type: condition
     view: |-
@@ -4239,8 +4300,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "125"
@@ -4258,12 +4321,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 417c66ff-a2d5-48c1-8228-be35d2efd4a8
+      id: 9736faf7-e23a-4b49-9a64-bb88fbc0642a
       iscommand: false
       name: Shadow Run?
       type: condition
       version: -1
-    taskid: 417c66ff-a2d5-48c1-8228-be35d2efd4a8
+    taskid: 9736faf7-e23a-4b49-9a64-bb88fbc0642a
     timertriggers: []
     type: condition
     view: |-
@@ -4316,8 +4379,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "127"
@@ -4335,12 +4400,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 780282db-f78b-4a39-8d40-e7cefea30478
+      id: 1ed77763-6fa6-4711-881a-a67c1800a09a
       iscommand: false
       name: Shadow Run?
       type: condition
       version: -1
-    taskid: 780282db-f78b-4a39-8d40-e7cefea30478
+    taskid: 1ed77763-6fa6-4711-881a-a67c1800a09a
     timertriggers: []
     type: condition
     view: |-
@@ -4391,8 +4456,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "129"
@@ -4410,12 +4477,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: a9ecf2f7-3f91-463a-80af-54fda8afcb1d
+      id: 4340b60e-0155-4f1e-a2ec-5aec76864233
       iscommand: false
       name: Shadow Run?
       type: condition
       version: -1
-    taskid: a9ecf2f7-3f91-463a-80af-54fda8afcb1d
+    taskid: 4340b60e-0155-4f1e-a2ec-5aec76864233
     timertriggers: []
     type: condition
     view: |-
@@ -4468,8 +4535,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "131"
@@ -4487,19 +4556,19 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 9350d88f-2422-41d7-8dc5-239aea47fa19
+      id: 69e2e1d1-e195-4170-be60-d5a73ff639ac
       iscommand: false
       name: Shadow Run?
       type: condition
       version: -1
-    taskid: 9350d88f-2422-41d7-8dc5-239aea47fa19
+    taskid: 69e2e1d1-e195-4170-be60-d5a73ff639ac
     timertriggers: []
     type: condition
     view: |-
       {
         "position": {
           "x": 11774.75,
-          "y": 3740
+          "y": 3735
         }
       }
   "132":
@@ -4545,8 +4614,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "133"
@@ -4564,12 +4635,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 24aa9f8b-659a-4d62-8a06-713a5b1893b4
+      id: effe19c9-8de1-4433-9aeb-837c8797a2a7
       iscommand: false
       name: Shadow Run?
       type: condition
       version: -1
-    taskid: 24aa9f8b-659a-4d62-8a06-713a5b1893b4
+    taskid: effe19c9-8de1-4433-9aeb-837c8797a2a7
     timertriggers: []
     type: condition
     view: |-
@@ -4622,8 +4693,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "135"
@@ -4641,12 +4714,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 9b0a5ddb-dbfc-4287-808d-902319ad13fe
+      id: 95f38047-16c9-40cd-aa69-e01d597573c1
       iscommand: false
       name: Shadow Run?
       type: condition
       version: -1
-    taskid: 9b0a5ddb-dbfc-4287-808d-902319ad13fe
+    taskid: 95f38047-16c9-40cd-aa69-e01d597573c1
     timertriggers: []
     type: condition
     view: |-
@@ -4699,8 +4772,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "137"
@@ -4718,12 +4793,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: eb3c2980-2fab-4069-849a-912df39016cb
+      id: 9e5fdc22-b5f4-4f83-846a-d7c227c84d0d
       iscommand: false
       name: Shadow Run?
       type: condition
       version: -1
-    taskid: eb3c2980-2fab-4069-849a-912df39016cb
+    taskid: 9e5fdc22-b5f4-4f83-846a-d7c227c84d0d
     timertriggers: []
     type: condition
     view: |-
@@ -4774,8 +4849,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "139"
@@ -4793,12 +4870,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: ef44164c-edcd-41de-8de0-0c855eebc3ac
+      id: 6ea3eeb7-ba8a-4f7e-9df6-1a7ebb2e2b8e
       iscommand: false
       name: Shadow Run?
       type: condition
       version: -1
-    taskid: ef44164c-edcd-41de-8de0-0c855eebc3ac
+    taskid: 6ea3eeb7-ba8a-4f7e-9df6-1a7ebb2e2b8e
     timertriggers: []
     type: condition
     view: |-
@@ -4851,8 +4928,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "141"
@@ -4870,12 +4949,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: bbeb67dc-a155-48f2-8cc4-78a5003498c4
+      id: 5318f2b3-611b-451c-9661-2e489d41dad3
       iscommand: false
       name: Shadow Run?
       type: condition
       version: -1
-    taskid: bbeb67dc-a155-48f2-8cc4-78a5003498c4
+    taskid: 5318f2b3-611b-451c-9661-2e489d41dad3
     timertriggers: []
     type: condition
     view: |-
@@ -4968,7 +5047,7 @@ view: |-
     "paper": {
       "dimensions": {
         "height": 4260,
-        "width": 19223,
+        "width": 19222,
         "x": 50,
         "y": 50
       }

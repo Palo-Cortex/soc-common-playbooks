@@ -13,8 +13,19 @@ description: |-
 
   This playbook is a sub-playbook within the containment plan playbook.
   The playbook quarantines files using core commands.
-adopted: true
+dirtyInputs: true
 id: 'SOC Containment Plan - Quarantine File'
+inputSections:
+- description: Generic group for inputs
+  inputs:
+  - FileContainment
+  - FileRemediation
+  - FilePath
+  - FileHash
+  - EndpointID
+  - AutoContainment
+  - ShadowMode
+  name: General (Inputs group)
 inputs:
 - description: Set to 'True' to quarantine the identified file.
   key: FileContainment
@@ -50,7 +61,19 @@ inputs:
   playbookInputQuery: null
   required: false
   value: {}
+- description: Shadow Mode is a key safety mechanism. It ensures actions like isolate_endpoint
+    or disable_user are logged but not executed in test scenarios.
+  key: ShadowMode
+  playbookInputQuery: null
+  required: false
+  value:
+    simple: "true"
 name: SOC Containment Plan - Quarantine File
+outputSections:
+- description: Generic group for outputs
+  name: General (Outputs group)
+  outputs:
+  - QuarantinedFilesFromEndpoints
 outputs:
 - contextPath: QuarantinedFilesFromEndpoints
   description: The quarantined files from endpoint.
@@ -944,8 +967,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "28"
@@ -963,12 +988,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: e74d0059-b9e8-4ba8-aa0d-6358093eb37c
+      id: fadd55fb-22cf-4143-9d5d-e843d0dccaa4
       iscommand: false
       name: Shadow Run?
       type: condition
       version: -1
-    taskid: e74d0059-b9e8-4ba8-aa0d-6358093eb37c
+    taskid: fadd55fb-22cf-4143-9d5d-e843d0dccaa4
     timertriggers: []
     type: condition
     view: |-
@@ -1021,8 +1046,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "30"
@@ -1040,12 +1067,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: c788307f-1ed2-40a6-868a-41f6c0026910
+      id: 373296c1-89da-4807-8492-7f852b646b57
       iscommand: false
       name: Shadow Run?
       type: condition
       version: -1
-    taskid: c788307f-1ed2-40a6-868a-41f6c0026910
+    taskid: 373296c1-89da-4807-8492-7f852b646b57
     timertriggers: []
     type: condition
     view: |-
@@ -1107,7 +1134,7 @@ view: |-
     "paper": {
       "dimensions": {
         "height": 1930,
-        "width": 3081.25,
+        "width": 3080.25,
         "x": 50,
         "y": 50
       }
