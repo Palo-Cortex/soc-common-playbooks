@@ -304,8 +304,8 @@ tasks:
       brand: ""
       id: dfba142c-0ea4-4492-9730-27e1713d893d
       iscommand: false
-      name: SOC Block Account - Generic v2_copy
-      playbookId: 'SOC Block Account - Generic v2_copy'
+      name: SOC Block Account - Generic v2
+      playbookId: 'SOC Block Account - Generic v2'
       type: playbook
       version: -1
     taskid: dfba142c-0ea4-4492-9730-27e1713d893d
