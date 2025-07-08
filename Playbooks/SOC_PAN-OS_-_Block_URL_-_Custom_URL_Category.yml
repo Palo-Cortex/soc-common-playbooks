@@ -3,16 +3,29 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 6.10.0
     isoverridable: false
-    itemVersion: 2.3.11
+    itemVersion: 1.0.0
     packID: ""
-    packName: PAN-OS by Palo Alto Networks
+    packName: SOC Common Playbooks
     prevname: ""
     toServerVersion: ""
 description: |-
   This playbook blocks URLs using Palo Alto Networks Panorama or Firewall through Custom URL Categories.
   The playbook checks whether the input URL category already exists, and if the URLs are a part of this category. Otherwise, it will create the category, block the URLs, and commit the configuration.
-adopted: true
+dirtyInputs: true
 id: 'SOC PAN-OS - Block URL - Custom URL Category'
+inputSections:
+- description: Generic group for inputs
+  inputs:
+  - URL
+  - CustomURLCategory
+  - LogForwarding
+  - AutoCommit
+  - type
+  - device-group
+  - categories
+  - pre-post
+  - ShadowMode
+  name: General (Inputs group)
 inputs:
 - description: URL to block
   key: URL
@@ -71,7 +84,18 @@ inputs:
   required: false
   value:
     simple: pre-rulebase
+- description: Shadow Mode is a key safety mechanism. It ensures actions like isolate_endpoint
+    or disable_user are logged but not executed in test scenarios.
+  key: ShadowMode
+  playbookInputQuery: null
+  required: false
+  value:
+    simple: "true"
 name: SOC PAN-OS - Block URL - Custom URL Category
+outputSections:
+- description: Generic group for outputs
+  name: General (Outputs group)
+  outputs: []
 outputs: []
 sourceplaybookid: PAN-OS - Block URL - Custom URL Category
 starttaskid: "0"
@@ -102,7 +126,7 @@ tasks:
       {
         "position": {
           "x": 962,
-          "y": 50
+          "y": 40
         }
       }
   "1":
@@ -815,7 +839,7 @@ tasks:
       id: a14f9f99-7459-49b5-8b10-40583ab57527
       iscommand: false
       name: SOC PAN-OS Commit Configuration v2
-      playbookId: 'SOC PAN-OS Commit Configuration v2'
+      playbookId: SOC PAN-OS Commit Configuration v2
       type: playbook
       version: -1
     taskid: a14f9f99-7459-49b5-8b10-40583ab57527
@@ -846,7 +870,7 @@ tasks:
       id: 75d96362-721d-4976-85f7-21d62143aca4
       iscommand: false
       name: SOC PAN-OS Commit Configuration v2
-      playbookId: 'SOC PAN-OS Commit Configuration v2'
+      playbookId: SOC PAN-OS Commit Configuration v2
       type: playbook
       version: -1
     taskid: 75d96362-721d-4976-85f7-21d62143aca4
@@ -877,7 +901,7 @@ tasks:
       id: 3c63a355-b588-41ec-81e7-2e479c802c4c
       iscommand: false
       name: SOC PAN-OS Commit Configuration v2
-      playbookId: 'SOC PAN-OS Commit Configuration v2'
+      playbookId: SOC PAN-OS Commit Configuration v2
       type: playbook
       version: -1
     taskid: 3c63a355-b588-41ec-81e7-2e479c802c4c
@@ -896,8 +920,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "28"
@@ -915,12 +941,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 096067b8-7f70-4b73-9236-002853b7ddc3
+      id: 9a77efeb-a18e-4774-8e3c-0d570df2b7ff
       iscommand: false
       name: Shadow Run?
       type: condition
       version: -1
-    taskid: 096067b8-7f70-4b73-9236-002853b7ddc3
+    taskid: 9a77efeb-a18e-4774-8e3c-0d570df2b7ff
     timertriggers: []
     type: condition
     view: |-
@@ -971,8 +997,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "30"
@@ -990,12 +1018,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: fa0cd575-682e-4007-8628-9840865f3bc5
+      id: d5c1d824-2503-436e-880f-e0473b168fd4
       iscommand: false
       name: Shadow Run?
       type: condition
       version: -1
-    taskid: fa0cd575-682e-4007-8628-9840865f3bc5
+    taskid: d5c1d824-2503-436e-880f-e0473b168fd4
     timertriggers: []
     type: condition
     view: |-
@@ -1056,10 +1084,10 @@ view: |-
     },
     "paper": {
       "dimensions": {
-        "height": 1920,
-        "width": 3371.75,
+        "height": 1930,
+        "width": 3370.75,
         "x": 50,
-        "y": 50
+        "y": 40
       }
     }
   }

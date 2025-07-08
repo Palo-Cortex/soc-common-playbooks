@@ -3,9 +3,9 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 6.10.0
     isoverridable: false
-    itemVersion: 2.3.11
+    itemVersion: 1.0.0
     packID: ""
-    packName: PAN-OS by Palo Alto Networks
+    packName: SOC Common Playbooks
     prevname: ""
     toServerVersion: ""
 description: "This playbook utilizes the Dynamic Address Group (DAG) capability of
@@ -15,8 +15,25 @@ description: "This playbook utilizes the Dynamic Address Group (DAG) capability 
   If the tag exists, then the IP address is added to the tag.\n\nIf the tag does not
   exist, a new address group is created with the given tag and a matching rule, and
   the configuration is committed. \n"
-adopted: true
+dirtyInputs: true
 id: 'SOC PAN-OS DAG Configuration'
+inputSections:
+- description: Generic group for inputs
+  inputs:
+  - tag_name
+  - ip_list
+  - address_group_name
+  - rule_name
+  - auto_commit
+  - log-forwarding-object-name
+  - rule-position
+  - relative-rule-name
+  - inbound-or-outbound-rule
+  - action-type
+  - pre-post-rulebase
+  - device-group
+  - ShadowMode
+  name: General (Inputs group)
 inputs:
 - description: The name of the tag to add to PAN-OS. This can be a single tag.
   key: tag_name
@@ -92,7 +109,18 @@ inputs:
   playbookInputQuery: null
   required: false
   value: {}
+- description: Shadow Mode is a key safety mechanism. It ensures actions like isolate_endpoint
+    or disable_user are logged but not executed in test scenarios.
+  key: ShadowMode
+  playbookInputQuery: null
+  required: false
+  value:
+    simple: "true"
 name: SOC PAN-OS DAG Configuration
+outputSections:
+- description: Generic group for outputs
+  name: General (Outputs group)
+  outputs: []
 outputs: []
 sourceplaybookid: PAN-OS DAG Configuration
 starttaskid: "0"
@@ -499,7 +527,7 @@ tasks:
       id: e12dd355-9fcf-40e0-86e2-4437f7e889b3
       iscommand: false
       name: SOC PAN-OS Commit Configuration v2
-      playbookId: 'SOC PAN-OS Commit Configuration v2'
+      playbookId: SOC PAN-OS Commit Configuration v2
       type: playbook
       version: -1
     taskid: e12dd355-9fcf-40e0-86e2-4437f7e889b3
@@ -530,7 +558,7 @@ tasks:
       id: 782a6bc3-5f55-42d5-8bd2-f6f0de74534b
       iscommand: false
       name: SOC PAN-OS - Create Or Edit Rule
-      playbookId: 'SOC PAN-OS - Create Or Edit Rule'
+      playbookId: SOC PAN-OS - Create Or Edit Rule
       type: playbook
       version: -1
     taskid: 782a6bc3-5f55-42d5-8bd2-f6f0de74534b
@@ -549,8 +577,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "26"
@@ -568,12 +598,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 24af422f-5a88-4bc4-9755-db59c198bf09
+      id: 82030d70-b28c-4c10-b963-07420b2c3298
       iscommand: false
       name: Shadow Run?
       type: condition
       version: -1
-    taskid: 24af422f-5a88-4bc4-9755-db59c198bf09
+    taskid: 82030d70-b28c-4c10-b963-07420b2c3298
     timertriggers: []
     type: condition
     view: |-
@@ -626,8 +656,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "28"
@@ -645,12 +677,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: a5a6a57b-0070-4c77-8f91-a5915bbf1892
+      id: ee82376b-2f13-4296-9cc9-21f12240247f
       iscommand: false
       name: Shadow Run?
       type: condition
       version: -1
-    taskid: a5a6a57b-0070-4c77-8f91-a5915bbf1892
+    taskid: ee82376b-2f13-4296-9cc9-21f12240247f
     timertriggers: []
     type: condition
     view: |-
@@ -709,7 +741,7 @@ view: |-
     "paper": {
       "dimensions": {
         "height": 2090,
-        "width": 1347.75,
+        "width": 1346.75,
         "x": 50,
         "y": 50
       }

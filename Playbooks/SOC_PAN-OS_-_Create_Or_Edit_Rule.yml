@@ -3,14 +3,28 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 5.0.0
     isoverridable: false
-    itemVersion: 2.3.11
+    itemVersion: 1.0.0
     packID: ""
-    packName: PAN-OS by Palo Alto Networks
+    packName: SOC Common Playbooks
     prevname: ""
     toServerVersion: ""
 description: Creates or edits a Panorama rule and moves it into the desired position
-adopted: true
+dirtyInputs: true
 id: 'SOC PAN-OS - Create Or Edit Rule'
+inputSections:
+- description: Generic group for inputs
+  inputs:
+  - device-group
+  - rule_name
+  - log-forwarding-object-name
+  - rule-position
+  - relative-rule-name
+  - inbound-or-outbound-rule
+  - element-to-add
+  - action-type
+  - pre-post-rulebase
+  - ShadowMode
+  name: General (Inputs group)
 inputs:
 - description: The device group to work on. Exists only in panorama!
   key: device-group
@@ -71,7 +85,18 @@ inputs:
   playbookInputQuery: null
   required: false
   value: {}
+- description: Shadow Mode is a key safety mechanism. It ensures actions like isolate_endpoint
+    or disable_user are logged but not executed in test scenarios.
+  key: ShadowMode
+  playbookInputQuery: null
+  required: false
+  value:
+    simple: "true"
 name: SOC PAN-OS - Create Or Edit Rule
+outputSections:
+- description: Generic group for outputs
+  name: General (Outputs group)
+  outputs: []
 outputs: []
 sourceplaybookid: PAN-OS - Create Or Edit Rule
 starttaskid: "0"
@@ -618,8 +643,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "13"
@@ -637,12 +664,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 67a9f799-7f02-439a-875c-409e8b7217f1
+      id: 575f4b1a-1ec3-4c15-a1c7-3884f8916065
       iscommand: false
       name: Shadown Run?
       type: condition
       version: -1
-    taskid: 67a9f799-7f02-439a-875c-409e8b7217f1
+    taskid: 575f4b1a-1ec3-4c15-a1c7-3884f8916065
     timertriggers: []
     type: condition
     view: |-
@@ -695,8 +722,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "15"
@@ -714,12 +743,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 28fc7b41-6df3-4a78-85b8-f7d0b5f70722
+      id: 0c76690e-80e7-4961-a229-98b7daa926da
       iscommand: false
       name: Shadown Run?
       type: condition
       version: -1
-    taskid: 28fc7b41-6df3-4a78-85b8-f7d0b5f70722
+    taskid: 0c76690e-80e7-4961-a229-98b7daa926da
     timertriggers: []
     type: condition
     view: |-
@@ -849,8 +878,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "19"
@@ -868,12 +899,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: eca95b55-4084-4b77-8be0-d05c922369bb
+      id: 9e3762d3-f3c0-447d-bcf2-27bc08c2c8a8
       iscommand: false
       name: Shadown Run?
       type: condition
       version: -1
-    taskid: eca95b55-4084-4b77-8be0-d05c922369bb
+    taskid: 9e3762d3-f3c0-447d-bcf2-27bc08c2c8a8
     timertriggers: []
     type: condition
     view: |-
@@ -933,7 +964,7 @@ view: |-
     "paper": {
       "dimensions": {
         "height": 1410,
-        "width": 3140.75,
+        "width": 3139.75,
         "x": 50,
         "y": 50
       }

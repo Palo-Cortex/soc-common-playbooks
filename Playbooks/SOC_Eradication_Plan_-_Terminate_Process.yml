@@ -13,8 +13,17 @@ description: "This playbook is one of the sub-playbooks in the eradication plan.
   action.\nThe playbook executes actions of process termination, which is a crucial
   step in the eradication process.\nThe process termination can be performed based
   on either the process ID or the process name."
-adopted: true
+dirtyInputs: true
 id: 'SOC Eradication Plan - Terminate Process'
+inputSections:
+- description: Generic group for inputs
+  inputs:
+  - ProcessTermination
+  - EndpointID
+  - FilePath
+  - ProcessID
+  - ShadowMode
+  name: General (Inputs group)
 inputs:
 - description: "Choose 'PID' to terminate the process by PID or 'Name' to terminate
     the process by process name. \nNote: If neither option is selected, the process
@@ -39,7 +48,19 @@ inputs:
   playbookInputQuery: null
   required: false
   value: {}
+- description: Shadow Mode is a key safety mechanism. It ensures actions like isolate_endpoint
+    or disable_user are logged but not executed in test scenarios.
+  key: ShadowMode
+  playbookInputQuery: null
+  required: false
+  value:
+    simple: "true"
 name: SOC Eradication Plan - Terminate Process
+outputSections:
+- description: Generic group for outputs
+  name: General (Outputs group)
+  outputs:
+  - TerminatedProcessFromEndpoints
 outputs:
 - contextPath: TerminatedProcessFromEndpoints
   description: The terminated process from endpoint
@@ -924,8 +945,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "24"
@@ -943,12 +966,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: b5453c2d-1398-4f60-8059-a6f606a1df55
+      id: 57eecd13-3490-4c1b-87df-640f8d236242
       iscommand: false
       name: Shadow Run?
       type: condition
       version: -1
-    taskid: b5453c2d-1398-4f60-8059-a6f606a1df55
+    taskid: 57eecd13-3490-4c1b-87df-640f8d236242
     timertriggers: []
     type: condition
     view: |-
@@ -1001,8 +1024,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "26"
@@ -1020,12 +1045,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 6b22e8ac-7e3a-4293-8750-f63fcbca229d
+      id: 45617e9d-a50c-473b-bfa9-e934232bb8d7
       iscommand: false
       name: Shadow Run?
       type: condition
       version: -1
-    taskid: 6b22e8ac-7e3a-4293-8750-f63fcbca229d
+    taskid: 45617e9d-a50c-473b-bfa9-e934232bb8d7
     timertriggers: []
     type: condition
     view: |-
@@ -1082,7 +1107,7 @@ view: |-
     "paper": {
       "dimensions": {
         "height": 1590,
-        "width": 3867,
+        "width": 3866,
         "x": 50,
         "y": 50
       }
