@@ -3,16 +3,22 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 6.10.0
     isoverridable: false
-    itemVersion: ""
+    itemVersion: 1.0.0
     packID: ""
-    packName: ""
+    packName: SOC Common Playbooks
     prevname: ""
     toServerVersion: ""
 description: "This playbook receives an MD5 or a SHA256 hash and adds it to the block
   list in CrowdStrike Falcon. \nThe playbook uses the integration \"CrowdStrike Falcon\"."
 dirtyInputs: true
-adopted: true
 id: 'SOC CrowdStrike Falcon - Block File'
+inputSections:
+- description: Generic group for inputs
+  inputs:
+  - 'Severity '
+  - Hash
+  - ShadowMode
+  name: General (Inputs group)
 inputs:
 - description: 'The severity of the indicator (informational, low, medium, high and
     critical) '
@@ -26,7 +32,18 @@ inputs:
   playbookInputQuery: null
   required: false
   value: {}
+- description: Shadow Mode is a key safety mechanism. It ensures actions like isolate_endpoint
+    or disable_user are logged but not executed in test scenarios.
+  key: ShadowMode
+  playbookInputQuery: null
+  required: false
+  value:
+    simple: "true"
 name: SOC CrowdStrike Falcon - Block File
+outputSections:
+- description: Generic group for outputs
+  name: General (Outputs group)
+  outputs: []
 outputs: []
 sourceplaybookid: CrowdStrike Falcon - Block File
 starttaskid: "0"
@@ -419,8 +436,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "13"
@@ -438,12 +457,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 62dc9076-b102-4d9b-afe4-779f5a5b4b5d
+      id: cce15227-7228-4ea7-9bf0-c1b9c9b9971b
       iscommand: false
       name: Shadow Run?
       type: condition
       version: -1
-    taskid: 62dc9076-b102-4d9b-afe4-779f5a5b4b5d
+    taskid: cce15227-7228-4ea7-9bf0-c1b9c9b9971b
     timertriggers: []
     type: condition
     view: |-
@@ -496,8 +515,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "15"
@@ -515,12 +536,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 03beb2ea-b70a-4a57-8a3f-3d33d54547c0
+      id: aab46c5c-f2f8-4231-8381-215640c1c8ec
       iscommand: false
       name: Shadow Run?
       type: condition
       version: -1
-    taskid: 03beb2ea-b70a-4a57-8a3f-3d33d54547c0
+    taskid: aab46c5c-f2f8-4231-8381-215640c1c8ec
     timertriggers: []
     type: condition
     view: |-
@@ -581,7 +602,7 @@ view: |-
     "paper": {
       "dimensions": {
         "height": 1240,
-        "width": 2078.75,
+        "width": 2077.75,
         "x": 50,
         "y": 50
       }

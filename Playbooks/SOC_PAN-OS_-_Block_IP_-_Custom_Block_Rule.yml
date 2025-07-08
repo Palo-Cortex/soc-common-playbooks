@@ -3,16 +3,24 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 5.0.0
     isoverridable: false
-    itemVersion: 2.3.11
+    itemVersion: 1.0.0
     packID: ""
-    packName: PAN-OS by Palo Alto Networks
+    packName: SOC Common Playbooks
     prevname: ""
     toServerVersion: ""
 description: |-
   This playbook blocks IP addresses using Custom Block Rules in Palo Alto Networks Panorama or Firewall.
   The playbook receives malicious IP addresses as inputs, creates a custom bi-directional rule to block them, and commits the configuration.
-adopted: true
+dirtyInputs: true
 id: 'SOC PAN-OS - Block IP - Custom Block Rule'
+inputSections:
+- description: Generic group for inputs
+  inputs:
+  - LogForwarding
+  - IP
+  - AutoCommit
+  - ShadowMode
+  name: General (Inputs group)
 inputs:
 - description: Panorama log forwarding object name
   key: LogForwarding
@@ -44,7 +52,18 @@ inputs:
   required: false
   value:
     simple: "No"
+- description: Shadow Mode is a key safety mechanism. It ensures actions like isolate_endpoint
+    or disable_user are logged but not executed in test scenarios.
+  key: ShadowMode
+  playbookInputQuery: null
+  required: false
+  value:
+    simple: "true"
 name: SOC PAN-OS - Block IP - Custom Block Rule
+outputSections:
+- description: Generic group for outputs
+  name: General (Outputs group)
+  outputs: []
 outputs: []
 sourceplaybookid: PAN-OS - Block IP - Custom Block Rule
 starttaskid: "0"
@@ -509,7 +528,7 @@ tasks:
       id: b9ffab74-7ee9-4b98-8f9c-6a32cfdfae58
       iscommand: false
       name: SOC PAN-OS Commit Configuration v2
-      playbookId: 'SOC PAN-OS Commit Configuration v2'
+      playbookId: SOC PAN-OS Commit Configuration v2
       type: playbook
       version: -1
     taskid: b9ffab74-7ee9-4b98-8f9c-6a32cfdfae58
@@ -540,7 +559,7 @@ tasks:
       id: 68309d6a-c9f2-4165-8eb1-b517754d6c8a
       iscommand: false
       name: SOC PAN-OS Commit Configuration v2
-      playbookId: 'SOC PAN-OS Commit Configuration v2'
+      playbookId: SOC PAN-OS Commit Configuration v2
       type: playbook
       version: -1
     taskid: 68309d6a-c9f2-4165-8eb1-b517754d6c8a
@@ -559,8 +578,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "18"
@@ -578,12 +599,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 47c6c5c9-05a5-4cf3-bb09-aa7a91fc73f8
+      id: 8580095f-c402-4d1e-9308-a935b1165b0d
       iscommand: false
       name: Shadow Run?
       type: condition
       version: -1
-    taskid: 47c6c5c9-05a5-4cf3-bb09-aa7a91fc73f8
+    taskid: 8580095f-c402-4d1e-9308-a935b1165b0d
     timertriggers: []
     type: condition
     view: |-
@@ -641,7 +662,7 @@ view: |-
     "paper": {
       "dimensions": {
         "height": 1580,
-        "width": 1824,
+        "width": 1823,
         "x": 50,
         "y": 50
       }

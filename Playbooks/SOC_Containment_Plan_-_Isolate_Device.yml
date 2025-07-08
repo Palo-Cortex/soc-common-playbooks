@@ -13,8 +13,16 @@ description: |-
 
   This playbook is a sub-playbook within the containment plan playbook.
   The playbook isolates devices using core commands.
-adopted: true
+dirtyInputs: true
 id: 'SOC Containment Plan - Isolate Device'
+inputSections:
+- description: Generic group for inputs
+  inputs:
+  - HostContainment
+  - EndpointID
+  - EndpointHostName
+  - ShadowMode
+  name: General (Inputs group)
 inputs:
 - description: Whether to execute endpoint isolation.
   key: HostContainment
@@ -32,7 +40,19 @@ inputs:
   playbookInputQuery: null
   required: false
   value: {}
+- description: Shadow Mode is a key safety mechanism. It ensures actions like isolate_endpoint
+    or disable_user are logged but not executed in test scenarios.
+  key: ShadowMode
+  playbookInputQuery: null
+  required: false
+  value:
+    simple: "true"
 name: SOC Containment Plan - Isolate Device
+outputSections:
+- description: Generic group for outputs
+  name: General (Outputs group)
+  outputs:
+  - Core.Isolation.endpoint_id
 outputs:
 - contextPath: Core.Isolation.endpoint_id
   description: The isolated endpoint ID.
@@ -589,8 +609,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isFalse
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "27"
@@ -608,12 +630,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 9fc6ea03-2c13-40e1-a16b-ee40c5c34335
+      id: 21f06bfc-c6ce-4faf-9abb-38ebe82a0ef5
       iscommand: false
       name: Shadow Mode?
       type: condition
       version: -1
-    taskid: 9fc6ea03-2c13-40e1-a16b-ee40c5c34335
+    taskid: 21f06bfc-c6ce-4faf-9abb-38ebe82a0ef5
     timertriggers: []
     type: condition
     view: |-
@@ -670,7 +692,7 @@ view: |-
     "paper": {
       "dimensions": {
         "height": 1590,
-        "width": 1738.25,
+        "width": 1737.25,
         "x": 50,
         "y": 50
       }

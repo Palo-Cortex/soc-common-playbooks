@@ -3,9 +3,9 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 6.5.0
     isoverridable: false
-    itemVersion: 2.6.55
+    itemVersion: 1.0.0
     packID: ""
-    packName: Common Playbooks
+    packName: SOC Common Playbooks
     prevname: ""
     toServerVersion: ""
 description: |-
@@ -29,8 +29,17 @@ description: |-
   * Zoom IAM
   * Atlassian IAM
   * GitHub IAM.
-adopted: true
+dirtyInputs: true
 id: 'SOC Block Account - Generic v2'
+inputSections:
+- description: Generic group for inputs
+  inputs:
+  - Username
+  - Tag
+  - NamingConvention
+  - UserVerification
+  - ShadowMode
+  name: General (Inputs group)
 inputs:
 - description: Array of malicious usernames to block.
   key: Username
@@ -57,7 +66,19 @@ inputs:
   required: false
   value:
     simple: "True"
+- description: Shadow Mode is a key safety mechanism. It ensures actions like isolate_endpoint
+    or disable_user are logged but not executed in test scenarios.
+  key: ShadowMode
+  playbookInputQuery: null
+  required: false
+  value:
+    simple: "true"
 name: SOC Block Account - Generic v2
+outputSections:
+- description: Generic group for outputs
+  name: General (Outputs group)
+  outputs:
+  - Blocklist.Final
 outputs:
 - contextPath: Blocklist.Final
   description: Blocked accounts.
@@ -1143,10 +1164,10 @@ tasks:
       description: "Set a value in context under the key you entered. If no value
         is entered, the script doesn't do anything.\n\nThis automation runs using
         the default Limited User role, unless you explicitly change the permissions.\nFor
-        more information, see the section about permissions here:\n- For Cortex XSOAR
-        6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+        more information, see the section about permissions here:\n- For Cortex see
+        https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
       id: df5049a4-86a7-4d57-b10e-e3f8bac80f73
       iscommand: false
       name: Set Naming Convention to a key
@@ -1202,10 +1223,10 @@ tasks:
       description: "Set a value in context under the key you entered. If no value
         is entered, the script doesn't do anything.\n\nThis automation runs using
         the default Limited User role, unless you explicitly change the permissions.\nFor
-        more information, see the section about permissions here:\n- For Cortex XSOAR
-        6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+        more information, see the section about permissions here:\n- For Cortex see
+        https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
       id: e36814cf-df02-4ff5-91e3-4fd22e238607
       iscommand: false
       name: Identify Potential Sensitive Users
@@ -1255,10 +1276,10 @@ tasks:
       description: "Set a value in context under the key you entered. If no value
         is entered, the script doesn't do anything.\n\nThis automation runs using
         the default Limited User role, unless you explicitly change the permissions.\nFor
-        more information, see the section about permissions here:\n- For Cortex XSOAR
-        6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+        more information, see the section about permissions here:\n- For Cortex see
+        https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
       id: 0d444ff1-6628-4911-9456-3fe3d2ccdb1e
       iscommand: false
       name: Set User to a potential block list
@@ -1515,10 +1536,10 @@ tasks:
       description: "Set a value in context under the key you entered. If no value
         is entered, the script doesn't do anything.\n\nThis automation runs using
         the default Limited User role, unless you explicitly change the permissions.\nFor
-        more information, see the section about permissions here:\n- For Cortex XSOAR
-        6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+        more information, see the section about permissions here:\n- For Cortex see
+        https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
       id: 049a6856-e0ab-479e-b70a-4c198a14baba
       iscommand: false
       name: Set the final accounts list to be blocked
@@ -1564,10 +1585,10 @@ tasks:
       description: "Set a value in context under the key you entered. If no value
         is entered, the script doesn't do anything.\n\nThis automation runs using
         the default Limited User role, unless you explicitly change the permissions.\nFor
-        more information, see the section about permissions here:\n- For Cortex XSOAR
-        6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+        more information, see the section about permissions here:\n- For Cortex see
+        https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
       id: 052bc2b8-16df-45eb-911d-9aaa6d836978
       iscommand: false
       name: Set the final accounts list to be blocked
@@ -2626,8 +2647,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isTrue
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "81"
@@ -2645,12 +2668,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 82fbf20e-5692-4901-af33-5c0a646bc368
+      id: 845cbb40-f933-47f2-acd6-43d3aeeb45e6
       iscommand: false
       name: Shadow Mode?
       type: condition
       version: -1
-    taskid: 82fbf20e-5692-4901-af33-5c0a646bc368
+    taskid: 845cbb40-f933-47f2-acd6-43d3aeeb45e6
     timertriggers: []
     type: condition
     view: |-
@@ -2703,8 +2726,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isTrue
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "83"
@@ -2722,12 +2747,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: e8450e37-a933-4b70-8534-b2e1daf48ff8
+      id: f6217669-62cb-415b-a376-b7139702c4f0
       iscommand: false
       name: Shadow Mode?
       type: condition
       version: -1
-    taskid: e8450e37-a933-4b70-8534-b2e1daf48ff8
+    taskid: f6217669-62cb-415b-a376-b7139702c4f0
     timertriggers: []
     type: condition
     view: |-
@@ -2778,8 +2803,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isTrue
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "85"
@@ -2797,12 +2824,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: e170df0e-93bf-4ffd-8c39-4d22e878ad58
+      id: fb33a9be-ad2c-410a-98d4-54f8c43eb284
       iscommand: false
       name: Shadow Mode?
       type: condition
       version: -1
-    taskid: e170df0e-93bf-4ffd-8c39-4d22e878ad58
+    taskid: fb33a9be-ad2c-410a-98d4-54f8c43eb284
     timertriggers: []
     type: condition
     view: |-
@@ -2855,8 +2882,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isTrue
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "87"
@@ -2874,12 +2903,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 98dd3091-96bc-4e1e-8106-4e2a919ac093
+      id: 4398164b-7681-4801-a435-d3fecdb9a112
       iscommand: false
       name: Shadow Mode?
       type: condition
       version: -1
-    taskid: 98dd3091-96bc-4e1e-8106-4e2a919ac093
+    taskid: 4398164b-7681-4801-a435-d3fecdb9a112
     timertriggers: []
     type: condition
     view: |-
@@ -2932,8 +2961,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isTrue
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "89"
@@ -2951,12 +2982,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: d0d58815-de56-40b3-8dc3-6740b9b3fcc7
+      id: 83c5e457-c7b6-4a6e-ad20-8a84d07d0794
       iscommand: false
       name: Shadow Mode?
       type: condition
       version: -1
-    taskid: d0d58815-de56-40b3-8dc3-6740b9b3fcc7
+    taskid: 83c5e457-c7b6-4a6e-ad20-8a84d07d0794
     timertriggers: []
     type: condition
     view: |-
@@ -3009,8 +3040,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isTrue
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "91"
@@ -3028,12 +3061,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 13a5731a-87e9-41cb-8b8b-c4ff33a225cc
+      id: d07870bc-fc04-473e-845d-916bb3728213
       iscommand: false
       name: Shadow Mode?
       type: condition
       version: -1
-    taskid: 13a5731a-87e9-41cb-8b8b-c4ff33a225cc
+    taskid: d07870bc-fc04-473e-845d-916bb3728213
     timertriggers: []
     type: condition
     view: |-
@@ -3086,8 +3119,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isTrue
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "93"
@@ -3105,12 +3140,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 34fb1822-4247-473d-80fb-42c7e900acf9
+      id: c77102af-a868-43a9-b6a8-dc2f1a03000e
       iscommand: false
       name: Shadow Mode?
       type: condition
       version: -1
-    taskid: 34fb1822-4247-473d-80fb-42c7e900acf9
+    taskid: c77102af-a868-43a9-b6a8-dc2f1a03000e
     timertriggers: []
     type: condition
     view: |-
@@ -3200,8 +3235,10 @@ tasks:
       - - left:
             iscontext: true
             value:
-              simple: shadow_mode
+              simple: inputs.ShadowMode
           operator: isTrue
+          right:
+            value: {}
       label: "no"
     continueonerrortype: ""
     id: "96"
@@ -3219,12 +3256,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 575cd7e8-3a40-4ffb-8ea2-325fd920b89b
+      id: eef4c9c2-85fc-44d7-80a2-d46e61def5c5
       iscommand: false
       name: Shadow Mode?
       type: condition
       version: -1
-    taskid: 575cd7e8-3a40-4ffb-8ea2-325fd920b89b
+    taskid: eef4c9c2-85fc-44d7-80a2-d46e61def5c5
     timertriggers: []
     type: condition
     view: |-
@@ -3252,7 +3289,7 @@ view: |-
       "31_2_#default#": 0.27,
       "31_87_yes": 0.12,
       "32_2_#default#": 0.18,
-      "32_87_yes": 0.24,
+      "32_87_yes": 0.63,
       "36_2_#default#": 0.1,
       "37_2_#default#": 0.12,
       "43_44_yes": 0.49,
@@ -3280,7 +3317,7 @@ view: |-
     "paper": {
       "dimensions": {
         "height": 2090,
-        "width": 14551.25,
+        "width": 14550.25,
         "x": 50,
         "y": 50
       }

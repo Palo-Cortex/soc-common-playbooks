@@ -13,7 +13,6 @@ description: |-
 
   This playbook is a sub-playbook within the containment plan playbook.
   The playbook disables users by utilizing the sub-playbook "Block Account - Generic v2"
-adopted: true
 id: 'SOC Containment Plan - Disable Account'
 inputs:
 - description: Set to 'True' to disable the user account.
@@ -69,7 +68,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 290.5,
+          "x": 265,
           "y": 50
         }
       }
@@ -138,7 +137,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 676.25,
+          "x": 592.5,
           "y": 720
         }
       }
@@ -190,7 +189,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 290.5,
+          "x": 265,
           "y": 210
         }
       }
@@ -205,7 +204,7 @@ tasks:
       '#error#':
       - "19"
       '#none#':
-      - "20"
+      - "21"
     note: false
     quietmode: 0
     scriptarguments:
@@ -239,7 +238,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 531,
+          "x": 480,
           "y": 380
         }
       }
@@ -272,38 +271,50 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 531,
+          "x": 480,
           "y": 890
         }
       }
-  "20":
+  "21":
     continueonerrortype: ""
-    id: "20"
+    id: "21"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
     nexttasks:
       '#none#':
       - "8"
     note: false
     quietmode: 0
+    scriptarguments:
+      ShadowMode:
+        simple: ${shadow_mode}
+      Tag:
+        simple: Bad Account
+      UserVerification:
+        simple: "True"
     separatecontext: true
     skipunavailable: false
     task:
       brand: ""
-      id: 3be88c26-607a-4f06-8b05-2da248547ebb
+      id: dfba142c-0ea4-4492-9730-27e1713d893d
       iscommand: false
-      name: SOC Block Account - Generic v2
-      playbookId: SOC Block Account - Generic v2
+      name: SOC Block Account - Generic v2_copy
+      playbookId: 'SOC Block Account - Generic v2_copy'
       type: playbook
       version: -1
-    taskid: 3be88c26-607a-4f06-8b05-2da248547ebb
+    taskid: dfba142c-0ea4-4492-9730-27e1713d893d
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 676.25,
+          "x": 592.5,
           "y": 550
         }
       }
@@ -316,7 +327,7 @@ view: |-
     "paper": {
       "dimensions": {
         "height": 910,
-        "width": 1007.25,
+        "width": 922.5,
         "x": 50,
         "y": 50
       }
