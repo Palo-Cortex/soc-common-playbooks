@@ -1,12 +1,14 @@
+adopted: true
 contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 6.5.0
     isoverridable: false
-    itemVersion: 1.0.0
+    itemVersion: 1.0.2
     packID: ""
     packName: SOC Common Playbooks
     prevname: ""
+    supportedModules: []
     toServerVersion: ""
 description: |-
   This playbook blocks malicious usernames using all integrations that you have enabled.
@@ -104,6 +106,7 @@ tasks:
       id: cc38d57c-1f3a-4616-8fc3-b3d5b2beefb3
       iscommand: false
       name: ""
+      playbooktaskmissingcomponent: null
       version: -1
     taskid: cc38d57c-1f3a-4616-8fc3-b3d5b2beefb3
     timertriggers: []
@@ -130,6 +133,7 @@ tasks:
       id: 78bcaa68-2a3d-4805-8e25-1bee31249d8f
       iscommand: false
       name: Done
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 78bcaa68-2a3d-4805-8e25-1bee31249d8f
@@ -177,6 +181,7 @@ tasks:
       id: df7e57df-4f26-4b41-8552-0d4068792d13
       iscommand: false
       name: Block accounts
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: df7e57df-4f26-4b41-8552-0d4068792d13
@@ -219,6 +224,7 @@ tasks:
       id: 84a222c3-d83f-4d9c-8f75-605f9c1cd233
       iscommand: false
       name: Is there a username to block?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 84a222c3-d83f-4d9c-8f75-605f9c1cd233
@@ -262,6 +268,7 @@ tasks:
       id: feb648fa-bfc3-4641-bd37-a072be8a62c6
       iscommand: true
       name: PAN-OS - Register Tag to User
+      playbooktaskmissingcomponent: null
       script: '|||pan-os-register-user-tag'
       type: regular
       version: -1
@@ -305,6 +312,7 @@ tasks:
       id: 134ffe20-63fc-486a-8a79-685e3d206ae8
       iscommand: false
       name: Is there a Tag name to register?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 134ffe20-63fc-486a-8a79-685e3d206ae8
@@ -335,6 +343,7 @@ tasks:
       id: dd28a21a-8e77-4e94-8ebd-6b4dd2a40907
       iscommand: false
       name: OKTA
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: dd28a21a-8e77-4e94-8ebd-6b4dd2a40907
@@ -365,6 +374,7 @@ tasks:
       id: 253e9206-6499-4698-81bc-4f6b405723e9
       iscommand: false
       name: SailPoint
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 253e9206-6499-4698-81bc-4f6b405723e9
@@ -395,6 +405,7 @@ tasks:
       id: 4665f43b-c357-46ab-8658-1f5307d73e34
       iscommand: false
       name: AWS IAM
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 4665f43b-c357-46ab-8658-1f5307d73e34
@@ -425,6 +436,7 @@ tasks:
       id: 9f3e4789-ef65-4d8b-8142-b931aca2d1b8
       iscommand: false
       name: PingOne
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 9f3e4789-ef65-4d8b-8142-b931aca2d1b8
@@ -455,6 +467,7 @@ tasks:
       id: 5af0265d-f69a-47ef-8fdd-8be726ab8812
       iscommand: false
       name: Clarizen IAM
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 5af0265d-f69a-47ef-8fdd-8be726ab8812
@@ -485,6 +498,7 @@ tasks:
       id: 8170d464-f524-484a-8578-d2d5c6b44c24
       iscommand: false
       name: Envoy IAM
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 8170d464-f524-484a-8578-d2d5c6b44c24
@@ -515,6 +529,7 @@ tasks:
       id: 9426248c-bc57-4e2a-898c-333c705fe7c9
       iscommand: false
       name: ExceedLMS IAM
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 9426248c-bc57-4e2a-898c-333c705fe7c9
@@ -545,6 +560,7 @@ tasks:
       id: e3d46f19-bf96-4280-887d-c746b0e95976
       iscommand: false
       name: PAN-OS
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: e3d46f19-bf96-4280-887d-c746b0e95976
@@ -575,6 +591,7 @@ tasks:
       id: 00761e97-8a6e-48f4-85fb-d894509a2c17
       iscommand: false
       name: Microsoft Active Directory
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 00761e97-8a6e-48f4-85fb-d894509a2c17
@@ -612,6 +629,7 @@ tasks:
       id: ca29fc92-0b56-4eca-8fb4-285bf732a419
       iscommand: false
       name: Is OKTA Integration Enabled?
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -650,6 +668,7 @@ tasks:
       id: 692fc977-5dff-49fa-8ef9-4c0c53979786
       iscommand: false
       name: Is SailPoint Integration Enabled?
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -688,6 +707,7 @@ tasks:
       id: c00031c8-63dc-447a-8064-458b8b89c0b9
       iscommand: false
       name: Is AWS IAM Integration Enabled?
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -726,6 +746,7 @@ tasks:
       id: 1dfdb5b5-b388-49f8-8778-b631675b5228
       iscommand: false
       name: Is PingOne Integration Enabled
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -764,6 +785,7 @@ tasks:
       id: 1e40e759-f2e0-46f7-8c4c-e6c305ada2fe
       iscommand: false
       name: Is ClarizenIAM Integration Enabled?
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -802,6 +824,7 @@ tasks:
       id: e69ec334-a883-4519-8b53-2d12a380819d
       iscommand: false
       name: Is Envoy IAM Integration Enabled?
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -840,6 +863,7 @@ tasks:
       id: d7750a59-552e-4fbe-8d72-6a0dbf2c50b2
       iscommand: false
       name: Is ExceedLMS IAM Integration Enabled?
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -878,6 +902,7 @@ tasks:
       id: 07c0739c-dce7-426d-bd0e-36cf2739e43b
       iscommand: true
       name: IAM Disable User
+      playbooktaskmissingcomponent: null
       script: '|||iam-disable-user'
       type: regular
       version: -1
@@ -918,6 +943,7 @@ tasks:
       id: 57d86230-3c9a-4a8d-a8dd-f5993af9f4a0
       iscommand: true
       name: PingOne - Deactivate user
+      playbooktaskmissingcomponent: null
       script: '|||pingone-deactivate-user'
       type: regular
       version: -1
@@ -958,6 +984,7 @@ tasks:
       id: 92e96eb1-eeb9-4501-b5fc-f399538003b4
       iscommand: true
       name: SailPoint-Disable account
+      playbooktaskmissingcomponent: null
       script: '|||identityiq-disable-account'
       type: regular
       version: -1
@@ -996,6 +1023,7 @@ tasks:
       id: 90a2adf8-4f57-4b53-896d-44bddd4d064c
       iscommand: false
       name: Is PAN-OS/Panorama Integration Enabled?
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -1034,6 +1062,7 @@ tasks:
       id: e31ad79c-5806-41f0-839b-f896c860d3cc
       iscommand: false
       name: Is Active Directory Integration Enabled?
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -1080,6 +1109,7 @@ tasks:
       id: c34085c0-1974-4153-8f36-fb22e4ba0c4e
       iscommand: false
       name: Is User Verification Required?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: c34085c0-1974-4153-8f36-fb22e4ba0c4e
@@ -1110,6 +1140,7 @@ tasks:
       id: eda8a397-b0f5-4cb8-85a6-804bbbf59244
       iscommand: false
       name: No User to be blocked
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: eda8a397-b0f5-4cb8-85a6-804bbbf59244
@@ -1171,6 +1202,7 @@ tasks:
       id: df5049a4-86a7-4d57-b10e-e3f8bac80f73
       iscommand: false
       name: Set Naming Convention to a key
+      playbooktaskmissingcomponent: null
       script: SetAndHandleEmpty
       type: regular
       version: -1
@@ -1230,6 +1262,7 @@ tasks:
       id: e36814cf-df02-4ff5-91e3-4fd22e238607
       iscommand: false
       name: Identify Potential Sensitive Users
+      playbooktaskmissingcomponent: null
       script: SetAndHandleEmpty
       type: regular
       version: -1
@@ -1283,6 +1316,7 @@ tasks:
       id: 0d444ff1-6628-4911-9456-3fe3d2ccdb1e
       iscommand: false
       name: Set User to a potential block list
+      playbooktaskmissingcomponent: null
       script: SetAndHandleEmpty
       type: regular
       version: -1
@@ -1325,6 +1359,7 @@ tasks:
       id: 39b3cf6c-5757-447b-8188-9ead6e21a445
       iscommand: false
       name: Check if there are any sensitive users to block
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 39b3cf6c-5757-447b-8188-9ead6e21a445
@@ -1406,6 +1441,7 @@ tasks:
       id: 6ab46eeb-8460-44ab-8b96-0c6a35e38581
       iscommand: false
       name: Ask the user for verification [Sensitive Users]
+      playbooktaskmissingcomponent: null
       type: collection
       version: -1
     taskid: 6ab46eeb-8460-44ab-8b96-0c6a35e38581
@@ -1487,6 +1523,7 @@ tasks:
       id: 4d484404-eefc-4cf6-8f56-abdae89d61e6
       iscommand: false
       name: Ask the user for verification [without Sensitive Users]
+      playbooktaskmissingcomponent: null
       type: collection
       version: -1
     taskid: 4d484404-eefc-4cf6-8f56-abdae89d61e6
@@ -1543,6 +1580,7 @@ tasks:
       id: 049a6856-e0ab-479e-b70a-4c198a14baba
       iscommand: false
       name: Set the final accounts list to be blocked
+      playbooktaskmissingcomponent: null
       script: SetAndHandleEmpty
       type: regular
       version: -1
@@ -1592,6 +1630,7 @@ tasks:
       id: 052bc2b8-16df-45eb-911d-9aaa6d836978
       iscommand: false
       name: Set the final accounts list to be blocked
+      playbooktaskmissingcomponent: null
       script: SetAndHandleEmpty
       type: regular
       version: -1
@@ -1631,6 +1670,7 @@ tasks:
       id: 28669bb1-b103-4c48-a7f1-232a3ffb156a
       iscommand: true
       name: Active Directory - Disable Account
+      playbooktaskmissingcomponent: null
       script: Active Directory Query v2|||ad-disable-account
       type: regular
       version: -1
@@ -1682,6 +1722,7 @@ tasks:
       id: 64ddf917-048c-444b-8fea-b9529a3ad0b3
       iscommand: false
       name: Is Username selected?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 64ddf917-048c-444b-8fea-b9529a3ad0b3
@@ -1719,6 +1760,7 @@ tasks:
       id: 8791822e-5e1e-4b28-82d9-a822aa17108d
       iscommand: false
       name: Is Slack IAM Integration Enabled?
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -1750,6 +1792,7 @@ tasks:
       id: e2aaa6e8-de1f-4399-8e89-2321fe4fa030
       iscommand: false
       name: Slack IAM
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: e2aaa6e8-de1f-4399-8e89-2321fe4fa030
@@ -1787,6 +1830,7 @@ tasks:
       id: e8b7f7a8-2b9c-44ef-8eff-ceb494799432
       iscommand: false
       name: Is ServiceNow IAM Integration Enabled?
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -1818,6 +1862,7 @@ tasks:
       id: 6a694bcc-610d-46c4-8d22-dec644076b78
       iscommand: false
       name: ServiceNow IAM
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 6a694bcc-610d-46c4-8d22-dec644076b78
@@ -1855,6 +1900,7 @@ tasks:
       id: 6345f42c-51a8-401f-8099-ecea5a0403c4
       iscommand: false
       name: Is Salesforce IAM Integration Enabled?
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -1886,6 +1932,7 @@ tasks:
       id: dba2b9c1-cb47-41a9-8386-1de15a47de2d
       iscommand: false
       name: Salesforce IAM
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: dba2b9c1-cb47-41a9-8386-1de15a47de2d
@@ -1923,6 +1970,7 @@ tasks:
       id: c6cb894b-65a5-4e85-87f4-debe4d8cdbfe
       iscommand: false
       name: Is PrismaCloud IAM Integration Enabled?
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -1954,6 +2002,7 @@ tasks:
       id: de7c1b4f-0ecc-4782-8346-50b679dac66b
       iscommand: false
       name: PrismaCloud IAM
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: de7c1b4f-0ecc-4782-8346-50b679dac66b
@@ -1991,6 +2040,7 @@ tasks:
       id: 1a19cd62-eafa-4b66-80aa-b397a439f52c
       iscommand: false
       name: Is Microsoft Graph User Integration Enabled?
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -2022,6 +2072,7 @@ tasks:
       id: 31d15f37-d89d-4d09-8009-2a60c76d0b5e
       iscommand: false
       name: Microsoft Graph User
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 31d15f37-d89d-4d09-8009-2a60c76d0b5e
@@ -2059,6 +2110,7 @@ tasks:
       id: 31592372-486c-4648-8376-8889941df6c8
       iscommand: false
       name: Is Zoom IAM Integration Enabled?
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -2090,6 +2142,7 @@ tasks:
       id: b98574a0-93fc-423b-87e1-bf888db3881a
       iscommand: false
       name: Zoom IAM
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: b98574a0-93fc-423b-87e1-bf888db3881a
@@ -2127,6 +2180,7 @@ tasks:
       id: deb7235b-0e73-4aa7-8e3e-2b07ad73daf9
       iscommand: false
       name: Is Atlassian IAM Integration Enabled?
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -2158,6 +2212,7 @@ tasks:
       id: 5e5c6e1e-8c3a-42b8-85bd-3646e9b01531
       iscommand: false
       name: Atlassian IAM
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 5e5c6e1e-8c3a-42b8-85bd-3646e9b01531
@@ -2199,6 +2254,7 @@ tasks:
       id: 47bb4936-7a4e-47ff-8941-cc7eb99f9a97
       iscommand: true
       name: Microsoft Graph User - Disable Account
+      playbooktaskmissingcomponent: null
       script: '|||msgraph-user-account-disable'
       type: regular
       version: -1
@@ -2237,6 +2293,7 @@ tasks:
       id: 909312b6-5f6e-451c-83dd-a00e31c49197
       iscommand: false
       name: Is GitHub IAM Integration Enabled?
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -2268,6 +2325,7 @@ tasks:
       id: 4f6321ef-dfb9-41fd-8a72-61bea5cff007
       iscommand: false
       name: GitHub IAM
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 4f6321ef-dfb9-41fd-8a72-61bea5cff007
@@ -2305,6 +2363,7 @@ tasks:
       id: a274143d-2455-4679-8064-41a6cc01e1be
       iscommand: false
       name: Is Google Workspace Admin Integration Enabled?
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -2336,6 +2395,7 @@ tasks:
       id: fa1e6574-7969-4b44-8593-b2244060cebe
       iscommand: false
       name: Google Workspace Admin
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: fa1e6574-7969-4b44-8593-b2244060cebe
@@ -2377,6 +2437,7 @@ tasks:
       id: c7d416d6-34d8-4be6-99b4-13c1389b1903
       iscommand: true
       name: Google Workspace Admin - Disable Account
+      playbooktaskmissingcomponent: null
       script: '|||gsuite-user-update'
       type: regular
       version: -1
@@ -2419,6 +2480,7 @@ tasks:
       id: e2037284-defb-4b0f-851d-2e84968dfb74
       iscommand: true
       name: Get Account IDs From SailPoint
+      playbooktaskmissingcomponent: null
       script: '|||identityiq-get-accounts'
       type: regular
       version: -1
@@ -2465,6 +2527,7 @@ tasks:
       id: 10e07286-2f7f-4c5c-853f-2578ace53c46
       iscommand: true
       name: Active Directory - Get User
+      playbooktaskmissingcomponent: null
       script: '|||ad-get-user'
       type: regular
       version: -1
@@ -2509,6 +2572,7 @@ tasks:
       id: 419df6f0-2416-4a48-8124-eb64ce5da93a
       iscommand: false
       name: Does the username exist?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 419df6f0-2416-4a48-8124-eb64ce5da93a
@@ -2554,6 +2618,7 @@ tasks:
       id: aee0b881-a062-4089-a6d4-bd644fb37ca9
       iscommand: true
       name: Microsoft Graph User - Get User
+      playbooktaskmissingcomponent: null
       script: '|||msgraph-user-get'
       type: regular
       version: -1
@@ -2598,6 +2663,7 @@ tasks:
       id: 6a4ebfcb-e506-4333-81b5-8889065e2fbe
       iscommand: false
       name: Does the username exist?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 6a4ebfcb-e506-4333-81b5-8889065e2fbe
@@ -2629,6 +2695,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
+      playbooktaskmissingcomponent: null
       type: playbook
       version: -1
     taskid: 0a369ee3-9030-4b1e-86ad-e0cbbcdc1f41
@@ -2671,6 +2738,7 @@ tasks:
       id: 845cbb40-f933-47f2-acd6-43d3aeeb45e6
       iscommand: false
       name: Shadow Mode?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 845cbb40-f933-47f2-acd6-43d3aeeb45e6
@@ -2707,6 +2775,7 @@ tasks:
       id: cb1e265b-da93-4d3b-82a4-ea2c6eac99a6
       iscommand: false
       name: Print To WarRoom
+      playbooktaskmissingcomponent: null
       script: Print
       type: regular
       version: -1
@@ -2750,6 +2819,7 @@ tasks:
       id: f6217669-62cb-415b-a376-b7139702c4f0
       iscommand: false
       name: Shadow Mode?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: f6217669-62cb-415b-a376-b7139702c4f0
@@ -2784,6 +2854,7 @@ tasks:
       id: 778c4667-f24f-4edf-b833-720b07aaf820
       iscommand: false
       name: Print To WarRoom
+      playbooktaskmissingcomponent: null
       script: Print
       type: regular
       version: -1
@@ -2827,6 +2898,7 @@ tasks:
       id: fb33a9be-ad2c-410a-98d4-54f8c43eb284
       iscommand: false
       name: Shadow Mode?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: fb33a9be-ad2c-410a-98d4-54f8c43eb284
@@ -2863,6 +2935,7 @@ tasks:
       id: 4b55fc07-adf7-4972-9432-a636dd52cef8
       iscommand: false
       name: Print To WarRoom
+      playbooktaskmissingcomponent: null
       script: Print
       type: regular
       version: -1
@@ -2906,6 +2979,7 @@ tasks:
       id: 4398164b-7681-4801-a435-d3fecdb9a112
       iscommand: false
       name: Shadow Mode?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 4398164b-7681-4801-a435-d3fecdb9a112
@@ -2942,6 +3016,7 @@ tasks:
       id: 2baab7d5-5652-4220-8d42-1ec8d2f53de0
       iscommand: false
       name: Print To WarRoom
+      playbooktaskmissingcomponent: null
       script: Print
       type: regular
       version: -1
@@ -2985,6 +3060,7 @@ tasks:
       id: 83c5e457-c7b6-4a6e-ad20-8a84d07d0794
       iscommand: false
       name: Shadow Mode?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 83c5e457-c7b6-4a6e-ad20-8a84d07d0794
@@ -3021,6 +3097,7 @@ tasks:
       id: 61549429-2373-46a9-9201-c4712420a6aa
       iscommand: false
       name: Print To WarRoom
+      playbooktaskmissingcomponent: null
       script: Print
       type: regular
       version: -1
@@ -3064,6 +3141,7 @@ tasks:
       id: d07870bc-fc04-473e-845d-916bb3728213
       iscommand: false
       name: Shadow Mode?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: d07870bc-fc04-473e-845d-916bb3728213
@@ -3100,6 +3178,7 @@ tasks:
       id: 86683b6b-462b-4e4d-955b-28e376ec57d1
       iscommand: false
       name: Print To WarRoom
+      playbooktaskmissingcomponent: null
       script: Print
       type: regular
       version: -1
@@ -3143,6 +3222,7 @@ tasks:
       id: c77102af-a868-43a9-b6a8-dc2f1a03000e
       iscommand: false
       name: Shadow Mode?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: c77102af-a868-43a9-b6a8-dc2f1a03000e
@@ -3179,6 +3259,7 @@ tasks:
       id: 910bb8f4-c5c8-439b-b6c9-1dbbbce600e0
       iscommand: false
       name: Print To WarRoom
+      playbooktaskmissingcomponent: null
       script: Print
       type: regular
       version: -1
@@ -3216,6 +3297,7 @@ tasks:
       id: 23be157b-eea5-4246-9f1f-1271b9f5f08c
       iscommand: false
       name: Print To WarRoom
+      playbooktaskmissingcomponent: null
       script: Print
       type: regular
       version: -1
@@ -3259,6 +3341,7 @@ tasks:
       id: eef4c9c2-85fc-44d7-80a2-d46e61def5c5
       iscommand: false
       name: Shadow Mode?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: eef4c9c2-85fc-44d7-80a2-d46e61def5c5
@@ -3323,4 +3406,3 @@ view: |-
       }
     }
   }
-adopted: true

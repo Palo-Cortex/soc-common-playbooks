@@ -1,12 +1,14 @@
+adopted: true
 contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 6.6.0
     isoverridable: false
-    itemVersion: 1.0.0
+    itemVersion: 1.0.2
     packID: ""
     packName: SOC Common Playbooks
     prevname: ""
+    supportedModules: []
     toServerVersion: ""
 description: |-
   ## Containment Plan - Disable Account
@@ -61,6 +63,7 @@ tasks:
       id: 9fb1ed1d-c22c-48bb-8a3c-4d58bbca6347
       iscommand: false
       name: ""
+      playbooktaskmissingcomponent: null
       version: -1
     taskid: 9fb1ed1d-c22c-48bb-8a3c-4d58bbca6347
     timertriggers: []
@@ -87,6 +90,7 @@ tasks:
       id: 4d874c50-7a1f-489c-8397-3fc3304eeea6
       iscommand: false
       name: Done
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 4d874c50-7a1f-489c-8397-3fc3304eeea6
@@ -128,6 +132,7 @@ tasks:
       id: 0cd4f12b-8840-4d35-ae5a-e6b78e2b9d06
       iscommand: true
       name: Set disabled users to the Alert context
+      playbooktaskmissingcomponent: null
       script: Builtin|||setParentIncidentContext
       type: regular
       version: -1
@@ -181,6 +186,7 @@ tasks:
       id: 073f607c-a924-43c1-8852-d480e1454fdc
       iscommand: false
       name: Should disable the account?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 073f607c-a924-43c1-8852-d480e1454fdc
@@ -229,6 +235,7 @@ tasks:
       id: bed0b1e1-e71f-4947-a7d6-4c97d6e5bcd6
       iscommand: false
       name: Set users to disable
+      playbooktaskmissingcomponent: null
       script: SetAndHandleEmpty
       type: regular
       version: -1
@@ -263,6 +270,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
+      playbooktaskmissingcomponent: null
       type: playbook
       version: -1
     taskid: 396c5310-aca1-4a2d-862c-926e3568e60f
@@ -298,17 +306,41 @@ tasks:
         simple: Bad Account
       UserVerification:
         simple: "True"
+      Username:
+        simple: ${inputs.Username}
     separatecontext: true
     skipunavailable: false
     task:
       brand: ""
-      id: dfba142c-0ea4-4492-9730-27e1713d893d
+      description: |-
+        This playbook blocks malicious usernames using all integrations that you have enabled.
+
+        Supported integrations for this playbook:
+        * Active Directory
+        * PAN-OS - This requires PAN-OS 9.1 or higher.
+        * SailPoint
+        * PingOne
+        * AWS IAM
+        * Clarizen IAM
+        * Envoy IAM
+        * ExceedLMS IAM
+        * Okta
+        * Microsoft Graph User (Azure Active Directory Users)
+        * Google Workspace Admin
+        * Slack IAM
+        * ServiceNow IAM
+        * Prisma Cloud IAM
+        * Zoom IAM
+        * Atlassian IAM
+        * GitHub IAM.
+      id: 9913e7e1-7ea0-4a88-b462-f25a56774045
       iscommand: false
       name: SOC Block Account - Generic v2
-      playbookId: 'SOC Block Account - Generic v2'
+      playbookId: SOC Block Account - Generic v2
+      playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: dfba142c-0ea4-4492-9730-27e1713d893d
+    taskid: 9913e7e1-7ea0-4a88-b462-f25a56774045
     timertriggers: []
     type: playbook
     view: |-
@@ -333,4 +365,3 @@ view: |-
       }
     }
   }
-adopted: true
