@@ -4,7 +4,7 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 6.6.0
     isoverridable: false
-    itemVersion: 1.0.0
+    itemVersion: 1.0.3
     packID: ""
     packName: SOC Malware Investigation Response
     prevname: ""
@@ -17,7 +17,7 @@ description: "This playbook handles the main containment actions available with 
   playbook supports only Okta)\n\nNote: The playbook inputs enable manipulating the
   execution flow. Read the input descriptions for details."
 dirtyInputs: true
-id: SOC Containment Plan
+id: 'SOC Containment Plan'
 inputSections:
 - description: Generic group for inputs
   inputs:
@@ -39,6 +39,7 @@ inputSections:
   - UserVerification
   - AutoBlockIndicators
   - ShadowMode
+  - Hostname
   name: General (Inputs group)
 inputs:
 - description: |-
@@ -154,6 +155,11 @@ inputs:
   required: false
   value:
     simple: "True"
+- description: ""
+  key: Hostname
+  playbookInputQuery: null
+  required: false
+  value: {}
 name: SOC Containment Plan
 outputSections:
 - description: Generic group for outputs
@@ -178,6 +184,7 @@ sourceplaybookid: Containment Plan
 starttaskid: "0"
 tags:
 - SOC
+- SOC_Framework
 - Containment
 tasks:
   "0":
@@ -195,12 +202,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 0753627f-b711-432a-8456-fc81965204dd
+      id: 8aa2ff75-9b37-45eb-8c00-1233cf5410ac
       iscommand: false
       name: ""
       playbooktaskmissingcomponent: null
       version: -1
-    taskid: 0753627f-b711-432a-8456-fc81965204dd
+    taskid: 8aa2ff75-9b37-45eb-8c00-1233cf5410ac
     timertriggers: []
     type: start
     view: |-
@@ -225,13 +232,13 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 86a5c97b-50a1-4834-879f-ddc196aec69c
+      id: 585cb24c-cfe1-45cd-8c5d-370621442364
       iscommand: false
       name: Isolate Device
       playbooktaskmissingcomponent: null
       type: title
       version: -1
-    taskid: 86a5c97b-50a1-4834-879f-ddc196aec69c
+    taskid: 585cb24c-cfe1-45cd-8c5d-370621442364
     timertriggers: []
     type: title
     view: |-
@@ -256,13 +263,13 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 7f359368-0d74-42ab-89bd-7d1d30cf9ccc
+      id: abb87f28-a965-4d8d-8069-eb635815bb13
       iscommand: false
       name: Disable Account
       playbooktaskmissingcomponent: null
       type: title
       version: -1
-    taskid: 7f359368-0d74-42ab-89bd-7d1d30cf9ccc
+    taskid: abb87f28-a965-4d8d-8069-eb635815bb13
     timertriggers: []
     type: title
     view: |-
@@ -287,13 +294,13 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 11e94682-bca6-454e-8545-d401307edf14
+      id: ed18bff1-e327-4889-85e8-65d66ff9ef5a
       iscommand: false
       name: Quarantine File
       playbooktaskmissingcomponent: null
       type: title
       version: -1
-    taskid: 11e94682-bca6-454e-8545-d401307edf14
+    taskid: ed18bff1-e327-4889-85e8-65d66ff9ef5a
     timertriggers: []
     type: title
     view: |-
@@ -318,13 +325,13 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 19ccc675-b517-4dae-8650-2ae9ddf56d9b
+      id: 1784b84c-0c06-44ae-8230-83edc6deccba
       iscommand: false
       name: Block Indicators
       playbooktaskmissingcomponent: null
       type: title
       version: -1
-    taskid: 19ccc675-b517-4dae-8650-2ae9ddf56d9b
+    taskid: 1784b84c-0c06-44ae-8230-83edc6deccba
     timertriggers: []
     type: title
     view: |-
@@ -349,13 +356,13 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: d75d1322-2df4-4f83-8936-aa16317d2b7b
+      id: f495b99b-b851-438c-8fc8-0db9145c81a2
       iscommand: false
       name: Clear User Sessions
       playbooktaskmissingcomponent: null
       type: title
       version: -1
-    taskid: d75d1322-2df4-4f83-8936-aa16317d2b7b
+    taskid: f495b99b-b851-438c-8fc8-0db9145c81a2
     timertriggers: []
     type: title
     view: |-
@@ -398,13 +405,13 @@ tasks:
       description: |+
         Whether to perform containment actions automatically or manually.
 
-      id: 73743ed9-71fe-4ed7-827a-6c34942eb744
+      id: c69a7bbb-62d0-447a-8184-87aea4d7c440
       iscommand: false
       name: Should containment automatically?
       playbooktaskmissingcomponent: null
       type: condition
       version: -1
-    taskid: 73743ed9-71fe-4ed7-827a-6c34942eb744
+    taskid: c69a7bbb-62d0-447a-8184-87aea4d7c440
     timertriggers: []
     type: condition
     view: |-
@@ -622,13 +629,13 @@ tasks:
     task:
       brand: ""
       description: Select which indicators to block.
-      id: 783e6776-2671-46fb-8d13-109114ee1393
+      id: 6b328ab7-5553-4c6b-86d3-ca365bf5766d
       iscommand: false
       name: Which containment actions would you like to perform?
       playbooktaskmissingcomponent: null
       type: collection
       version: -1
-    taskid: 783e6776-2671-46fb-8d13-109114ee1393
+    taskid: 6b328ab7-5553-4c6b-86d3-ca365bf5766d
     timertriggers: []
     type: collection
     view: |-
@@ -672,14 +679,14 @@ tasks:
         concatenated using the AND condition (OR is not supported). Maximum result
         set size is 100. Offset is the zero-based number of endpoints from the start
         of the result set (start by counting from 0).
-      id: 91308b20-276f-436e-8049-f44c403d9bfb
+      id: 03d1b8b6-1f1c-406f-b610-dc4f20236cce
       iscommand: true
       name: Get endpoint info
       playbooktaskmissingcomponent: null
       script: '|||core-get-endpoints'
       type: regular
       version: -1
-    taskid: 91308b20-276f-436e-8049-f44c403d9bfb
+    taskid: 03d1b8b6-1f1c-406f-b610-dc4f20236cce
     timertriggers: []
     type: regular
     view: |-
@@ -708,13 +715,13 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 4d9a6dbb-e574-4736-8175-684b02ec980d
+      id: c468a69f-b7e5-4fdc-8ea5-c1b5d6710a2e
       iscommand: false
       name: Containment
       playbooktaskmissingcomponent: null
       type: title
       version: -1
-    taskid: 4d9a6dbb-e574-4736-8175-684b02ec980d
+    taskid: c468a69f-b7e5-4fdc-8ea5-c1b5d6710a2e
     timertriggers: []
     type: title
     view: |-
@@ -736,13 +743,13 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 5b2112e4-5cb5-4387-8d4d-ed4829dcf12b
+      id: a8f6c601-67bc-4dfd-8c09-008797b89324
       iscommand: false
       name: Done
       playbooktaskmissingcomponent: null
       type: title
       version: -1
-    taskid: 5b2112e4-5cb5-4387-8d4d-ed4829dcf12b
+    taskid: a8f6c601-67bc-4dfd-8c09-008797b89324
     timertriggers: []
     type: title
     view: |-
@@ -797,14 +804,14 @@ tasks:
     task:
       brand: ""
       description: Set a value in context under the key you entered.
-      id: cd9d2acb-7de7-4e81-87b0-39dadbda1651
+      id: 998d44d8-1e99-417c-9499-6f4d81fbc626
       iscommand: false
       name: Set Process list
       playbooktaskmissingcomponent: null
       script: Set
       type: regular
       version: -1
-    taskid: cd9d2acb-7de7-4e81-87b0-39dadbda1651
+    taskid: 998d44d8-1e99-417c-9499-6f4d81fbc626
     timertriggers: []
     type: regular
     view: |-
@@ -849,13 +856,13 @@ tasks:
     task:
       brand: ""
       description: Check if the file path and file hash are defined.
-      id: cbed1d20-561c-4626-8967-9088a8dc9ab5
+      id: 4541881d-148b-4360-83d3-c66c78b3d624
       iscommand: false
       name: The file path and file hash defined?
       playbooktaskmissingcomponent: null
       type: condition
       version: -1
-    taskid: cbed1d20-561c-4626-8967-9088a8dc9ab5
+    taskid: 4541881d-148b-4360-83d3-c66c78b3d624
     timertriggers: []
     type: condition
     view: |-
@@ -882,14 +889,14 @@ tasks:
     skipunavailable: true
     task:
       brand: ""
-      id: 8542fc1f-2351-44d8-83e2-d9c4f783c708
+      id: aced94f7-fbd0-45d2-a5b7-73ea951d0758
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 8542fc1f-2351-44d8-83e2-d9c4f783c708
+    taskid: aced94f7-fbd0-45d2-a5b7-73ea951d0758
     timertriggers: []
     type: playbook
     view: |-
@@ -919,7 +926,7 @@ tasks:
       UserContainment:
         simple: "True"
       UserVerification:
-        simple: ${inputs.ShadowMode}
+        simple: "True"
       Username:
         simple: ${inputs.Username}
     separatecontext: true
@@ -931,14 +938,14 @@ tasks:
 
         This playbook is a sub-playbook within the containment plan playbook.
         The playbook disables users by utilizing the sub-playbook "Block Account - Generic v2"
-      id: 9146a894-26ef-45e5-96e0-9d90eba439c0
+      id: 284389c2-390e-4ba5-ac67-a93f5a50f9ba
       iscommand: false
       name: SOC Containment Plan - Disable Account
       playbookId: SOC Containment Plan - Disable Account
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 9146a894-26ef-45e5-96e0-9d90eba439c0
+    taskid: 284389c2-390e-4ba5-ac67-a93f5a50f9ba
     timertriggers: []
     type: playbook
     view: |-
@@ -965,6 +972,8 @@ tasks:
     note: false
     quietmode: 0
     scriptarguments:
+      EndpointHostName:
+        simple: ${inputs.Hostname}
       EndpointID:
         simple: ${inputs.EndpointID}
       HostContainment:
@@ -980,14 +989,14 @@ tasks:
 
         This playbook is a sub-playbook within the containment plan playbook.
         The playbook isolates devices using core commands.
-      id: d6c10b44-ae9a-4312-b84e-e04926b629b7
+      id: 3ee128ef-f98a-4212-b1be-ab616ec1cce9
       iscommand: false
       name: SOC Containment Plan - Isolate Device
       playbookId: SOC Containment Plan - Isolate Device
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: d6c10b44-ae9a-4312-b84e-e04926b629b7
+    taskid: 3ee128ef-f98a-4212-b1be-ab616ec1cce9
     timertriggers: []
     type: playbook
     view: |-
@@ -1019,7 +1028,7 @@ tasks:
       IAMUserDomain:
         simple: ${inputs.IAMUserDomain}
       ShadowMode:
-        simple: ${inputs.ShadowMode}
+        simple: "true"
       Username:
         simple: ${inputs.Username}
     separatecontext: true
@@ -1031,14 +1040,14 @@ tasks:
 
         This playbook is a sub-playbook within the containment plan playbook.
         The playbook uses the 'Okta v2' and 'MSGraph User' integrations to clear user sessions.
-      id: 94a294c6-70e6-46fb-93a2-40a1f76564ea
+      id: db9bfcb6-a083-4640-b3fa-663eef655b91
       iscommand: false
       name: SOC Containment Plan - Clear User Sessions
       playbookId: SOC Containment Plan - Clear User Sessions
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 94a294c6-70e6-46fb-93a2-40a1f76564ea
+    taskid: db9bfcb6-a083-4640-b3fa-663eef655b91
     timertriggers: []
     type: playbook
     view: |-
@@ -1068,7 +1077,7 @@ tasks:
       AutoBlockIndicators:
         simple: "True"
       AutoContainment:
-        simple: ${inputs.AutoContainment}
+        simple: "True"
       BlockIndicators:
         simple: "True"
       Domain:
@@ -1102,14 +1111,14 @@ tasks:
 
         1. It adds the malicious hashes into the XSIAM hash block list
         2. It utilizes the sub-playbook "Block Indicators - Generic v3"
-      id: bc2c52fe-9096-4523-b77b-c9732cbcb12d
+      id: cc35ff2f-f8b9-404e-932c-a45d42d91943
       iscommand: false
       name: SOC Containment Plan - Block Indicators
       playbookId: SOC Containment Plan - Block Indicators
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: bc2c52fe-9096-4523-b77b-c9732cbcb12d
+    taskid: cc35ff2f-f8b9-404e-932c-a45d42d91943
     timertriggers: []
     type: playbook
     view: |-
@@ -1137,7 +1146,7 @@ tasks:
     quietmode: 0
     scriptarguments:
       AutoContainment:
-        simple: ${inputs.AutoContainment}
+        simple: "True"
       EndpointID:
         simple: ${inputs.EndpointID}
       FileContainment:
@@ -1159,14 +1168,14 @@ tasks:
 
         This playbook is a sub-playbook within the containment plan playbook.
         The playbook quarantines files using core commands.
-      id: 4ce75c0b-3d57-47e9-a83a-4cf8aaca6075
+      id: d4871d7b-437b-4ec6-87be-7ce7091ede6c
       iscommand: false
       name: SOC Containment Plan - Quarantine File
       playbookId: SOC Containment Plan - Quarantine File
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 4ce75c0b-3d57-47e9-a83a-4cf8aaca6075
+    taskid: d4871d7b-437b-4ec6-87be-7ce7091ede6c
     timertriggers: []
     type: playbook
     view: |-
