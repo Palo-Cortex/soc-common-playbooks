@@ -17,7 +17,7 @@ description: |-
 
   Note: The playbook inputs enable manipulating the execution flow; read the input descriptions for details.
 dirtyInputs: true
-id: 'SOC Recovery Plan'
+id: SOC Recovery Plan
 inputSections:
 - description: Generic group for inputs
   inputs:
@@ -84,12 +84,12 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 6664776c-7209-42a0-8272-5f7f66756511
+      id: 14722f3d-41b7-4ecd-833b-359de3d2c5b1
       iscommand: false
       name: ""
       playbooktaskmissingcomponent: null
       version: -1
-    taskid: 6664776c-7209-42a0-8272-5f7f66756511
+    taskid: 14722f3d-41b7-4ecd-833b-359de3d2c5b1
     timertriggers: []
     type: start
     view: |-
@@ -130,13 +130,13 @@ tasks:
     task:
       brand: ""
       description: Whether to unisolate the endpoint.
-      id: 82bb4625-493c-4e79-8ba2-9ded7a609000
+      id: 4a47fa11-6ee1-4808-8e67-c6893fcda29f
       iscommand: false
       name: Should unisolate the endpoint?
       playbooktaskmissingcomponent: null
       type: condition
       version: -1
-    taskid: 82bb4625-493c-4e79-8ba2-9ded7a609000
+    taskid: 4a47fa11-6ee1-4808-8e67-c6893fcda29f
     timertriggers: []
     type: condition
     view: |-
@@ -169,14 +169,14 @@ tasks:
     task:
       brand: ""
       description: Reverses the isolation of an endpoint.
-      id: 7c166a0f-010b-41ce-a475-31757ebf0484
+      id: 0b8c42af-b871-4e18-8f2c-bbfc5f472fd8
       iscommand: true
       name: Unisolate endpoint
       playbooktaskmissingcomponent: null
       script: '|||core-unisolate-endpoint'
       type: regular
       version: -1
-    taskid: 7c166a0f-010b-41ce-a475-31757ebf0484
+    taskid: 0b8c42af-b871-4e18-8f2c-bbfc5f472fd8
     timertriggers: []
     type: regular
     view: |-
@@ -198,13 +198,13 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 10b17a6b-93a9-4d5a-8d84-7950f294732a
+      id: f300c2f7-68b1-4368-8da4-dadd0fa6f7ab
       iscommand: false
       name: Done
       playbooktaskmissingcomponent: null
       type: title
       version: -1
-    taskid: 10b17a6b-93a9-4d5a-8d84-7950f294732a
+    taskid: f300c2f7-68b1-4368-8da4-dadd0fa6f7ab
     timertriggers: []
     type: title
     view: |-
@@ -245,13 +245,13 @@ tasks:
     task:
       brand: ""
       description: Whether to restore the quarantined file.
-      id: 1f8e95ae-1cf7-44c0-896b-576fb895a635
+      id: 08f289e7-7f40-412e-8793-409bb943c0b3
       iscommand: false
       name: Should restore the quarantined file?
       playbooktaskmissingcomponent: null
       type: condition
       version: -1
-    taskid: 1f8e95ae-1cf7-44c0-896b-576fb895a635
+    taskid: 08f289e7-7f40-412e-8793-409bb943c0b3
     timertriggers: []
     type: condition
     view: |-
@@ -287,14 +287,14 @@ tasks:
     task:
       brand: ""
       description: Restores a quarantined file on requested endpoints.
-      id: c4bc4cdb-9338-404e-ada7-553e73fd49ec
+      id: a0b5fc14-cfe6-4018-8309-ddd2fe50bd05
       iscommand: true
       name: Restore file
       playbooktaskmissingcomponent: null
       script: '|||core-restore-file'
       type: regular
       version: -1
-    taskid: c4bc4cdb-9338-404e-ada7-553e73fd49ec
+    taskid: a0b5fc14-cfe6-4018-8309-ddd2fe50bd05
     timertriggers: []
     type: regular
     view: |-
@@ -321,14 +321,14 @@ tasks:
     skipunavailable: true
     task:
       brand: ""
-      id: 62c35c37-ce13-4b5d-8616-b51565be7392
+      id: c217a2c0-e628-40b8-8277-bf2ec31ef377
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 62c35c37-ce13-4b5d-8616-b51565be7392
+    taskid: c217a2c0-e628-40b8-8277-bf2ec31ef377
     timertriggers: []
     type: playbook
     view: |-
@@ -363,13 +363,13 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 104854df-35fd-4a6c-90d2-5f301e15aed7
+      id: 7d613c03-6dea-4175-8ae5-5e943754a11c
       iscommand: false
       name: Shadow Run?
       playbooktaskmissingcomponent: null
       type: condition
       version: -1
-    taskid: 104854df-35fd-4a6c-90d2-5f301e15aed7
+    taskid: 7d613c03-6dea-4175-8ae5-5e943754a11c
     timertriggers: []
     type: condition
     view: |-
@@ -400,14 +400,14 @@ tasks:
     task:
       brand: ""
       description: Prints text to war room (Markdown supported)
-      id: 7d13998f-a24e-4389-bd2e-7ffaa41b5b7d
+      id: 46029b84-aaba-4668-8a89-3333d71c57c6
       iscommand: false
       name: Print To WarRoom
       playbooktaskmissingcomponent: null
       script: Print
       type: regular
       version: -1
-    taskid: 7d13998f-a24e-4389-bd2e-7ffaa41b5b7d
+    taskid: 46029b84-aaba-4668-8a89-3333d71c57c6
     timertriggers: []
     type: regular
     view: |-
@@ -442,13 +442,13 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 896bf2d8-70ca-4e9a-8bce-7bd5d46c9954
+      id: ac6eba8a-4b0b-4908-8761-53054030951d
       iscommand: false
       name: Shadow Run?
       playbooktaskmissingcomponent: null
       type: condition
       version: -1
-    taskid: 896bf2d8-70ca-4e9a-8bce-7bd5d46c9954
+    taskid: ac6eba8a-4b0b-4908-8761-53054030951d
     timertriggers: []
     type: condition
     view: |-
@@ -479,14 +479,14 @@ tasks:
     task:
       brand: ""
       description: Prints text to war room (Markdown supported)
-      id: 11df0270-40f1-473b-a850-077db369b0a8
+      id: a0c8d430-394a-4de7-860f-923a75e3262e
       iscommand: false
       name: Print To WarRoom
       playbooktaskmissingcomponent: null
       script: Print
       type: regular
       version: -1
-    taskid: 11df0270-40f1-473b-a850-077db369b0a8
+    taskid: a0c8d430-394a-4de7-860f-923a75e3262e
     timertriggers: []
     type: regular
     view: |-
