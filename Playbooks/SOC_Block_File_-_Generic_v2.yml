@@ -1,19 +1,34 @@
+adopted: true
 contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 5.0.0
     isoverridable: false
-    itemVersion: 2.6.55
+    itemVersion: 2.7.15
     packID: ""
     packName: Common Playbooks
     prevname: ""
+    supportedModules:
+    - X1
+    - X3
+    - X5
+    - ENT_PLUS
+    - agentix
     toServerVersion: ""
 description: "This playbook is used to block files from running on endpoints. \nThis
   playbook supports the following integrations:\n- Palo Alto Networks Traps\n- Palo
   Alto Networks Cortex XDR\n- Cybereason\n- Carbon Black Enterprise Response\n- Cylance
   Protect v2\n- Crowdstrike Falcon\n- Microsoft Defender for Endpoint."
-adopted: true
+dirtyInputs: true
 id: 'SOC Block File - Generic v2'
+inputSections:
+- description: Generic group for inputs
+  inputs:
+  - MD5
+  - SHA256
+  - Hash
+  - ShadowMode
+  name: General (Inputs group)
 inputs:
 - description: The MD5 hash of the file you want to block.
   key: MD5
@@ -37,7 +52,20 @@ inputs:
   playbookInputQuery: null
   required: false
   value: {}
+- description: ""
+  key: ShadowMode
+  playbookInputQuery: null
+  required: false
+  value:
+    simple: "true"
 name: SOC Block File - Generic v2
+outputSections:
+- description: Generic group for outputs
+  name: General (Outputs group)
+  outputs:
+  - CbResponse.BlockedHashes.LastBlock.Time
+  - CbResponse.BlockedHashes.LastBlock.Hostname
+  - CbResponse.BlockedHashes.LastBlock.CbSensorID
 outputs:
 - contextPath: CbResponse.BlockedHashes.LastBlock.Time
   description: Last block time.
@@ -47,6 +75,9 @@ outputs:
   description: Last block sensor ID.
 sourceplaybookid: Block File - Generic v2
 starttaskid: "0"
+tags:
+- SOC
+- SOC_Framework
 tasks:
   "0":
     continueonerrortype: ""
@@ -71,6 +102,7 @@ tasks:
       id: 420a534c-a6e6-4cf5-8b86-ac7dd1a91441
       iscommand: false
       name: ""
+      playbooktaskmissingcomponent: null
       version: -1
     taskid: 420a534c-a6e6-4cf5-8b86-ac7dd1a91441
     timertriggers: []
@@ -101,39 +133,28 @@ tasks:
     scriptarguments:
       MD5:
         complex:
-          filters:
-          - - left:
-                iscontext: true
-                value:
-                  simple: inputs.Hash
-              operator: stringHasLength
-              right:
-                value:
-                  simple: "32"
-          root: inputs.Hash
-          transformers:
-          - args:
-              item:
-                iscontext: true
-                value:
-                  simple: inputs.MD5
-            operator: append
-          - operator: uniq
+          accessor: MD5
+          root: File
+      ShadowMode:
+        simple: "true"
+      Text:
+        simple: Blocked by XSOAR
     separatecontext: true
     skipunavailable: true
     task:
       brand: ""
       description: |-
-        This playbook receives an MD5 hash and adds it to the block list in Carbon Black Enterprise Response. Files with that MD5 hash are blocked from execution on the managed endpoints.
+        This playbook receives an MD5 hash and adds it to the block list in Carbon Black Enterprise Response. Files with that MD5 hash are blocked from execution on the managed endpoints. If the hash is already on the block list, no action is taken on the MD5.
 
-        If the integration is disabled at the time of running, or if the hash is already on the block list, no action is taken on the MD5.
-      id: 5a2f437e-234a-43ef-858d-28d07fd1c7c2
+        The playbook uses the integration ''VMware Carbon Black EDR v2".
+      id: 9f92721c-d225-4dbf-8811-dc76542b637f
       iscommand: false
       name: Block File - Carbon Black Response
-      playbookName: Block File - Carbon Black Response
+      playbookId: Block File - Carbon Black Response
+      playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 5a2f437e-234a-43ef-858d-28d07fd1c7c2
+    taskid: 9f92721c-d225-4dbf-8811-dc76542b637f
     timertriggers: []
     type: playbook
     view: |-
@@ -158,6 +179,7 @@ tasks:
       id: c8476a84-8d87-4ff2-8d6c-1dd1cccc503a
       iscommand: false
       name: Done
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: c8476a84-8d87-4ff2-8d6c-1dd1cccc503a
@@ -216,7 +238,9 @@ tasks:
       id: 2efe2a1a-1d31-438c-828f-b6ae50f3899d
       iscommand: false
       name: Block File - Cybereason
+      playbookId: Block File - Cybereason
       playbookName: Block File - Cybereason
+      playbooktaskmissingcomponent: null
       type: playbook
       version: -1
     taskid: 2efe2a1a-1d31-438c-828f-b6ae50f3899d
@@ -275,7 +299,9 @@ tasks:
       id: a887370c-f94a-42f9-866f-2d80b7707f41
       iscommand: false
       name: Block File - Cylance Protect v2
+      playbookId: Block File - Cylance Protect v2
       playbookName: Block File - Cylance Protect v2
+      playbooktaskmissingcomponent: null
       type: playbook
       version: -1
     taskid: a887370c-f94a-42f9-866f-2d80b7707f41
@@ -306,6 +332,7 @@ tasks:
       id: 32d4b47a-e972-4e30-875b-b563130cc4ca
       iscommand: false
       name: Cybereason
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 32d4b47a-e972-4e30-875b-b563130cc4ca
@@ -336,6 +363,7 @@ tasks:
       id: 0c07d0e1-59b1-436c-8e90-f2d0410df813
       iscommand: false
       name: Carbon Black Enterprise Response
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 0c07d0e1-59b1-436c-8e90-f2d0410df813
@@ -366,6 +394,7 @@ tasks:
       id: dcc8e191-213c-4ffd-8bc7-a8e1bc8894d7
       iscommand: false
       name: Cylance Protect v2
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: dcc8e191-213c-4ffd-8bc7-a8e1bc8894d7
@@ -386,7 +415,7 @@ tasks:
     isoversize: false
     nexttasks:
       '#none#':
-      - "16"
+      - "21"
     note: false
     quietmode: 0
     separatecontext: false
@@ -396,6 +425,7 @@ tasks:
       id: b42b03dd-99c1-4149-8c32-336d23b88cf0
       iscommand: false
       name: Palo Alto Cortex XDR
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: b42b03dd-99c1-4149-8c32-336d23b88cf0
@@ -408,65 +438,6 @@ tasks:
           "y": 195
         }
       }
-  "16":
-    continueonerrortype: ""
-    id: "16"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    loop:
-      exitCondition: ""
-      iscommand: false
-      max: 100
-      wait: 1
-    nexttasks:
-      '#none#':
-      - "3"
-    note: false
-    quietmode: 0
-    scriptarguments:
-      HashList:
-        complex:
-          filters:
-          - - left:
-                iscontext: true
-                value:
-                  simple: inputs.Hash
-              operator: stringHasLength
-              right:
-                value:
-                  simple: "64"
-          root: inputs.Hash
-          transformers:
-          - args:
-              item:
-                iscontext: true
-                value:
-                  simple: inputs.SHA256
-            operator: append
-          - operator: uniq
-    separatecontext: true
-    skipunavailable: true
-    task:
-      brand: ""
-      description: Use this playbook to add files to Cortex XDR block list with a
-        given file SHA256 playbook input.
-      id: cfefcb2a-3dcf-44a5-8aed-ef231d7fe00b
-      iscommand: false
-      name: Cortex XDR - Block File
-      playbookName: Cortex XDR - Block File
-      type: playbook
-      version: -1
-    taskid: cfefcb2a-3dcf-44a5-8aed-ef231d7fe00b
-    timertriggers: []
-    type: playbook
-    view: |-
-      {
-        "position": {
-          "x": 1340,
-          "y": 330
-        }
-      }
   "17":
     continueonerrortype: ""
     id: "17"
@@ -475,7 +446,7 @@ tasks:
     isoversize: false
     nexttasks:
       '#none#':
-      - "21"
+      - "22"
     note: false
     quietmode: 0
     separatecontext: false
@@ -485,6 +456,7 @@ tasks:
       id: b6a4a1eb-e837-400c-890a-aa72fdd866d2
       iscommand: false
       name: CrowdStrike Falcon
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: b6a4a1eb-e837-400c-890a-aa72fdd866d2
@@ -505,7 +477,7 @@ tasks:
     isoversize: false
     nexttasks:
       '#none#':
-      - "22"
+      - "23"
     note: false
     quietmode: 0
     separatecontext: false
@@ -515,6 +487,7 @@ tasks:
       id: c463f54e-7a18-4dba-804f-acf83e449259
       iscommand: false
       name: Microsoft Defender For Endpoint
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: c463f54e-7a18-4dba-804f-acf83e449259
@@ -533,28 +506,39 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
     nexttasks:
       '#none#':
       - "3"
     note: false
     quietmode: 0
+    scriptarguments:
+      HashList:
+        simple: ${inputs.Hash}
     separatecontext: true
     skipunavailable: false
     task:
       brand: ""
-      id: 1b97d6aa-1239-493c-8ea1-2884572cf414
+      description: Use this playbook to add files to Cortex XDR block list with a
+        given file SHA256 playbook input.
+      id: 00dd4b75-b646-4f91-80cc-0f26a7918492
       iscommand: false
-      name: SOC CrowdStrike Falcon - Block File
-      playbookId: 'SOC CrowdStrike Falcon - Block File'
+      name: SOC Cortex XDR - Block File
+      playbookId: Cortex XDR - Block File
+      playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 1b97d6aa-1239-493c-8ea1-2884572cf414
+    taskid: 00dd4b75-b646-4f91-80cc-0f26a7918492
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 1760,
+          "x": 1340,
           "y": 330
         }
       }
@@ -564,22 +548,110 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
     nexttasks:
       '#none#':
       - "3"
     note: false
     quietmode: 0
+    scriptarguments:
+      Hash:
+        simple: ${inputs.Hash}
+      'Severity ':
+        simple: medium
+      ShadowMode:
+        simple: "true"
     separatecontext: true
     skipunavailable: false
     task:
       brand: ""
-      id: 0fd79d8d-002d-4338-8a9c-16d03cb9105e
+      description: "This playbook receives an MD5 or a SHA256 hash and adds it to
+        the block list in CrowdStrike Falcon. \nThe playbook uses the integration
+        \"CrowdStrike Falcon\"."
+      id: 93b14685-53e7-4a05-af58-99f2ddc4f9f7
+      iscommand: false
+      name: SOC CrowdStrike Falcon - Block File
+      playbookId: SOC CrowdStrike Falcon - Block File
+      playbooktaskmissingcomponent: null
+      type: playbook
+      version: -1
+    taskid: 93b14685-53e7-4a05-af58-99f2ddc4f9f7
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": 1760,
+          "y": 330
+        }
+      }
+  "23":
+    continueonerrortype: ""
+    id: "23"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
+    nexttasks:
+      '#none#':
+      - "3"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      GenerateAlert:
+        simple: "true"
+      Hash:
+        complex:
+          root: inputs.Hash
+          transformers:
+          - args:
+              item:
+                iscontext: true
+                value:
+                  simple: inputs.MD5
+            operator: append
+          - args:
+              item:
+                iscontext: true
+                value:
+                  simple: inputs.SHA256
+            operator: append
+          - args:
+              item:
+                iscontext: true
+                value:
+                  simple: inputs.Hash
+            operator: append
+          - operator: uniq
+      IndicatorDescription:
+        simple: Added by Cortex
+      IndicatorTitle:
+        simple: Added by Cortex
+      ShadowMode:
+        simple: "True"
+    separatecontext: true
+    skipunavailable: false
+    task:
+      brand: ""
+      description: "This playbook receives an MD5 or a SHA256 hash and adds it to
+        the block list in Microsoft Defender for Endpoint. \nThe playbook uses the
+        integration \"Microsoft Defender for Endpoint\"."
+      id: c0151a75-e757-43d0-97d0-22407c890dc0
       iscommand: false
       name: SOC MDE - Block File
       playbookId: 'SOC MDE - Block File'
+      playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 0fd79d8d-002d-4338-8a9c-16d03cb9105e
+    taskid: c0151a75-e757-43d0-97d0-22407c890dc0
     timertriggers: []
     type: playbook
     view: |-
@@ -596,7 +668,7 @@ view: |-
     "paper": {
       "dimensions": {
         "height": 525,
-        "width": 2521,
+        "width": 2520,
         "x": -380,
         "y": 50
       }

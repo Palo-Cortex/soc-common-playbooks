@@ -1,12 +1,14 @@
+adopted: true
 contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 6.10.0
     isoverridable: false
-    itemVersion: 1.0.0
+    itemVersion: 1.20.8
     packID: ""
-    packName: SOC Common Playbooks
+    packName: Microsoft Defender for Endpoint
     prevname: ""
+    supportedModules: []
     toServerVersion: ""
 description: "This playbook receives an MD5 or a SHA256 hash and adds it to the block
   list in Microsoft Defender for Endpoint. \nThe playbook uses the integration \"Microsoft
@@ -55,8 +57,10 @@ inputs:
   playbookInputQuery: null
   required: false
   value: {}
-- description: Shadow Mode is a key safety mechanism. It ensures actions like isolate_endpoint
-    or disable_user are logged but not executed in test scenarios.
+- description: |-
+    Shadow Mode is a key safety mechanism. It ensures actions like isolate_endpoint or disable_user are logged but not executed in test scenarios.
+    - Made in the Upon Trigger playbook.
+    - Stored in the incident’s data context.
   key: ShadowMode
   playbookInputQuery: null
   required: false
@@ -70,6 +74,9 @@ outputSections:
 outputs: []
 sourceplaybookid: MDE - Block File
 starttaskid: "0"
+tags:
+- SOC
+- SOC_Framework
 tasks:
   "0":
     continueonerrortype: ""
@@ -89,6 +96,7 @@ tasks:
       id: 2301242c-19a0-41b2-8906-2a58c726a8ff
       iscommand: false
       name: ""
+      playbooktaskmissingcomponent: null
       version: -1
     taskid: 2301242c-19a0-41b2-8906-2a58c726a8ff
     timertriggers: []
@@ -96,12 +104,13 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 50,
-          "y": 55
+          "x": 250,
+          "y": 90
         }
       }
   "1":
-    continueonerrortype: ""
+    continueonerror: true
+    continueonerrortype: errorPath
     id: "1"
     ignoreworker: false
     isautoswitchedtoquietmode: false
@@ -109,6 +118,8 @@ tasks:
     nexttasks:
       '#default#':
       - "3"
+      '#error#':
+      - "9"
       "yes":
       - "6"
     note: false
@@ -122,20 +133,21 @@ tasks:
       brand: ""
       description: Returns 'yes' if the integration brand is available. Otherwise
         returns 'no'.
-      id: 237b291c-f8aa-4623-8f96-99c0376eedb5
+      id: 8ad41643-eae0-476f-82c8-2e2b3705f363
       iscommand: false
       name: Is Microsoft Defender for Endpoint is enable?
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
-    taskid: 237b291c-f8aa-4623-8f96-99c0376eedb5
+    taskid: 8ad41643-eae0-476f-82c8-2e2b3705f363
     timertriggers: []
     type: condition
     view: |-
       {
         "position": {
-          "x": 50,
-          "y": 220
+          "x": 250,
+          "y": 240
         }
       }
   "3":
@@ -153,6 +165,7 @@ tasks:
       id: 32e7827d-3a6f-4154-8ef5-6e3a0d20a518
       iscommand: false
       name: Done
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 32e7827d-3a6f-4154-8ef5-6e3a0d20a518
@@ -161,8 +174,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 440.5,
-          "y": 1240
+          "x": 150,
+          "y": 1270
         }
       }
   "4":
@@ -213,22 +226,23 @@ tasks:
     separatecontext: false
     skipunavailable: false
     task:
-      brand: ""
+      brand: Microsoft Defender Advanced Threat Protection
       description: Creates a new indicator.
-      id: b3b6eefe-bad6-4337-b292-07cb77ff750d
+      id: f5cd6551-f1a0-47fa-b279-05b7678a6baf
       iscommand: true
       name: Block Indicators by SHA256
-      script: '|||microsoft-atp-sc-indicator-create'
+      playbooktaskmissingcomponent: null
+      script: Microsoft Defender Advanced Threat Protection|||microsoft-atp-sc-indicator-create
       type: regular
       version: -1
-    taskid: b3b6eefe-bad6-4337-b292-07cb77ff750d
+    taskid: f5cd6551-f1a0-47fa-b279-05b7678a6baf
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 1747.75,
-          "y": 900
+          "x": 1010,
+          "y": 1000
         }
       }
   "5":
@@ -279,22 +293,23 @@ tasks:
     separatecontext: false
     skipunavailable: false
     task:
-      brand: ""
+      brand: Microsoft Defender Advanced Threat Protection
       description: Creates a new indicator.
-      id: 41def842-fe3e-409c-b164-56b311d00c09
+      id: 752cb3d2-8431-4528-a094-c71252e2f269
       iscommand: true
       name: Block Indicators by MD5
-      script: '|||microsoft-atp-sc-indicator-create'
+      playbooktaskmissingcomponent: null
+      script: Microsoft Defender Advanced Threat Protection|||microsoft-atp-sc-indicator-create
       type: regular
       version: -1
-    taskid: 41def842-fe3e-409c-b164-56b311d00c09
+    taskid: 752cb3d2-8431-4528-a094-c71252e2f269
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 535.75,
-          "y": 900
+          "x": -50,
+          "y": 1000
         }
       }
   "6":
@@ -329,6 +344,7 @@ tasks:
       id: aeda8e30-f52c-4e9d-8f10-67e049054750
       iscommand: false
       name: Is there any file to block?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: aeda8e30-f52c-4e9d-8f10-67e049054750
@@ -337,8 +353,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 245.25,
-          "y": 390
+          "x": 260,
+          "y": 410
         }
       }
   "7":
@@ -365,7 +381,7 @@ tasks:
       '#default#':
       - "3"
       "yes":
-      - "10"
+      - "12"
     note: false
     quietmode: 0
     separatecontext: false
@@ -375,6 +391,7 @@ tasks:
       id: 4b1ab765-8f50-44ab-8f68-1649fec5095c
       iscommand: false
       name: Has MD5 hashes?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 4b1ab765-8f50-44ab-8f68-1649fec5095c
@@ -383,8 +400,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 145.25,
-          "y": 560
+          "x": -210,
+          "y": 580
         }
       }
   "8":
@@ -411,7 +428,8 @@ tasks:
       '#default#':
       - "3"
       "yes":
-      - "12"
+      - "4"
+      - "10"
     note: false
     quietmode: 0
     separatecontext: false
@@ -421,6 +439,7 @@ tasks:
       id: 3d4dde8d-e1ec-4712-8a31-b18d40635b1f
       iscommand: false
       name: Has SHA256 hashes?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 3d4dde8d-e1ec-4712-8a31-b18d40635b1f
@@ -429,8 +448,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1407.25,
-          "y": 560
+          "x": 702.5,
+          "y": 580
         }
       }
   "9":
@@ -439,80 +458,77 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
-    nexttasks:
-      '#none#':
-      - "3"
     note: false
     quietmode: 0
     separatecontext: true
     skipunavailable: false
     task:
       brand: ""
-      id: 159b974a-3977-4af9-83be-fb4ef807dfff
+      id: 2b6efb40-1f3c-4936-8e3b-05f115ba4102
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
+      playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 159b974a-3977-4af9-83be-fb4ef807dfff
+    taskid: 2b6efb40-1f3c-4936-8e3b-05f115ba4102
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 876.25,
-          "y": 1070
+          "x": 940,
+          "y": 1350
         }
       }
   "10":
-    conditions:
-    - condition:
-      - - left:
-            iscontext: true
-            value:
-              simple: inputs.ShadowMode
-          operator: isFalse
-          right:
-            value: {}
-      label: "no"
+    continueonerror: true
     continueonerrortype: ""
     id: "10"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#default#':
+      Full Run:
+      - "4"
+      Shadow Mode:
       - "11"
-      "no":
-      - "5"
     note: false
     quietmode: 0
+    scriptarguments:
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
     separatecontext: false
     skipunavailable: false
     task:
       brand: ""
-      id: f130de14-27af-4e75-8c2f-29d6f7945a76
+      id: 0b85e28d-9e0b-4fb1-ab17-90950d94511a
       iscommand: false
-      name: Shadow Run?
+      name: Run Mode
+      playbooktaskmissingcomponent: null
+      script: 'ShadowModeRouter'
       type: condition
       version: -1
-    taskid: f130de14-27af-4e75-8c2f-29d6f7945a76
+    taskid: 0b85e28d-9e0b-4fb1-ab17-90950d94511a
     timertriggers: []
     type: condition
     view: |-
       {
         "position": {
-          "x": 390.5,
-          "y": 730
+          "x": 1210,
+          "y": 810
         }
       }
   "11":
-    continueonerrortype: ""
+    continueonerror: true
+    continueonerrortype: errorPath
     id: "11"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
+      '#error#':
+      - "9"
       '#none#':
       - "3"
     note: false
@@ -520,106 +536,108 @@ tasks:
     scriptarguments:
       value:
         simple: |-
-          Shadow Mode: Block Indicators by MD5
-          Command: microsof-atp-sc-indicator-create
+          Shadow: MS Defender Block SHA256
+          Command: microsoft-atp-sc-indicator-create ${inputs.SHA256}
     separatecontext: false
     skipunavailable: false
     task:
       brand: ""
       description: Prints text to war room (Markdown supported)
-      id: 3b936f79-1add-48c8-a04b-d6a4437d8567
+      id: 612406e4-1732-41b2-a11a-34480513f12f
       iscommand: false
-      name: Print To WarRoom
+      name: 'Shadow Mode: Block Indicators by SHA256'
+      playbooktaskmissingcomponent: null
       script: Print
       type: regular
       version: -1
-    taskid: 3b936f79-1add-48c8-a04b-d6a4437d8567
+    taskid: 612406e4-1732-41b2-a11a-34480513f12f
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 245.25,
-          "y": 1070
+          "x": 1420,
+          "y": 1000
         }
       }
   "12":
-    conditions:
-    - condition:
-      - - left:
-            iscontext: true
-            value:
-              simple: inputs.ShadowMode
-          operator: isFalse
-          right:
-            value: {}
-      label: "no"
+    continueonerror: true
     continueonerrortype: ""
     id: "12"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#default#':
+      Full Run:
+      - "5"
+      Shadow Mode:
       - "13"
-      "no":
-      - "4"
     note: false
     quietmode: 0
+    scriptarguments:
+      Message:
+        simple: '"Shadow Mode: "'
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
     separatecontext: false
     skipunavailable: false
     task:
       brand: ""
-      id: 91db9a24-e325-413a-ab36-6cda3671f520
+      id: 08a0fe62-f065-4ddf-855d-8fbe789bb002
       iscommand: false
-      name: Shadow Run?
+      name: Run Mode
+      playbooktaskmissingcomponent: null
+      script: 'ShadowModeRouter'
       type: condition
       version: -1
-    taskid: 91db9a24-e325-413a-ab36-6cda3671f520
+    taskid: 08a0fe62-f065-4ddf-855d-8fbe789bb002
     timertriggers: []
     type: condition
     view: |-
       {
         "position": {
-          "x": 1602.5,
-          "y": 730
+          "x": -250,
+          "y": 800
         }
       }
   "13":
-    continueonerrortype: ""
+    continueonerror: true
+    continueonerrortype: errorPath
     id: "13"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
+      '#error#':
+      - "9"
       '#none#':
       - "3"
     note: false
     quietmode: 0
     scriptarguments:
       value:
-        simple: |-
-          Shadow Mode: Block Indicators by SHA256
-          Command: microsof-atp-sc-indicator-create
+        simple: "Shadow: MS Defender Block MD5 \nCommand: microsoft-atp-sc-indicator-create
+          ${inputs.Hash}"
     separatecontext: false
     skipunavailable: false
     task:
       brand: ""
       description: Prints text to war room (Markdown supported)
-      id: 5c433731-d89e-4660-af82-39c6ada3f1af
+      id: 5bfdd037-54bd-43d7-b247-626ef423219d
       iscommand: false
-      name: Print To WarRoom
+      name: 'Shadow Mode: Block Indicators by MD5'
+      playbooktaskmissingcomponent: null
       script: Print
       type: regular
       version: -1
-    taskid: 5c433731-d89e-4660-af82-39c6ada3f1af
+    taskid: 5bfdd037-54bd-43d7-b247-626ef423219d
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 1457.25,
-          "y": 1070
+          "x": -450,
+          "y": 1000
         }
       }
 version: -1
@@ -630,17 +648,17 @@ view: |-
       "6_3_#default#": 0.32,
       "6_7_yes": 0.54,
       "6_8_yes": 0.62,
+      "7_12_yes": 0.89,
       "7_3_#default#": 0.43,
-      "8_12_yes": 0.69,
-      "8_3_#default#": 0.17
+      "8_3_#default#": 0.17,
+      "8_4_yes": 0.66
     },
     "paper": {
       "dimensions": {
-        "height": 1245,
-        "width": 2077.75,
-        "x": 50,
-        "y": 55
+        "height": 1330,
+        "width": 2250,
+        "x": -450,
+        "y": 90
       }
     }
   }
-adopted: true
