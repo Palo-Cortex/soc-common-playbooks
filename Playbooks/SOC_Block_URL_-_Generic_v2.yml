@@ -1,12 +1,19 @@
+adopted: true
 contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 6.5.0
     isoverridable: false
-    itemVersion: 2.6.55
+    itemVersion: 2.7.15
     packID: ""
     packName: Common Playbooks
     prevname: ""
+    supportedModules:
+    - X1
+    - X3
+    - X5
+    - ENT_PLUS
+    - agentix
     toServerVersion: ""
 description: |-
   This playbook blocks malicious URLs using all integrations that are enabled.
@@ -18,8 +25,24 @@ description: |-
   * Forcepoint
   * Checkpoint
   * Netcraft.
-adopted: true
+dirtyInputs: true
 id: 'SOC Block URL - Generic v2'
+inputSections:
+- description: Generic group for inputs
+  inputs:
+  - URL
+  - LogForwarding
+  - AutoCommit
+  - CustomURLCategory
+  - type
+  - categories
+  - UserVerification
+  - EDLServerIP
+  - device-group
+  - Tag
+  - Folder
+  - ShadowMode
+  name: General (Inputs group)
 inputs:
 - description: Array of malicious URLs to block.
   key: URL
@@ -90,10 +113,23 @@ inputs:
   required: false
   value:
     simple: Shared
+- description: ""
+  key: ShadowMode
+  playbookInputQuery: null
+  required: false
+  value:
+    simple: "true"
 name: SOC Block URL - Generic v2
+outputSections:
+- description: Generic group for outputs
+  name: General (Outputs group)
+  outputs: []
 outputs: []
 sourceplaybookid: Block URL - Generic v2
 starttaskid: "0"
+tags:
+- SOC
+- SOC_Framework
 tasks:
   "0":
     continueonerrortype: ""
@@ -113,6 +149,7 @@ tasks:
       id: f7a7452c-dafe-4b3e-8461-4ea61daf5e3b
       iscommand: false
       name: ""
+      playbooktaskmissingcomponent: null
       version: -1
     taskid: f7a7452c-dafe-4b3e-8461-4ea61daf5e3b
     timertriggers: []
@@ -120,8 +157,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3967,
-          "y": 50
+          "x": 377.5,
+          "y": -470
         }
       }
   "2":
@@ -139,6 +176,7 @@ tasks:
       id: 8f968aa5-26ca-4471-891b-4ac7f9114147
       iscommand: false
       name: Done
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 8f968aa5-26ca-4471-891b-4ac7f9114147
@@ -147,8 +185,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3921.75,
-          "y": 1890
+          "x": 377.5,
+          "y": 1385
         }
       }
   "5":
@@ -160,7 +198,6 @@ tasks:
     nexttasks:
       '#none#':
       - "16"
-      - "17"
       - "18"
       - "26"
       - "28"
@@ -176,6 +213,7 @@ tasks:
       id: ecece7aa-0eb6-4f67-8a9b-dfc77bcef34d
       iscommand: false
       name: Block URLs
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: ecece7aa-0eb6-4f67-8a9b-dfc77bcef34d
@@ -184,8 +222,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3967,
-          "y": 890
+          "x": 377.5,
+          "y": 425
         }
       }
   "8":
@@ -219,6 +257,7 @@ tasks:
       id: 0e2e9b54-cbaa-4f8c-85b2-b5927f30f52a
       iscommand: false
       name: Is there a URL to block?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 0e2e9b54-cbaa-4f8c-85b2-b5927f30f52a
@@ -227,8 +266,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2514.5,
-          "y": 720
+          "x": 377.5,
+          "y": 195
         }
       }
   "12":
@@ -271,7 +310,7 @@ tasks:
       '#default#':
       - "2"
       "yes":
-      - "59"
+      - "50"
     note: false
     quietmode: 0
     separatecontext: false
@@ -282,6 +321,7 @@ tasks:
       id: efeca267-b6d2-4a08-8325-e8fb7c1dd633
       iscommand: false
       name: Is Zscaler enabled?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: efeca267-b6d2-4a08-8325-e8fb7c1dd633
@@ -290,8 +330,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2228.75,
-          "y": 1210
+          "x": 700,
+          "y": 700
         }
       }
   "13":
@@ -317,20 +357,21 @@ tasks:
     task:
       brand: Zscaler
       description: Adds the specified URLs to the block list.
-      id: 19749bfc-34c2-46fe-8ebb-4aa5912d1872
+      id: 5f366f9a-ddac-4072-b304-ecbbbe74499e
       iscommand: true
       name: Block URL with Zscaler
+      playbooktaskmissingcomponent: null
       script: Zscaler|||zscaler-blacklist-url
       type: regular
       version: -1
-    taskid: 19749bfc-34c2-46fe-8ebb-4aa5912d1872
+    taskid: 5f366f9a-ddac-4072-b304-ecbbbe74499e
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 2274,
-          "y": 1550
+          "x": 570,
+          "y": 1100
         }
       }
   "16":
@@ -351,6 +392,7 @@ tasks:
       id: 90b64f91-6db0-4a69-86e3-80aa6fc36ebd
       iscommand: false
       name: Checkpoint
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 90b64f91-6db0-4a69-86e3-80aa6fc36ebd
@@ -359,38 +401,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 681,
-          "y": 1215
-        }
-      }
-  "17":
-    continueonerrortype: ""
-    id: "17"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#none#':
-      - "20"
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: 0c64c152-533a-4e38-8a33-5ba8499b4c48
-      iscommand: false
-      name: PAN-OS
-      type: title
-      version: -1
-    taskid: 0c64c152-533a-4e38-8a33-5ba8499b4c48
-    timertriggers: []
-    type: title
-    view: |-
-      {
-        "position": {
-          "x": 1502.5,
-          "y": 1385
+          "x": 140,
+          "y": 570
         }
       }
   "18":
@@ -411,6 +423,7 @@ tasks:
       id: 9e331921-f00a-47d7-8f02-8ab4fbacc053
       iscommand: false
       name: Zscaler
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 9e331921-f00a-47d7-8f02-8ab4fbacc053
@@ -419,8 +432,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2228.75,
-          "y": 1050
+          "x": 700,
+          "y": 570
         }
       }
   "19":
@@ -444,7 +457,7 @@ tasks:
       '#default#':
       - "2"
       "yes":
-      - "51"
+      - "48"
     note: false
     quietmode: 0
     separatecontext: false
@@ -455,6 +468,7 @@ tasks:
       id: b9e7db2b-6985-4410-8e01-ccb9950cd8b7
       iscommand: false
       name: Use EDL?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: b9e7db2b-6985-4410-8e01-ccb9950cd8b7
@@ -463,51 +477,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 4452.75,
-          "y": 1210
-        }
-      }
-  "20":
-    conditions:
-    - condition:
-      - - left:
-            iscontext: true
-            value:
-              simple: inputs.type
-          operator: isNotEmpty
-          right:
-            value: {}
-      label: "yes"
-    continueonerrortype: ""
-    id: "20"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#default#':
-      - "2"
-      "yes":
-      - "46"
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Check if should use Custom URL Category or not
-      id: 47aff5b6-5919-46bb-8979-c342b18f9197
-      iscommand: false
-      name: Use Custom URL Category?
-      type: condition
-      version: -1
-    taskid: 47aff5b6-5919-46bb-8979-c342b18f9197
-    timertriggers: []
-    type: condition
-    view: |-
-      {
-        "position": {
-          "x": 1502.5,
-          "y": 1550
+          "x": -310,
+          "y": 700
         }
       }
   "21":
@@ -520,7 +491,7 @@ tasks:
       '#default#':
       - "2"
       "yes":
-      - "61"
+      - "23"
     note: false
     quietmode: 0
     scriptarguments:
@@ -535,6 +506,7 @@ tasks:
       id: da7121fa-715d-4010-81ac-e519b88b58e3
       iscommand: false
       name: "Is CheckPoint Integration \nAavailable?"
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -544,8 +516,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 681,
-          "y": 1380
+          "x": 140,
+          "y": 700
         }
       }
   "23":
@@ -574,7 +546,8 @@ tasks:
       id: 195a51ea-2a0b-47e3-83f6-c6b6a4938847
       iscommand: false
       name: Checkpoint - Block URL
-      playbookName: Checkpoint - Block URL
+      playbookId: Checkpoint - Block URL
+      playbooktaskmissingcomponent: null
       type: playbook
       version: -1
     taskid: 195a51ea-2a0b-47e3-83f6-c6b6a4938847
@@ -583,8 +556,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 631,
-          "y": 1720
+          "x": 150,
+          "y": 915
         }
       }
   "24":
@@ -615,7 +588,8 @@ tasks:
       id: 0dd55a58-9d45-449e-8b9f-3c1630188951
       iscommand: false
       name: Sophos Firewall - Block URL
-      playbookName: Sophos Firewall - Block URL
+      playbookId: Sophos Firewall - Block URL
+      playbooktaskmissingcomponent: null
       type: playbook
       version: -1
     taskid: 0dd55a58-9d45-449e-8b9f-3c1630188951
@@ -624,8 +598,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3195.5,
-          "y": 1720
+          "x": 1170,
+          "y": 915
         }
       }
   "25":
@@ -646,6 +620,7 @@ tasks:
       id: 21af0a6a-234a-4061-884a-86f3209ae79e
       iscommand: false
       name: No URL was definded
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 21af0a6a-234a-4061-884a-86f3209ae79e
@@ -654,8 +629,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 50,
-          "y": 1725
+          "x": 2080,
+          "y": 945
         }
       }
   "26":
@@ -676,6 +651,7 @@ tasks:
       id: 42362e33-89e4-4e9a-89ad-8fca62f06425
       iscommand: false
       name: Sophos
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 42362e33-89e4-4e9a-89ad-8fca62f06425
@@ -684,8 +660,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3245.5,
-          "y": 1215
+          "x": 1170,
+          "y": 570
         }
       }
   "27":
@@ -698,7 +674,7 @@ tasks:
       '#default#':
       - "2"
       "yes":
-      - "57"
+      - "24"
     note: false
     quietmode: 0
     scriptarguments:
@@ -713,6 +689,7 @@ tasks:
       id: c08fd24c-0333-4f69-8700-69b92c530882
       iscommand: false
       name: Is Sophos Integration Enabled?
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -722,8 +699,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3245.5,
-          "y": 1380
+          "x": 1170,
+          "y": 700
         }
       }
   "28":
@@ -744,6 +721,7 @@ tasks:
       id: 12ce6945-cd09-46e6-8661-748f50ed220c
       iscommand: false
       name: EDL
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 12ce6945-cd09-46e6-8661-748f50ed220c
@@ -752,8 +730,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 4452.75,
-          "y": 1050
+          "x": -310,
+          "y": 570
         }
       }
   "29":
@@ -785,20 +763,21 @@ tasks:
     task:
       brand: Builtin
       description: commands.local.cmd.add.values.to.indicator.multi.select.field
-      id: 3b95c0b4-92ba-436f-9b66-5a335cd87b33
+      id: f5c64bf3-5853-428d-8f8c-8ede36080770
       iscommand: true
       name: Update Tag For URLs
+      playbooktaskmissingcomponent: null
       script: Builtin|||appendIndicatorField
       type: regular
       version: -1
-    taskid: 3b95c0b4-92ba-436f-9b66-5a335cd87b33
+    taskid: f5c64bf3-5853-428d-8f8c-8ede36080770
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 4883.75,
-          "y": 1550
+          "x": -320,
+          "y": 1100
         }
       }
   "30":
@@ -849,7 +828,7 @@ tasks:
         retriescount: 2
         retriesinterval: 360
       to:
-        simple: Investigator
+        simple: Analyst
     nexttasks:
       '#none#':
       - "31"
@@ -863,6 +842,7 @@ tasks:
       id: 7948896f-f14b-4e0b-865e-47a3a0c1da3f
       iscommand: false
       name: User Verification
+      playbooktaskmissingcomponent: null
       type: collection
       version: -1
     taskid: 7948896f-f14b-4e0b-865e-47a3a0c1da3f
@@ -871,20 +851,17 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 8034,
-          "y": 380
+          "x": 590,
+          "y": -160
         }
       }
   "31":
-    continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "31"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "45"
       '#none#':
       - "8"
     note: false
@@ -902,20 +879,21 @@ tasks:
       brand: ""
       description: Set a value in context under the key you entered. If no value is
         entered, the script doesn't do anything.
-      id: c3e1638e-8c04-4c99-9cab-2f20e2eb6161
+      id: 6a38d62a-b597-4165-87e8-7b5b92953ca5
       iscommand: false
       name: Append the URLs' blocking list
+      playbooktaskmissingcomponent: null
       script: SetAndHandleEmpty
       type: regular
       version: -1
-    taskid: c3e1638e-8c04-4c99-9cab-2f20e2eb6161
+    taskid: 6a38d62a-b597-4165-87e8-7b5b92953ca5
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 8034,
-          "y": 550
+          "x": 590,
+          "y": 10
         }
       }
   "32":
@@ -936,6 +914,7 @@ tasks:
       id: d561f0f8-0d4c-4ba3-8560-187751ca5c85
       iscommand: false
       name: Forcepoint
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: d561f0f8-0d4c-4ba3-8560-187751ca5c85
@@ -944,8 +923,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 5469.5,
-          "y": 1050
+          "x": 1610,
+          "y": 570
         }
       }
   "34":
@@ -958,7 +937,7 @@ tasks:
       '#default#':
       - "2"
       "yes":
-      - "55"
+      - "52"
     note: false
     quietmode: 0
     scriptarguments:
@@ -973,6 +952,7 @@ tasks:
       id: 08e14d34-e96d-422a-8640-f5ef9a6eaa7a
       iscommand: false
       name: Is Forcepoint Integration Enabled?
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -982,8 +962,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 5469.5,
-          "y": 1210
+          "x": 1610,
+          "y": 700
         }
       }
   "35":
@@ -1011,20 +991,21 @@ tasks:
         \nYou can choose to add those to a default category (For more info - refer
         to https://www.forcepoint.com/product/feature/master-database-url-categories)\nor
         specify a custom/user-defined category."
-      id: d357ddd4-f548-480d-96c8-e675071f6ae7
+      id: 89279561-a8cd-4cc8-b0fc-98514ebb67a1
       iscommand: true
       name: Forcepoint - Add URL's to a specific category
+      playbooktaskmissingcomponent: null
       script: Forcepoint|||fp-add-address-to-category
       type: regular
       version: -1
-    taskid: d357ddd4-f548-480d-96c8-e675071f6ae7
+    taskid: 89279561-a8cd-4cc8-b0fc-98514ebb67a1
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 5514.75,
-          "y": 1550
+          "x": 1410,
+          "y": 1100
         }
       }
   "36":
@@ -1061,6 +1042,7 @@ tasks:
       id: 33d5bf90-736a-4228-8307-53b1d58d4550
       iscommand: false
       name: Is User Verification Is Required?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 33d5bf90-736a-4228-8307-53b1d58d4550
@@ -1069,20 +1051,17 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3967,
-          "y": 210
+          "x": 377.5,
+          "y": -330
         }
       }
   "37":
-    continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "37"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "45"
       '#none#':
       - "8"
     note: false
@@ -1099,20 +1078,21 @@ tasks:
       brand: ""
       description: Set a value in context under the key you entered. If no value is
         entered, the script doesn't do anything.
-      id: c134d839-1fe9-4edc-93d8-b8f1e486d658
+      id: 76856aa5-7ff2-415b-8f6f-e4bd1e6798a9
       iscommand: false
       name: Set Input URLs as Blocklist.
+      playbooktaskmissingcomponent: null
       script: SetAndHandleEmpty
       type: regular
       version: -1
-    taskid: c134d839-1fe9-4edc-93d8-b8f1e486d658
+    taskid: 76856aa5-7ff2-415b-8f6f-e4bd1e6798a9
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 2369.25,
-          "y": 550
+          "x": 170,
+          "y": -160
         }
       }
   "38":
@@ -1133,6 +1113,7 @@ tasks:
       id: e889ae46-04a0-4514-8923-2291cec2883a
       iscommand: false
       name: Netcraft
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: e889ae46-04a0-4514-8923-2291cec2883a
@@ -1141,8 +1122,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 6391,
-          "y": 1050
+          "x": -1190,
+          "y": 570
         }
       }
   "40":
@@ -1155,7 +1136,7 @@ tasks:
       '#default#':
       - "2"
       "yes":
-      - "47"
+      - "46"
     note: false
     quietmode: 0
     scriptarguments:
@@ -1170,6 +1151,7 @@ tasks:
       id: 35fcf7d9-19c6-48fe-831d-0b78cbf96323
       iscommand: false
       name: Is Netcraft Integration Enabled?
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -1179,8 +1161,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 6391,
-          "y": 1210
+          "x": -1190,
+          "y": 700
         }
       }
   "41":
@@ -1207,24 +1189,25 @@ tasks:
     separatecontext: false
     skipunavailable: true
     task:
-      brand: ""
+      brand: Netcraft V2
       description: |
         Report a new attack or authorize an existing attack in the Takedown Service.
         If a takedown for the attack already exists in the Netcraft system it will be authorized, otherwise, a new takedown will be added and authorized.
-      id: 42368f93-599c-46c5-a44d-43f1d395ee5b
+      id: 1ec1007b-cee0-4042-9347-89d34dc15280
       iscommand: true
       name: Block URL with Netcraft
-      script: '|||netcraft-attack-report'
+      playbooktaskmissingcomponent: null
+      script: Netcraft V2|||netcraft-attack-report
       type: regular
       version: -1
-    taskid: 42368f93-599c-46c5-a44d-43f1d395ee5b
+    taskid: 1ec1007b-cee0-4042-9347-89d34dc15280
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 6726.75,
-          "y": 1550
+          "x": -1210,
+          "y": 1110
         }
       }
   "42":
@@ -1245,6 +1228,7 @@ tasks:
       id: f840dbdd-478b-445f-8f0b-a5527a54467b
       iscommand: false
       name: Prisma SASE
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: f840dbdd-478b-445f-8f0b-a5527a54467b
@@ -1253,8 +1237,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 7357.75,
-          "y": 1215
+          "x": -1610,
+          "y": 570
         }
       }
   "43":
@@ -1267,7 +1251,7 @@ tasks:
       '#default#':
       - "2"
       "yes":
-      - "53"
+      - "44"
     note: false
     quietmode: 0
     scriptarguments:
@@ -1282,6 +1266,7 @@ tasks:
       id: e5de9af1-33df-4064-82d9-b5b87f472d7f
       iscommand: false
       name: Is Prisma SASE Enabled?
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -1291,8 +1276,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 7357.75,
-          "y": 1380
+          "x": -1610,
+          "y": 700
         }
       }
   "44":
@@ -1323,6 +1308,8 @@ tasks:
           root: inputs.Folder
           transformers:
           - operator: uniq
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
       URL:
         complex:
           accessor: URL
@@ -1337,20 +1324,21 @@ tasks:
         The playbook will handle the operation of blocking a URL within the organization.
         If a category is provided, the URL will be added to the list.
         If not, a new URL category will be created, and a new security rule that blocks that category.
-      id: 7fa52bc1-010b-4de9-87e4-dbc537abd12b
+      id: 44174e4f-4c2f-4b0d-bca9-2d20443cb14a
       iscommand: false
       name: Prisma SASE - Block URL
       playbookId: Prisma SASE - Block URL
+      playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 7fa52bc1-010b-4de9-87e4-dbc537abd12b
+    taskid: 44174e4f-4c2f-4b0d-bca9-2d20443cb14a
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 7307.75,
-          "y": 1720
+          "x": -1620,
+          "y": 1110
         }
       }
   "45":
@@ -1359,29 +1347,27 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
-    nexttasks:
-      '#none#':
-      - "2"
     note: false
     quietmode: 0
     separatecontext: true
     skipunavailable: false
     task:
       brand: ""
-      id: d1910349-b6e6-4dfe-8d19-ac71f3f2d0a1
+      id: 4dfd2d90-734e-437d-8e77-09c381d690d4
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
+      playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: d1910349-b6e6-4dfe-8d19-ac71f3f2d0a1
+    taskid: 4dfd2d90-734e-437d-8e77-09c381d690d4
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 4738.5,
-          "y": 1720
+          "x": 1320,
+          "y": 1250
         }
       }
   "46":
@@ -1391,68 +1377,72 @@ tasks:
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#none#':
-      - "2"
+      Full Run:
+      - "41"
+      Shadow Mode:
+      - "47"
     note: false
     quietmode: 0
-    separatecontext: true
+    scriptarguments:
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
+    separatecontext: false
     skipunavailable: false
     task:
       brand: ""
-      id: 02f6376c-4550-43fb-876f-9059f5407abb
+      id: 1f389db9-44cc-4d31-8873-af3fabff91ee
       iscommand: false
-      name: SOC PAN-OS - Block URL - Custom URL Category
-      playbookId: 'SOC PAN-OS - Block URL - Custom URL Category'
-      type: playbook
+      name: Run Mode?
+      playbooktaskmissingcomponent: null
+      script: 'ShadowModeRouter'
+      type: condition
       version: -1
-    taskid: 02f6376c-4550-43fb-876f-9059f5407abb
+    taskid: 1f389db9-44cc-4d31-8873-af3fabff91ee
     timertriggers: []
-    type: playbook
+    type: condition
     view: |-
       {
         "position": {
-          "x": 1693,
-          "y": 1720
+          "x": -1010,
+          "y": 930
         }
       }
   "47":
-    conditions:
-    - condition:
-      - - left:
-            iscontext: true
-            value:
-              simple: shadow_mode
-          operator: isFalse
-      label: "no"
     continueonerrortype: ""
     id: "47"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#default#':
-      - "48"
-      "no":
-      - "41"
+      '#none#':
+      - "2"
     note: false
     quietmode: 0
+    scriptarguments:
+      value:
+        simple: |-
+          Shadow: Netcraft Block URL
+          Command: netcraft-attack-report ${inputs.URL}
     separatecontext: false
     skipunavailable: false
     task:
       brand: ""
-      id: 12845b79-5cfd-4d78-9fc0-384526db78af
+      description: Prints text to war room (Markdown supported)
+      id: 798987c4-a92a-4a46-81d7-8a75673cf91f
       iscommand: false
-      name: Shadow Run?
-      type: condition
+      name: 'Shadow: Netcraft Block URL'
+      playbooktaskmissingcomponent: null
+      script: Print
+      type: regular
       version: -1
-    taskid: 12845b79-5cfd-4d78-9fc0-384526db78af
+    taskid: 798987c4-a92a-4a46-81d7-8a75673cf91f
     timertriggers: []
-    type: condition
+    type: regular
     view: |-
       {
         "position": {
-          "x": 6536.25,
-          "y": 1380
+          "x": -800,
+          "y": 1110
         }
       }
   "48":
@@ -1462,6 +1452,43 @@ tasks:
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
+      Full Run:
+      - "29"
+      Shadow Mode:
+      - "49"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      id: 259b3342-c025-42fb-8968-19a973fc157f
+      iscommand: false
+      name: Run Mode?
+      playbooktaskmissingcomponent: null
+      script: 'ShadowModeRouter'
+      type: condition
+      version: -1
+    taskid: 259b3342-c025-42fb-8968-19a973fc157f
+    timertriggers: []
+    type: condition
+    view: |-
+      {
+        "position": {
+          "x": -310,
+          "y": 915
+        }
+      }
+  "49":
+    continueonerrortype: ""
+    id: "49"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
       '#none#':
       - "2"
     note: false
@@ -1469,67 +1496,103 @@ tasks:
     scriptarguments:
       value:
         simple: |-
-          Shadow Run: Block URL with Netcraft
-          Command: netcraft-attack-report
+          Shadow: PAN-OS Block URL
+          Command: ${inputs.URL}
     separatecontext: false
     skipunavailable: false
     task:
       brand: ""
       description: Prints text to war room (Markdown supported)
-      id: 7cd1bfb6-8217-4c59-b016-d4d3d0ebe021
+      id: 48b10ee6-14dc-4469-91dd-0c1a415df245
       iscommand: false
-      name: Print To WarRoom
+      name: 'Shadow: PAN-OS Tag URLs'
+      playbooktaskmissingcomponent: null
       script: Print
       type: regular
       version: -1
-    taskid: 7cd1bfb6-8217-4c59-b016-d4d3d0ebe021
+    taskid: 48b10ee6-14dc-4469-91dd-0c1a415df245
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 6436.25,
-          "y": 1720
+          "x": 100,
+          "y": 1100
+        }
+      }
+  "50":
+    continueonerrortype: ""
+    id: "50"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      Full Run:
+      - "13"
+      Shadow Mode:
+      - "51"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      id: 83fd5a0e-d619-4718-8a3b-a522e6f8e90d
+      iscommand: false
+      name: Run Mode?
+      playbooktaskmissingcomponent: null
+      script: 'ShadowModeRouter'
+      type: condition
+      version: -1
+    taskid: 83fd5a0e-d619-4718-8a3b-a522e6f8e90d
+    timertriggers: []
+    type: condition
+    view: |-
+      {
+        "position": {
+          "x": 700,
+          "y": 900
         }
       }
   "51":
-    conditions:
-    - condition:
-      - - left:
-            iscontext: true
-            value:
-              simple: shadow_mode
-          operator: isFalse
-      label: "no"
     continueonerrortype: ""
     id: "51"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#default#':
-      - "52"
-      "no":
-      - "29"
+      '#none#':
+      - "2"
     note: false
     quietmode: 0
+    scriptarguments:
+      value:
+        simple: |-
+          Shadow: Zscaler Block URL
+          Command: zscaler-blacklist-url ${inputs.URL}
     separatecontext: false
     skipunavailable: false
     task:
       brand: ""
-      id: 98526c8b-0db9-401b-8085-23e6d62df03e
+      description: Prints text to war room (Markdown supported)
+      id: 312361db-263e-4749-9b40-9e4ad4157c73
       iscommand: false
-      name: Shadow Run?
-      type: condition
+      name: 'Shadow: Zscaler Block URL'
+      playbooktaskmissingcomponent: null
+      script: Print
+      type: regular
       version: -1
-    taskid: 98526c8b-0db9-401b-8085-23e6d62df03e
+    taskid: 312361db-263e-4749-9b40-9e4ad4157c73
     timertriggers: []
-    type: condition
+    type: regular
     view: |-
       {
         "position": {
-          "x": 4598,
-          "y": 1380
+          "x": 970,
+          "y": 1100
         }
       }
   "52":
@@ -1539,83 +1602,43 @@ tasks:
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#none#':
-      - "2"
+      Full Run:
+      - "35"
+      Shadow Mode:
+      - "53"
     note: false
     quietmode: 0
     scriptarguments:
-      value:
-        simple: |-
-          Shadow Run: EDL - Update Tag For URLs
-          Command: appendIndicatorField
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
     separatecontext: false
     skipunavailable: false
     task:
       brand: ""
-      description: Prints text to war room (Markdown supported)
-      id: 64fe52ea-f336-41b6-a6ef-f63ae8f00ee9
+      id: 5e1ec99e-33ed-4ea2-8193-132fe3afc301
       iscommand: false
-      name: Print To WarRoom
-      script: Print
-      type: regular
+      name: Run Mode?
+      playbooktaskmissingcomponent: null
+      script: 'ShadowModeRouter'
+      type: condition
       version: -1
-    taskid: 64fe52ea-f336-41b6-a6ef-f63ae8f00ee9
+    taskid: 5e1ec99e-33ed-4ea2-8193-132fe3afc301
     timertriggers: []
-    type: regular
+    type: condition
     view: |-
       {
         "position": {
-          "x": 4257.5,
-          "y": 1720
+          "x": 1610,
+          "y": 915
         }
       }
   "53":
-    conditions:
-    - condition:
-      - - left:
-            iscontext: true
-            value:
-              simple: shadow_mode
-          operator: isFalse
-      label: "no"
     continueonerrortype: ""
     id: "53"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#default#':
-      - "54"
-      "no":
-      - "44"
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: 986e773f-36b1-4829-8dca-fc9b2bf00517
-      iscommand: false
-      name: Shadow Run?
-      type: condition
-      version: -1
-    taskid: 986e773f-36b1-4829-8dca-fc9b2bf00517
-    timertriggers: []
-    type: condition
-    view: |-
-      {
-        "position": {
-          "x": 7503,
-          "y": 1550
-        }
-      }
-  "54":
-    continueonerrortype: ""
-    id: "54"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
       '#none#':
       - "2"
     note: false
@@ -1623,329 +1646,28 @@ tasks:
     scriptarguments:
       value:
         simple: |-
-          Shadow Run: Prisma SASE - Block URL
-          Command:
+          Shadow: Force Add URL to Category
+          Command: fp-add-address-to-category ${inputs.URL}
     separatecontext: false
     skipunavailable: false
     task:
       brand: ""
       description: Prints text to war room (Markdown supported)
-      id: ed035b49-b8f7-4542-aa75-89d7e048d791
+      id: 5556e965-ce5f-4845-b81a-30fbca83bdea
       iscommand: false
-      name: Print To WarRoom
+      name: 'Shadow: Force Add URL to Category'
+      playbooktaskmissingcomponent: null
       script: Print
       type: regular
       version: -1
-    taskid: ed035b49-b8f7-4542-aa75-89d7e048d791
+    taskid: 5556e965-ce5f-4845-b81a-30fbca83bdea
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 7788.75,
-          "y": 1720
-        }
-      }
-  "55":
-    conditions:
-    - condition:
-      - - left:
-            iscontext: true
-            value:
-              simple: shadow_mode
-          operator: isFalse
-      label: "no"
-    continueonerrortype: ""
-    id: "55"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#default#':
-      - "56"
-      "no":
-      - "35"
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: 4b6bd987-f673-4ecf-8166-989db74ac4c9
-      iscommand: false
-      name: Shadow Run?
-      type: condition
-      version: -1
-    taskid: 4b6bd987-f673-4ecf-8166-989db74ac4c9
-    timertriggers: []
-    type: condition
-    view: |-
-      {
-        "position": {
-          "x": 5614.75,
-          "y": 1380
-        }
-      }
-  "56":
-    continueonerrortype: ""
-    id: "56"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#none#':
-      - "2"
-    note: false
-    quietmode: 0
-    scriptarguments:
-      value:
-        simple: |-
-          Shadow Run: Forcepoint - Add URL's to a specific category
-          Command: fp-add-address-to-category
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Prints text to war room (Markdown supported)
-      id: de4f5706-8c95-4f68-a8a2-ba4a8c4631cc
-      iscommand: false
-      name: Print To WarRoom
-      script: Print
-      type: regular
-      version: -1
-    taskid: de4f5706-8c95-4f68-a8a2-ba4a8c4631cc
-    timertriggers: []
-    type: regular
-    view: |-
-      {
-        "position": {
-          "x": 5855.25,
-          "y": 1720
-        }
-      }
-  "57":
-    conditions:
-    - condition:
-      - - left:
-            iscontext: true
-            value:
-              simple: shadow_mode
-          operator: isFalse
-      label: "no"
-    continueonerrortype: ""
-    id: "57"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#default#':
-      - "58"
-      "no":
-      - "24"
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: fb57866e-7141-4eda-8b9f-ef3d98bd90c9
-      iscommand: false
-      name: Shadow Run?
-      type: condition
-      version: -1
-    taskid: fb57866e-7141-4eda-8b9f-ef3d98bd90c9
-    timertriggers: []
-    type: condition
-    view: |-
-      {
-        "position": {
-          "x": 3390.75,
-          "y": 1550
-        }
-      }
-  "58":
-    continueonerrortype: ""
-    id: "58"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#none#':
-      - "2"
-    note: false
-    quietmode: 0
-    scriptarguments:
-      value:
-        simple: "Shadow Run: Sophos Firewall - Block URL\nCommand: "
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Prints text to war room (Markdown supported)
-      id: c249d5a5-fedf-4cc5-9673-6243fde02a35
-      iscommand: false
-      name: Print To WarRoom
-      script: Print
-      type: regular
-      version: -1
-    taskid: c249d5a5-fedf-4cc5-9673-6243fde02a35
-    timertriggers: []
-    type: regular
-    view: |-
-      {
-        "position": {
-          "x": 3676.5,
-          "y": 1720
-        }
-      }
-  "59":
-    conditions:
-    - condition:
-      - - left:
-            iscontext: true
-            value:
-              simple: shadow_mode
-          operator: isFalse
-      label: "no"
-    continueonerrortype: ""
-    id: "59"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#default#':
-      - "60"
-      "no":
-      - "13"
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: a8f7ffe3-3363-4ca9-8270-92a3b0cd4079
-      iscommand: false
-      name: Shadow Run?
-      type: condition
-      version: -1
-    taskid: a8f7ffe3-3363-4ca9-8270-92a3b0cd4079
-    timertriggers: []
-    type: condition
-    view: |-
-      {
-        "position": {
-          "x": 2374,
-          "y": 1380
-        }
-      }
-  "60":
-    continueonerrortype: ""
-    id: "60"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#none#':
-      - "2"
-    note: false
-    quietmode: 0
-    scriptarguments:
-      value:
-        simple: "Shadow Run: Sophos Firewall - Block URL\nCommand: "
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Prints text to war room (Markdown supported)
-      id: ae47d690-755f-42b1-877b-e6174628d17e
-      iscommand: false
-      name: Print To WarRoom
-      script: Print
-      type: regular
-      version: -1
-    taskid: ae47d690-755f-42b1-877b-e6174628d17e
-    timertriggers: []
-    type: regular
-    view: |-
-      {
-        "position": {
-          "x": 2614.5,
-          "y": 1720
-        }
-      }
-  "61":
-    conditions:
-    - condition:
-      - - left:
-            iscontext: true
-            value:
-              simple: shadow_mode
-          operator: isFalse
-      label: "no"
-    continueonerrortype: ""
-    id: "61"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#default#':
-      - "62"
-      "no":
-      - "23"
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: 39f3254b-fc2f-4d74-85c9-628426163a92
-      iscommand: false
-      name: Shadow Run?
-      type: condition
-      version: -1
-    taskid: 39f3254b-fc2f-4d74-85c9-628426163a92
-    timertriggers: []
-    type: condition
-    view: |-
-      {
-        "position": {
-          "x": 826.25,
-          "y": 1550
-        }
-      }
-  "62":
-    continueonerrortype: ""
-    id: "62"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#none#':
-      - "2"
-    note: false
-    quietmode: 0
-    scriptarguments:
-      value:
-        simple: "Shadow Run: Sophos Firewall - Block URL\nCommand: "
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Prints text to war room (Markdown supported)
-      id: eef456c7-8788-488f-875c-160cf311010e
-      iscommand: false
-      name: Print To WarRoom
-      script: Print
-      type: regular
-      version: -1
-    taskid: eef456c7-8788-488f-875c-160cf311010e
-    timertriggers: []
-    type: regular
-    view: |-
-      {
-        "position": {
-          "x": 1112,
-          "y": 1720
+          "x": 1830,
+          "y": 1110
         }
       }
 version: -1
@@ -1953,23 +1675,20 @@ view: |-
   {
     "linkLabelsPosition": {
       "12_2_#default#": 0.18,
+      "12_50_yes": 0.77,
       "19_2_#default#": 0.1,
-      "19_51_yes": 0.89,
-      "20_2_#default#": 0.1,
+      "19_48_yes": 0.85,
       "21_2_#default#": 0.18,
-      "21_61_yes": 0.88,
       "27_2_#default#": 0.1,
-      "27_57_yes": 0.81,
-      "34_55_yes": 0.9,
-      "43_53_yes": 0.89,
+      "34_52_yes": 0.7,
       "8_25_#default#": 0.1
     },
     "paper": {
       "dimensions": {
-        "height": 1900,
-        "width": 8365,
-        "x": 50,
-        "y": 50
+        "height": 1915,
+        "width": 4080,
+        "x": -1620,
+        "y": -470
       }
     }
   }
