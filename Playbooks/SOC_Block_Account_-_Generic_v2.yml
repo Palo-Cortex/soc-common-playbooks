@@ -1,15 +1,18 @@
-adopted: true
+id: SOC Block Account - Generic v2
+version: 1
 contentitemexportablefields:
   contentitemfields:
-    definitionid: ""
-    fromServerVersion: 6.5.0
-    isoverridable: false
-    itemVersion: 1.0.2
     packID: ""
-    packName: SOC Common Playbooks
-    prevname: ""
-    supportedModules: []
+    packName: Common Playbooks
+    itemVersion: 2.7.14
+    fromServerVersion: 6.5.0
     toServerVersion: ""
+    definitionid: ""
+    prevname: ""
+    isoverridable: false
+    supportedModules: []
+vcShouldKeepItemLegacyProdMachine: false
+name: SOC Block Account - Generic v2
 description: |-
   This playbook blocks malicious usernames using all integrations that you have enabled.
 
@@ -31,127 +34,81 @@ description: |-
   * Zoom IAM
   * Atlassian IAM
   * GitHub IAM.
-dirtyInputs: true
-id: 'SOC Block Account - Generic v2'
-inputSections:
-- description: Generic group for inputs
-  inputs:
-  - Username
-  - Tag
-  - NamingConvention
-  - UserVerification
-  - ShadowMode
-  name: General (Inputs group)
-inputs:
-- description: Array of malicious usernames to block.
-  key: Username
-  playbookInputQuery: null
-  required: false
-  value: {}
-- description: PAN-OS Tag name to apply to the username that you want to block.
-  key: Tag
-  playbookInputQuery: null
-  required: false
-  value:
-    simple: Bad Account
-- description: In case you are using naming convention in your IDP, please specify
-    a prefix for special/service accounts (use comma separated)
-  key: NamingConvention
-  playbookInputQuery: null
-  required: false
-  value: {}
-- description: |-
-    Possible values:True/False. Default:True.
-    Specify if User Verification is Requrired
-  key: UserVerification
-  playbookInputQuery: null
-  required: false
-  value:
-    simple: "True"
-- description: Shadow Mode is a key safety mechanism. It ensures actions like isolate_endpoint
-    or disable_user are logged but not executed in test scenarios.
-  key: ShadowMode
-  playbookInputQuery: null
-  required: false
-  value:
-    simple: "true"
-name: SOC Block Account - Generic v2
-outputSections:
-- description: Generic group for outputs
-  name: General (Outputs group)
-  outputs:
-  - Blocklist.Final
-outputs:
-- contextPath: Blocklist.Final
-  description: Blocked accounts.
-  type: unknown
-sourceplaybookid: Block Account - Generic v2
+tags:
+- SOC
+- SOC_Framework
 starttaskid: "0"
 tasks:
   "0":
-    continueonerrortype: ""
     id: "0"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
+    taskid: cc38d57c-1f3a-4616-8fc3-b3d5b2beefb3
+    type: start
+    task:
+      id: cc38d57c-1f3a-4616-8fc3-b3d5b2beefb3
+      version: -1
+      name: ""
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#none#':
       - "8"
-    note: false
-    quietmode: 0
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: cc38d57c-1f3a-4616-8fc3-b3d5b2beefb3
-      iscommand: false
-      name: ""
-      playbooktaskmissingcomponent: null
-      version: -1
-    taskid: cc38d57c-1f3a-4616-8fc3-b3d5b2beefb3
-    timertriggers: []
-    type: start
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 6200.5,
-          "y": 50
+          "x": -1700,
+          "y": -1450
         }
       }
+    note: false
+    timertriggers: []
+    ignoreworker: false
+    skipunavailable: false
+    quietmode: 0
+    isoversize: false
+    isautoswitchedtoquietmode: false
   "2":
-    continueonerrortype: ""
     id: "2"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: 78bcaa68-2a3d-4805-8e25-1bee31249d8f
-      iscommand: false
-      name: Done
-      playbooktaskmissingcomponent: null
-      type: title
-      version: -1
     taskid: 78bcaa68-2a3d-4805-8e25-1bee31249d8f
-    timertriggers: []
     type: title
+    task:
+      id: 78bcaa68-2a3d-4805-8e25-1bee31249d8f
+      version: -1
+      name: Done
+      type: title
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
+    separatecontext: false
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 6195.75,
-          "y": 2080
+          "x": -1040,
+          "y": 1660
         }
       }
-  "5":
-    continueonerrortype: ""
-    id: "5"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "5":
+    id: "5"
+    taskid: df7e57df-4f26-4b41-8552-0d4068792d13
+    type: title
+    task:
+      id: df7e57df-4f26-4b41-8552-0d4068792d13
+      version: -1
+      name: Block accounts
+      type: title
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#none#':
       - "17"
@@ -172,1001 +129,1004 @@ tasks:
       - "71"
       - "64"
       - "73"
-    note: false
-    quietmode: 0
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: df7e57df-4f26-4b41-8552-0d4068792d13
-      iscommand: false
-      name: Block accounts
-      playbooktaskmissingcomponent: null
-      type: title
-      version: -1
-    taskid: df7e57df-4f26-4b41-8552-0d4068792d13
-    timertriggers: []
-    type: title
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 6822,
-          "y": 725
+          "x": -1960,
+          "y": 410
         }
       }
-  "8":
-    conditions:
-    - condition:
-      - - left:
-            iscontext: true
-            value:
-              simple: inputs.Username
-          operator: isNotEmpty
-      label: "yes"
-    continueonerrortype: ""
-    id: "8"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "8":
+    id: "8"
+    taskid: 84a222c3-d83f-4d9c-8f75-605f9c1cd233
+    type: condition
+    task:
+      id: 84a222c3-d83f-4d9c-8f75-605f9c1cd233
+      version: -1
+      name: Is there a username to block?
+      description: Verify that the playbook input includes at least one username to
+        block.
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#default#':
       - "39"
       "yes":
       - "38"
-    note: false
-    quietmode: 0
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Verify that the playbook input includes at least one username to
-        block.
-      id: 84a222c3-d83f-4d9c-8f75-605f9c1cd233
-      iscommand: false
-      name: Is there a username to block?
-      playbooktaskmissingcomponent: null
-      type: condition
-      version: -1
-    taskid: 84a222c3-d83f-4d9c-8f75-605f9c1cd233
-    timertriggers: []
-    type: condition
+    conditions:
+    - label: "yes"
+      condition:
+      - - operator: isNotEmpty
+          left:
+            value:
+              simple: inputs.Username
+            iscontext: true
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 6200.5,
-          "y": 210
+          "x": -1700,
+          "y": -1260
         }
       }
-  "15":
-    continueonerror: true
-    continueonerrortype: errorPath
-    id: "15"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "15":
+    id: "15"
+    taskid: f5a0276b-741e-4f8a-a129-6a90be21d226
+    type: regular
+    task:
+      id: f5a0276b-741e-4f8a-a129-6a90be21d226
+      version: -1
+      name: PAN-OS - Register Tag to User
+      description: Registers users to a tag. This command is only available for PAN-OS
+        version 9.x and above.
+      script: Panorama|||pan-os-register-user-tag
+      type: regular
+      iscommand: true
+      brand: Panorama
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#error#':
       - "80"
       '#none#':
       - "2"
-    note: false
-    quietmode: 0
     scriptarguments:
       Users:
         complex:
-          accessor: Final
           root: Blocklist
+          accessor: Final
       tag:
         complex:
           root: inputs.Tag
     separatecontext: false
-    skipunavailable: true
-    task:
-      brand: ""
-      description: Registers users to a tag. This command is only available for PAN-OS
-        version 9.x and above.
-      id: feb648fa-bfc3-4641-bd37-a072be8a62c6
-      iscommand: true
-      name: PAN-OS - Register Tag to User
-      playbooktaskmissingcomponent: null
-      script: '|||pan-os-register-user-tag'
-      type: regular
-      version: -1
-    taskid: feb648fa-bfc3-4641-bd37-a072be8a62c6
-    timertriggers: []
-    type: regular
+    continueonerror: true
+    continueonerrortype: errorPath
     view: |-
       {
         "position": {
-          "x": 7257.75,
-          "y": 1740
+          "x": 2520,
+          "y": 1280
         }
       }
-  "16":
-    conditions:
-    - condition:
-      - - left:
-            iscontext: true
-            value:
-              simple: inputs.Tag
-          operator: isNotEmpty
-      label: "yes"
-    continueonerrortype: ""
-    id: "16"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#default#':
-      - "2"
-      "yes":
-      - "85"
     note: false
+    timertriggers: []
+    ignoreworker: false
+    skipunavailable: true
     quietmode: 0
-    separatecontext: false
-    skipunavailable: false
+    isoversize: false
+    isautoswitchedtoquietmode: false
+  "16":
+    id: "16"
+    taskid: 134ffe20-63fc-486a-8a79-685e3d206ae8
+    type: condition
     task:
-      brand: ""
+      id: 134ffe20-63fc-486a-8a79-685e3d206ae8
+      version: -1
+      name: Is there a Tag name to register?
       description: Verify that the playbook input includes at least one tag to apply
         to the user.
-      id: 134ffe20-63fc-486a-8a79-685e3d206ae8
-      iscommand: false
-      name: Is there a Tag name to register?
-      playbooktaskmissingcomponent: null
       type: condition
-      version: -1
-    taskid: 134ffe20-63fc-486a-8a79-685e3d206ae8
-    timertriggers: []
-    type: condition
-    view: |-
-      {
-        "position": {
-          "x": 6872,
-          "y": 1400
-        }
-      }
-  "17":
-    continueonerrortype: ""
-    id: "17"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#none#':
-      - "26"
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: dd28a21a-8e77-4e94-8ebd-6b4dd2a40907
       iscommand: false
-      name: OKTA
-      playbooktaskmissingcomponent: null
-      type: title
-      version: -1
-    taskid: dd28a21a-8e77-4e94-8ebd-6b4dd2a40907
-    timertriggers: []
-    type: title
-    view: |-
-      {
-        "position": {
-          "x": 50,
-          "y": 1235
-        }
-      }
-  "18":
-    continueonerrortype: ""
-    id: "18"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#none#':
-      - "27"
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
       brand: ""
-      id: 253e9206-6499-4698-81bc-4f6b405723e9
-      iscommand: false
-      name: SailPoint
       playbooktaskmissingcomponent: null
-      type: title
-      version: -1
-    taskid: 253e9206-6499-4698-81bc-4f6b405723e9
-    timertriggers: []
-    type: title
-    view: |-
-      {
-        "position": {
-          "x": 726.25,
-          "y": 1065
-        }
-      }
-  "19":
-    continueonerrortype: ""
-    id: "19"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#none#':
-      - "28"
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: 4665f43b-c357-46ab-8658-1f5307d73e34
-      iscommand: false
-      name: AWS IAM
-      playbooktaskmissingcomponent: null
-      type: title
-      version: -1
-    taskid: 4665f43b-c357-46ab-8658-1f5307d73e34
-    timertriggers: []
-    type: title
-    view: |-
-      {
-        "position": {
-          "x": 1547.75,
-          "y": 1235
-        }
-      }
-  "20":
-    continueonerrortype: ""
-    id: "20"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#none#':
-      - "29"
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: 9f3e4789-ef65-4d8b-8142-b931aca2d1b8
-      iscommand: false
-      name: PingOne
-      playbooktaskmissingcomponent: null
-      type: title
-      version: -1
-    taskid: 9f3e4789-ef65-4d8b-8142-b931aca2d1b8
-    timertriggers: []
-    type: title
-    view: |-
-      {
-        "position": {
-          "x": 2128.75,
-          "y": 1235
-        }
-      }
-  "21":
-    continueonerrortype: ""
-    id: "21"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#none#':
-      - "30"
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: 5af0265d-f69a-47ef-8fdd-8be726ab8812
-      iscommand: false
-      name: Clarizen IAM
-      playbooktaskmissingcomponent: null
-      type: title
-      version: -1
-    taskid: 5af0265d-f69a-47ef-8fdd-8be726ab8812
-    timertriggers: []
-    type: title
-    view: |-
-      {
-        "position": {
-          "x": 2805,
-          "y": 1065
-        }
-      }
-  "22":
-    continueonerrortype: ""
-    id: "22"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#none#':
-      - "31"
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: 8170d464-f524-484a-8578-d2d5c6b44c24
-      iscommand: false
-      name: Envoy IAM
-      playbooktaskmissingcomponent: null
-      type: title
-      version: -1
-    taskid: 8170d464-f524-484a-8578-d2d5c6b44c24
-    timertriggers: []
-    type: title
-    view: |-
-      {
-        "position": {
-          "x": 3631.25,
-          "y": 1065
-        }
-      }
-  "23":
-    continueonerrortype: ""
-    id: "23"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#none#':
-      - "32"
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: 9426248c-bc57-4e2a-898c-333c705fe7c9
-      iscommand: false
-      name: ExceedLMS IAM
-      playbooktaskmissingcomponent: null
-      type: title
-      version: -1
-    taskid: 9426248c-bc57-4e2a-898c-333c705fe7c9
-    timertriggers: []
-    type: title
-    view: |-
-      {
-        "position": {
-          "x": 4112.25,
-          "y": 1065
-        }
-      }
-  "24":
-    continueonerrortype: ""
-    id: "24"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#none#':
-      - "36"
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: e3d46f19-bf96-4280-887d-c746b0e95976
-      iscommand: false
-      name: PAN-OS
-      playbooktaskmissingcomponent: null
-      type: title
-      version: -1
-    taskid: e3d46f19-bf96-4280-887d-c746b0e95976
-    timertriggers: []
-    type: title
-    view: |-
-      {
-        "position": {
-          "x": 6581.5,
-          "y": 1065
-        }
-      }
-  "25":
-    continueonerrortype: ""
-    id: "25"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#none#':
-      - "37"
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: 00761e97-8a6e-48f4-85fb-d894509a2c17
-      iscommand: false
-      name: Microsoft Active Directory
-      playbooktaskmissingcomponent: null
-      type: title
-      version: -1
-    taskid: 00761e97-8a6e-48f4-85fb-d894509a2c17
-    timertriggers: []
-    type: title
-    view: |-
-      {
-        "position": {
-          "x": 4888.5,
-          "y": 895
-        }
-      }
-  "26":
-    continueonerrortype: ""
-    id: "26"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
     nexttasks:
       '#default#':
       - "2"
       "yes":
       - "91"
+    separatecontext: false
+    conditions:
+    - label: "yes"
+      condition:
+      - - operator: isNotEmpty
+          left:
+            value:
+              simple: inputs.Tag
+            iscontext: true
+    continueonerrortype: ""
+    view: |-
+      {
+        "position": {
+          "x": 2700,
+          "y": 910
+        }
+      }
     note: false
+    timertriggers: []
+    ignoreworker: false
+    skipunavailable: false
     quietmode: 0
+    isoversize: false
+    isautoswitchedtoquietmode: false
+  "17":
+    id: "17"
+    taskid: dd28a21a-8e77-4e94-8ebd-6b4dd2a40907
+    type: title
+    task:
+      id: dd28a21a-8e77-4e94-8ebd-6b4dd2a40907
+      version: -1
+      name: OKTA
+      type: title
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
+    nexttasks:
+      '#none#':
+      - "26"
+    separatecontext: false
+    continueonerrortype: ""
+    view: |-
+      {
+        "position": {
+          "x": -1960,
+          "y": 555
+        }
+      }
+    note: false
+    timertriggers: []
+    ignoreworker: false
+    skipunavailable: false
+    quietmode: 0
+    isoversize: false
+    isautoswitchedtoquietmode: false
+  "18":
+    id: "18"
+    taskid: 253e9206-6499-4698-81bc-4f6b405723e9
+    type: title
+    task:
+      id: 253e9206-6499-4698-81bc-4f6b405723e9
+      version: -1
+      name: SailPoint
+      type: title
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
+    nexttasks:
+      '#none#':
+      - "27"
+    separatecontext: false
+    continueonerrortype: ""
+    view: |-
+      {
+        "position": {
+          "x": 640,
+          "y": 555
+        }
+      }
+    note: false
+    timertriggers: []
+    ignoreworker: false
+    skipunavailable: false
+    quietmode: 0
+    isoversize: false
+    isautoswitchedtoquietmode: false
+  "19":
+    id: "19"
+    taskid: 4665f43b-c357-46ab-8658-1f5307d73e34
+    type: title
+    task:
+      id: 4665f43b-c357-46ab-8658-1f5307d73e34
+      version: -1
+      name: AWS IAM
+      type: title
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
+    nexttasks:
+      '#none#':
+      - "28"
+    separatecontext: false
+    continueonerrortype: ""
+    view: |-
+      {
+        "position": {
+          "x": -220,
+          "y": 555
+        }
+      }
+    note: false
+    timertriggers: []
+    ignoreworker: false
+    skipunavailable: false
+    quietmode: 0
+    isoversize: false
+    isautoswitchedtoquietmode: false
+  "20":
+    id: "20"
+    taskid: 9f3e4789-ef65-4d8b-8142-b931aca2d1b8
+    type: title
+    task:
+      id: 9f3e4789-ef65-4d8b-8142-b931aca2d1b8
+      version: -1
+      name: PingOne
+      type: title
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
+    nexttasks:
+      '#none#':
+      - "29"
+    separatecontext: false
+    continueonerrortype: ""
+    view: |-
+      {
+        "position": {
+          "x": 210,
+          "y": 555
+        }
+      }
+    note: false
+    timertriggers: []
+    ignoreworker: false
+    skipunavailable: false
+    quietmode: 0
+    isoversize: false
+    isautoswitchedtoquietmode: false
+  "21":
+    id: "21"
+    taskid: 5af0265d-f69a-47ef-8fdd-8be726ab8812
+    type: title
+    task:
+      id: 5af0265d-f69a-47ef-8fdd-8be726ab8812
+      version: -1
+      name: Clarizen IAM
+      type: title
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
+    nexttasks:
+      '#none#':
+      - "30"
+    separatecontext: false
+    continueonerrortype: ""
+    view: |-
+      {
+        "position": {
+          "x": -640,
+          "y": 555
+        }
+      }
+    note: false
+    timertriggers: []
+    ignoreworker: false
+    skipunavailable: false
+    quietmode: 0
+    isoversize: false
+    isautoswitchedtoquietmode: false
+  "22":
+    id: "22"
+    taskid: 8170d464-f524-484a-8578-d2d5c6b44c24
+    type: title
+    task:
+      id: 8170d464-f524-484a-8578-d2d5c6b44c24
+      version: -1
+      name: Envoy IAM
+      type: title
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
+    nexttasks:
+      '#none#':
+      - "31"
+    separatecontext: false
+    continueonerrortype: ""
+    view: |-
+      {
+        "position": {
+          "x": -1070,
+          "y": 555
+        }
+      }
+    note: false
+    timertriggers: []
+    ignoreworker: false
+    skipunavailable: false
+    quietmode: 0
+    isoversize: false
+    isautoswitchedtoquietmode: false
+  "23":
+    id: "23"
+    taskid: 9426248c-bc57-4e2a-898c-333c705fe7c9
+    type: title
+    task:
+      id: 9426248c-bc57-4e2a-898c-333c705fe7c9
+      version: -1
+      name: ExceedLMS IAM
+      type: title
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
+    nexttasks:
+      '#none#':
+      - "32"
+    separatecontext: false
+    continueonerrortype: ""
+    view: |-
+      {
+        "position": {
+          "x": -1500,
+          "y": 555
+        }
+      }
+    note: false
+    timertriggers: []
+    ignoreworker: false
+    skipunavailable: false
+    quietmode: 0
+    isoversize: false
+    isautoswitchedtoquietmode: false
+  "24":
+    id: "24"
+    taskid: e3d46f19-bf96-4280-887d-c746b0e95976
+    type: title
+    task:
+      id: e3d46f19-bf96-4280-887d-c746b0e95976
+      version: -1
+      name: PAN-OS
+      type: title
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
+    nexttasks:
+      '#none#':
+      - "36"
+    separatecontext: false
+    continueonerrortype: ""
+    view: |-
+      {
+        "position": {
+          "x": 2700,
+          "y": 555
+        }
+      }
+    note: false
+    timertriggers: []
+    ignoreworker: false
+    skipunavailable: false
+    quietmode: 0
+    isoversize: false
+    isautoswitchedtoquietmode: false
+  "25":
+    id: "25"
+    taskid: 00761e97-8a6e-48f4-85fb-d894509a2c17
+    type: title
+    task:
+      id: 00761e97-8a6e-48f4-85fb-d894509a2c17
+      version: -1
+      name: Microsoft Active Directory
+      type: title
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
+    nexttasks:
+      '#none#':
+      - "37"
+    separatecontext: false
+    continueonerrortype: ""
+    view: |-
+      {
+        "position": {
+          "x": 1060,
+          "y": 555
+        }
+      }
+    note: false
+    timertriggers: []
+    ignoreworker: false
+    skipunavailable: false
+    quietmode: 0
+    isoversize: false
+    isautoswitchedtoquietmode: false
+  "26":
+    id: "26"
+    taskid: ca29fc92-0b56-4eca-8fb4-285bf732a419
+    type: condition
+    task:
+      id: ca29fc92-0b56-4eca-8fb4-285bf732a419
+      version: -1
+      name: Is OKTA Integration Enabled?
+      description: Returns 'yes' if integration brand is available. Otherwise returns
+        'no'
+      scriptName: IsIntegrationAvailable
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
+    nexttasks:
+      '#default#':
+      - "2"
+      "yes":
+      - "81"
     scriptarguments:
       brandname:
         simple: Okta IAM
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Returns 'yes' if integration brand is available. Otherwise returns
-        'no'
-      id: ca29fc92-0b56-4eca-8fb4-285bf732a419
-      iscommand: false
-      name: Is OKTA Integration Enabled?
-      playbooktaskmissingcomponent: null
-      script: IsIntegrationAvailable
-      type: condition
-      version: -1
-    taskid: ca29fc92-0b56-4eca-8fb4-285bf732a419
-    timertriggers: []
-    type: condition
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 50,
-          "y": 1400
+          "x": -1960,
+          "y": 715
         }
       }
-  "27":
-    continueonerrortype: ""
-    id: "27"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "27":
+    id: "27"
+    taskid: 692fc977-5dff-49fa-8ef9-4c0c53979786
+    type: condition
+    task:
+      id: 692fc977-5dff-49fa-8ef9-4c0c53979786
+      version: -1
+      name: Is SailPoint Integration Enabled?
+      description: Returns 'yes' if integration brand is available. Otherwise returns
+        'no'
+      scriptName: IsIntegrationAvailable
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#default#':
       - "2"
       "yes":
       - "75"
-    note: false
-    quietmode: 0
     scriptarguments:
       brandname:
         simple: SailPointIdentityIQ
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Returns 'yes' if integration brand is available. Otherwise returns
-        'no'
-      id: 692fc977-5dff-49fa-8ef9-4c0c53979786
-      iscommand: false
-      name: Is SailPoint Integration Enabled?
-      playbooktaskmissingcomponent: null
-      script: IsIntegrationAvailable
-      type: condition
-      version: -1
-    taskid: 692fc977-5dff-49fa-8ef9-4c0c53979786
-    timertriggers: []
-    type: condition
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 726.25,
-          "y": 1230
+          "x": 640,
+          "y": 715
         }
       }
-  "28":
-    continueonerrortype: ""
-    id: "28"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "28":
+    id: "28"
+    taskid: c00031c8-63dc-447a-8064-458b8b89c0b9
+    type: condition
+    task:
+      id: c00031c8-63dc-447a-8064-458b8b89c0b9
+      version: -1
+      name: Is AWS IAM Integration Enabled?
+      description: Returns 'yes' if integration brand is available. Otherwise returns
+        'no'
+      scriptName: IsIntegrationAvailable
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#default#':
       - "2"
       "yes":
-      - "91"
-    note: false
-    quietmode: 0
+      - "81"
     scriptarguments:
       brandname:
         simple: AWS - IAM
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Returns 'yes' if integration brand is available. Otherwise returns
-        'no'
-      id: c00031c8-63dc-447a-8064-458b8b89c0b9
-      iscommand: false
-      name: Is AWS IAM Integration Enabled?
-      playbooktaskmissingcomponent: null
-      script: IsIntegrationAvailable
-      type: condition
-      version: -1
-    taskid: c00031c8-63dc-447a-8064-458b8b89c0b9
-    timertriggers: []
-    type: condition
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 1547.75,
-          "y": 1400
+          "x": -220,
+          "y": 715
         }
       }
-  "29":
-    continueonerrortype: ""
-    id: "29"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "29":
+    id: "29"
+    taskid: 1dfdb5b5-b388-49f8-8778-b631675b5228
+    type: condition
+    task:
+      id: 1dfdb5b5-b388-49f8-8778-b631675b5228
+      version: -1
+      name: Is PingOne Integration Enabled
+      description: Returns 'yes' if integration brand is available. Otherwise returns
+        'no'
+      scriptName: IsIntegrationAvailable
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#default#':
       - "2"
       "yes":
-      - "93"
-    note: false
-    quietmode: 0
+      - "83"
     scriptarguments:
       brandname:
         simple: PingOne
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Returns 'yes' if integration brand is available. Otherwise returns
-        'no'
-      id: 1dfdb5b5-b388-49f8-8778-b631675b5228
-      iscommand: false
-      name: Is PingOne Integration Enabled
-      playbooktaskmissingcomponent: null
-      script: IsIntegrationAvailable
-      type: condition
-      version: -1
-    taskid: 1dfdb5b5-b388-49f8-8778-b631675b5228
-    timertriggers: []
-    type: condition
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 2128.75,
-          "y": 1400
+          "x": 210,
+          "y": 715
         }
       }
-  "30":
-    continueonerrortype: ""
-    id: "30"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "30":
+    id: "30"
+    taskid: 1e40e759-f2e0-46f7-8c4c-e6c305ada2fe
+    type: condition
+    task:
+      id: 1e40e759-f2e0-46f7-8c4c-e6c305ada2fe
+      version: -1
+      name: Is ClarizenIAM Integration Enabled?
+      description: Returns 'yes' if integration brand is available. Otherwise returns
+        'no'
+      scriptName: IsIntegrationAvailable
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#default#':
       - "2"
       "yes":
-      - "87"
-    note: false
-    quietmode: 0
+      - "81"
     scriptarguments:
       brandname:
         simple: ClarizenIAM
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Returns 'yes' if integration brand is available. Otherwise returns
-        'no'
-      id: 1e40e759-f2e0-46f7-8c4c-e6c305ada2fe
-      iscommand: false
-      name: Is ClarizenIAM Integration Enabled?
-      playbooktaskmissingcomponent: null
-      script: IsIntegrationAvailable
-      type: condition
-      version: -1
-    taskid: 1e40e759-f2e0-46f7-8c4c-e6c305ada2fe
-    timertriggers: []
-    type: condition
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 2805,
-          "y": 1230
+          "x": -640,
+          "y": 715
         }
       }
-  "31":
-    continueonerrortype: ""
-    id: "31"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "31":
+    id: "31"
+    taskid: e69ec334-a883-4519-8b53-2d12a380819d
+    type: condition
+    task:
+      id: e69ec334-a883-4519-8b53-2d12a380819d
+      version: -1
+      name: Is Envoy IAM Integration Enabled?
+      description: Returns 'yes' if integration brand is available. Otherwise returns
+        'no'
+      scriptName: IsIntegrationAvailable
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#default#':
       - "2"
       "yes":
-      - "87"
-    note: false
-    quietmode: 0
+      - "81"
     scriptarguments:
       brandname:
         simple: Envoy IAM
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Returns 'yes' if integration brand is available. Otherwise returns
-        'no'
-      id: e69ec334-a883-4519-8b53-2d12a380819d
-      iscommand: false
-      name: Is Envoy IAM Integration Enabled?
-      playbooktaskmissingcomponent: null
-      script: IsIntegrationAvailable
-      type: condition
-      version: -1
-    taskid: e69ec334-a883-4519-8b53-2d12a380819d
-    timertriggers: []
-    type: condition
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 3631.25,
-          "y": 1230
+          "x": -1070,
+          "y": 715
         }
       }
-  "32":
-    continueonerrortype: ""
-    id: "32"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "32":
+    id: "32"
+    taskid: d7750a59-552e-4fbe-8d72-6a0dbf2c50b2
+    type: condition
+    task:
+      id: d7750a59-552e-4fbe-8d72-6a0dbf2c50b2
+      version: -1
+      name: Is ExceedLMS IAM Integration Enabled?
+      description: Returns 'yes' if integration brand is available. Otherwise returns
+        'no'
+      scriptName: IsIntegrationAvailable
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#default#':
       - "2"
       "yes":
-      - "87"
-    note: false
-    quietmode: 0
+      - "81"
     scriptarguments:
       brandname:
         simple: ExceedLMS IAM
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Returns 'yes' if integration brand is available. Otherwise returns
-        'no'
-      id: d7750a59-552e-4fbe-8d72-6a0dbf2c50b2
-      iscommand: false
-      name: Is ExceedLMS IAM Integration Enabled?
-      playbooktaskmissingcomponent: null
-      script: IsIntegrationAvailable
-      type: condition
-      version: -1
-    taskid: d7750a59-552e-4fbe-8d72-6a0dbf2c50b2
-    timertriggers: []
-    type: condition
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 4112.25,
-          "y": 1230
+          "x": -1500,
+          "y": 715
         }
       }
-  "33":
-    continueonerror: true
-    continueonerrortype: errorPath
-    id: "33"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "33":
+    id: "33"
+    taskid: f3afa983-9d12-4f8a-89eb-70e0ffbac1b7
+    type: regular
+    task:
+      id: f3afa983-9d12-4f8a-89eb-70e0ffbac1b7
+      version: -1
+      name: IAM Disable User
+      description: Disable an active user.
+      script: '|||iam-disable-user'
+      type: regular
+      iscommand: true
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#error#':
       - "80"
       '#none#':
       - "2"
-    note: false
-    quietmode: 0
     scriptarguments:
       user-profile:
         simple: ${Blocklist.Final}
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Disable an active user.
-      id: 07c0739c-dce7-426d-bd0e-36cf2739e43b
-      iscommand: true
-      name: IAM Disable User
-      playbooktaskmissingcomponent: null
-      script: '|||iam-disable-user'
-      type: regular
-      version: -1
-    taskid: 07c0739c-dce7-426d-bd0e-36cf2739e43b
-    timertriggers: []
-    type: regular
+    continueonerror: true
+    continueonerrortype: errorPath
     view: |-
       {
         "position": {
-          "x": 3290.75,
-          "y": 1740
+          "x": -1260,
+          "y": 1220
         }
       }
-  "34":
-    continueonerror: true
-    continueonerrortype: errorPath
-    id: "34"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "34":
+    id: "34"
+    taskid: 1d25df3a-4ff2-4e85-93ae-435a6b346b06
+    type: regular
+    task:
+      id: 1d25df3a-4ff2-4e85-93ae-435a6b346b06
+      version: -1
+      name: PingOne - Deactivate user
+      description: Deactivate a user's account.
+      script: PingOne|||pingone-deactivate-user
+      type: regular
+      iscommand: true
+      brand: PingOne
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#error#':
       - "80"
       '#none#':
       - "2"
-    note: false
-    quietmode: 0
     scriptarguments:
       username:
         complex:
-          accessor: Final
           root: Blocklist
+          accessor: Final
     separatecontext: false
-    skipunavailable: true
-    task:
-      brand: ""
-      description: Deactivate a user's account.
-      id: 57d86230-3c9a-4a8d-a8dd-f5993af9f4a0
-      iscommand: true
-      name: PingOne - Deactivate user
-      playbooktaskmissingcomponent: null
-      script: '|||pingone-deactivate-user'
-      type: regular
-      version: -1
-    taskid: 57d86230-3c9a-4a8d-a8dd-f5993af9f4a0
-    timertriggers: []
-    type: regular
+    continueonerror: true
+    continueonerrortype: errorPath
     view: |-
       {
         "position": {
-          "x": 2419.25,
-          "y": 1740
+          "x": -440,
+          "y": 1190
         }
       }
-  "35":
-    continueonerror: true
-    continueonerrortype: errorPath
-    id: "35"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: true
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "35":
+    id: "35"
+    taskid: 24dbd242-88dc-4d46-808a-baa9acff55f1
+    type: regular
+    task:
+      id: 24dbd242-88dc-4d46-808a-baa9acff55f1
+      version: -1
+      name: SailPoint-Disable account
+      description: Disable account's active status by id using IdentityIQ SCIM API's.
+      script: SailPointIdentityIQ|||identityiq-disable-account
+      type: regular
+      iscommand: true
+      brand: SailPointIdentityIQ
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#error#':
       - "80"
       '#none#':
       - "2"
-    note: false
-    quietmode: 0
     scriptarguments:
       id:
         complex:
-          accessor: id
           root: IdentityIQ.Account
+          accessor: id
     separatecontext: false
-    skipunavailable: true
-    task:
-      brand: ""
-      description: Disable account's active status by id using IdentityIQ SCIM API's.
-      id: 92e96eb1-eeb9-4501-b5fc-f399538003b4
-      iscommand: true
-      name: SailPoint-Disable account
-      playbooktaskmissingcomponent: null
-      script: '|||identityiq-disable-account'
-      type: regular
-      version: -1
-    taskid: 92e96eb1-eeb9-4501-b5fc-f399538003b4
-    timertriggers: []
-    type: regular
+    continueonerror: true
+    continueonerrortype: errorPath
     view: |-
       {
         "position": {
-          "x": 1162,
-          "y": 1740
+          "x": 120,
+          "y": 1470
         }
       }
-  "36":
-    continueonerrortype: ""
-    id: "36"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: true
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "36":
+    id: "36"
+    taskid: 90a2adf8-4f57-4b53-896d-44bddd4d064c
+    type: condition
+    task:
+      id: 90a2adf8-4f57-4b53-896d-44bddd4d064c
+      version: -1
+      name: Is PAN-OS/Panorama Integration Enabled?
+      description: Returns 'yes' if integration brand is available. Otherwise returns
+        'no'
+      scriptName: IsIntegrationAvailable
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#default#':
       - "2"
       "yes":
       - "16"
-    note: false
-    quietmode: 0
     scriptarguments:
       brandname:
         simple: Panorama
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Returns 'yes' if integration brand is available. Otherwise returns
-        'no'
-      id: 90a2adf8-4f57-4b53-896d-44bddd4d064c
-      iscommand: false
-      name: Is PAN-OS/Panorama Integration Enabled?
-      playbooktaskmissingcomponent: null
-      script: IsIntegrationAvailable
-      type: condition
-      version: -1
-    taskid: 90a2adf8-4f57-4b53-896d-44bddd4d064c
-    timertriggers: []
-    type: condition
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 6581.5,
-          "y": 1230
+          "x": 2700,
+          "y": 735
         }
       }
-  "37":
-    continueonerrortype: ""
-    id: "37"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "37":
+    id: "37"
+    taskid: e31ad79c-5806-41f0-839b-f896c860d3cc
+    type: condition
+    task:
+      id: e31ad79c-5806-41f0-839b-f896c860d3cc
+      version: -1
+      name: Is Active Directory Integration Enabled?
+      description: Returns 'yes' if integration brand is available. Otherwise returns
+        'no'
+      scriptName: IsIntegrationAvailable
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#default#':
       - "2"
       "yes":
       - "76"
-    note: false
-    quietmode: 0
     scriptarguments:
       brandname:
         simple: Active Directory Query v2
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Returns 'yes' if integration brand is available. Otherwise returns
-        'no'
-      id: e31ad79c-5806-41f0-839b-f896c860d3cc
-      iscommand: false
-      name: Is Active Directory Integration Enabled?
-      playbooktaskmissingcomponent: null
-      script: IsIntegrationAvailable
-      type: condition
-      version: -1
-    taskid: e31ad79c-5806-41f0-839b-f896c860d3cc
-    timertriggers: []
-    type: condition
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 4888.5,
-          "y": 1060
+          "x": 1060,
+          "y": 715
         }
       }
-  "38":
-    conditions:
-    - condition:
-      - - ignorecase: true
-          left:
-            iscontext: true
-            value:
-              simple: inputs.UserVerification
-          operator: isEqualString
-          right:
-            value:
-              simple: "True"
-      label: "yes"
-    continueonerrortype: ""
-    id: "38"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "38":
+    id: "38"
+    taskid: c34085c0-1974-4153-8f36-fb22e4ba0c4e
+    type: condition
+    task:
+      id: c34085c0-1974-4153-8f36-fb22e4ba0c4e
+      version: -1
+      name: Is User Verification Required?
+      description: Check if manual verification is required before block
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#default#':
       - "47"
       "yes":
       - "40"
-    note: false
-    quietmode: 0
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Check if manual verification is required before block
-      id: c34085c0-1974-4153-8f36-fb22e4ba0c4e
-      iscommand: false
-      name: Is User Verification Required?
-      playbooktaskmissingcomponent: null
-      type: condition
-      version: -1
-    taskid: c34085c0-1974-4153-8f36-fb22e4ba0c4e
-    timertriggers: []
-    type: condition
+    conditions:
+    - label: "yes"
+      condition:
+      - - operator: isEqualString
+          left:
+            value:
+              simple: inputs.UserVerification
+            iscontext: true
+          right:
+            value:
+              simple: "True"
+          ignorecase: true
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 6345.75,
-          "y": 380
+          "x": -1700,
+          "y": -1050
         }
       }
-  "39":
-    continueonerrortype: ""
-    id: "39"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "39":
+    id: "39"
+    taskid: eda8a397-b0f5-4cb8-85a6-804bbbf59244
+    type: title
+    task:
+      id: eda8a397-b0f5-4cb8-85a6-804bbbf59244
+      version: -1
+      name: No User to be blocked
+      type: title
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#none#':
       - "2"
-    note: false
-    quietmode: 0
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: eda8a397-b0f5-4cb8-85a6-804bbbf59244
-      iscommand: false
-      name: No User to be blocked
-      playbooktaskmissingcomponent: null
-      type: title
-      version: -1
-    taskid: eda8a397-b0f5-4cb8-85a6-804bbbf59244
-    timertriggers: []
-    type: title
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 6050.5,
-          "y": 1745
+          "x": -5370,
+          "y": 1105
         }
       }
-  "40":
-    continueonerror: true
-    continueonerrortype: errorPath
-    id: "40"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "40":
+    id: "40"
+    taskid: 90c4e379-c164-495b-8bd0-74e807433506
+    type: regular
+    task:
+      id: 90c4e379-c164-495b-8bd0-74e807433506
+      version: -1
+      name: Set Naming Convention to a key
+      description: "Set a value in context under the key you entered. If no value
+        is entered, the script doesn't do anything.\n\nThis automation runs using
+        the default Limited User role, unless you explicitly change the permissions.\nFor
+        more information, see the section about permissions here:\n- For Cortex XSOAR
+        6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+      scriptName: SetAndHandleEmpty
+      type: regular
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
-      '#error#':
-      - "80"
       '#none#':
       - "42"
-    note: false
-    quietmode: 0
     scriptarguments:
       append:
         simple: "true"
@@ -1176,120 +1136,114 @@ tasks:
         complex:
           root: inputs.NamingConvention
           transformers:
-          - args:
+          - operator: replace
+            args:
               limit: {}
               replaceWith: {}
               toReplace:
                 value:
                   simple: ' '
-            operator: replace
-          - args:
+          - operator: split
+            args:
               delimiter:
                 value:
                   simple: ','
-            operator: split
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: "Set a value in context under the key you entered. If no value
-        is entered, the script doesn't do anything.\n\nThis automation runs using
-        the default Limited User role, unless you explicitly change the permissions.\nFor
-        more information, see the section about permissions here:\n- For Cortex see
-        https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
-      id: df5049a4-86a7-4d57-b10e-e3f8bac80f73
-      iscommand: false
-      name: Set Naming Convention to a key
-      playbooktaskmissingcomponent: null
-      script: SetAndHandleEmpty
-      type: regular
-      version: -1
-    taskid: df5049a4-86a7-4d57-b10e-e3f8bac80f73
-    timertriggers: []
-    type: regular
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 13639.25,
-          "y": 720
+          "x": -2230,
+          "y": -880
         }
       }
-  "41":
-    continueonerror: true
-    continueonerrortype: errorPath
-    id: "41"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#error#':
-      - "80"
-      '#none#':
-      - "43"
-      - "45"
     note: false
+    timertriggers: []
+    ignoreworker: false
+    skipunavailable: false
     quietmode: 0
+    isoversize: false
+    isautoswitchedtoquietmode: false
+  "41":
+    id: "41"
+    taskid: 603550b4-89d3-4df1-84d9-1eb2951e0871
+    type: regular
+    task:
+      id: 603550b4-89d3-4df1-84d9-1eb2951e0871
+      version: -1
+      name: Identify Potential Sensitive Users
+      description: "Set a value in context under the key you entered. If no value
+        is entered, the script doesn't do anything.\n\nThis automation runs using
+        the default Limited User role, unless you explicitly change the permissions.\nFor
+        more information, see the section about permissions here:\n- For Cortex XSOAR
+        6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+      scriptName: SetAndHandleEmpty
+      type: regular
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
+    nexttasks:
+      '#none#':
+      - "45"
+      - "43"
     scriptarguments:
       key:
         simple: Blocklist.Sensitive
       value:
         complex:
+          root: Blocklist.Potential
           filters:
-          - - ignorecase: true
+          - - operator: StringContainsArray
               left:
-                iscontext: true
                 value:
                   simple: Blocklist.Potential
-              operator: StringContainsArray
-              right:
                 iscontext: true
+              right:
                 value:
                   simple: checks.common
-          root: Blocklist.Potential
+                iscontext: true
+              ignorecase: true
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: "Set a value in context under the key you entered. If no value
-        is entered, the script doesn't do anything.\n\nThis automation runs using
-        the default Limited User role, unless you explicitly change the permissions.\nFor
-        more information, see the section about permissions here:\n- For Cortex see
-        https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
-      id: e36814cf-df02-4ff5-91e3-4fd22e238607
-      iscommand: false
-      name: Identify Potential Sensitive Users
-      playbooktaskmissingcomponent: null
-      script: SetAndHandleEmpty
-      type: regular
-      version: -1
-    taskid: e36814cf-df02-4ff5-91e3-4fd22e238607
-    timertriggers: []
-    type: regular
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 13929.75,
-          "y": 1060
+          "x": -2230,
+          "y": -560
         }
       }
-  "42":
-    continueonerror: true
-    continueonerrortype: errorPath
-    id: "42"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "42":
+    id: "42"
+    taskid: 93dc1c23-81e4-40fd-8f62-9f4290882421
+    type: regular
+    task:
+      id: 93dc1c23-81e4-40fd-8f62-9f4290882421
+      version: -1
+      name: Set User to a potential block list
+      description: "Set a value in context under the key you entered. If no value
+        is entered, the script doesn't do anything.\n\nThis automation runs using
+        the default Limited User role, unless you explicitly change the permissions.\nFor
+        more information, see the section about permissions here:\n- For Cortex XSOAR
+        6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+      scriptName: SetAndHandleEmpty
+      type: regular
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
-      '#error#':
-      - "80"
       '#none#':
       - "41"
-    note: false
-    quietmode: 0
     scriptarguments:
       key:
         simple: Blocklist.Potential
@@ -1297,112 +1251,104 @@ tasks:
         complex:
           root: inputs.Username
           transformers:
-          - args:
+          - operator: split
+            args:
               delimiter:
                 value:
                   simple: ','
-            operator: split
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: "Set a value in context under the key you entered. If no value
-        is entered, the script doesn't do anything.\n\nThis automation runs using
-        the default Limited User role, unless you explicitly change the permissions.\nFor
-        more information, see the section about permissions here:\n- For Cortex see
-        https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
-      id: 0d444ff1-6628-4911-9456-3fe3d2ccdb1e
-      iscommand: false
-      name: Set User to a potential block list
-      playbooktaskmissingcomponent: null
-      script: SetAndHandleEmpty
-      type: regular
-      version: -1
-    taskid: 0d444ff1-6628-4911-9456-3fe3d2ccdb1e
-    timertriggers: []
-    type: regular
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 13784.5,
-          "y": 890
+          "x": -2230,
+          "y": -720
         }
       }
-  "43":
-    conditions:
-    - condition:
-      - - left:
-            iscontext: true
-            value:
-              simple: Blocklist.Sensitive
-          operator: isExists
-      label: "yes"
-    continueonerrortype: ""
-    id: "43"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "43":
+    id: "43"
+    taskid: 39b3cf6c-5757-447b-8188-9ead6e21a445
+    type: condition
+    task:
+      id: 39b3cf6c-5757-447b-8188-9ead6e21a445
+      version: -1
+      name: Check if there are any sensitive users to block
+      description: Check if there are any sensitive users to block
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#default#':
       - "45"
       "yes":
       - "44"
-    note: false
-    quietmode: 0
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Check if there are any sensitive users to block
-      id: 39b3cf6c-5757-447b-8188-9ead6e21a445
-      iscommand: false
-      name: Check if there are any sensitive users to block
-      playbooktaskmissingcomponent: null
-      type: condition
-      version: -1
-    taskid: 39b3cf6c-5757-447b-8188-9ead6e21a445
-    timertriggers: []
-    type: condition
+    conditions:
+    - label: "yes"
+      condition:
+      - - operator: isExists
+          left:
+            value:
+              simple: Blocklist.Sensitive
+            iscontext: true
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 13834.5,
-          "y": 1230
+          "x": -2670,
+          "y": -390
         }
       }
-  "44":
-    continueonerrortype: ""
-    form:
-      description: ""
-      expired: false
-      questions:
-      - defaultrows: []
-        fieldassociated: ""
-        gridcolumns: []
-        id: "0"
-        label: ""
-        labelarg:
-          simple: 'Sensitive Users:'
-        options: []
-        optionsarg:
-        - simple: ${Blocklist.Sensitive}
-        placeholder: ""
-        readonly: false
-        required: false
-        tooltip: ""
-        type: multiSelect
-      sender: ""
-      title: 'Which sensitive users you would like to Block?  Choose from the following
-        lists :'
-      totalanswers: 0
-    id: "44"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "44":
+    id: "44"
+    taskid: 6ab46eeb-8460-44ab-8b96-0c6a35e38581
+    type: collection
+    task:
+      id: 6ab46eeb-8460-44ab-8b96-0c6a35e38581
+      version: -1
+      name: Ask the user for verification [Sensitive Users]
+      description: |-
+        Please note that in this form there are serval accounts that are listed as "Sensitive Accounts":
+        ${User.Sensetive}
+      type: collection
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
+    nexttasks:
+      '#none#':
+      - "52"
+    separatecontext: false
+    continueonerrortype: ""
+    view: |-
+      {
+        "position": {
+          "x": -2670,
+          "y": -190
+        }
+      }
+    note: false
+    timertriggers: []
+    ignoreworker: false
     message:
-      bcc: null
+      to:
+        simple: Analyst
+      subject:
+        simple: Block Sensitive Account - User Verification Form
       body:
         simple: |
           <p>Dear XSOAR user,</p>
@@ -1412,81 +1358,79 @@ tasks:
           <p>${Blocklist.Sensitive}</p>
           <p>&nbsp;</p>
           <p>For more information, click the link below.</p>
-      cc: null
-      format: html
       methods:
       - email
-      subject:
-        simple: Block Sensitive Account - User Verification Form
+      format: html
+      bcc: null
+      cc: null
       timings:
-        completeafterreplies: 1
-        completeaftersla: false
-        completeafterv2: true
         retriescount: 2
         retriesinterval: 360
-      to:
-        simple: Investigator
-    nexttasks:
-      '#none#':
-      - "52"
-    note: false
-    quietmode: 0
-    separatecontext: false
+        completeafterreplies: 1
+        completeafterv2: true
+        completeaftersla: false
+    form:
+      questions:
+      - id: "0"
+        label: ""
+        labelarg:
+          simple: 'Sensitive Users:'
+        required: false
+        gridcolumns: []
+        defaultrows: []
+        type: multiSelect
+        options: []
+        optionsarg:
+        - simple: ${Blocklist.Sensitive}
+        fieldassociated: ""
+        placeholder: ""
+        tooltip: ""
+        readonly: false
+      title: 'Which sensitive users you would like to Block?  Choose from the following
+        lists :'
+      description: ""
+      sender: ""
+      expired: false
+      totalanswers: 0
     skipunavailable: false
+    quietmode: 0
+    isoversize: false
+    isautoswitchedtoquietmode: false
+  "45":
+    id: "45"
+    taskid: 4d484404-eefc-4cf6-8f56-abdae89d61e6
+    type: collection
     task:
-      brand: ""
+      id: 4d484404-eefc-4cf6-8f56-abdae89d61e6
+      version: -1
+      name: Ask the user for verification [without Sensitive Users]
       description: |-
         Please note that in this form there are serval accounts that are listed as "Sensitive Accounts":
         ${User.Sensetive}
-      id: 6ab46eeb-8460-44ab-8b96-0c6a35e38581
-      iscommand: false
-      name: Ask the user for verification [Sensitive Users]
-      playbooktaskmissingcomponent: null
       type: collection
-      version: -1
-    taskid: 6ab46eeb-8460-44ab-8b96-0c6a35e38581
-    timertriggers: []
-    type: collection
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
+    nexttasks:
+      '#none#':
+      - "52"
+    separatecontext: false
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 13739.25,
-          "y": 1400
+          "x": -2230,
+          "y": -190
         }
       }
-  "45":
-    continueonerrortype: ""
-    form:
-      description: ""
-      expired: false
-      questions:
-      - defaultrows: []
-        fieldassociated: ""
-        gridcolumns: []
-        id: "0"
-        label: ""
-        labelarg:
-          simple: 'Users to be blocked:'
-        options: []
-        optionsarg:
-        - complex:
-            accessor: Potential
-            root: Blocklist
-        placeholder: ""
-        readonly: false
-        required: false
-        tooltip: ""
-        type: multiSelect
-      sender: ""
-      title: 'Which Users you would like to Block?  Choose from the following lists
-        :'
-      totalanswers: 0
-    id: "45"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
     message:
-      bcc: null
+      to:
+        simple: Analyst
+      subject:
+        simple: Block Account - User Verification Form
       body:
         simple: |
           <p>Dear XSOAR user,</p>
@@ -1494,60 +1438,69 @@ tasks:
           <p><br />(<strong>Note</strong>: the Accounts will be set to disabled on those XSOAR integrated devices).</p>
           <p>&nbsp;</p>
           <p>For more information, click the link below.</p>
-      cc: null
-      format: html
       methods:
       - email
-      subject:
-        simple: Block Account - User Verification Form
+      format: html
+      bcc: null
+      cc: null
       timings:
-        completeafterreplies: 1
-        completeaftersla: false
-        completeafterv2: false
         retriescount: 2
         retriesinterval: 360
-      to:
-        simple: Investigator
+        completeafterreplies: 1
+        completeafterv2: false
+        completeaftersla: false
+    form:
+      questions:
+      - id: "0"
+        label: ""
+        labelarg:
+          simple: 'Users to be blocked:'
+        required: false
+        gridcolumns: []
+        defaultrows: []
+        type: multiSelect
+        options: []
+        optionsarg:
+        - complex:
+            root: Blocklist
+            accessor: Potential
+        fieldassociated: ""
+        placeholder: ""
+        tooltip: ""
+        readonly: false
+      title: 'Which Users you would like to Block?  Choose from the following lists
+        :'
+      description: ""
+      sender: ""
+      expired: false
+      totalanswers: 0
+    skipunavailable: false
+    quietmode: 0
+    isoversize: false
+    isautoswitchedtoquietmode: false
+  "46":
+    id: "46"
+    taskid: 9e174bd8-73a8-46ef-8a56-138a1cac0b61
+    type: regular
+    task:
+      id: 9e174bd8-73a8-46ef-8a56-138a1cac0b61
+      version: -1
+      name: Set the final accounts list to be blocked
+      description: "Set a value in context under the key you entered. If no value
+        is entered, the script doesn't do anything.\n\nThis automation runs using
+        the default Limited User role, unless you explicitly change the permissions.\nFor
+        more information, see the section about permissions here:\n- For Cortex XSOAR
+        6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+      scriptName: SetAndHandleEmpty
+      type: regular
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#none#':
-      - "52"
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: |-
-        Please note that in this form there are serval accounts that are listed as "Sensitive Accounts":
-        ${User.Sensetive}
-      id: 4d484404-eefc-4cf6-8f56-abdae89d61e6
-      iscommand: false
-      name: Ask the user for verification [without Sensitive Users]
-      playbooktaskmissingcomponent: null
-      type: collection
-      version: -1
-    taskid: 4d484404-eefc-4cf6-8f56-abdae89d61e6
-    timertriggers: []
-    type: collection
-    view: |-
-      {
-        "position": {
-          "x": 14220.25,
-          "y": 1400
-        }
-      }
-  "46":
-    continueonerror: true
-    continueonerrortype: errorPath
-    id: "46"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#error#':
-      - "80"
-    note: false
-    quietmode: 0
+      - "5"
     scriptarguments:
       append:
         simple: "true"
@@ -1555,59 +1508,56 @@ tasks:
         simple: Blocklist.Final
       value:
         complex:
-          accessor: 0}
           root: ${Which Users you would like to Block?  Choose from the following
             lists :.Answers
+          accessor: 0}
           transformers:
-          - args:
+          - operator: append
+            args:
               item:
-                iscontext: true
                 value:
                   simple: Which sensitive users you would like to Block?  Choose from
                     the following lists :.Answers.0
-            operator: append
+                iscontext: true
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: "Set a value in context under the key you entered. If no value
-        is entered, the script doesn't do anything.\n\nThis automation runs using
-        the default Limited User role, unless you explicitly change the permissions.\nFor
-        more information, see the section about permissions here:\n- For Cortex see
-        https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
-      id: 049a6856-e0ab-479e-b70a-4c198a14baba
-      iscommand: false
-      name: Set the final accounts list to be blocked
-      playbooktaskmissingcomponent: null
-      script: SetAndHandleEmpty
-      type: regular
-      version: -1
-    taskid: 049a6856-e0ab-479e-b70a-4c198a14baba
-    timertriggers: []
-    type: regular
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 14029.75,
-          "y": 1740
+          "x": -2230,
+          "y": 170
         }
       }
-  "47":
-    continueonerror: true
-    continueonerrortype: errorPath
-    id: "47"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "47":
+    id: "47"
+    taskid: f97632fd-1653-4fda-8222-e8dbe5c36646
+    type: regular
+    task:
+      id: f97632fd-1653-4fda-8222-e8dbe5c36646
+      version: -1
+      name: Set the final accounts list to be blocked
+      description: "Set a value in context under the key you entered. If no value
+        is entered, the script doesn't do anything.\n\nThis automation runs using
+        the default Limited User role, unless you explicitly change the permissions.\nFor
+        more information, see the section about permissions here:\n- For Cortex XSOAR
+        6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+      scriptName: SetAndHandleEmpty
+      type: regular
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
-      '#error#':
-      - "80"
       '#none#':
       - "5"
-    note: false
-    quietmode: 0
     scriptarguments:
       append:
         simple: "true"
@@ -1617,897 +1567,892 @@ tasks:
         complex:
           root: inputs.Username
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: "Set a value in context under the key you entered. If no value
-        is entered, the script doesn't do anything.\n\nThis automation runs using
-        the default Limited User role, unless you explicitly change the permissions.\nFor
-        more information, see the section about permissions here:\n- For Cortex see
-        https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
-      id: 052bc2b8-16df-45eb-911d-9aaa6d836978
-      iscommand: false
-      name: Set the final accounts list to be blocked
-      playbooktaskmissingcomponent: null
-      script: SetAndHandleEmpty
-      type: regular
-      version: -1
-    taskid: 052bc2b8-16df-45eb-911d-9aaa6d836978
-    timertriggers: []
-    type: regular
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 3536,
-          "y": 550
+          "x": -1700,
+          "y": 170
         }
       }
-  "48":
-    continueonerror: true
-    continueonerrortype: errorPath
-    id: "48"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "48":
+    id: "48"
+    taskid: de4b5f67-0713-4a24-933e-5ff0400428a7
+    type: regular
+    task:
+      id: de4b5f67-0713-4a24-933e-5ff0400428a7
+      version: -1
+      name: Active Directory - Disable Account
+      description: Disables an Active Directory user account.
+      script: Active Directory Query v2|||ad-disable-account
+      type: regular
+      iscommand: true
+      brand: Active Directory Query v2
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#error#':
       - "80"
       '#none#':
       - "2"
-    note: false
-    quietmode: 0
     scriptarguments:
       username:
         complex:
           root: UserAD
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: Active Directory Query v2
-      description: Disables an Active Directory user account.
-      id: 28669bb1-b103-4c48-a7f1-232a3ffb156a
-      iscommand: true
-      name: Active Directory - Disable Account
-      playbooktaskmissingcomponent: null
-      script: Active Directory Query v2|||ad-disable-account
-      type: regular
-      version: -1
-    taskid: 28669bb1-b103-4c48-a7f1-232a3ffb156a
-    timertriggers: []
-    type: regular
+    continueonerror: true
+    continueonerrortype: errorPath
     view: |-
       {
         "position": {
-          "x": 5469.5,
-          "y": 1740
+          "x": 950,
+          "y": 1470
         }
       }
-  "52":
-    conditions:
-    - condition:
-      - - left:
-            iscontext: true
-            value:
-              simple: Which Users you would like to Block?  Choose from the following
-                lists :.Answers.0
-          operator: isNotEmpty
-          right:
-            value: {}
-        - left:
-            iscontext: true
-            value:
-              simple: Which sensitive users you would like to Block?  Choose from
-                the following lists :.Answers.0
-          operator: isNotEmpty
-      label: "yes"
-    continueonerrortype: ""
-    id: "52"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "52":
+    id: "52"
+    taskid: 64ddf917-048c-444b-8fea-b9529a3ad0b3
+    type: condition
+    task:
+      id: 64ddf917-048c-444b-8fea-b9529a3ad0b3
+      version: -1
+      name: Is Username selected?
+      description: Check if the analyst selected any users to block
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#default#':
       - "39"
       "yes":
       - "46"
-    note: false
-    quietmode: 0
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Check if the analyst selected any users to block
-      id: 64ddf917-048c-444b-8fea-b9529a3ad0b3
-      iscommand: false
-      name: Is Username selected?
-      playbooktaskmissingcomponent: null
-      type: condition
-      version: -1
-    taskid: 64ddf917-048c-444b-8fea-b9529a3ad0b3
-    timertriggers: []
-    type: condition
+    conditions:
+    - label: "yes"
+      condition:
+      - - operator: isNotEmpty
+          left:
+            value:
+              simple: Which Users you would like to Block?  Choose from the following
+                lists :.Answers.0
+            iscontext: true
+          right:
+            value: {}
+        - operator: isNotEmpty
+          left:
+            value:
+              simple: Which sensitive users you would like to Block?  Choose from
+                the following lists :.Answers.0
+            iscontext: true
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 13979.75,
-          "y": 1570
+          "x": -2230,
+          "y": -10
         }
       }
-  "53":
-    continueonerrortype: ""
-    id: "53"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "53":
+    id: "53"
+    taskid: 8791822e-5e1e-4b28-82d9-a822aa17108d
+    type: condition
+    task:
+      id: 8791822e-5e1e-4b28-82d9-a822aa17108d
+      version: -1
+      name: Is Slack IAM Integration Enabled?
+      description: Returns 'yes' if integration brand is available. Otherwise returns
+        'no'
+      scriptName: IsIntegrationAvailable
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#default#':
       - "2"
       "yes":
-      - "87"
-    note: false
-    quietmode: 0
+      - "81"
     scriptarguments:
       brandname:
         simple: Slack IAM
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Returns 'yes' if integration brand is available. Otherwise returns
-        'no'
-      id: 8791822e-5e1e-4b28-82d9-a822aa17108d
-      iscommand: false
-      name: Is Slack IAM Integration Enabled?
-      playbooktaskmissingcomponent: null
-      script: IsIntegrationAvailable
-      type: condition
-      version: -1
-    taskid: 8791822e-5e1e-4b28-82d9-a822aa17108d
-    timertriggers: []
-    type: condition
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 7693.5,
-          "y": 1230
+          "x": -2410,
+          "y": 715
         }
       }
-  "54":
-    continueonerrortype: ""
-    id: "54"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "54":
+    id: "54"
+    taskid: e2aaa6e8-de1f-4399-8e89-2321fe4fa030
+    type: title
+    task:
+      id: e2aaa6e8-de1f-4399-8e89-2321fe4fa030
+      version: -1
+      name: Slack IAM
+      type: title
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#none#':
       - "53"
-    note: false
-    quietmode: 0
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: e2aaa6e8-de1f-4399-8e89-2321fe4fa030
-      iscommand: false
-      name: Slack IAM
-      playbooktaskmissingcomponent: null
-      type: title
-      version: -1
-    taskid: e2aaa6e8-de1f-4399-8e89-2321fe4fa030
-    timertriggers: []
-    type: title
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 7693.5,
-          "y": 1065
+          "x": -2410,
+          "y": 555
         }
       }
-  "55":
-    continueonerrortype: ""
-    id: "55"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "55":
+    id: "55"
+    taskid: e8b7f7a8-2b9c-44ef-8eff-ceb494799432
+    type: condition
+    task:
+      id: e8b7f7a8-2b9c-44ef-8eff-ceb494799432
+      version: -1
+      name: Is ServiceNow IAM Integration Enabled?
+      description: Returns 'yes' if integration brand is available. Otherwise returns
+        'no'
+      scriptName: IsIntegrationAvailable
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#default#':
       - "2"
       "yes":
-      - "87"
-    note: false
-    quietmode: 0
+      - "81"
     scriptarguments:
       brandname:
         simple: ServiceNow IAM
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Returns 'yes' if integration brand is available. Otherwise returns
-        'no'
-      id: e8b7f7a8-2b9c-44ef-8eff-ceb494799432
-      iscommand: false
-      name: Is ServiceNow IAM Integration Enabled?
-      playbooktaskmissingcomponent: null
-      script: IsIntegrationAvailable
-      type: condition
-      version: -1
-    taskid: e8b7f7a8-2b9c-44ef-8eff-ceb494799432
-    timertriggers: []
-    type: condition
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 8179.25,
-          "y": 1230
+          "x": -2840,
+          "y": 715
         }
       }
-  "56":
-    continueonerrortype: ""
-    id: "56"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "56":
+    id: "56"
+    taskid: 6a694bcc-610d-46c4-8d22-dec644076b78
+    type: title
+    task:
+      id: 6a694bcc-610d-46c4-8d22-dec644076b78
+      version: -1
+      name: ServiceNow IAM
+      type: title
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#none#':
       - "55"
-    note: false
-    quietmode: 0
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: 6a694bcc-610d-46c4-8d22-dec644076b78
-      iscommand: false
-      name: ServiceNow IAM
-      playbooktaskmissingcomponent: null
-      type: title
-      version: -1
-    taskid: 6a694bcc-610d-46c4-8d22-dec644076b78
-    timertriggers: []
-    type: title
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 8179.25,
-          "y": 1065
+          "x": -2840,
+          "y": 555
         }
       }
-  "57":
-    continueonerrortype: ""
-    id: "57"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "57":
+    id: "57"
+    taskid: 6345f42c-51a8-401f-8099-ecea5a0403c4
+    type: condition
+    task:
+      id: 6345f42c-51a8-401f-8099-ecea5a0403c4
+      version: -1
+      name: Is Salesforce IAM Integration Enabled?
+      description: Returns 'yes' if integration brand is available. Otherwise returns
+        'no'
+      scriptName: IsIntegrationAvailable
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#default#':
       - "2"
       "yes":
-      - "87"
-    note: false
-    quietmode: 0
+      - "81"
     scriptarguments:
       brandname:
         simple: Salesforce IAM
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Returns 'yes' if integration brand is available. Otherwise returns
-        'no'
-      id: 6345f42c-51a8-401f-8099-ecea5a0403c4
-      iscommand: false
-      name: Is Salesforce IAM Integration Enabled?
-      playbooktaskmissingcomponent: null
-      script: IsIntegrationAvailable
-      type: condition
-      version: -1
-    taskid: 6345f42c-51a8-401f-8099-ecea5a0403c4
-    timertriggers: []
-    type: condition
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 8710.25,
-          "y": 1230
+          "x": -3260,
+          "y": 715
         }
       }
-  "58":
-    continueonerrortype: ""
-    id: "58"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "58":
+    id: "58"
+    taskid: dba2b9c1-cb47-41a9-8386-1de15a47de2d
+    type: title
+    task:
+      id: dba2b9c1-cb47-41a9-8386-1de15a47de2d
+      version: -1
+      name: Salesforce IAM
+      type: title
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#none#':
       - "57"
-    note: false
-    quietmode: 0
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: dba2b9c1-cb47-41a9-8386-1de15a47de2d
-      iscommand: false
-      name: Salesforce IAM
-      playbooktaskmissingcomponent: null
-      type: title
-      version: -1
-    taskid: dba2b9c1-cb47-41a9-8386-1de15a47de2d
-    timertriggers: []
-    type: title
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 8710.25,
-          "y": 1065
+          "x": -3260,
+          "y": 555
         }
       }
-  "59":
-    continueonerrortype: ""
-    id: "59"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "59":
+    id: "59"
+    taskid: c6cb894b-65a5-4e85-87f4-debe4d8cdbfe
+    type: condition
+    task:
+      id: c6cb894b-65a5-4e85-87f4-debe4d8cdbfe
+      version: -1
+      name: Is PrismaCloud IAM Integration Enabled?
+      description: Returns 'yes' if integration brand is available. Otherwise returns
+        'no'
+      scriptName: IsIntegrationAvailable
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#default#':
       - "2"
       "yes":
-      - "87"
-    note: false
-    quietmode: 0
+      - "81"
     scriptarguments:
       brandname:
         simple: PrismaCloud IAM
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Returns 'yes' if integration brand is available. Otherwise returns
-        'no'
-      id: c6cb894b-65a5-4e85-87f4-debe4d8cdbfe
-      iscommand: false
-      name: Is PrismaCloud IAM Integration Enabled?
-      playbooktaskmissingcomponent: null
-      script: IsIntegrationAvailable
-      type: condition
-      version: -1
-    taskid: c6cb894b-65a5-4e85-87f4-debe4d8cdbfe
-    timertriggers: []
-    type: condition
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 9191.25,
-          "y": 1230
+          "x": -3690,
+          "y": 715
         }
       }
-  "60":
-    continueonerrortype: ""
-    id: "60"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "60":
+    id: "60"
+    taskid: de7c1b4f-0ecc-4782-8346-50b679dac66b
+    type: title
+    task:
+      id: de7c1b4f-0ecc-4782-8346-50b679dac66b
+      version: -1
+      name: PrismaCloud IAM
+      type: title
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#none#':
       - "59"
-    note: false
-    quietmode: 0
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: de7c1b4f-0ecc-4782-8346-50b679dac66b
-      iscommand: false
-      name: PrismaCloud IAM
-      playbooktaskmissingcomponent: null
-      type: title
-      version: -1
-    taskid: de7c1b4f-0ecc-4782-8346-50b679dac66b
-    timertriggers: []
-    type: title
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 9191.25,
-          "y": 1065
+          "x": -3690,
+          "y": 555
         }
       }
-  "63":
-    continueonerrortype: ""
-    id: "63"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "63":
+    id: "63"
+    taskid: 1a19cd62-eafa-4b66-80aa-b397a439f52c
+    type: condition
+    task:
+      id: 1a19cd62-eafa-4b66-80aa-b397a439f52c
+      version: -1
+      name: Is Microsoft Graph User Integration Enabled?
+      description: Returns 'yes' if integration brand is available. Otherwise returns
+        'no'
+      scriptName: IsIntegrationAvailable
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#default#':
       - "2"
       "yes":
       - "78"
-    note: false
-    quietmode: 0
     scriptarguments:
       brandname:
         simple: Microsoft Graph User
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Returns 'yes' if integration brand is available. Otherwise returns
-        'no'
-      id: 1a19cd62-eafa-4b66-80aa-b397a439f52c
-      iscommand: false
-      name: Is Microsoft Graph User Integration Enabled?
-      playbooktaskmissingcomponent: null
-      script: IsIntegrationAvailable
-      type: condition
-      version: -1
-    taskid: 1a19cd62-eafa-4b66-80aa-b397a439f52c
-    timertriggers: []
-    type: condition
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 11410.5,
-          "y": 1060
+          "x": 1480,
+          "y": 715
         }
       }
-  "64":
-    continueonerrortype: ""
-    id: "64"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "64":
+    id: "64"
+    taskid: 31d15f37-d89d-4d09-8009-2a60c76d0b5e
+    type: title
+    task:
+      id: 31d15f37-d89d-4d09-8009-2a60c76d0b5e
+      version: -1
+      name: Microsoft Graph User
+      type: title
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#none#':
       - "63"
-    note: false
-    quietmode: 0
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: 31d15f37-d89d-4d09-8009-2a60c76d0b5e
-      iscommand: false
-      name: Microsoft Graph User
-      playbooktaskmissingcomponent: null
-      type: title
-      version: -1
-    taskid: 31d15f37-d89d-4d09-8009-2a60c76d0b5e
-    timertriggers: []
-    type: title
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 11410.5,
-          "y": 895
+          "x": 1480,
+          "y": 555
         }
       }
-  "65":
-    continueonerrortype: ""
-    id: "65"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "65":
+    id: "65"
+    taskid: 31592372-486c-4648-8376-8889941df6c8
+    type: condition
+    task:
+      id: 31592372-486c-4648-8376-8889941df6c8
+      version: -1
+      name: Is Zoom IAM Integration Enabled?
+      description: Returns 'yes' if integration brand is available. Otherwise returns
+        'no'
+      scriptName: IsIntegrationAvailable
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#default#':
       - "2"
       "yes":
-      - "87"
-    note: false
-    quietmode: 0
+      - "81"
     scriptarguments:
       brandname:
         simple: Zoom_IAM
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Returns 'yes' if integration brand is available. Otherwise returns
-        'no'
-      id: 31592372-486c-4648-8376-8889941df6c8
-      iscommand: false
-      name: Is Zoom IAM Integration Enabled?
-      playbooktaskmissingcomponent: null
-      script: IsIntegrationAvailable
-      type: condition
-      version: -1
-    taskid: 31592372-486c-4648-8376-8889941df6c8
-    timertriggers: []
-    type: condition
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 9672.25,
-          "y": 1230
+          "x": -4120,
+          "y": 715
         }
       }
-  "66":
-    continueonerrortype: ""
-    id: "66"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "66":
+    id: "66"
+    taskid: b98574a0-93fc-423b-87e1-bf888db3881a
+    type: title
+    task:
+      id: b98574a0-93fc-423b-87e1-bf888db3881a
+      version: -1
+      name: Zoom IAM
+      type: title
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#none#':
       - "65"
-    note: false
-    quietmode: 0
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: b98574a0-93fc-423b-87e1-bf888db3881a
-      iscommand: false
-      name: Zoom IAM
-      playbooktaskmissingcomponent: null
-      type: title
-      version: -1
-    taskid: b98574a0-93fc-423b-87e1-bf888db3881a
-    timertriggers: []
-    type: title
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 9672.25,
-          "y": 1065
+          "x": -4120,
+          "y": 555
         }
       }
-  "67":
-    continueonerrortype: ""
-    id: "67"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "67":
+    id: "67"
+    taskid: deb7235b-0e73-4aa7-8e3e-2b07ad73daf9
+    type: condition
+    task:
+      id: deb7235b-0e73-4aa7-8e3e-2b07ad73daf9
+      version: -1
+      name: Is Atlassian IAM Integration Enabled?
+      description: Returns 'yes' if integration brand is available. Otherwise returns
+        'no'
+      scriptName: IsIntegrationAvailable
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#default#':
       - "2"
       "yes":
-      - "87"
-    note: false
-    quietmode: 0
+      - "81"
     scriptarguments:
       brandname:
         simple: Atlassian IAM
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Returns 'yes' if integration brand is available. Otherwise returns
-        'no'
-      id: deb7235b-0e73-4aa7-8e3e-2b07ad73daf9
-      iscommand: false
-      name: Is Atlassian IAM Integration Enabled?
-      playbooktaskmissingcomponent: null
-      script: IsIntegrationAvailable
-      type: condition
-      version: -1
-    taskid: deb7235b-0e73-4aa7-8e3e-2b07ad73daf9
-    timertriggers: []
-    type: condition
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 10153.25,
-          "y": 1230
+          "x": -4550,
+          "y": 715
         }
       }
-  "68":
-    continueonerrortype: ""
-    id: "68"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "68":
+    id: "68"
+    taskid: 5e5c6e1e-8c3a-42b8-85bd-3646e9b01531
+    type: title
+    task:
+      id: 5e5c6e1e-8c3a-42b8-85bd-3646e9b01531
+      version: -1
+      name: Atlassian IAM
+      type: title
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#none#':
       - "67"
-    note: false
-    quietmode: 0
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: 5e5c6e1e-8c3a-42b8-85bd-3646e9b01531
-      iscommand: false
-      name: Atlassian IAM
-      playbooktaskmissingcomponent: null
-      type: title
-      version: -1
-    taskid: 5e5c6e1e-8c3a-42b8-85bd-3646e9b01531
-    timertriggers: []
-    type: title
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 10153.25,
-          "y": 1065
+          "x": -4550,
+          "y": 555
         }
       }
-  "69":
-    continueonerror: true
-    continueonerrortype: errorPath
-    id: "69"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "69":
+    id: "69"
+    taskid: cb58e6b2-a32f-4fc2-ba81-b4f0720441be
+    type: regular
+    task:
+      id: cb58e6b2-a32f-4fc2-ba81-b4f0720441be
+      version: -1
+      name: Microsoft Graph User - Disable Account
+      description: |-
+        Disables a user from all Office 365 applications, and prevents sign in. Note: This command disables user,
+        but does not terminate an existing session. Supported only in a self deployed app flow with the
+        Permission: Directory.AccessAsUser.All(Delegated)
+      script: Microsoft Graph User|||msgraph-user-account-disable
+      type: regular
+      iscommand: true
+      brand: Microsoft Graph User
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#error#':
       - "80"
       '#none#':
       - "2"
-    note: false
-    quietmode: 0
     scriptarguments:
       user:
         complex:
           root: UserMSGraph
     separatecontext: false
-    skipunavailable: true
-    task:
-      brand: ""
-      description: |-
-        Disables a user from all Office 365 applications, and prevents sign in. Note: This command disables user,
-        but does not terminate an existing session. Supported only in a self deployed app flow with the
-        Permission: Directory.AccessAsUser.All(Delegated)
-      id: 47bb4936-7a4e-47ff-8941-cc7eb99f9a97
-      iscommand: true
-      name: Microsoft Graph User - Disable Account
-      playbooktaskmissingcomponent: null
-      script: '|||msgraph-user-account-disable'
-      type: regular
-      version: -1
-    taskid: 47bb4936-7a4e-47ff-8941-cc7eb99f9a97
-    timertriggers: []
-    type: regular
+    continueonerror: true
+    continueonerrortype: errorPath
     view: |-
       {
         "position": {
-          "x": 11991.5,
-          "y": 1740
+          "x": 1760,
+          "y": 1470
         }
       }
-  "70":
-    continueonerrortype: ""
-    id: "70"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: true
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "70":
+    id: "70"
+    taskid: 909312b6-5f6e-451c-83dd-a00e31c49197
+    type: condition
+    task:
+      id: 909312b6-5f6e-451c-83dd-a00e31c49197
+      version: -1
+      name: Is GitHub IAM Integration Enabled?
+      description: Returns 'yes' if integration brand is available. Otherwise returns
+        'no'
+      scriptName: IsIntegrationAvailable
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#default#':
       - "2"
       "yes":
-      - "87"
-    note: false
-    quietmode: 0
+      - "81"
     scriptarguments:
       brandname:
         simple: GitHub IAM
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Returns 'yes' if integration brand is available. Otherwise returns
-        'no'
-      id: 909312b6-5f6e-451c-83dd-a00e31c49197
-      iscommand: false
-      name: Is GitHub IAM Integration Enabled?
-      playbooktaskmissingcomponent: null
-      script: IsIntegrationAvailable
-      type: condition
-      version: -1
-    taskid: 909312b6-5f6e-451c-83dd-a00e31c49197
-    timertriggers: []
-    type: condition
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 10634.25,
-          "y": 1230
+          "x": -4970,
+          "y": 715
         }
       }
-  "71":
-    continueonerrortype: ""
-    id: "71"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "71":
+    id: "71"
+    taskid: 4f6321ef-dfb9-41fd-8a72-61bea5cff007
+    type: title
+    task:
+      id: 4f6321ef-dfb9-41fd-8a72-61bea5cff007
+      version: -1
+      name: GitHub IAM
+      type: title
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#none#':
       - "70"
-    note: false
-    quietmode: 0
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: 4f6321ef-dfb9-41fd-8a72-61bea5cff007
-      iscommand: false
-      name: GitHub IAM
-      playbooktaskmissingcomponent: null
-      type: title
-      version: -1
-    taskid: 4f6321ef-dfb9-41fd-8a72-61bea5cff007
-    timertriggers: []
-    type: title
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 10634.25,
-          "y": 1065
+          "x": -4970,
+          "y": 555
         }
       }
-  "72":
-    continueonerrortype: ""
-    id: "72"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "72":
+    id: "72"
+    taskid: a274143d-2455-4679-8064-41a6cc01e1be
+    type: condition
+    task:
+      id: a274143d-2455-4679-8064-41a6cc01e1be
+      version: -1
+      name: Is Google Workspace Admin Integration Enabled?
+      description: Returns 'yes' if integration brand is available. Otherwise returns
+        'no'
+      scriptName: IsIntegrationAvailable
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#default#':
       - "2"
       "yes":
-      - "83"
-    note: false
-    quietmode: 0
+      - "93"
     scriptarguments:
       brandname:
         simple: GSuiteAdmin
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Returns 'yes' if integration brand is available. Otherwise returns
-        'no'
-      id: a274143d-2455-4679-8064-41a6cc01e1be
-      iscommand: false
-      name: Is Google Workspace Admin Integration Enabled?
-      playbooktaskmissingcomponent: null
-      script: IsIntegrationAvailable
-      type: condition
-      version: -1
-    taskid: a274143d-2455-4679-8064-41a6cc01e1be
-    timertriggers: []
-    type: condition
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 12572.5,
-          "y": 1400
+          "x": 1900,
+          "y": 715
         }
       }
-  "73":
-    continueonerrortype: ""
-    id: "73"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "73":
+    id: "73"
+    taskid: fa1e6574-7969-4b44-8593-b2244060cebe
+    type: title
+    task:
+      id: fa1e6574-7969-4b44-8593-b2244060cebe
+      version: -1
+      name: Google Workspace Admin
+      type: title
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#none#':
       - "72"
-    note: false
-    quietmode: 0
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: fa1e6574-7969-4b44-8593-b2244060cebe
-      iscommand: false
-      name: Google Workspace Admin
-      playbooktaskmissingcomponent: null
-      type: title
-      version: -1
-    taskid: fa1e6574-7969-4b44-8593-b2244060cebe
-    timertriggers: []
-    type: title
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 12572.5,
-          "y": 1235
+          "x": 1900,
+          "y": 555
         }
       }
-  "74":
-    continueonerror: true
-    continueonerrortype: errorPath
-    id: "74"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "74":
+    id: "74"
+    taskid: 4b7d31c1-6339-4d9f-8d1a-3ff4abe20efb
+    type: regular
+    task:
+      id: 4b7d31c1-6339-4d9f-8d1a-3ff4abe20efb
+      version: -1
+      name: Google Workspace Admin - Disable Account
+      description: Updates a user.
+      script: GSuiteAdmin|||gsuite-user-update
+      type: regular
+      iscommand: true
+      brand: GSuiteAdmin
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#error#':
       - "80"
       '#none#':
       - "2"
-    note: false
-    quietmode: 0
     scriptarguments:
       suspended:
         simple: "true"
       user_key:
         complex:
-          accessor: Final
           root: Blocklist
+          accessor: Final
     separatecontext: false
-    skipunavailable: true
-    task:
-      brand: ""
-      description: Updates a user.
-      id: c7d416d6-34d8-4be6-99b4-13c1389b1903
-      iscommand: true
-      name: Google Workspace Admin - Disable Account
-      playbooktaskmissingcomponent: null
-      script: '|||gsuite-user-update'
-      type: regular
-      version: -1
-    taskid: c7d416d6-34d8-4be6-99b4-13c1389b1903
-    timertriggers: []
-    type: regular
+    continueonerror: true
+    continueonerrortype: errorPath
     view: |-
       {
         "position": {
-          "x": 12863,
-          "y": 1740
+          "x": 1900,
+          "y": 1100
         }
       }
-  "75":
-    continueonerror: true
-    continueonerrortype: errorPath
-    id: "75"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: true
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "75":
+    id: "75"
+    taskid: 8aefedd7-a4f0-49ae-a63e-107b955fa96f
+    type: regular
+    task:
+      id: 8aefedd7-a4f0-49ae-a63e-107b955fa96f
+      version: -1
+      name: Get Account IDs From SailPoint
+      description: Fetch accounts by search/filter parameters (id, display_name, last_refresh,
+        native_identity, last_target_agg, identity_name & application_name) using
+        IdentityIQ SCIM APIs.
+      script: SailPointIdentityIQ|||identityiq-get-accounts
+      type: regular
+      iscommand: true
+      brand: SailPointIdentityIQ
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#error#':
       - "80"
       '#none#':
-      - "96"
-    note: false
-    quietmode: 0
+      - "85"
     scriptarguments:
       display_name:
         complex:
-          accessor: Final
           root: Blocklist
+          accessor: Final
     separatecontext: false
-    skipunavailable: true
-    task:
-      brand: ""
-      description: Fetch accounts by search/filter parameters (id, display_name, last_refresh,
-        native_identity, last_target_agg, identity_name & application_name) using
-        IdentityIQ SCIM APIs.
-      id: e2037284-defb-4b0f-851d-2e84968dfb74
-      iscommand: true
-      name: Get Account IDs From SailPoint
-      playbooktaskmissingcomponent: null
-      script: '|||identityiq-get-accounts'
-      type: regular
-      version: -1
-    taskid: e2037284-defb-4b0f-851d-2e84968dfb74
-    timertriggers: []
-    type: regular
+    continueonerror: true
+    continueonerrortype: errorPath
     view: |-
       {
         "position": {
-          "x": 871.5,
-          "y": 1400
+          "x": 640,
+          "y": 890
         }
       }
-  "76":
-    continueonerror: true
-    continueonerrortype: errorPath
-    id: "76"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: true
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "76":
+    id: "76"
+    taskid: 0f3e3317-a5f1-4708-9100-71d8deee6269
+    type: regular
+    task:
+      id: 0f3e3317-a5f1-4708-9100-71d8deee6269
+      version: -1
+      name: Active Directory - Get User
+      description: Retrieves detailed information about a user account. The user can
+        be specified by name, email address, or as an Active Directory Distinguished
+        Name (DN). If no filter is specified, all users are returned.
+      script: '|||ad-get-user'
+      type: regular
+      iscommand: true
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#error#':
       - "80"
       '#none#':
       - "77"
-    note: false
-    quietmode: 0
     scriptarguments:
       extend-context:
         simple: UserAD=attributes.sAMAccountName
@@ -2515,90 +2460,90 @@ tasks:
         simple: "true"
       username:
         complex:
-          accessor: Final
           root: Blocklist
+          accessor: Final
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Retrieves detailed information about a user account. The user can
-        be specified by name, email address, or as an Active Directory Distinguished
-        Name (DN). If no filter is specified, all users are returned.
-      id: 10e07286-2f7f-4c5c-853f-2578ace53c46
-      iscommand: true
-      name: Active Directory - Get User
-      playbooktaskmissingcomponent: null
-      script: '|||ad-get-user'
-      type: regular
-      version: -1
-    taskid: 10e07286-2f7f-4c5c-853f-2578ace53c46
-    timertriggers: []
-    type: regular
+    continueonerror: true
+    continueonerrortype: errorPath
     view: |-
       {
         "position": {
-          "x": 5033.75,
-          "y": 1230
+          "x": 1050,
+          "y": 920
         }
       }
-  "77":
-    conditions:
-    - condition:
-      - - left:
-            iscontext: true
-            value:
-              simple: UserAD
-          operator: isExists
-          right:
-            value: {}
-      label: "yes"
-    continueonerrortype: ""
-    id: "77"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "77":
+    id: "77"
+    taskid: 419df6f0-2416-4a48-8124-eb64ce5da93a
+    type: condition
+    task:
+      id: 419df6f0-2416-4a48-8124-eb64ce5da93a
+      version: -1
+      name: Does the username exist?
+      description: Verify that the user exists.
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#default#':
       - "2"
       "yes":
-      - "89"
-    note: false
-    quietmode: 0
+      - "87"
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Verify that the user exists.
-      id: 419df6f0-2416-4a48-8124-eb64ce5da93a
-      iscommand: false
-      name: Does the username exist?
-      playbooktaskmissingcomponent: null
-      type: condition
-      version: -1
-    taskid: 419df6f0-2416-4a48-8124-eb64ce5da93a
-    timertriggers: []
-    type: condition
+    conditions:
+    - label: "yes"
+      condition:
+      - - operator: isExists
+          left:
+            value:
+              simple: UserAD
+            iscontext: true
+          right:
+            value: {}
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 5179,
-          "y": 1400
+          "x": 1050,
+          "y": 1090
         }
       }
-  "78":
-    continueonerror: true
-    continueonerrortype: errorPath
-    id: "78"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "78":
+    id: "78"
+    taskid: b4f253c0-79aa-4f96-aea6-0b24102a78f9
+    type: regular
+    task:
+      id: b4f253c0-79aa-4f96-aea6-0b24102a78f9
+      version: -1
+      name: Microsoft Graph User - Get User
+      description: |-
+        Retrieves the properties and relationships of a user object. For more information, visit: https://docs.microsoft.com/en-us/graph/api/user-update?view=graph-rest-1.0.
+        Permissions: - User.Read (Delegated) - User.Read.All (Application).
+      script: Microsoft Graph User|||msgraph-user-get
+      type: regular
+      iscommand: true
+      brand: Microsoft Graph User
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#error#':
       - "80"
       '#none#':
       - "79"
-    note: false
-    quietmode: 0
     scriptarguments:
       extend-context:
         simple: UserMSGraph=id
@@ -2606,803 +2551,736 @@ tasks:
         simple: "true"
       user:
         complex:
-          accessor: Final
           root: Blocklist
+          accessor: Final
     separatecontext: false
-    skipunavailable: true
-    task:
-      brand: ""
-      description: |-
-        Retrieves the properties and relationships of a user object. For more information, visit: https://docs.microsoft.com/en-us/graph/api/user-update?view=graph-rest-1.0.
-        Permissions: - User.Read (Delegated) - User.Read.All (Application).
-      id: aee0b881-a062-4089-a6d4-bd644fb37ca9
-      iscommand: true
-      name: Microsoft Graph User - Get User
-      playbooktaskmissingcomponent: null
-      script: '|||msgraph-user-get'
-      type: regular
-      version: -1
-    taskid: aee0b881-a062-4089-a6d4-bd644fb37ca9
-    timertriggers: []
-    type: regular
+    continueonerror: true
+    continueonerrortype: errorPath
     view: |-
       {
         "position": {
-          "x": 11555.75,
-          "y": 1230
+          "x": 1480,
+          "y": 920
         }
       }
-  "79":
-    conditions:
-    - condition:
-      - - left:
-            iscontext: true
-            value:
-              simple: UserMSGraph
-          operator: isExists
-          right:
-            value: {}
-      label: "yes"
-    continueonerrortype: ""
-    id: "79"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: true
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "79":
+    id: "79"
+    taskid: 6a4ebfcb-e506-4333-81b5-8889065e2fbe
+    type: condition
+    task:
+      id: 6a4ebfcb-e506-4333-81b5-8889065e2fbe
+      version: -1
+      name: Does the username exist?
+      description: Verify that the user exists.
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#default#':
       - "2"
       "yes":
-      - "81"
-    note: false
-    quietmode: 0
+      - "89"
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Verify that the user exists.
-      id: 6a4ebfcb-e506-4333-81b5-8889065e2fbe
-      iscommand: false
-      name: Does the username exist?
-      playbooktaskmissingcomponent: null
-      type: condition
-      version: -1
-    taskid: 6a4ebfcb-e506-4333-81b5-8889065e2fbe
-    timertriggers: []
-    type: condition
+    conditions:
+    - label: "yes"
+      condition:
+      - - operator: isExists
+          left:
+            value:
+              simple: UserMSGraph
+            iscontext: true
+          right:
+            value: {}
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 11701,
-          "y": 1400
+          "x": 1480,
+          "y": 1090
         }
       }
+    note: false
+    timertriggers: []
+    ignoreworker: false
+    skipunavailable: false
+    quietmode: 0
+    isoversize: false
+    isautoswitchedtoquietmode: false
   "80":
-    continueonerrortype: ""
     id: "80"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#none#':
-      - "2"
-    note: false
-    quietmode: 0
-    separatecontext: true
-    skipunavailable: false
-    task:
-      brand: ""
-      id: 0a369ee3-9030-4b1e-86ad-e0cbbcdc1f41
-      iscommand: false
-      name: Foundation - Error Handling
-      playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
-      type: playbook
-      version: -1
-    taskid: 0a369ee3-9030-4b1e-86ad-e0cbbcdc1f41
-    timertriggers: []
+    taskid: 9c727ebc-c367-4d93-8c46-9a94e441cc3a
     type: playbook
+    task:
+      id: 9c727ebc-c367-4d93-8c46-9a94e441cc3a
+      version: -1
+      name: Foundation - Error Handling
+      playbookName: Foundation - Error Handling
+      type: playbook
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
+    separatecontext: true
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 7112.5,
-          "y": 1910
+          "x": -500,
+          "y": 1650
         }
       }
+    note: false
+    timertriggers: []
+    ignoreworker: false
+    skipunavailable: false
+    quietmode: 0
+    isoversize: false
+    isautoswitchedtoquietmode: false
   "81":
-    conditions:
-    - condition:
-      - - left:
-            iscontext: true
-            value:
-              simple: inputs.ShadowMode
-          operator: isTrue
-          right:
-            value: {}
-      label: "no"
-    continueonerrortype: ""
     id: "81"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#default#':
-      - "82"
-      "no":
-      - "69"
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: 845cbb40-f933-47f2-acd6-43d3aeeb45e6
-      iscommand: false
-      name: Shadow Mode?
-      playbooktaskmissingcomponent: null
-      type: condition
-      version: -1
-    taskid: 845cbb40-f933-47f2-acd6-43d3aeeb45e6
-    timertriggers: []
+    taskid: 32ae003a-1fa5-4b05-96c2-c8fa23554814
     type: condition
-    view: |-
-      {
-        "position": {
-          "x": 11846.25,
-          "y": 1570
-        }
-      }
-  "82":
-    continueonerrortype: ""
-    id: "82"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#none#':
-      - "2"
-    note: false
-    quietmode: 0
-    scriptarguments:
-      value:
-        simple: |-
-          Shadow Mode: Micrsoft Graph User - Disable Account
-          Command: mgraph-user-account-disable
-    separatecontext: false
-    skipunavailable: false
     task:
-      brand: ""
-      description: Prints text to war room (Markdown supported)
-      id: cb1e265b-da93-4d3b-82a4-ea2c6eac99a6
-      iscommand: false
-      name: Print To WarRoom
-      playbooktaskmissingcomponent: null
-      script: Print
-      type: regular
+      id: 32ae003a-1fa5-4b05-96c2-c8fa23554814
       version: -1
-    taskid: cb1e265b-da93-4d3b-82a4-ea2c6eac99a6
-    timertriggers: []
-    type: regular
-    view: |-
-      {
-        "position": {
-          "x": 11701,
-          "y": 1910
-        }
-      }
-  "83":
-    conditions:
-    - condition:
-      - - left:
-            iscontext: true
-            value:
-              simple: inputs.ShadowMode
-          operator: isTrue
-          right:
-            value: {}
-      label: "no"
-    continueonerrortype: ""
-    id: "83"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#default#':
-      - "84"
-      "no":
-      - "74"
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: f6217669-62cb-415b-a376-b7139702c4f0
-      iscommand: false
-      name: Shadow Mode?
-      playbooktaskmissingcomponent: null
+      name: Run Mode?
+      scriptName: ShadowModeRouter
       type: condition
-      version: -1
-    taskid: f6217669-62cb-415b-a376-b7139702c4f0
-    timertriggers: []
-    type: condition
-    view: |-
-      {
-        "position": {
-          "x": 12717.75,
-          "y": 1570
-        }
-      }
-  "84":
-    continueonerrortype: ""
-    id: "84"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#none#':
-      - "2"
-    note: false
-    quietmode: 0
-    scriptarguments:
-      value:
-        simple: "Shadow Mode: Google Workspace Admin: Disable User\nCommand: "
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Prints text to war room (Markdown supported)
-      id: 778c4667-f24f-4edf-b833-720b07aaf820
       iscommand: false
-      name: Print To WarRoom
-      playbooktaskmissingcomponent: null
-      script: Print
-      type: regular
-      version: -1
-    taskid: 778c4667-f24f-4edf-b833-720b07aaf820
-    timertriggers: []
-    type: regular
-    view: |-
-      {
-        "position": {
-          "x": 12572.5,
-          "y": 1910
-        }
-      }
-  "85":
-    conditions:
-    - condition:
-      - - left:
-            iscontext: true
-            value:
-              simple: inputs.ShadowMode
-          operator: isTrue
-          right:
-            value: {}
-      label: "no"
-    continueonerrortype: ""
-    id: "85"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#default#':
-      - "86"
-      "no":
-      - "15"
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
       brand: ""
-      id: fb33a9be-ad2c-410a-98d4-54f8c43eb284
-      iscommand: false
-      name: Shadow Mode?
       playbooktaskmissingcomponent: null
-      type: condition
-      version: -1
-    taskid: fb33a9be-ad2c-410a-98d4-54f8c43eb284
-    timertriggers: []
-    type: condition
-    view: |-
-      {
-        "position": {
-          "x": 7017.25,
-          "y": 1570
-        }
-      }
-  "86":
-    continueonerrortype: ""
-    id: "86"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
     nexttasks:
-      '#none#':
-      - "2"
-    note: false
-    quietmode: 0
-    scriptarguments:
-      value:
-        simple: |-
-          Shadow Mode: PAN-OS Register Tag to User
-          Command: pan-os-register-user-tag
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Prints text to war room (Markdown supported)
-      id: 4b55fc07-adf7-4972-9432-a636dd52cef8
-      iscommand: false
-      name: Print To WarRoom
-      playbooktaskmissingcomponent: null
-      script: Print
-      type: regular
-      version: -1
-    taskid: 4b55fc07-adf7-4972-9432-a636dd52cef8
-    timertriggers: []
-    type: regular
-    view: |-
-      {
-        "position": {
-          "x": 6631.5,
-          "y": 1910
-        }
-      }
-  "87":
-    conditions:
-    - condition:
-      - - left:
-            iscontext: true
-            value:
-              simple: inputs.ShadowMode
-          operator: isTrue
-          right:
-            value: {}
-      label: "no"
-    continueonerrortype: ""
-    id: "87"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#default#':
-      - "88"
-      "no":
-      - "91"
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: 4398164b-7681-4801-a435-d3fecdb9a112
-      iscommand: false
-      name: Shadow Mode?
-      playbooktaskmissingcomponent: null
-      type: condition
-      version: -1
-    taskid: 4398164b-7681-4801-a435-d3fecdb9a112
-    timertriggers: []
-    type: condition
-    view: |-
-      {
-        "position": {
-          "x": 8324.5,
-          "y": 1400
-        }
-      }
-  "88":
-    continueonerrortype: ""
-    id: "88"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#none#':
-      - "2"
-    note: false
-    quietmode: 0
-    scriptarguments:
-      value:
-        simple: |-
-          Shadow Mode: ${brandname} - IAM Disable User
-          Command: iam-disable-user
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Prints text to war room (Markdown supported)
-      id: 2baab7d5-5652-4220-8d42-1ec8d2f53de0
-      iscommand: false
-      name: Print To WarRoom
-      playbooktaskmissingcomponent: null
-      script: Print
-      type: regular
-      version: -1
-    taskid: 2baab7d5-5652-4220-8d42-1ec8d2f53de0
-    timertriggers: []
-    type: regular
-    view: |-
-      {
-        "position": {
-          "x": 8274.5,
-          "y": 1910
-        }
-      }
-  "89":
-    conditions:
-    - condition:
-      - - left:
-            iscontext: true
-            value:
-              simple: inputs.ShadowMode
-          operator: isTrue
-          right:
-            value: {}
-      label: "no"
-    continueonerrortype: ""
-    id: "89"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#default#':
-      - "90"
-      "no":
-      - "48"
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: 83c5e457-c7b6-4a6e-ad20-8a84d07d0794
-      iscommand: false
-      name: Shadow Mode?
-      playbooktaskmissingcomponent: null
-      type: condition
-      version: -1
-    taskid: 83c5e457-c7b6-4a6e-ad20-8a84d07d0794
-    timertriggers: []
-    type: condition
-    view: |-
-      {
-        "position": {
-          "x": 5324.25,
-          "y": 1570
-        }
-      }
-  "90":
-    continueonerrortype: ""
-    id: "90"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#none#':
-      - "2"
-    note: false
-    quietmode: 0
-    scriptarguments:
-      value:
-        simple: |-
-          Shadow Mode: Active Directory - Disable Account
-          Command: ad-disable-account
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Prints text to war room (Markdown supported)
-      id: 61549429-2373-46a9-9201-c4712420a6aa
-      iscommand: false
-      name: Print To WarRoom
-      playbooktaskmissingcomponent: null
-      script: Print
-      type: regular
-      version: -1
-    taskid: 61549429-2373-46a9-9201-c4712420a6aa
-    timertriggers: []
-    type: regular
-    view: |-
-      {
-        "position": {
-          "x": 5179,
-          "y": 1910
-        }
-      }
-  "91":
-    conditions:
-    - condition:
-      - - left:
-            iscontext: true
-            value:
-              simple: inputs.ShadowMode
-          operator: isTrue
-          right:
-            value: {}
-      label: "no"
-    continueonerrortype: ""
-    id: "91"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#default#':
-      - "92"
-      "no":
+      Full Run:
       - "33"
-    note: false
-    quietmode: 0
+      Shadow Mode:
+      - "82"
+    scriptarguments:
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: d07870bc-fc04-473e-845d-916bb3728213
-      iscommand: false
-      name: Shadow Mode?
-      playbooktaskmissingcomponent: null
-      type: condition
-      version: -1
-    taskid: d07870bc-fc04-473e-845d-916bb3728213
-    timertriggers: []
-    type: condition
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 3145.5,
-          "y": 1570
+          "x": -1460,
+          "y": 990
         }
       }
-  "92":
-    continueonerrortype: ""
-    id: "92"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#none#':
-      - "2"
     note: false
-    quietmode: 0
-    scriptarguments:
-      value:
-        simple: |-
-          Shadow Mode: ${brandname} - IAM Disable User
-          Command: iam-disable-user
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Prints text to war room (Markdown supported)
-      id: 86683b6b-462b-4e4d-955b-28e376ec57d1
-      iscommand: false
-      name: Print To WarRoom
-      playbooktaskmissingcomponent: null
-      script: Print
-      type: regular
-      version: -1
-    taskid: 86683b6b-462b-4e4d-955b-28e376ec57d1
     timertriggers: []
+    ignoreworker: false
+    skipunavailable: false
+    quietmode: 0
+    isoversize: false
+    isautoswitchedtoquietmode: false
+  "82":
+    id: "82"
+    taskid: 4a7ea37e-8c02-4d25-9012-ba3bfabc15e6
     type: regular
-    view: |-
-      {
-        "position": {
-          "x": 3000.25,
-          "y": 1910
-        }
-      }
-  "93":
-    conditions:
-    - condition:
-      - - left:
-            iscontext: true
-            value:
-              simple: inputs.ShadowMode
-          operator: isTrue
-          right:
-            value: {}
-      label: "no"
-    continueonerrortype: ""
-    id: "93"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#default#':
-      - "94"
-      "no":
-      - "34"
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
     task:
-      brand: ""
-      id: c77102af-a868-43a9-b6a8-dc2f1a03000e
-      iscommand: false
-      name: Shadow Mode?
-      playbooktaskmissingcomponent: null
-      type: condition
+      id: 4a7ea37e-8c02-4d25-9012-ba3bfabc15e6
       version: -1
-    taskid: c77102af-a868-43a9-b6a8-dc2f1a03000e
-    timertriggers: []
-    type: condition
-    view: |-
-      {
-        "position": {
-          "x": 2274,
-          "y": 1570
-        }
-      }
-  "94":
-    continueonerrortype: ""
-    id: "94"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
+      name: 'Shadow: IAM Disable User'
+      description: Prints text to war room (Markdown supported)
+      scriptName: Print
+      type: regular
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#none#':
       - "2"
-    note: false
-    quietmode: 0
     scriptarguments:
       value:
         simple: |-
-          Shadow Mode: PingOne - Deactivate user
+          Shadow: IAM Disable User
+          Command: iam-disable-user ${Blocklist.Final}
+    separatecontext: false
+    continueonerrortype: ""
+    view: |-
+      {
+        "position": {
+          "x": -1700,
+          "y": 1220
+        }
+      }
+    note: false
+    timertriggers: []
+    ignoreworker: false
+    skipunavailable: false
+    quietmode: 0
+    isoversize: false
+    isautoswitchedtoquietmode: false
+  "83":
+    id: "83"
+    taskid: 096e41dc-b0ba-457c-a0ff-958eab5cad2b
+    type: condition
+    task:
+      id: 096e41dc-b0ba-457c-a0ff-958eab5cad2b
+      version: -1
+      name: Run Mode?
+      scriptName: ShadowModeRouter
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
+    nexttasks:
+      Full Run:
+      - "34"
+      Shadow Mode:
+      - "84"
+    scriptarguments:
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
+    separatecontext: false
+    continueonerrortype: ""
+    view: |-
+      {
+        "position": {
+          "x": 200,
+          "y": 1000
+        }
+      }
+    note: false
+    timertriggers: []
+    ignoreworker: false
+    skipunavailable: false
+    quietmode: 0
+    isoversize: false
+    isautoswitchedtoquietmode: false
+  "84":
+    id: "84"
+    taskid: e83f7e76-e9f7-4278-9c78-c1efaac3b8c8
+    type: regular
+    task:
+      id: e83f7e76-e9f7-4278-9c78-c1efaac3b8c8
+      version: -1
+      name: 'Shadow: PingOne Deactivate User'
+      description: Prints text to war room (Markdown supported)
+      scriptName: Print
+      type: regular
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
+    nexttasks:
+      '#none#':
+      - "2"
+    scriptarguments:
+      value:
+        simple: |-
+          Shadow: PingOne Deactivate User
           Command: pingone-deactivate-user
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Prints text to war room (Markdown supported)
-      id: 910bb8f4-c5c8-439b-b6c9-1dbbbce600e0
-      iscommand: false
-      name: Print To WarRoom
-      playbooktaskmissingcomponent: null
-      script: Print
-      type: regular
-      version: -1
-    taskid: 910bb8f4-c5c8-439b-b6c9-1dbbbce600e0
-    timertriggers: []
-    type: regular
+    continueonerrortype: ""
     view: |-
       {
         "position": {
-          "x": 2128.75,
-          "y": 1910
+          "x": -30,
+          "y": 1190
         }
       }
-  "95":
-    continueonerrortype: ""
-    id: "95"
+    note: false
+    timertriggers: []
     ignoreworker: false
-    isautoswitchedtoquietmode: false
+    skipunavailable: false
+    quietmode: 0
     isoversize: false
+    isautoswitchedtoquietmode: false
+  "85":
+    id: "85"
+    taskid: 0a07259b-b2fd-4202-802e-dca83c86e91a
+    type: condition
+    task:
+      id: 0a07259b-b2fd-4202-802e-dca83c86e91a
+      version: -1
+      name: Run Mode?
+      scriptName: ShadowModeRouter
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
+    nexttasks:
+      Full Run:
+      - "35"
+      Shadow Mode:
+      - "86"
+    scriptarguments:
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
+    separatecontext: false
+    continueonerrortype: ""
+    view: |-
+      {
+        "position": {
+          "x": 390,
+          "y": 1220
+        }
+      }
+    note: false
+    timertriggers: []
+    ignoreworker: false
+    skipunavailable: false
+    quietmode: 0
+    isoversize: false
+    isautoswitchedtoquietmode: false
+  "86":
+    id: "86"
+    taskid: a78dbb56-315e-4dcf-9099-e24e9c571cc9
+    type: regular
+    task:
+      id: a78dbb56-315e-4dcf-9099-e24e9c571cc9
+      version: -1
+      name: 'Shadow: SailPoint Disable User'
+      description: Prints text to war room (Markdown supported)
+      scriptName: Print
+      type: regular
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
     nexttasks:
       '#none#':
       - "2"
-    note: false
-    quietmode: 0
     scriptarguments:
       value:
         simple: |-
-          Shadow Mode: SailPoint-Disable account
+          Shadow: SailPoint Disable User
           Command: identityiq-disable-account
     separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Prints text to war room (Markdown supported)
-      id: 23be157b-eea5-4246-9f1f-1271b9f5f08c
-      iscommand: false
-      name: Print To WarRoom
-      playbooktaskmissingcomponent: null
-      script: Print
-      type: regular
-      version: -1
-    taskid: 23be157b-eea5-4246-9f1f-1271b9f5f08c
-    timertriggers: []
-    type: regular
-    view: |-
-      {
-        "position": {
-          "x": 871.5,
-          "y": 1910
-        }
-      }
-  "96":
-    conditions:
-    - condition:
-      - - left:
-            iscontext: true
-            value:
-              simple: inputs.ShadowMode
-          operator: isTrue
-          right:
-            value: {}
-      label: "no"
     continueonerrortype: ""
-    id: "96"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#default#':
-      - "95"
-      "no":
-      - "35"
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: eef4c9c2-85fc-44d7-80a2-d46e61def5c5
-      iscommand: false
-      name: Shadow Mode?
-      playbooktaskmissingcomponent: null
-      type: condition
-      version: -1
-    taskid: eef4c9c2-85fc-44d7-80a2-d46e61def5c5
-    timertriggers: []
-    type: condition
     view: |-
       {
         "position": {
-          "x": 1016.75,
-          "y": 1570
+          "x": 550,
+          "y": 1470
         }
       }
-version: -1
+    note: false
+    timertriggers: []
+    ignoreworker: false
+    skipunavailable: false
+    quietmode: 0
+    isoversize: false
+    isautoswitchedtoquietmode: false
+  "87":
+    id: "87"
+    taskid: 8f693a0b-31be-4a22-bcce-b5ba123f1fac
+    type: condition
+    task:
+      id: 8f693a0b-31be-4a22-bcce-b5ba123f1fac
+      version: -1
+      name: Run Mode?
+      scriptName: ShadowModeRouter
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
+    nexttasks:
+      Full Run:
+      - "48"
+      Shadow Mode:
+      - "88"
+    scriptarguments:
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
+    separatecontext: false
+    continueonerrortype: ""
+    view: |-
+      {
+        "position": {
+          "x": 1050,
+          "y": 1280
+        }
+      }
+    note: false
+    timertriggers: []
+    ignoreworker: false
+    skipunavailable: false
+    quietmode: 0
+    isoversize: false
+    isautoswitchedtoquietmode: false
+  "88":
+    id: "88"
+    taskid: ed3e629c-2483-4afe-b75d-ccb79180b48b
+    type: regular
+    task:
+      id: ed3e629c-2483-4afe-b75d-ccb79180b48b
+      version: -1
+      name: 'Shadow: Active Directory Disable Account'
+      description: Prints text to war room (Markdown supported)
+      scriptName: Print
+      type: regular
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
+    nexttasks:
+      '#none#':
+      - "2"
+    scriptarguments:
+      value:
+        simple: |-
+          Shadow: Active Directory Disable Account
+          Command: ad-disable-account ${UserAD}
+    separatecontext: false
+    continueonerrortype: ""
+    view: |-
+      {
+        "position": {
+          "x": 1350,
+          "y": 1470
+        }
+      }
+    note: false
+    timertriggers: []
+    ignoreworker: false
+    skipunavailable: false
+    quietmode: 0
+    isoversize: false
+    isautoswitchedtoquietmode: false
+  "89":
+    id: "89"
+    taskid: 2bc496f7-3119-4341-8a3c-7330377148f7
+    type: condition
+    task:
+      id: 2bc496f7-3119-4341-8a3c-7330377148f7
+      version: -1
+      name: Run Mode?
+      scriptName: ShadowModeRouter
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
+    nexttasks:
+      Full Run:
+      - "69"
+      Shadow Mode:
+      - "90"
+    scriptarguments:
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
+    separatecontext: false
+    continueonerrortype: ""
+    view: |-
+      {
+        "position": {
+          "x": 1620,
+          "y": 1280
+        }
+      }
+    note: false
+    timertriggers: []
+    ignoreworker: false
+    skipunavailable: false
+    quietmode: 0
+    isoversize: false
+    isautoswitchedtoquietmode: false
+  "90":
+    id: "90"
+    taskid: d446c5e6-d5a2-4ce3-b0f9-3b56cca55d17
+    type: regular
+    task:
+      id: d446c5e6-d5a2-4ce3-b0f9-3b56cca55d17
+      version: -1
+      name: 'Shadow: Microsoft Graph User Disable Account'
+      description: Prints text to war room (Markdown supported)
+      scriptName: Print
+      type: regular
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
+    nexttasks:
+      '#none#':
+      - "2"
+    scriptarguments:
+      user:
+        simple: |-
+          Shadow: Microsoft Graph User Disable Account
+          Command: msgraph-user-account-disable
+      value:
+        simple: |-
+          Shadow: Microsoft Graph User Disable Account
+          Command: ${UserMSGraph}
+    separatecontext: false
+    continueonerrortype: ""
+    view: |-
+      {
+        "position": {
+          "x": 2170,
+          "y": 1470
+        }
+      }
+    note: false
+    timertriggers: []
+    ignoreworker: false
+    skipunavailable: false
+    quietmode: 0
+    isoversize: false
+    isautoswitchedtoquietmode: false
+  "91":
+    id: "91"
+    taskid: f5c259de-a8b6-4df6-be44-a9ee299b061b
+    type: condition
+    task:
+      id: f5c259de-a8b6-4df6-be44-a9ee299b061b
+      version: -1
+      name: Run Mode?
+      scriptName: ShadowModeRouter
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
+    nexttasks:
+      Full Run:
+      - "15"
+      Shadow Mode:
+      - "92"
+    scriptarguments:
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
+    separatecontext: false
+    continueonerrortype: ""
+    view: |-
+      {
+        "position": {
+          "x": 2700,
+          "y": 1120
+        }
+      }
+    note: false
+    timertriggers: []
+    ignoreworker: false
+    skipunavailable: false
+    quietmode: 0
+    isoversize: false
+    isautoswitchedtoquietmode: false
+  "92":
+    id: "92"
+    taskid: 067be8bb-a616-4b36-b846-8314a63f9939
+    type: regular
+    task:
+      id: 067be8bb-a616-4b36-b846-8314a63f9939
+      version: -1
+      name: 'Shadow: PAN-OS Register Tag to User'
+      description: Prints text to war room (Markdown supported)
+      scriptName: Print
+      type: regular
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
+    nexttasks:
+      '#none#':
+      - "2"
+    scriptarguments:
+      user:
+        simple: |-
+          Shadow: Microsoft Graph User Disable Account
+          Command: msgraph-user-account-disable
+      value:
+        simple: |-
+          Shadow: PAN-OS Register Tag to User
+          Command: pan-os-register-user-tag ${Blocklist.Final}
+    separatecontext: false
+    continueonerrortype: ""
+    view: |-
+      {
+        "position": {
+          "x": 2950,
+          "y": 1280
+        }
+      }
+    note: false
+    timertriggers: []
+    ignoreworker: false
+    skipunavailable: false
+    quietmode: 0
+    isoversize: false
+    isautoswitchedtoquietmode: false
+  "93":
+    id: "93"
+    taskid: 05d57e0f-4bdb-4f6b-aa39-473461333d71
+    type: condition
+    task:
+      id: 05d57e0f-4bdb-4f6b-aa39-473461333d71
+      version: -1
+      name: Run Mode?
+      scriptName: ShadowModeRouter
+      type: condition
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
+    nexttasks:
+      Full Run:
+      - "74"
+      Shadow Mode:
+      - "94"
+    scriptarguments:
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
+    separatecontext: false
+    continueonerrortype: ""
+    view: |-
+      {
+        "position": {
+          "x": 1900,
+          "y": 940
+        }
+      }
+    note: false
+    timertriggers: []
+    ignoreworker: false
+    skipunavailable: false
+    quietmode: 0
+    isoversize: false
+    isautoswitchedtoquietmode: false
+  "94":
+    id: "94"
+    taskid: 4145c31a-0721-4050-86fd-eca739f88df8
+    type: regular
+    task:
+      id: 4145c31a-0721-4050-86fd-eca739f88df8
+      version: -1
+      name: 'Shadow: Google Workspace Admin - Disable User'
+      description: Prints text to war room (Markdown supported)
+      scriptName: Print
+      type: regular
+      iscommand: false
+      brand: ""
+      playbooktaskmissingcomponent: null
+    nexttasks:
+      '#none#':
+      - "2"
+    scriptarguments:
+      user:
+        simple: |-
+          Shadow: Microsoft Graph User Disable Account
+          Command: msgraph-user-account-disable
+      value:
+        simple: |
+          Shadow: Google Workspace Admin - Disable User
+          Command: gsuite-user-data     separatecontext: false
+    continueonerrortype: ""
+    view: |-
+      {
+        "position": {
+          "x": 2300,
+          "y": 1100
+        }
+      }
+    note: false
+    timertriggers: []
+    ignoreworker: false
+    skipunavailable: false
+    quietmode: 0
+    isoversize: false
+    isautoswitchedtoquietmode: false
 view: |-
   {
     "linkLabelsPosition": {
       "16_2_#default#": 0.1,
-      "16_85_yes": 0.9,
+      "16_91_yes": 0.9,
       "26_2_#default#": 0.11,
-      "26_91_yes": 0.14,
+      "26_81_yes": 0.84,
       "27_2_#default#": 0.1,
       "28_2_#default#": 0.15,
-      "28_91_yes": 0.9,
+      "28_81_yes": 0.1,
       "29_2_#default#": 0.11,
-      "29_93_yes": 0.88,
+      "29_83_yes": 0.36,
       "30_2_#default#": 0.26,
-      "30_87_yes": 0.11,
+      "30_81_yes": 0.11,
       "31_2_#default#": 0.27,
-      "31_87_yes": 0.12,
+      "31_81_yes": 0.12,
       "32_2_#default#": 0.18,
-      "32_87_yes": 0.63,
+      "32_81_yes": 0.85,
       "36_2_#default#": 0.1,
       "37_2_#default#": 0.12,
       "43_44_yes": 0.49,
       "52_39_#default#": 0.2,
       "53_2_#default#": 0.1,
-      "53_87_yes": 0.9,
+      "53_81_yes": 0.79,
       "55_2_#default#": 0.1,
-      "55_87_yes": 0.21,
+      "55_81_yes": 0.86,
       "57_2_#default#": 0.1,
-      "57_87_yes": 0.18,
+      "57_81_yes": 0.18,
       "59_2_#default#": 0.1,
-      "59_87_yes": 0.14,
+      "59_81_yes": 0.14,
       "63_2_#default#": 0.1,
       "65_2_#default#": 0.1,
-      "65_87_yes": 0.1,
+      "65_81_yes": 0.1,
       "67_2_#default#": 0.1,
-      "67_87_yes": 0.1,
+      "67_81_yes": 0.1,
       "70_2_#default#": 0.1,
-      "70_87_yes": 0.1,
+      "70_81_yes": 0.1,
       "72_2_#default#": 0.1,
-      "77_89_yes": 0.89,
+      "72_93_yes": 0.44,
+      "79_89_yes": 0.85,
       "8_38_yes": 0.65,
       "8_39_#default#": 0.13
     },
     "paper": {
       "dimensions": {
-        "height": 2090,
-        "width": 14550.25,
-        "x": 50,
-        "y": 50
+        "height": 3170,
+        "width": 8700,
+        "x": -5370,
+        "y": -1450
       }
     }
   }
+inputs:
+- key: Username
+  value: {}
+  required: false
+  description: Array of malicious usernames to block.
+  playbookInputQuery: null
+- key: Tag
+  value:
+    simple: Bad Account
+  required: false
+  description: PAN-OS Tag name to apply to the username that you want to block.
+  playbookInputQuery: null
+- key: NamingConvention
+  value: {}
+  required: false
+  description: In case you are using naming convention in your IDP, please specify
+    a prefix for special/service accounts (use comma separated)
+  playbookInputQuery: null
+- key: UserVerification
+  value:
+    simple: "True"
+  required: false
+  description: |-
+    Possible values:True/False. Default:True.
+    Specify if User Verification is Requrired
+  playbookInputQuery: null
+- key: ShadowMode
+  value:
+    simple: "true"
+  required: false
+  description: ""
+  playbookInputQuery: null
+inputSections:
+- inputs:
+  - Username
+  - Tag
+  - NamingConvention
+  - UserVerification
+  - ShadowMode
+  name: General (Inputs group)
+  description: Generic group for inputs
+outputSections:
+- outputs:
+  - Blocklist.Final
+  name: General (Outputs group)
+  description: Generic group for outputs
+outputs:
+- contextPath: Blocklist.Final
+  description: Blocked accounts.
+  type: unknown
+sourceplaybookid: Block Account - Generic v2
+dirtyInputs: true
+adopted: true
