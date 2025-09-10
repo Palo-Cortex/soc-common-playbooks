@@ -4,11 +4,15 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 6.6.0
     isoverridable: false
-    itemVersion: 1.0.3
+    itemVersion: 2.7.15
     packID: ""
-    packName: SOC Malware Investigation Response
+    packName: Common Playbooks
     prevname: ""
-    supportedModules: []
+    supportedModules:
+    - X1
+    - X3
+    - X5
+    - ENT_PLUS
     toServerVersion: ""
 description: "This playbook handles all the eradication actions available with Cortex
   XSIAM, including the following sub-playbooks:\n* Eradication Plan - Reset user password\n*
@@ -16,7 +20,7 @@ description: "This playbook handles all the eradication actions available with C
   playbook supports terminating a process by name)  \n\nNote: The playbook inputs
   enable manipulating the execution flow. Read the input descriptions for details."
 dirtyInputs: true
-id: SOC Eradication Plan
+id: 'SOC Eradication Plan'
 inputSections:
 - description: Generic group for inputs
   inputs:
@@ -95,7 +99,7 @@ inputs:
   playbookInputQuery: null
   required: false
   value:
-    simple: "True"
+    simple: "true"
 name: SOC Eradication Plan
 outputSections:
 - description: Generic group for outputs
@@ -127,19 +131,19 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 8a1f8612-9c58-44a2-852c-fbb057cc5964
+      id: a565fd6d-2dd4-4f6f-8c41-d80d96fd1a58
       iscommand: false
       name: ""
       playbooktaskmissingcomponent: null
       version: -1
-    taskid: 8a1f8612-9c58-44a2-852c-fbb057cc5964
+    taskid: a565fd6d-2dd4-4f6f-8c41-d80d96fd1a58
     timertriggers: []
     type: start
     view: |-
       {
         "position": {
-          "x": 771.5,
-          "y": 50
+          "x": 170,
+          "y": -470
         }
       }
   "46":
@@ -242,20 +246,20 @@ tasks:
     task:
       brand: ""
       description: Select which indicators to block.
-      id: 95ae75f7-10c7-416d-82db-cb2767be6938
+      id: 0b8d21a3-7d1d-44ac-898f-f7b9dd3c484e
       iscommand: false
       name: Which eradication actions would you like to perform?
       playbooktaskmissingcomponent: null
       type: collection
       version: -1
-    taskid: 95ae75f7-10c7-416d-82db-cb2767be6938
+    taskid: 0b8d21a3-7d1d-44ac-898f-f7b9dd3c484e
     timertriggers: []
     type: collection
     view: |-
       {
         "position": {
-          "x": 531,
-          "y": 720
+          "x": -120,
+          "y": 240
         }
       }
   "47":
@@ -275,20 +279,20 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: be1183cf-bdbd-46f3-8d7c-95eb308d0770
+      id: eac14d54-acee-4628-894b-c3f85ad56381
       iscommand: false
       name: Eradication
       playbooktaskmissingcomponent: null
       type: title
       version: -1
-    taskid: be1183cf-bdbd-46f3-8d7c-95eb308d0770
+    taskid: eac14d54-acee-4628-894b-c3f85ad56381
     timertriggers: []
     type: title
     view: |-
       {
         "position": {
-          "x": 531,
-          "y": 890
+          "x": 170,
+          "y": 410
         }
       }
   "48":
@@ -322,87 +326,25 @@ tasks:
     task:
       brand: ""
       description: Whether to perform eradication actions automatically or manually.
-      id: 51998333-2cd0-4734-88de-323bb7949760
+      id: 7e62a114-2f14-44b9-8fcb-e391078f8112
       iscommand: false
       name: Should Eradicate automatically?
       playbooktaskmissingcomponent: null
       type: condition
       version: -1
-    taskid: 51998333-2cd0-4734-88de-323bb7949760
+    taskid: 7e62a114-2f14-44b9-8fcb-e391078f8112
     timertriggers: []
     type: condition
     view: |-
       {
         "position": {
-          "x": 531,
-          "y": 550
+          "x": 170,
+          "y": 60
         }
       }
   "52":
     continueonerrortype: ""
     id: "52"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#none#':
-      - "61"
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: f3bdd4a7-1f37-4dcb-817c-faf569aeb63c
-      iscommand: false
-      name: Reset Password
-      playbooktaskmissingcomponent: null
-      type: title
-      version: -1
-    taskid: f3bdd4a7-1f37-4dcb-817c-faf569aeb63c
-    timertriggers: []
-    type: title
-    view: |-
-      {
-        "position": {
-          "x": 50,
-          "y": 1050
-        }
-      }
-  "53":
-    continueonerrortype: ""
-    id: "53"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#none#':
-      - "60"
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: 9bd8bd88-06d7-445c-8e01-89cea2a86c49
-      iscommand: false
-      name: Delete File
-      playbooktaskmissingcomponent: null
-      type: title
-      version: -1
-    taskid: 9bd8bd88-06d7-445c-8e01-89cea2a86c49
-    timertriggers: []
-    type: title
-    view: |-
-      {
-        "position": {
-          "x": 531,
-          "y": 1050
-        }
-      }
-  "54":
-    continueonerrortype: ""
-    id: "54"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
@@ -415,20 +357,82 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 2272fb0f-3155-45e9-8614-e232f881b3f0
+      id: e2ca1e88-b318-4dd3-8cd0-e79bcea8b708
       iscommand: false
-      name: Terminate Process
+      name: Reset Password
       playbooktaskmissingcomponent: null
       type: title
       version: -1
-    taskid: 2272fb0f-3155-45e9-8614-e232f881b3f0
+    taskid: e2ca1e88-b318-4dd3-8cd0-e79bcea8b708
     timertriggers: []
     type: title
     view: |-
       {
         "position": {
-          "x": 1012,
-          "y": 1050
+          "x": -300,
+          "y": 560
+        }
+      }
+  "53":
+    continueonerrortype: ""
+    id: "53"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#none#':
+      - "59"
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      id: 55eece77-4b85-418a-85b4-2df675bc6406
+      iscommand: false
+      name: Delete File
+      playbooktaskmissingcomponent: null
+      type: title
+      version: -1
+    taskid: 55eece77-4b85-418a-85b4-2df675bc6406
+    timertriggers: []
+    type: title
+    view: |-
+      {
+        "position": {
+          "x": 170,
+          "y": 560
+        }
+      }
+  "54":
+    continueonerrortype: ""
+    id: "54"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#none#':
+      - "60"
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      id: 85a5283a-4dcb-4be9-8994-cda1836b671a
+      iscommand: false
+      name: Terminate Process
+      playbooktaskmissingcomponent: null
+      type: title
+      version: -1
+    taskid: 85a5283a-4dcb-4be9-8994-cda1836b671a
+    timertriggers: []
+    type: title
+    view: |-
+      {
+        "position": {
+          "x": 640,
+          "y": 560
         }
       }
   "55":
@@ -443,32 +447,29 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: fba37ccc-45a8-44d3-86e8-98749a41ee98
+      id: aca6dccc-d750-41e7-8303-cc4cb1d1e1d8
       iscommand: false
       name: Done
       playbooktaskmissingcomponent: null
       type: title
       version: -1
-    taskid: fba37ccc-45a8-44d3-86e8-98749a41ee98
+    taskid: aca6dccc-d750-41e7-8303-cc4cb1d1e1d8
     timertriggers: []
     type: title
     view: |-
       {
         "position": {
-          "x": 290.5,
-          "y": 1380
+          "x": 170,
+          "y": 875
         }
       }
   "56":
-    continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "56"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "59"
       '#none#':
       - "48"
     note: false
@@ -514,21 +515,21 @@ tasks:
     task:
       brand: ""
       description: Set a value in context under the key you entered.
-      id: e0ee716d-efb5-4568-8927-016c88b3c60c
+      id: d459e56b-3290-44e3-81c7-0a69a339dbbf
       iscommand: false
       name: Set Process list
       playbooktaskmissingcomponent: null
       script: Set
       type: regular
       version: -1
-    taskid: e0ee716d-efb5-4568-8927-016c88b3c60c
+    taskid: d459e56b-3290-44e3-81c7-0a69a339dbbf
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 962,
-          "y": 380
+          "x": -120,
+          "y": -140
         }
       }
   "57":
@@ -566,20 +567,20 @@ tasks:
     task:
       brand: ""
       description: Check if the file path and PID are defined.
-      id: 05e399ac-c959-4ccc-8f81-1f90461da779
+      id: e5166636-3899-4c68-8dfa-b2b39ca764ed
       iscommand: false
       name: The file path and PID defined?
       playbooktaskmissingcomponent: null
       type: condition
       version: -1
-    taskid: 05e399ac-c959-4ccc-8f81-1f90461da779
+    taskid: e5166636-3899-4c68-8dfa-b2b39ca764ed
     timertriggers: []
     type: condition
     view: |-
       {
         "position": {
-          "x": 771.5,
-          "y": 210
+          "x": 170,
+          "y": -330
         }
       }
   "58":
@@ -588,45 +589,30 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
-    loop:
-      exitCondition: ""
-      iscommand: false
-      max: 100
-      wait: 1
     nexttasks:
       '#none#':
       - "55"
     note: false
     quietmode: 0
-    scriptarguments:
-      ProcessTermination:
-        simple: Name
-      ShadowMode:
-        simple: ${inputs.ShadowMode}
     separatecontext: true
     skipunavailable: false
     task:
       brand: ""
-      description: "This playbook is one of the sub-playbooks in the eradication plan.
-        \nThis playbook handles the termination of the processes as a crucial step
-        in the eradication action.\nThe playbook executes actions of process termination,
-        which is a crucial step in the eradication process.\nThe process termination
-        can be performed based on either the process ID or the process name."
-      id: d6fb7354-da20-4845-8d27-34cc5c934754
+      id: c65146fd-809d-435e-8836-31587b72c285
       iscommand: false
-      name: SOC Eradication Plan - Terminate Process
-      playbookId: SOC Eradication Plan - Terminate Process
+      name: SOC Eradication Plan - Reset Password
+      playbookId: Eradication Plan - Reset Password
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: d6fb7354-da20-4845-8d27-34cc5c934754
+    taskid: c65146fd-809d-435e-8836-31587b72c285
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 1012,
-          "y": 1210
+          "x": -300,
+          "y": 695
         }
       }
   "59":
@@ -635,32 +621,30 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
-    loop:
-      exitCondition: ""
-      iscommand: false
-      max: 100
-      wait: 1
+    nexttasks:
+      '#none#':
+      - "55"
     note: false
     quietmode: 0
     separatecontext: true
-    skipunavailable: true
+    skipunavailable: false
     task:
       brand: ""
-      id: 1a454fc4-4479-4a5b-879e-79c16e5eba52
+      id: cc7f3188-1801-4d34-8955-e6ea41912335
       iscommand: false
-      name: Foundation - Error Handling
-      playbookId: Foundation - Error Handling
+      name: SOC Eradication Plan - Delete File
+      playbookId: Eradication Plan - Delete File
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 1a454fc4-4479-4a5b-879e-79c16e5eba52
+    taskid: cc7f3188-1801-4d34-8955-e6ea41912335
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 1012,
-          "y": 550
+          "x": 170,
+          "y": 695
         }
       }
   "60":
@@ -669,94 +653,30 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
-    loop:
-      exitCondition: ""
-      iscommand: false
-      max: 100
-      wait: 1
     nexttasks:
       '#none#':
       - "55"
     note: false
     quietmode: 0
-    scriptarguments:
-      EndpointID:
-        complex:
-          root: Endpoints
-      FilePath:
-        complex:
-          root: Path
-      FileRemediation:
-        simple: Delete
-      ShadowMode:
-        simple: ${inputs.ShadowMode}
     separatecontext: true
     skipunavailable: false
     task:
       brand: ""
-      description: "This playbook is one of the sub-playbooks in the eradication plan.
-        \nThis playbook executes actions of file deletion, which is a crucial step
-        in the eradication process."
-      id: 15bdf486-8310-45b6-86b4-5fcc7af0448e
+      id: f9c99068-103a-4b06-800a-ce9f96d71f29
       iscommand: false
-      name: SOC Eradication Plan - Delete File
-      playbookId: SOC Eradication Plan - Delete File
+      name: SOC Eradication Plan - Terminate Process
+      playbookId: Eradication Plan - Terminate Process
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 15bdf486-8310-45b6-86b4-5fcc7af0448e
+    taskid: f9c99068-103a-4b06-800a-ce9f96d71f29
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 531,
-          "y": 1210
-        }
-      }
-  "61":
-    continueonerrortype: ""
-    id: "61"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    loop:
-      exitCondition: ""
-      iscommand: false
-      max: 100
-      wait: 1
-    nexttasks:
-      '#none#':
-      - "55"
-    note: false
-    quietmode: 0
-    scriptarguments:
-      ShadowMode:
-        simple: ${inputs.ShadowMode}
-      UserRemediation:
-        simple: "True"
-    separatecontext: true
-    skipunavailable: false
-    task:
-      brand: ""
-      description: "This playbook is one of the sub-playbooks in the eradication plan.
-        \nThe playbook executes actions to reset the user's passwords, which is a
-        crucial step in the eradication process."
-      id: a934bf01-a2bf-4e90-85f4-dd253089dd9b
-      iscommand: false
-      name: SOC Eradication Plan - Reset Password
-      playbookId: SOC Eradication Plan - Reset Password
-      playbooktaskmissingcomponent: null
-      type: playbook
-      version: -1
-    taskid: a934bf01-a2bf-4e90-85f4-dd253089dd9b
-    timertriggers: []
-    type: playbook
-    view: |-
-      {
-        "position": {
-          "x": 50,
-          "y": 1210
+          "x": 640,
+          "y": 695
         }
       }
 version: -1
@@ -767,10 +687,10 @@ view: |-
     },
     "paper": {
       "dimensions": {
-        "height": 1390,
-        "width": 1342,
-        "x": 50,
-        "y": 50
+        "height": 1405,
+        "width": 1320,
+        "x": -300,
+        "y": -470
       }
     }
   }
