@@ -1,12 +1,19 @@
+adopted: true
 contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 5.0.0
     isoverridable: false
-    itemVersion: 1.0.0
+    itemVersion: 2.7.15
     packID: ""
-    packName: SOC Common Playbooks
+    packName: Common Playbooks
     prevname: ""
+    supportedModules:
+    - X1
+    - X3
+    - X5
+    - ENT_PLUS
+    - agentix
     toServerVersion: ""
 description: |-
   Enrich IP addresses using one or more integrations.
@@ -15,8 +22,19 @@ description: |-
   - Provide threat information.
   - IP address reputation using !ip command.
   - Separate internal and external addresses.
-adopted: true
+dirtyInputs: true
 id: 'SOC IP Enrichment - External - Generic v2'
+inputSections:
+- description: Generic group for inputs
+  inputs:
+  - IP
+  - InternalRange
+  - ResolveIP
+  - UseReputationCommand
+  - extended_data
+  - threat_model_association
+  - ExecutedFromParent
+  name: General (Inputs group)
 inputs:
 - description: The IP address to enrich.
   key: IP
@@ -101,6 +119,37 @@ inputs:
   value:
     simple: "False"
 name: SOC IP Enrichment - External - Generic v2
+outputSections:
+- description: Generic group for outputs
+  name: General (Outputs group)
+  outputs:
+  - IP
+  - DBotScore
+  - Endpoint
+  - Endpoint.Hostname
+  - Endpoint.IP
+  - IP.Address
+  - IP.InRange
+  - DBotScore.Indicator
+  - DBotScore.Type
+  - DBotScore.Vendor
+  - DBotScore.Score
+  - IP.ASN
+  - IP.Tags
+  - IP.ThreatTypes
+  - IP.Geo.Country
+  - IP.Geo.Location
+  - IP.Malicious.Vendor
+  - IP.Malicious.Description
+  - IP.VirusTotal.DownloadedHashes
+  - IP.VirusTotal.UnAVDetectedDownloadedHashes
+  - IP.VirusTotal.DetectedURLs
+  - IP.VirusTotal.CommunicatingHashes
+  - IP.VirusTotal.UnAVDetectedCommunicatingHashes
+  - IP.VirusTotal.Resolutions.hostname
+  - IP.VirusTotal.ReferrerHashes
+  - IP.VirusTotal.UnAVDetectedReferrerHashes
+  - IP.VirusTotal.Resolutions.last_resolved
 outputs:
 - contextPath: IP
   description: The IP address objects.
@@ -190,7 +239,7 @@ sourceplaybookid: IP Enrichment - External - Generic v2
 starttaskid: "0"
 tags:
 - SOC
-- Enrichment
+- SOC_Framework
 tasks:
   "0":
     continueonerrortype: ""
@@ -210,6 +259,7 @@ tasks:
       id: 6635b28b-bdf1-42cf-88bc-14ad75e9ebe0
       iscommand: false
       name: ""
+      playbooktaskmissingcomponent: null
       version: -1
     taskid: 6635b28b-bdf1-42cf-88bc-14ad75e9ebe0
     timertriggers: []
@@ -217,8 +267,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 776.25,
-          "y": 50
+          "x": 550,
+          "y": 39
         }
       }
   "15":
@@ -277,6 +327,7 @@ tasks:
       id: c8d8906f-cbf4-4ddd-84e6-1e55570d00a0
       iscommand: false
       name: Is there an external IP address?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: c8d8906f-cbf4-4ddd-84e6-1e55570d00a0
@@ -285,8 +336,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 921.5,
-          "y": 710
+          "x": 552.5,
+          "y": 670
         }
       }
   "24":
@@ -304,6 +355,7 @@ tasks:
       id: 8149db7c-af8d-41e2-85ee-c9fe2efd5040
       iscommand: false
       name: Done
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 8149db7c-af8d-41e2-85ee-c9fe2efd5040
@@ -312,8 +364,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1166.75,
-          "y": 1885
+          "x": 110,
+          "y": 1970
         }
       }
   "27":
@@ -335,6 +387,7 @@ tasks:
       id: 1734f24b-0b27-431e-81b6-89997f08894c
       iscommand: false
       name: Enrich external IP addresses
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 1734f24b-0b27-431e-81b6-89997f08894c
@@ -343,8 +396,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1262,
-          "y": 1220
+          "x": 100,
+          "y": 1240
         }
       }
   "29":
@@ -380,20 +433,21 @@ tasks:
       description: "Checks if the IP address is in the internal IP address ranges.\nIf
         internal, sets the \"InRange\" attribute to \"yes\".\nIf external, sets the
         \"InRange\" attribute to \"no\". "
-      id: 8dfee6ed-52ea-4118-a0db-65cfe65c23b0
+      id: 8f96dd19-92e0-421f-bf2c-c89fe6676684
       iscommand: false
       name: Determine whether the IP address is internal or external
+      playbooktaskmissingcomponent: null
       script: IsIPInRanges
       type: regular
       version: -1
-    taskid: 8dfee6ed-52ea-4118-a0db-65cfe65c23b0
+    taskid: 8f96dd19-92e0-421f-bf2c-c89fe6676684
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 776.25,
-          "y": 540
+          "x": 552.5,
+          "y": 505
         }
       }
   "34":
@@ -429,6 +483,7 @@ tasks:
       id: 607dafbe-8ee1-47ad-810a-dacf03842673
       iscommand: false
       name: Resolve the IP address?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 607dafbe-8ee1-47ad-810a-dacf03842673
@@ -437,8 +492,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 971.5,
-          "y": 880
+          "x": 550,
+          "y": 870
         }
       }
   "35":
@@ -484,20 +539,21 @@ tasks:
     task:
       brand: ""
       description: Convert the IP address to a hostname using DNS query.
-      id: 64c574cd-e05b-405a-a3a5-3c627c7fd7a7
+      id: 9a9092a5-a173-4c8d-8a0c-f63960c42451
       iscommand: false
       name: IP to Hostname (DNS)
+      playbooktaskmissingcomponent: null
       script: IPToHost
       type: regular
       version: -1
-    taskid: 64c574cd-e05b-405a-a3a5-3c627c7fd7a7
+    taskid: 9a9092a5-a173-4c8d-8a0c-f63960c42451
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 1166.75,
-          "y": 1050
+          "x": 750,
+          "y": 1055
         }
       }
   "36":
@@ -518,6 +574,7 @@ tasks:
       id: 22f7b81d-ea1a-44b3-8b73-c628afaf5cfc
       iscommand: false
       name: Enrich Using VirusTotal Private API
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 22f7b81d-ea1a-44b3-8b73-c628afaf5cfc
@@ -526,8 +583,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 876.25,
-          "y": 1380
+          "x": 550,
+          "y": 1420
         }
       }
   "37":
@@ -582,6 +639,7 @@ tasks:
       id: 0df4420b-8119-4731-8cb3-4745fd044913
       iscommand: false
       name: Is VirusTotal Private API enabled?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 0df4420b-8119-4731-8cb3-4745fd044913
@@ -590,8 +648,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 876.25,
-          "y": 1540
+          "x": 550,
+          "y": 1553
         }
       }
   "38":
@@ -649,20 +707,21 @@ tasks:
       brand: VirusTotal - Private API
       description: |
         Retrieves a report for a given IP address.
-      id: afa9cd96-54d7-41be-957f-960f802ed17d
+      id: 2b536b08-f716-4b71-a54d-e0fdb7f1827e
       iscommand: true
       name: Get IP report from VirusTotal Private API
+      playbooktaskmissingcomponent: null
       script: VirusTotal - Private API|||vt-private-get-ip-report
       type: regular
       version: -1
-    taskid: afa9cd96-54d7-41be-957f-960f802ed17d
+    taskid: 2b536b08-f716-4b71-a54d-e0fdb7f1827e
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 1021.5,
-          "y": 1710
+          "x": 550,
+          "y": 1730
         }
       }
   "39":
@@ -683,6 +742,7 @@ tasks:
       id: 67d938bf-2bd3-4dfd-885f-8dd190cd0b93
       iscommand: false
       name: No External IP Address
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 67d938bf-2bd3-4dfd-885f-8dd190cd0b93
@@ -691,8 +751,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 50,
-          "y": 885
+          "x": 1270,
+          "y": 1240
         }
       }
   "44":
@@ -713,6 +773,7 @@ tasks:
       id: 9bda4dfe-35b9-40ac-8d8c-c6973b2d1d40
       iscommand: false
       name: Check Reputation Using All Available Integrations
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 9bda4dfe-35b9-40ac-8d8c-c6973b2d1d40
@@ -721,8 +782,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1697.75,
-          "y": 1380
+          "x": -340,
+          "y": 1420
         }
       }
   "45":
@@ -783,20 +844,21 @@ tasks:
     task:
       brand: ""
       description: Checks the reputation of an IP address using all available integrations.
-      id: bdd85506-f6f0-41f7-a78f-3d80c08dafa0
+      id: 59d18af0-7677-4e10-907f-c480e88d98f9
       iscommand: true
       name: Check Reputation
+      playbooktaskmissingcomponent: null
       script: '|||ip'
       type: regular
       version: -1
-    taskid: bdd85506-f6f0-41f7-a78f-3d80c08dafa0
+    taskid: 59d18af0-7677-4e10-907f-c480e88d98f9
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 1843,
-          "y": 1710
+          "x": -340,
+          "y": 1730
         }
       }
   "46":
@@ -832,6 +894,7 @@ tasks:
       id: c55e9651-e6f5-48ec-8bbc-995c4e87808b
       iscommand: false
       name: Should use !IP command?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: c55e9651-e6f5-48ec-8bbc-995c4e87808b
@@ -840,8 +903,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1697.75,
-          "y": 1540
+          "x": -340,
+          "y": 1553
         }
       }
   "47":
@@ -894,6 +957,7 @@ tasks:
       id: ea6c64c9-4852-47c9-8cfd-d6d6907037cf
       iscommand: false
       name: Are the IPs already classified?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: ea6c64c9-4852-47c9-8cfd-d6d6907037cf
@@ -902,8 +966,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 776.25,
-          "y": 210
+          "x": 550,
+          "y": 170
         }
       }
   "48":
@@ -924,6 +988,7 @@ tasks:
       id: 2e4dbc75-e8f0-4478-8b16-523ba22e1621
       iscommand: false
       name: Classify & Resolve IPs
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 2e4dbc75-e8f0-4478-8b16-523ba22e1621
@@ -932,8 +997,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 776.25,
-          "y": 380
+          "x": 552.5,
+          "y": 370
         }
       }
   "49":
@@ -942,31 +1007,27 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
-    loop:
-      exitCondition: ""
-      iscommand: false
-      max: 100
-      wait: 1
     note: false
     quietmode: 0
     separatecontext: true
-    skipunavailable: true
+    skipunavailable: false
     task:
       brand: ""
-      id: 706276a3-807d-4e73-ab86-7c172019d944
+      id: 87c933fe-d5a5-4724-8d7f-ffa5625da08d
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
+      playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 706276a3-807d-4e73-ab86-7c172019d944
+    taskid: 87c933fe-d5a5-4724-8d7f-ffa5625da08d
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 685.75,
-          "y": 1880
+          "x": 870,
+          "y": 1965
         }
       }
 version: -1
@@ -985,10 +1046,10 @@ view: |-
     },
     "paper": {
       "dimensions": {
-        "height": 1900,
-        "width": 2174,
-        "x": 50,
-        "y": 50
+        "height": 1996,
+        "width": 1990,
+        "x": -340,
+        "y": 39
       }
     }
   }

@@ -1,12 +1,19 @@
+adopted: true
 contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 5.0.0
     isoverridable: false
-    itemVersion: 1.0.0
+    itemVersion: 2.7.15
     packID: ""
-    packName: SOC Common Playbooks
+    packName: Common Playbooks
     prevname: ""
+    supportedModules:
+    - X1
+    - X3
+    - X5
+    - ENT_PLUS
+    - agentix
     toServerVersion: ""
 description: |-
   Enrich Internal IP addresses using one or more integrations.
@@ -14,8 +21,17 @@ description: |-
   - Resolve IP address to hostname (DNS)
   - Separate internal and external IP addresses
   - Get host information for IP addresses.
-adopted: true
+dirtyInputs: true
 id: 'SOC IP Enrichment - Internal - Generic v2'
+inputSections:
+- description: Generic group for inputs
+  inputs:
+  - IP
+  - InternalRange
+  - ResolveIP
+  - ExecutedFromParent
+  - Hostnames
+  name: General (Inputs group)
 inputs:
 - description: The IP address to enrich.
   key: IP
@@ -83,6 +99,173 @@ inputs:
   required: false
   value: {}
 name: SOC IP Enrichment - Internal - Generic v2
+outputSections:
+- description: Generic group for outputs
+  name: General (Outputs group)
+  outputs:
+  - IP
+  - DBotScore
+  - Endpoint
+  - Endpoint.Hostname
+  - Endpoint.OS
+  - Endpoint.IP
+  - Endpoint.MAC
+  - Endpoint.Domain
+  - Endpoint.ID
+  - Endpoint.Status
+  - Endpoint.IsIsolated
+  - Endpoint.MACAddress
+  - Endpoint.Vendor
+  - Endpoint.Relationships
+  - Endpoint.Processor
+  - Endpoint.Processors
+  - Endpoint.Memory
+  - Endpoint.Model
+  - Endpoint.BIOSVersion
+  - Endpoint.OSVersion
+  - Endpoint.DHCPServer
+  - Endpoint.Groups
+  - ExtraHop.Device.Macaddr
+  - ExtraHop.Device.DeviceClass
+  - ExtraHop.Device.UserModTime
+  - ExtraHop.Device.AutoRole
+  - ExtraHop.Device.ParentId
+  - ExtraHop.Device.Vendor
+  - ExtraHop.Device.Analysis
+  - ExtraHop.Device.DiscoveryId
+  - ExtraHop.Device.DefaultName
+  - ExtraHop.Device.DisplayName
+  - ExtraHop.Device.OnWatchlist
+  - ExtraHop.Device.ModTime
+  - ExtraHop.Device.IsL3
+  - ExtraHop.Device.Role
+  - ExtraHop.Device.DiscoverTime
+  - ExtraHop.Device.Id
+  - ExtraHop.Device.Ipaddr4
+  - ExtraHop.Device.Vlanid
+  - ExtraHop.Device.Ipaddr6
+  - ExtraHop.Device.NodeId
+  - ExtraHop.Device.Description
+  - ExtraHop.Device.DnsName
+  - ExtraHop.Device.DhcpName
+  - ExtraHop.Device.CdpName
+  - ExtraHop.Device.NetbiosName
+  - ExtraHop.Device.Url
+  - McAfee.ePO.Endpoint
+  - ActiveDirectory.ComputersPageCookie
+  - ActiveDirectory.Computers
+  - ActiveDirectory.Computers.dn
+  - ActiveDirectory.Computers.memberOf
+  - ActiveDirectory.Computers.name
+  - CrowdStrike.Device
+  - CarbonBlackEDR.Sensor.systemvolume_total_size
+  - CarbonBlackEDR.Sensor.emet_telemetry_path
+  - CarbonBlackEDR.Sensor.os_environment_display_string
+  - CarbonBlackEDR.Sensor.emet_version
+  - CarbonBlackEDR.Sensor.emet_dump_flags
+  - CarbonBlackEDR.Sensor.clock_delta
+  - CarbonBlackEDR.Sensor.supports_cblr
+  - CarbonBlackEDR.Sensor.sensor_uptime
+  - CarbonBlackEDR.Sensor.last_update
+  - CarbonBlackEDR.Sensor.physical_memory_size
+  - CarbonBlackEDR.Sensor.build_id
+  - CarbonBlackEDR.Sensor.uptime
+  - CarbonBlackEDR.Sensor.is_isolating
+  - CarbonBlackEDR.Sensor.event_log_flush_time
+  - CarbonBlackEDR.Sensor.computer_dns_name
+  - CarbonBlackEDR.Sensor.emet_report_setting
+  - CarbonBlackEDR.Sensor.id
+  - CarbonBlackEDR.Sensor.emet_process_count
+  - CarbonBlackEDR.Sensor.emet_is_gpo
+  - CarbonBlackEDR.Sensor.power_state
+  - CarbonBlackEDR.Sensor.network_isolation_enabled
+  - CarbonBlackEDR.Sensor.systemvolume_free_size
+  - CarbonBlackEDR.Sensor.status
+  - CarbonBlackEDR.Sensor.num_eventlog_bytes
+  - CarbonBlackEDR.Sensor.sensor_health_message
+  - CarbonBlackEDR.Sensor.build_version_string
+  - CarbonBlackEDR.Sensor.computer_sid
+  - CarbonBlackEDR.Sensor.next_checkin_time
+  - CarbonBlackEDR.Sensor.node_id
+  - CarbonBlackEDR.Sensor.cookie
+  - CarbonBlackEDR.Sensor.emet_exploit_action
+  - CarbonBlackEDR.Sensor.computer_name
+  - CarbonBlackEDR.Sensor.license_expiration
+  - CarbonBlackEDR.Sensor.supports_isolation
+  - CarbonBlackEDR.Sensor.parity_host_id
+  - CarbonBlackEDR.Sensor.supports_2nd_gen_modloads
+  - CarbonBlackEDR.Sensor.network_adapters
+  - CarbonBlackEDR.Sensor.sensor_health_status
+  - CarbonBlackEDR.Sensor.registration_time
+  - CarbonBlackEDR.Sensor.restart_queued
+  - CarbonBlackEDR.Sensor.notes
+  - CarbonBlackEDR.Sensor.num_storefiles_bytes
+  - CarbonBlackEDR.Sensor.os_environment_id
+  - CarbonBlackEDR.Sensor.shard_id
+  - CarbonBlackEDR.Sensor.boot_id
+  - CarbonBlackEDR.Sensor.last_checkin_time
+  - CarbonBlackEDR.Sensor.os_type
+  - CarbonBlackEDR.Sensor.group_id
+  - CarbonBlackEDR.Sensor.uninstall
+  - PaloAltoNetworksXDR.Endpoint.endpoint_id
+  - PaloAltoNetworksXDR.Endpoint.endpoint_name
+  - PaloAltoNetworksXDR.Endpoint.endpoint_type
+  - PaloAltoNetworksXDR.Endpoint.endpoint_status
+  - PaloAltoNetworksXDR.Endpoint.os_type
+  - PaloAltoNetworksXDR.Endpoint.ip
+  - PaloAltoNetworksXDR.Endpoint.users
+  - PaloAltoNetworksXDR.Endpoint.domain
+  - PaloAltoNetworksXDR.Endpoint.alias
+  - PaloAltoNetworksXDR.Endpoint.first_seen
+  - PaloAltoNetworksXDR.Endpoint.last_seen
+  - PaloAltoNetworksXDR.Endpoint.content_version
+  - PaloAltoNetworksXDR.Endpoint.installation_package
+  - PaloAltoNetworksXDR.Endpoint.active_directory
+  - PaloAltoNetworksXDR.Endpoint.install_date
+  - PaloAltoNetworksXDR.Endpoint.endpoint_version
+  - PaloAltoNetworksXDR.Endpoint.is_isolated
+  - PaloAltoNetworksXDR.Endpoint.group_name
+  - PaloAltoNetworksXDR.Endpoint.count
+  - Account.Username
+  - Account.Domain
+  - PaloAltoNetworksXDR.RiskyHost.type
+  - PaloAltoNetworksXDR.RiskyHost.id
+  - PaloAltoNetworksXDR.RiskyHost.score
+  - PaloAltoNetworksXDR.RiskyHost.reasons
+  - PaloAltoNetworksXDR.RiskyHost.reasons.date created
+  - PaloAltoNetworksXDR.RiskyHost.reasons.description
+  - PaloAltoNetworksXDR.RiskyHost.reasons.severity
+  - PaloAltoNetworksXDR.RiskyHost.reasons.status
+  - PaloAltoNetworksXDR.RiskyHost.reasons.points
+  - Core.Endpoint.endpoint_id
+  - Core.Endpoint.endpoint_name
+  - Core.Endpoint.endpoint_type
+  - Core.Endpoint.endpoint_status
+  - Core.Endpoint.os_type
+  - Core.Endpoint.ip
+  - Core.Endpoint.users
+  - Core.Endpoint.domain
+  - Core.Endpoint.alias
+  - Core.Endpoint.first_seen
+  - Core.Endpoint.last_seen
+  - Core.Endpoint.content_version
+  - Core.Endpoint.installation_package
+  - Core.Endpoint.active_directory
+  - Core.Endpoint.install_date
+  - Core.Endpoint.endpoint_version
+  - Core.Endpoint.is_isolated
+  - Core.Endpoint.group_name
+  - Core.RiskyHost.type
+  - Core.RiskyHost.id
+  - Core.RiskyHost.score
+  - Core.RiskyHost.reasons
+  - Core.RiskyHost.reasons.date created
+  - Core.RiskyHost.reasons.description
+  - Core.RiskyHost.reasons.severity
+  - Core.RiskyHost.reasons.status
+  - Core.RiskyHost.reasons.points
+  - IP.Address
+  - IP.InRange
 outputs:
 - contextPath: IP
   description: The IP objects.
@@ -586,6 +769,9 @@ outputs:
   type: string
 sourceplaybookid: IP Enrichment - Internal - Generic v2
 starttaskid: "0"
+tags:
+- SOC
+- SOC_Framework
 tasks:
   "0":
     continueonerrortype: ""
@@ -605,6 +791,7 @@ tasks:
       id: 6635b28b-bdf1-42cf-88bc-14ad75e9ebe0
       iscommand: false
       name: ""
+      playbooktaskmissingcomponent: null
       version: -1
     taskid: 6635b28b-bdf1-42cf-88bc-14ad75e9ebe0
     timertriggers: []
@@ -612,8 +799,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 485.75,
-          "y": 225
+          "x": 170,
+          "y": 199
         }
       }
   "24":
@@ -631,6 +818,7 @@ tasks:
       id: 8149db7c-af8d-41e2-85ee-c9fe2efd5040
       iscommand: false
       name: Done
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 8149db7c-af8d-41e2-85ee-c9fe2efd5040
@@ -639,8 +827,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 290.5,
-          "y": 895
+          "x": 1010,
+          "y": 1770
         }
       }
   "26":
@@ -661,6 +849,7 @@ tasks:
       id: a22c2045-33e0-4ad3-8627-15886227f805
       iscommand: false
       name: Enrich internal IP addresses
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: a22c2045-33e0-4ad3-8627-15886227f805
@@ -669,8 +858,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1012,
-          "y": 560
+          "x": 170,
+          "y": 1430
         }
       }
   "28":
@@ -723,6 +912,7 @@ tasks:
       id: cd79c4ac-4dec-4872-8ec8-35079ffe9e5d
       iscommand: false
       name: Are the IPs already classified?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: cd79c4ac-4dec-4872-8ec8-35079ffe9e5d
@@ -731,8 +921,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 485.75,
-          "y": 390
+          "x": 170,
+          "y": 330
         }
       }
   "34":
@@ -768,6 +958,7 @@ tasks:
       id: 8556e257-fee3-46d6-8e63-e06c38c3b7af
       iscommand: false
       name: Resolve the IP address?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 8556e257-fee3-46d6-8e63-e06c38c3b7af
@@ -776,8 +967,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1162,
-          "y": 220
+          "x": 720,
+          "y": 1020
         }
       }
   "35":
@@ -825,20 +1016,21 @@ tasks:
     task:
       brand: ""
       description: Convert the IP address to a hostname using DNS query.
-      id: 5be37baf-4e56-45cf-9184-6969c2b63d6e
+      id: 9e40d733-6661-4345-9947-653ff0872d69
       iscommand: false
       name: IP to Hostname (DNS)
+      playbooktaskmissingcomponent: null
       script: IPToHost
       type: regular
       version: -1
-    taskid: 5be37baf-4e56-45cf-9184-6969c2b63d6e
+    taskid: 9e40d733-6661-4345-9947-653ff0872d69
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 1302.5,
-          "y": 390
+          "x": 720,
+          "y": 1210
         }
       }
   "39":
@@ -886,6 +1078,7 @@ tasks:
       id: ac707a9d-ef3d-4dbc-867d-1bef4287be9d
       iscommand: false
       name: Is there an internal IP address?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: ac707a9d-ef3d-4dbc-867d-1bef4287be9d
@@ -894,8 +1087,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 485.75,
-          "y": 50
+          "x": 720,
+          "y": 840
         }
       }
   "40":
@@ -909,7 +1102,7 @@ tasks:
       '#error#':
       - "45"
       '#none#':
-      - "24"
+      - "39"
     note: false
     quietmode: 0
     reputationcalc: 1
@@ -931,20 +1124,21 @@ tasks:
       description: "Checks if the IP address is in the internal IP address ranges.\nIf
         internal, sets the \"InRange\" attribute to \"yes\".\nIf external, sets the
         \"InRange\" attribute to \"no\". \n"
-      id: 6b07aadd-f3b0-49b5-973f-bebb5c6d5a8e
+      id: ce1db4c9-4be4-483f-9957-32fe35630b3d
       iscommand: false
       name: Determine whether the IP address is internal or external
+      playbooktaskmissingcomponent: null
       script: IsIPInRanges
       type: regular
       version: -1
-    taskid: 6b07aadd-f3b0-49b5-973f-bebb5c6d5a8e
+    taskid: ce1db4c9-4be4-483f-9957-32fe35630b3d
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 531,
-          "y": 720
+          "x": 720,
+          "y": 680
         }
       }
   "41":
@@ -965,6 +1159,7 @@ tasks:
       id: 3dbd6139-a053-466c-8abf-86544d804022
       iscommand: false
       name: No Internal IP Address
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 3dbd6139-a053-466c-8abf-86544d804022
@@ -973,8 +1168,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 50,
-          "y": 725
+          "x": -580,
+          "y": 855
         }
       }
   "44":
@@ -995,6 +1190,7 @@ tasks:
       id: 7be14457-6daf-4880-8ab7-ddc7d9c5f5ea
       iscommand: false
       name: Classify & Resolve IPs
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 7be14457-6daf-4880-8ab7-ddc7d9c5f5ea
@@ -1003,8 +1199,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 531,
-          "y": 560
+          "x": 720,
+          "y": 540
         }
       }
   "45":
@@ -1013,31 +1209,27 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
-    loop:
-      exitCondition: ""
-      iscommand: false
-      max: 100
-      wait: 1
     note: false
     quietmode: 0
     separatecontext: true
-    skipunavailable: true
+    skipunavailable: false
     task:
       brand: ""
-      id: d750682a-6437-450e-aa2f-b77a45a999ef
+      id: 01e806da-e272-4832-892f-d0f527a09255
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
+      playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: d750682a-6437-450e-aa2f-b77a45a999ef
+    taskid: 01e806da-e272-4832-892f-d0f527a09255
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 1402.5,
-          "y": 890
+          "x": 1510,
+          "y": 1765
         }
       }
   "46":
@@ -1055,20 +1247,21 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 931f2eec-1a46-4f3d-8f19-76935ea2fbde
+      id: f157392a-c84f-45aa-8f67-b147314e0d7d
       iscommand: false
       name: SOC Endpoint Enrichment - Generic v2.1
-      playbookId: SOC Endpoint Enrichment - Generic v2.1
+      playbookId: Endpoint Enrichment - Generic v2.1
+      playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 931f2eec-1a46-4f3d-8f19-76935ea2fbde
+    taskid: f157392a-c84f-45aa-8f67-b147314e0d7d
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 1012,
-          "y": 720
+          "x": 170,
+          "y": 1610
         }
       }
 version: -1
@@ -1082,10 +1275,10 @@ view: |-
     },
     "paper": {
       "dimensions": {
-        "height": 910,
-        "width": 1733.5,
-        "x": 50,
-        "y": 50
+        "height": 1636,
+        "width": 2470,
+        "x": -580,
+        "y": 199
       }
     }
   }
