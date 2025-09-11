@@ -1,18 +1,18 @@
 {
     "name": "SOC Common Playbooks",
     "description": "This contains the same content as the OTTB Common Playbooks with the soc-optimization (or SOC Framework) patterns.",
-    "support": "community",
+    "support": "xsoar",
     "currentVersion": "1.0.6",
-    "author": "Scott Brumley",
-    "url": "https://github.com/Palo-Cortex/soc-common-playbooks",
-    "email": "sbrumley@paloaltonetworks.com",
+    "author": "Cortex XSOAR",
+    "url": "https://www.paloaltonetworks.com/cortex",
+    "email": "",
     "categories": [],
     "tags": [
-        "SOC"],
+        "SOC",
+        "SOC_Framework",
+        "Utility",
+        "Palo Alto Networks Products"],
     "useCases": [],
     "keywords": [],
-    "marketplaces": [
-        "xsoar",
-        "marketplacev2"
-    ]
+    "marketplaces": ["marketplacev2"]
 }
