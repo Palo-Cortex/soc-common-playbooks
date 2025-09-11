@@ -4,9 +4,9 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: ""
     isoverridable: false
-    itemVersion: 2.0.6
+    itemVersion: 2.7.16
     packID: ""
-    packName: SOC Framework
+    packName: SOC Common Playbooks
     prevname: ""
     supportedModules: []
     toServerVersion: ""
@@ -92,7 +92,7 @@ tasks:
       "No":
       - "22"
       "Yes":
-      - "32"
+      - "38"
     note: false
     quietmode: 0
     separatecontext: false
@@ -151,7 +151,7 @@ tasks:
       "No":
       - "22"
       "Yes":
-      - "33"
+      - "39"
     note: false
     quietmode: 0
     separatecontext: false
@@ -195,7 +195,7 @@ tasks:
       '#default#':
       - "22"
       "Yes":
-      - "34"
+      - "40"
     note: false
     quietmode: 0
     separatecontext: false
@@ -398,7 +398,7 @@ tasks:
       "No":
       - "22"
       "Yes":
-      - "31"
+      - "37"
     note: false
     quietmode: 0
     separatecontext: false
@@ -449,7 +449,7 @@ tasks:
       "No":
       - "22"
       "Yes":
-      - "35"
+      - "41"
     note: false
     quietmode: 0
     separatecontext: false
@@ -531,7 +531,7 @@ tasks:
       "No":
       - "22"
       "Yes":
-      - "36"
+      - "42"
     note: false
     quietmode: 0
     separatecontext: false
@@ -586,9 +586,9 @@ tasks:
           "y": 220
         }
       }
-  "31":
+  "37":
     continueonerrortype: ""
-    id: "31"
+    id: "37"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
@@ -601,14 +601,14 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 5e5ce406-6ba5-420f-828d-99c821486c29
+      id: dd09d87a-9225-40a2-8df1-607b674fb4e7
       iscommand: false
       name: SOC Endpoint Enrichment - Generic v2.1
-      playbookId: Endpoint Enrichment - Generic v2.1
+      playbookId: SOC Endpoint Enrichment - Generic v2.1
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 5e5ce406-6ba5-420f-828d-99c821486c29
+    taskid: dd09d87a-9225-40a2-8df1-607b674fb4e7
     timertriggers: []
     type: playbook
     view: |-
@@ -618,9 +618,9 @@ tasks:
           "y": 570
         }
       }
-  "32":
+  "38":
     continueonerrortype: ""
-    id: "32"
+    id: "38"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
@@ -633,14 +633,14 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 74c07edb-05c8-42b5-86ea-e41db4902042
+      id: 8990f32e-bc62-485c-8664-cec19b478952
       iscommand: false
       name: SOC File Enrichment - File reputation
-      playbookId: file_enrichment_-_file_reputation
+      playbookId: SOC File Enrichment - File reputation
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 74c07edb-05c8-42b5-86ea-e41db4902042
+    taskid: 8990f32e-bc62-485c-8664-cec19b478952
     timertriggers: []
     type: playbook
     view: |-
@@ -650,9 +650,9 @@ tasks:
           "y": 570
         }
       }
-  "33":
+  "39":
     continueonerrortype: ""
-    id: "33"
+    id: "39"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
@@ -665,14 +665,14 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 738a8c68-20aa-4c43-8776-6f622bc5972a
+      id: d1efe8ea-a699-4947-8a8b-f674a6740e7e
       iscommand: false
       name: SOC IP Enrichment - Generic v2
-      playbookId: IP Enrichment - Generic v2
+      playbookId: SOC IP Enrichment - Generic v2
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 738a8c68-20aa-4c43-8776-6f622bc5972a
+    taskid: d1efe8ea-a699-4947-8a8b-f674a6740e7e
     timertriggers: []
     type: playbook
     view: |-
@@ -682,9 +682,9 @@ tasks:
           "y": 570
         }
       }
-  "34":
+  "40":
     continueonerrortype: ""
-    id: "34"
+    id: "40"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
@@ -697,14 +697,14 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: b89274d2-0b4a-4a4b-8d9a-8d9763d7cde5
+      id: 5c984270-2180-4ed4-8353-50e87f8c3c84
       iscommand: false
       name: SOC Account Enrichment - Generic v2.1
-      playbookId: Account Enrichment - Generic v2.1
+      playbookId: SOC Account Enrichment - Generic v2.1
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: b89274d2-0b4a-4a4b-8d9a-8d9763d7cde5
+    taskid: 5c984270-2180-4ed4-8353-50e87f8c3c84
     timertriggers: []
     type: playbook
     view: |-
@@ -714,9 +714,9 @@ tasks:
           "y": 570
         }
       }
-  "35":
+  "41":
     continueonerrortype: ""
-    id: "35"
+    id: "41"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
@@ -729,14 +729,14 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 3a63c01a-6a48-44bf-8c1f-a35d96e1c1ab
+      id: 7260f52a-6cf6-47bc-8269-96d98775f03c
       iscommand: false
       name: SOC Email Address Enrichment - Generic v2.1
-      playbookId: Email Address Enrichment - Generic v2.1
+      playbookId: SOC Email Address Enrichment - Generic v2.1
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 3a63c01a-6a48-44bf-8c1f-a35d96e1c1ab
+    taskid: 7260f52a-6cf6-47bc-8269-96d98775f03c
     timertriggers: []
     type: playbook
     view: |-
@@ -746,9 +746,9 @@ tasks:
           "y": 570
         }
       }
-  "36":
+  "42":
     continueonerrortype: ""
-    id: "36"
+    id: "42"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
@@ -761,14 +761,14 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: cc742e4d-7bc4-476a-854a-7987dd036123
+      id: a95cc1b2-5cee-419a-898c-1c83274762e2
       iscommand: false
       name: SOC URL Enrichment - Generic v2
-      playbookId: URL Enrichment - Generic v2
+      playbookId: SOC URL Enrichment - Generic v2
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: cc742e4d-7bc4-476a-854a-7987dd036123
+    taskid: a95cc1b2-5cee-419a-898c-1c83274762e2
     timertriggers: []
     type: playbook
     view: |-
@@ -782,12 +782,12 @@ version: -1
 view: |-
   {
     "linkLabelsPosition": {
-      "26_35_Yes": 0.85,
-      "28_36_Yes": 0.82,
-      "4_32_Yes": 0.72,
+      "23_37_Yes": 0.85,
+      "26_41_Yes": 0.77,
+      "28_42_Yes": 0.86,
       "5_22_No": 0.84,
-      "5_33_Yes": 0.84,
-      "6_34_Yes": 0.69
+      "5_39_Yes": 0.84,
+      "6_40_Yes": 0.69
     },
     "paper": {
       "dimensions": {

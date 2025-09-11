@@ -4,9 +4,9 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 5.0.0
     isoverridable: false
-    itemVersion: 2.7.15
+    itemVersion: 2.7.16
     packID: ""
-    packName: Common Playbooks
+    packName: SOC Common Playbooks
     prevname: ""
     supportedModules:
     - X1
@@ -1214,8 +1214,8 @@ tasks:
     isoversize: false
     nexttasks:
       '#none#':
-      - "36"
-      - "35"
+      - "38"
+      - "39"
     note: false
     quietmode: 0
     separatecontext: false
@@ -1236,70 +1236,6 @@ tasks:
         "position": {
           "x": 850,
           "y": 1210
-        }
-      }
-  "35":
-    continueonerrortype: ""
-    id: "35"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#none#':
-      - "24"
-    note: false
-    quietmode: 0
-    separatecontext: true
-    skipunavailable: false
-    task:
-      brand: ""
-      id: 15b86a06-66f3-454f-85ac-8de24d77a9fa
-      iscommand: false
-      name: SOC IP Enrichment - External - Generic v2
-      playbookId: IP Enrichment - External - Generic v2
-      playbooktaskmissingcomponent: null
-      type: playbook
-      version: -1
-    taskid: 15b86a06-66f3-454f-85ac-8de24d77a9fa
-    timertriggers: []
-    type: playbook
-    view: |-
-      {
-        "position": {
-          "x": 1130,
-          "y": 1340
-        }
-      }
-  "36":
-    continueonerrortype: ""
-    id: "36"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#none#':
-      - "24"
-    note: false
-    quietmode: 0
-    separatecontext: true
-    skipunavailable: false
-    task:
-      brand: ""
-      id: f24fc4d1-cc81-444e-8b4c-9f9599afdae3
-      iscommand: false
-      name: SOC IP Enrichment - Internal - Generic v2
-      playbookId: IP Enrichment - Internal - Generic v2
-      playbooktaskmissingcomponent: null
-      type: playbook
-      version: -1
-    taskid: f24fc4d1-cc81-444e-8b4c-9f9599afdae3
-    timertriggers: []
-    type: playbook
-    view: |-
-      {
-        "position": {
-          "x": 630,
-          "y": 1340
         }
       }
   "37":
@@ -1329,6 +1265,70 @@ tasks:
         "position": {
           "x": 1520,
           "y": 1515
+        }
+      }
+  "38":
+    continueonerrortype: ""
+    id: "38"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#none#':
+      - "24"
+    note: false
+    quietmode: 0
+    separatecontext: true
+    skipunavailable: false
+    task:
+      brand: ""
+      id: ddeee125-98ff-4d9e-840d-c817f825bf24
+      iscommand: false
+      name: SOC IP Enrichment - Internal - Generic v2
+      playbookId: SOC IP Enrichment - Internal - Generic v2
+      playbooktaskmissingcomponent: null
+      type: playbook
+      version: -1
+    taskid: ddeee125-98ff-4d9e-840d-c817f825bf24
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": 620,
+          "y": 1340
+        }
+      }
+  "39":
+    continueonerrortype: ""
+    id: "39"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#none#':
+      - "24"
+    note: false
+    quietmode: 0
+    separatecontext: true
+    skipunavailable: false
+    task:
+      brand: ""
+      id: 8c54652f-cc4e-4984-8366-4565590dee43
+      iscommand: false
+      name: SOC IP Enrichment - External - Generic v2
+      playbookId: SOC IP Enrichment - External - Generic v2
+      playbooktaskmissingcomponent: null
+      type: playbook
+      version: -1
+    taskid: 8c54652f-cc4e-4984-8366-4565590dee43
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": 1110,
+          "y": 1340
         }
       }
 version: -1

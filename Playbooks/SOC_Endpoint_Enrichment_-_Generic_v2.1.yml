@@ -4,9 +4,9 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 6.8.0
     isoverridable: false
-    itemVersion: 2.7.15
+    itemVersion: 2.7.16
     packID: ""
-    packName: Common Playbooks
+    packName: SOC Common Playbooks
     prevname: ""
     supportedModules:
     - X1
@@ -1285,7 +1285,7 @@ tasks:
     isoversize: false
     nexttasks:
       '#none#':
-      - "47"
+      - "48"
     note: false
     quietmode: 0
     separatecontext: false
@@ -2267,9 +2267,9 @@ tasks:
           "y": 1110
         }
       }
-  "47":
+  "48":
     continueonerrortype: ""
-    id: "47"
+    id: "48"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
@@ -2282,14 +2282,14 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: a11fb953-947e-4f61-810e-6b26a951dad2
+      id: a311d42a-1d50-4464-8a6b-2babd00963a2
       iscommand: false
       name: SOC Endpoint Enrichment - Cylance Protect v2
-      playbookId: Endpoint Enrichment - Cylance Protect v2
+      playbookId: SOC Endpoint Enrichment - Cylance Protect v2
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: a11fb953-947e-4f61-810e-6b26a951dad2
+    taskid: a311d42a-1d50-4464-8a6b-2babd00963a2
     timertriggers: []
     type: playbook
     view: |-

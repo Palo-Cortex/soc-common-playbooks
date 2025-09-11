@@ -4,9 +4,9 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 6.6.0
     isoverridable: false
-    itemVersion: 2.7.15
+    itemVersion: 2.7.16
     packID: ""
-    packName: Common Playbooks
+    packName: SOC Common Playbooks
     prevname: ""
     supportedModules:
     - X1
@@ -232,7 +232,7 @@ tasks:
     isoversize: false
     nexttasks:
       '#none#':
-      - "18"
+      - "19"
     note: false
     quietmode: 0
     scriptarguments:
@@ -250,10 +250,10 @@ tasks:
       description: "Set a value in context under the key you entered. If no value
         is entered, the script doesn't do anything.\n\nThis automation runs using
         the default Limited User role, unless you explicitly change the permissions.\nFor
-        more information, see the section about permissions here:\n- For Cortex XSOAR
-        6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+        more information, see the section about permissions here:\n- For Cortex see
+        https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
       id: 32ec3207-df33-4d5f-8551-2a49ca677b62
       iscommand: false
       name: Set users to disable
@@ -271,73 +271,36 @@ tasks:
           "y": 210
         }
       }
-  "18":
+  "19":
     continueonerrortype: ""
-    id: "18"
+    id: "19"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
-    loop:
-      exitCondition: ""
-      iscommand: false
-      max: 100
-      wait: 1
     nexttasks:
       '#none#':
       - "8"
     note: false
     quietmode: 0
-    scriptarguments:
-      ShadowMode:
-        simple: ${inputs.ShadowMode}
-      Tag:
-        simple: XSIAM alert - ${alert.id}
-      UserVerification:
-        complex:
-          root: inputs.UserVerification
-      Username:
-        complex:
-          root: UsersToDisable
     separatecontext: true
     skipunavailable: false
     task:
       brand: ""
-      description: |-
-        This playbook blocks malicious usernames using all integrations that you have enabled.
-
-        Supported integrations for this playbook:
-        * Active Directory
-        * PAN-OS - This requires PAN-OS 9.1 or higher.
-        * SailPoint
-        * PingOne
-        * AWS IAM
-        * Clarizen IAM
-        * Envoy IAM
-        * ExceedLMS IAM
-        * Okta
-        * Microsoft Graph User (Azure Active Directory Users)
-        * Google Workspace Admin
-        * Slack IAM
-        * ServiceNow IAM
-        * Prisma Cloud IAM
-        * Zoom IAM
-        * Atlassian IAM
-        * GitHub IAM.
-      id: 3ebb6049-2c8e-483c-9634-a1015b8e0697
+      id: 81ac687a-b49b-49de-864e-224cc3cc1319
       iscommand: false
-      name: Block Account - Generic v2
-      playbookId: Block Account - Generic v2
+      name: SOC Block Account - Generic v2
+      playbookId: SOC Block Account - Generic v2
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 3ebb6049-2c8e-483c-9634-a1015b8e0697
+    taskid: 81ac687a-b49b-49de-864e-224cc3cc1319
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
           "x": 450,
-          "y": 390
+          "y": 380
         }
       }
 version: -1

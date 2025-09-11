@@ -4,9 +4,9 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 5.0.0
     isoverridable: false
-    itemVersion: 2.7.15
+    itemVersion: 2.7.16
     packID: ""
-    packName: Common Playbooks
+    packName: SOC Common Playbooks
     prevname: ""
     supportedModules:
     - X1
@@ -839,7 +839,7 @@ tasks:
     isoversize: false
     nexttasks:
       '#none#':
-      - "46"
+      - "47"
     note: false
     quietmode: 0
     separatecontext: false
@@ -1232,9 +1232,9 @@ tasks:
           "y": 1765
         }
       }
-  "46":
+  "47":
     continueonerrortype: ""
-    id: "46"
+    id: "47"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
@@ -1247,14 +1247,14 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: f157392a-c84f-45aa-8f67-b147314e0d7d
+      id: 58a12bcd-7e4e-4f17-8325-650df12e52fe
       iscommand: false
       name: SOC Endpoint Enrichment - Generic v2.1
-      playbookId: Endpoint Enrichment - Generic v2.1
+      playbookId: SOC Endpoint Enrichment - Generic v2.1
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: f157392a-c84f-45aa-8f67-b147314e0d7d
+    taskid: 58a12bcd-7e4e-4f17-8325-650df12e52fe
     timertriggers: []
     type: playbook
     view: |-

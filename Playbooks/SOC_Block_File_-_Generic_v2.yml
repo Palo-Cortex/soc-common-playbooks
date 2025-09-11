@@ -4,9 +4,9 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 5.0.0
     isoverridable: false
-    itemVersion: 2.7.15
+    itemVersion: 2.7.16
     packID: ""
-    packName: Common Playbooks
+    packName: SOC Common Playbooks
     prevname: ""
     supportedModules:
     - X1
@@ -114,56 +114,6 @@ tasks:
           "y": 50
         }
       }
-  "2":
-    continueonerrortype: ""
-    id: "2"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    loop:
-      exitCondition: ""
-      iscommand: false
-      max: 0
-      wait: 1
-    nexttasks:
-      '#none#':
-      - "3"
-    note: false
-    quietmode: 0
-    scriptarguments:
-      MD5:
-        complex:
-          accessor: MD5
-          root: File
-      ShadowMode:
-        simple: "true"
-      Text:
-        simple: Blocked by XSOAR
-    separatecontext: true
-    skipunavailable: true
-    task:
-      brand: ""
-      description: |-
-        This playbook receives an MD5 hash and adds it to the block list in Carbon Black Enterprise Response. Files with that MD5 hash are blocked from execution on the managed endpoints. If the hash is already on the block list, no action is taken on the MD5.
-
-        The playbook uses the integration ''VMware Carbon Black EDR v2".
-      id: 9f92721c-d225-4dbf-8811-dc76542b637f
-      iscommand: false
-      name: Block File - Carbon Black Response
-      playbookId: Block File - Carbon Black Response
-      playbooktaskmissingcomponent: null
-      type: playbook
-      version: -1
-    taskid: 9f92721c-d225-4dbf-8811-dc76542b637f
-    timertriggers: []
-    type: playbook
-    view: |-
-      {
-        "position": {
-          "x": 50,
-          "y": 340
-        }
-      }
   "3":
     continueonerrortype: ""
     id: "3"
@@ -192,128 +142,6 @@ tasks:
           "y": 515
         }
       }
-  "4":
-    continueonerrortype: ""
-    id: "4"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    loop:
-      exitCondition: ""
-      iscommand: false
-      max: 0
-      wait: 1
-    nexttasks:
-      '#none#':
-      - "3"
-    note: false
-    quietmode: 0
-    scriptarguments:
-      MD5:
-        complex:
-          filters:
-          - - left:
-                iscontext: true
-                value:
-                  simple: inputs.Hash
-              operator: stringHasLength
-              right:
-                value:
-                  simple: "32"
-          root: inputs.Hash
-          transformers:
-          - args:
-              item:
-                iscontext: true
-                value:
-                  simple: inputs.MD5
-            operator: append
-          - operator: uniq
-    separatecontext: true
-    skipunavailable: true
-    task:
-      brand: ""
-      description: This playbook accepts an MD5 hash and blocks the file using the
-        Cybereason integration.
-      id: 2efe2a1a-1d31-438c-828f-b6ae50f3899d
-      iscommand: false
-      name: Block File - Cybereason
-      playbookId: Block File - Cybereason
-      playbookName: Block File - Cybereason
-      playbooktaskmissingcomponent: null
-      type: playbook
-      version: -1
-    taskid: 2efe2a1a-1d31-438c-828f-b6ae50f3899d
-    timertriggers: []
-    type: playbook
-    view: |-
-      {
-        "position": {
-          "x": 480,
-          "y": 340
-        }
-      }
-  "5":
-    continueonerrortype: ""
-    id: "5"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    loop:
-      exitCondition: ""
-      iscommand: false
-      max: 0
-      wait: 1
-    nexttasks:
-      '#none#':
-      - "3"
-    note: false
-    quietmode: 0
-    scriptarguments:
-      SHA256:
-        complex:
-          filters:
-          - - left:
-                iscontext: true
-                value:
-                  simple: inputs.Hash
-              operator: stringHasLength
-              right:
-                value:
-                  simple: "64"
-          root: inputs.Hash
-          transformers:
-          - args:
-              item:
-                iscontext: true
-                value:
-                  simple: inputs.SHA256
-            operator: append
-          - operator: uniq
-    separatecontext: true
-    skipunavailable: true
-    task:
-      brand: ""
-      description: This playbook accepts a SHA256 hash and adds the hash to the Global
-        Quarantine list using the Cylance Protect v2 integration.
-      id: a887370c-f94a-42f9-866f-2d80b7707f41
-      iscommand: false
-      name: Block File - Cylance Protect v2
-      playbookId: Block File - Cylance Protect v2
-      playbookName: Block File - Cylance Protect v2
-      playbooktaskmissingcomponent: null
-      type: playbook
-      version: -1
-    taskid: a887370c-f94a-42f9-866f-2d80b7707f41
-    timertriggers: []
-    type: playbook
-    view: |-
-      {
-        "position": {
-          "x": 910,
-          "y": 340
-        }
-      }
   "9":
     continueonerrortype: ""
     id: "9"
@@ -322,7 +150,7 @@ tasks:
     isoversize: false
     nexttasks:
       '#none#':
-      - "4"
+      - "26"
     note: false
     quietmode: 0
     separatecontext: false
@@ -353,7 +181,7 @@ tasks:
     isoversize: false
     nexttasks:
       '#none#':
-      - "2"
+      - "25"
     note: false
     quietmode: 0
     separatecontext: false
@@ -384,7 +212,7 @@ tasks:
     isoversize: false
     nexttasks:
       '#none#':
-      - "5"
+      - "27"
     note: false
     quietmode: 0
     separatecontext: false
@@ -415,7 +243,7 @@ tasks:
     isoversize: false
     nexttasks:
       '#none#':
-      - "21"
+      - "24"
     note: false
     quietmode: 0
     separatecontext: false
@@ -498,48 +326,6 @@ tasks:
         "position": {
           "x": -380,
           "y": 195
-        }
-      }
-  "21":
-    continueonerrortype: ""
-    id: "21"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    loop:
-      exitCondition: ""
-      iscommand: false
-      max: 100
-      wait: 1
-    nexttasks:
-      '#none#':
-      - "3"
-    note: false
-    quietmode: 0
-    scriptarguments:
-      HashList:
-        simple: ${inputs.Hash}
-    separatecontext: true
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Use this playbook to add files to Cortex XDR block list with a
-        given file SHA256 playbook input.
-      id: 00dd4b75-b646-4f91-80cc-0f26a7918492
-      iscommand: false
-      name: SOC Cortex XDR - Block File
-      playbookId: Cortex XDR - Block File
-      playbooktaskmissingcomponent: null
-      type: playbook
-      version: -1
-    taskid: 00dd4b75-b646-4f91-80cc-0f26a7918492
-    timertriggers: []
-    type: playbook
-    view: |-
-      {
-        "position": {
-          "x": 1340,
-          "y": 330
         }
       }
   "22":
@@ -647,7 +433,7 @@ tasks:
       id: c0151a75-e757-43d0-97d0-22407c890dc0
       iscommand: false
       name: SOC MDE - Block File
-      playbookId: 'SOC MDE - Block File'
+      playbookId: SOC MDE - Block File
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
@@ -659,6 +445,140 @@ tasks:
         "position": {
           "x": -380,
           "y": 340
+        }
+      }
+  "24":
+    continueonerrortype: ""
+    id: "24"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#none#':
+      - "3"
+    note: false
+    quietmode: 0
+    separatecontext: true
+    skipunavailable: false
+    task:
+      brand: ""
+      description: Use this playbook to add files to Cortex XDR block list with a
+        given file SHA256 playbook input.
+      id: 8552e4a4-8d86-47e5-8b7c-ee877eaf15d6
+      iscommand: false
+      name: SOC Cortex XDR - Block File
+      playbookId: SOC Cortex XDR - Block File
+      playbooktaskmissingcomponent: null
+      type: playbook
+      version: -1
+    taskid: 8552e4a4-8d86-47e5-8b7c-ee877eaf15d6
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": 1340,
+          "y": 340
+        }
+      }
+  "25":
+    continueonerrortype: ""
+    id: "25"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#none#':
+      - "3"
+    note: false
+    quietmode: 0
+    separatecontext: true
+    skipunavailable: false
+    task:
+      brand: ""
+      description: |-
+        This playbook receives an MD5 hash and adds it to the block list in Carbon Black Enterprise Response. Files with that MD5 hash are blocked from execution on the managed endpoints. If the hash is already on the block list, no action is taken on the MD5.
+
+        The playbook uses the integration ''VMware Carbon Black EDR v2".
+      id: ac3fa437-e615-4506-88ec-3b6afab83a58
+      iscommand: false
+      name: SOC Block File - Carbon Black Response
+      playbookId: SOC Block File - Carbon Black Response
+      playbooktaskmissingcomponent: null
+      type: playbook
+      version: -1
+    taskid: ac3fa437-e615-4506-88ec-3b6afab83a58
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": 50,
+          "y": 330
+        }
+      }
+  "26":
+    continueonerrortype: ""
+    id: "26"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#none#':
+      - "3"
+    note: false
+    quietmode: 0
+    separatecontext: true
+    skipunavailable: false
+    task:
+      brand: ""
+      id: 9c62ac19-3023-44af-8955-b5e2c3ea3b32
+      iscommand: false
+      name: SOC Block File - Cybereason
+      playbookId: SOC Block File - Cybereason
+      playbooktaskmissingcomponent: null
+      type: playbook
+      version: -1
+    taskid: 9c62ac19-3023-44af-8955-b5e2c3ea3b32
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": 480,
+          "y": 330
+        }
+      }
+  "27":
+    continueonerrortype: ""
+    id: "27"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#none#':
+      - "3"
+    note: false
+    quietmode: 0
+    separatecontext: true
+    skipunavailable: false
+    task:
+      brand: ""
+      id: c7b6c19f-c4f2-4dfd-831c-2e4fd501069b
+      iscommand: false
+      name: SOC Block File - Cylance Protect v2
+      playbookId: SOC Block File - Cylance Protect v2
+      playbooktaskmissingcomponent: null
+      type: playbook
+      version: -1
+    taskid: c7b6c19f-c4f2-4dfd-831c-2e4fd501069b
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": 910,
+          "y": 330
         }
       }
 version: -1
