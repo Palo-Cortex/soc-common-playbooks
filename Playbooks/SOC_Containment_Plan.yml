@@ -2,17 +2,13 @@ adopted: true
 contentitemexportablefields:
   contentitemfields:
     definitionid: ""
-    fromServerVersion: 6.6.0
+    fromServerVersion: ""
     isoverridable: false
     itemVersion: 2.7.15
     packID: ""
     packName: Common Playbooks
     prevname: ""
-    supportedModules:
-    - X1
-    - X3
-    - X5
-    - ENT_PLUS
+    supportedModules: []
     toServerVersion: ""
 description: "This playbook handles the main containment actions available with Cortex
   XSIAM, including the following sub-playbooks:  \n* Containment Plan - Isolate endpoint\n*
