@@ -876,6 +876,8 @@ tasks:
     note: false
     quietmode: 0
     scriptarguments:
+      EndpointID:
+        simple: ${inputs.EndpointID}
       HostContainment:
         simple: "True"
       ShadowMode:
@@ -889,14 +891,14 @@ tasks:
 
         This playbook is a sub-playbook within the containment plan playbook.
         The playbook isolates devices using core commands.
-      id: 13c16209-649c-455b-af9a-9d2c50453b8f
+      id: 5e594339-7ed0-4b55-8154-bd3032d9b119
       iscommand: false
       name: SOC Containment Plan - Isolate Device
       playbookId: SOC Containment Plan - Isolate Device
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 13c16209-649c-455b-af9a-9d2c50453b8f
+    taskid: 5e594339-7ed0-4b55-8154-bd3032d9b119
     timertriggers: []
     type: playbook
     view: |-
@@ -929,6 +931,8 @@ tasks:
         simple: "True"
       UserVerification:
         simple: "True"
+      Username:
+        simple: ${inputs.Username}
     separatecontext: true
     skipunavailable: false
     task:
@@ -938,14 +942,14 @@ tasks:
 
         This playbook is a sub-playbook within the containment plan playbook.
         The playbook disables users by utilizing the sub-playbook "Block Account - Generic v2"
-      id: ea78f655-729c-4f16-bd0f-1aaacc7af4a4
+      id: b36540a4-821a-4c7f-b2a2-812fea0b6bdc
       iscommand: false
       name: SOC Containment Plan - Disable Account
       playbookId: SOC Containment Plan - Disable Account
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: ea78f655-729c-4f16-bd0f-1aaacc7af4a4
+    taskid: b36540a4-821a-4c7f-b2a2-812fea0b6bdc
     timertriggers: []
     type: playbook
     view: |-
@@ -972,8 +976,14 @@ tasks:
     note: false
     quietmode: 0
     scriptarguments:
+      EndpointID:
+        simple: ${inputs.EndpointID}
       FileContainment:
         simple: "True"
+      FileHash:
+        simple: ${inputs.FileHash}
+      FilePath:
+        simple: ${inputs.FilePath}
       FileRemediation:
         simple: Quarantine
       ShadowMode:
@@ -987,14 +997,14 @@ tasks:
 
         This playbook is a sub-playbook within the containment plan playbook.
         The playbook quarantines files using core commands.
-      id: 2ba1e433-0b28-48d0-bcbe-39ab07dec7fb
+      id: 135667f9-a941-493e-888e-cfdd7ce6b738
       iscommand: false
       name: SOC Containment Plan - Quarantine File
       playbookId: SOC Containment Plan - Quarantine File
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 2ba1e433-0b28-48d0-bcbe-39ab07dec7fb
+    taskid: 135667f9-a941-493e-888e-cfdd7ce6b738
     timertriggers: []
     type: playbook
     view: |-
@@ -1293,14 +1303,14 @@ tasks:
         - Block File - Generic v2
         - Block Email - Generic v2
         - Block Domain - Generic v2.
-      id: 013f8fe5-1515-42dc-a4d3-bab107c7c404
+      id: de5206e9-177a-4019-8974-546d0803df15
       iscommand: false
       name: SOC Block Indicators - Generic v3
       playbookId: SOC Block Indicators - Generic v3
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 013f8fe5-1515-42dc-a4d3-bab107c7c404
+    taskid: de5206e9-177a-4019-8974-546d0803df15
     timertriggers: []
     type: playbook
     view: |-
@@ -1329,20 +1339,29 @@ tasks:
     scriptarguments:
       ClearUserSessions:
         simple: "True"
+      IAMUserDomain:
+        simple: ${inputs.Domain}
       ShadowMode:
         simple: ${inputs.ShadowMode}
+      Username:
+        simple: ${inputs.Username}
     separatecontext: true
     skipunavailable: false
     task:
       brand: ""
-      id: 1cb38359-f651-45c6-8e9f-8b23b9388a5a
+      description: |-
+        ## Containment Plan - Clear User Sessions
+
+        This playbook is a sub-playbook within the containment plan playbook.
+        The playbook uses the 'Okta v2' and 'MSGraph User' integrations to clear user sessions.
+      id: b096755b-0d8c-4892-96b5-d8cd3d58452e
       iscommand: false
       name: SOC Containment Plan - Clear User Sessions
       playbookId: SOC Containment Plan - Clear User Sessions
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 1cb38359-f651-45c6-8e9f-8b23b9388a5a
+    taskid: b096755b-0d8c-4892-96b5-d8cd3d58452e
     timertriggers: []
     type: playbook
     view: |-

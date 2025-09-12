@@ -72,16 +72,14 @@ tasks:
             iscontext: true
             value:
               simple: Normalized.process.hashes.sha256
-          operator: isExists
-          right:
-            value: {}
+          operator: isNotEmpty
       label: "Yes"
     - condition:
       - - left:
             iscontext: true
             value:
               simple: Normalized.process.hashes.sha256
-          operator: isNotExists
+          operator: isEmpty
       label: "No"
     continueonerrortype: ""
     id: "4"
@@ -100,13 +98,13 @@ tasks:
     task:
       brand: ""
       description: Check Normalized.process md5/sha256.
-      id: 94a9cde1-08c5-4251-8f0e-c031b77efe2d
+      id: 6e4a0331-3425-41e1-869e-385528daaff5
       iscommand: false
       name: Have a Process hash?
       playbooktaskmissingcomponent: null
       type: condition
       version: -1
-    taskid: 94a9cde1-08c5-4251-8f0e-c031b77efe2d
+    taskid: 6e4a0331-3425-41e1-869e-385528daaff5
     timertriggers: []
     type: condition
     view: |-
@@ -123,24 +121,24 @@ tasks:
             iscontext: true
             value:
               simple: Normalized.host.ip
-          operator: isExists
+          operator: isNotEmpty
       - - left:
             iscontext: true
             value:
               simple: Normalized.ip.ip
-          operator: isExists
+          operator: isNotEmpty
       label: "Yes"
     - condition:
       - - left:
             iscontext: true
             value:
               simple: Normalized.host.ip
-          operator: isNotExists
+          operator: isEmpty
       - - left:
             iscontext: true
             value:
               simple: Normalized.ip.ip
-          operator: isNotExists
+          operator: isEmpty
       label: "No"
     continueonerrortype: ""
     id: "5"
@@ -159,13 +157,13 @@ tasks:
     task:
       brand: ""
       description: Check Normalized.host.ip or Normalized.ip.ip.
-      id: ea3b9fc6-1814-4a30-8412-5aca97b6cd26
+      id: 4c88770c-a4f5-4296-8032-f128ebb19b11
       iscommand: false
       name: Have an Endpoint IP?
       playbooktaskmissingcomponent: null
       type: condition
       version: -1
-    taskid: ea3b9fc6-1814-4a30-8412-5aca97b6cd26
+    taskid: 4c88770c-a4f5-4296-8032-f128ebb19b11
     timertriggers: []
     type: condition
     view: |-
@@ -182,9 +180,7 @@ tasks:
             iscontext: true
             value:
               simple: Normalized.user.user
-          operator: isExists
-          right:
-            value: {}
+          operator: isNotEmpty
       label: "Yes"
     continueonerrortype: ""
     id: "6"
@@ -203,13 +199,13 @@ tasks:
     task:
       brand: ""
       description: Check Normalized.user fields for correlation.
-      id: 868abdc8-4fd3-43e6-b3e4-8a8f52787af9
+      id: a7261b1a-75a2-42bd-b2a8-f2703db102d1
       iscommand: false
       name: Have a User tied to this endpoint?
       playbooktaskmissingcomponent: null
       type: condition
       version: -1
-    taskid: 868abdc8-4fd3-43e6-b3e4-8a8f52787af9
+    taskid: a7261b1a-75a2-42bd-b2a8-f2703db102d1
     timertriggers: []
     type: condition
     view: |-
@@ -378,16 +374,14 @@ tasks:
             iscontext: true
             value:
               simple: Normalized.host.name
-          operator: isExists
-          right:
-            value: {}
+          operator: isNotEmpty
       label: "Yes"
     - condition:
       - - left:
             iscontext: true
             value:
               simple: Normalized.host.name
-          operator: isNotExists
+          operator: isEmpty
       label: "No"
     continueonerrortype: ""
     id: "23"
@@ -406,13 +400,13 @@ tasks:
     task:
       brand: ""
       description: Check Normalized.host fields.
-      id: 3f6621d0-c736-482b-a04f-a4c87d287027
+      id: 58c17954-e491-4425-a1b5-d12fbc29aef7
       iscommand: false
       name: Have a Host entity?
       playbooktaskmissingcomponent: null
       type: condition
       version: -1
-    taskid: 3f6621d0-c736-482b-a04f-a4c87d287027
+    taskid: 58c17954-e491-4425-a1b5-d12fbc29aef7
     timertriggers: []
     type: condition
     view: |-
@@ -429,16 +423,14 @@ tasks:
             iscontext: true
             value:
               simple: Normalized.primary.recipients
-          operator: isExists
-          right:
-            value: {}
+          operator: isNotEmpty
       label: "Yes"
     - condition:
       - - left:
             iscontext: true
             value:
               simple: Normalized.primary.recipients
-          operator: isNotExists
+          operator: isEmpty
       label: "No"
     continueonerrortype: ""
     id: "26"
@@ -457,13 +449,13 @@ tasks:
     task:
       brand: ""
       description: Check Normalized.host.ip or Normalized.ip.ip.
-      id: e2293a68-c616-4457-a7fc-f3a6ab04d256
+      id: 39e260e2-e2d7-4742-b81f-ccf0de93ccd6
       iscommand: false
       name: Have an Email?
       playbooktaskmissingcomponent: null
       type: condition
       version: -1
-    taskid: e2293a68-c616-4457-a7fc-f3a6ab04d256
+    taskid: 39e260e2-e2d7-4742-b81f-ccf0de93ccd6
     timertriggers: []
     type: condition
     view: |-
@@ -511,16 +503,14 @@ tasks:
             iscontext: true
             value:
               simple: Normalized.urls
-          operator: isExists
-          right:
-            value: {}
+          operator: isNotEmpty
       label: "Yes"
     - condition:
       - - left:
             iscontext: true
             value:
               simple: Normalized.url.url
-          operator: isNotExists
+          operator: isEmpty
       label: "No"
     continueonerrortype: ""
     id: "28"
@@ -539,13 +529,13 @@ tasks:
     task:
       brand: ""
       description: Check Normalized.host.ip or Normalized.ip.ip.
-      id: 07928f9c-77df-45ea-abd8-0154a5c0b46b
+      id: 42be01af-6021-4116-91a0-09431a0431ce
       iscommand: false
       name: Have an URL?
       playbooktaskmissingcomponent: null
       type: condition
       version: -1
-    taskid: 07928f9c-77df-45ea-abd8-0154a5c0b46b
+    taskid: 42be01af-6021-4116-91a0-09431a0431ce
     timertriggers: []
     type: condition
     view: |-

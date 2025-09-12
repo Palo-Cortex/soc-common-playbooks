@@ -277,23 +277,58 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
     nexttasks:
       '#none#':
       - "8"
     note: false
     quietmode: 0
+    scriptarguments:
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
+      Tag:
+        simple: Bad Account
+      UserVerification:
+        simple: "True"
+      Username:
+        simple: ${inputs.Username}
     separatecontext: true
     skipunavailable: false
     task:
       brand: ""
-      id: 81ac687a-b49b-49de-864e-224cc3cc1319
+      description: |-
+        This playbook blocks malicious usernames using all integrations that you have enabled.
+
+        Supported integrations for this playbook:
+        * Active Directory
+        * PAN-OS - This requires PAN-OS 9.1 or higher.
+        * SailPoint
+        * PingOne
+        * AWS IAM
+        * Clarizen IAM
+        * Envoy IAM
+        * ExceedLMS IAM
+        * Okta
+        * Microsoft Graph User (Azure Active Directory Users)
+        * Google Workspace Admin
+        * Slack IAM
+        * ServiceNow IAM
+        * Prisma Cloud IAM
+        * Zoom IAM
+        * Atlassian IAM
+        * GitHub IAM.
+      id: e950008b-81ae-43d2-94a8-ba011356d113
       iscommand: false
       name: SOC Block Account - Generic v2
       playbookId: SOC Block Account - Generic v2
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 81ac687a-b49b-49de-864e-224cc3cc1319
+    taskid: e950008b-81ae-43d2-94a8-ba011356d113
     timertriggers: []
     type: playbook
     view: |-
