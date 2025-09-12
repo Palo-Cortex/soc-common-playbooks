@@ -1,12 +1,19 @@
+adopted: true
 contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 6.5.0
     isoverridable: false
-    itemVersion: 2.6.55
+    itemVersion: 2.7.16
     packID: ""
-    packName: Common Playbooks
+    packName: SOC Common Playbooks
     prevname: ""
+    supportedModules:
+    - X1
+    - X3
+    - X5
+    - ENT_PLUS
+    - agentix
     toServerVersion: ""
 description: |-
   This playbook blocks malicious indicators using all integrations that are enabled, using the following sub-playbooks:
@@ -17,8 +24,42 @@ description: |-
   - Block File - Generic v2
   - Block Email - Generic v2
   - Block Domain - Generic v2.
-adopted: true
+dirtyInputs: true
 id: 'SOC Block Indicators - Generic v3'
+inputSections:
+- description: Generic group for inputs
+  inputs:
+  - IP
+  - URL
+  - Username
+  - MD5
+  - SHA256
+  - FilesToBlock
+  - DomainToBlock
+  - EmailToBlock
+  - AutoBlockIndicators
+  - CustomBlockRule
+  - LogForwarding
+  - AutoCommit
+  - StaticAddressGroup
+  - CustomURLCategory
+  - type
+  - device-group
+  - categories
+  - DomainBlackListID
+  - Tag
+  - DAG
+  - UserVerification
+  - InternalRange
+  - SiteName
+  - AkamaiNetworkListID
+  - CiscoFWSource
+  - InputEnrichment
+  - RuleName
+  - RuleDirection
+  - EDLServerIP
+  - ShadowMode
+  name: General (Inputs group)
 inputs:
 - description: 'An array of malicious IPs to block. Enter a comma-separated list of
     IPs (i.e.: 1.1.1.1,2.2.2.2).'
@@ -441,7 +482,45 @@ inputs:
   playbookInputQuery: null
   required: false
   value: {}
+- description: ""
+  key: ShadowMode
+  playbookInputQuery: null
+  required: false
+  value:
+    simple: "true"
 name: SOC Block Indicators - Generic v3
+outputSections:
+- description: Generic group for outputs
+  name: General (Outputs group)
+  outputs:
+  - CheckpointFWRule.Domain
+  - CheckpointFWRule.Enabled
+  - CheckpointFWRule.Name
+  - CheckpointFWRule.UID
+  - CheckpointFWRule.Type
+  - CheckpointFWRule.DestinationNegate
+  - CheckpointFWRule.Action
+  - CheckpointFWRule.Destination
+  - CheckpointFWRule.ActionSetting
+  - CheckpointFWRule.CustomFields
+  - CheckpointFWRule.Data
+  - CheckpointFWRule.DataDirection
+  - CheckpointFWRule.DataNegate
+  - CheckpointFWRule.Hits
+  - PanoramaRule.Direction
+  - PanoramaRule.IP
+  - PanoramaRule.Name
+  - CheckpointFWRule.Data.Name
+  - CheckpointFWRule.Data.Domain
+  - CheckpointFWRule.Domain.Name
+  - CheckpointFWRule.Domain.UID
+  - CheckpointFWRule.Domain.Type
+  - CheckpointFWRule.Hits.FirstDate
+  - CheckpointFWRule.Hits.LastDate
+  - CheckpointFWRule.Hits.Level
+  - CheckpointFWRule.Hits.Percentage
+  - CheckpointFWRule.Hits.Value
+  - IndicatorsToBlock
 outputs:
 - contextPath: CheckpointFWRule.Domain
   description: Rule domain.
@@ -505,6 +584,9 @@ outputs:
   type: unknown
 sourceplaybookid: Block Indicators - Generic v3
 starttaskid: "0"
+tags:
+- SOC
+- SOC_Framework
 tasks:
   "0":
     continueonerrortype: ""
@@ -524,6 +606,7 @@ tasks:
       id: be855f8e-b0d6-4b33-8898-954bf9ba99cc
       iscommand: false
       name: ""
+      playbooktaskmissingcomponent: null
       version: -1
     taskid: be855f8e-b0d6-4b33-8898-954bf9ba99cc
     timertriggers: []
@@ -531,8 +614,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1733.5,
-          "y": 50
+          "x": 1125,
+          "y": -870
         }
       }
   "2":
@@ -553,6 +636,7 @@ tasks:
       id: c155d55d-f7f3-4af2-8739-3cb6143e0e81
       iscommand: false
       name: Tag Indicators
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: c155d55d-f7f3-4af2-8739-3cb6143e0e81
@@ -561,8 +645,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1252.5,
-          "y": 1390
+          "x": 1125,
+          "y": 515
         }
       }
   "7":
@@ -573,12 +657,12 @@ tasks:
     isoversize: false
     nexttasks:
       '#none#':
-      - "30"
-      - "31"
       - "32"
-      - "33"
       - "34"
       - "35"
+      - "36"
+      - "37"
+      - "39"
     note: false
     quietmode: 0
     separatecontext: false
@@ -588,6 +672,7 @@ tasks:
       id: 15d43128-6c48-4deb-8ed0-044d0454fa7b
       iscommand: false
       name: Block indicators
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 15d43128-6c48-4deb-8ed0-044d0454fa7b
@@ -596,8 +681,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1252.5,
-          "y": 1060
+          "x": 1125,
+          "y": 195
         }
       }
   "14":
@@ -615,6 +700,7 @@ tasks:
       id: 22f0eb38-c4d3-4e67-889b-6abbff216ab8
       iscommand: false
       name: Done
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 22f0eb38-c4d3-4e67-889b-6abbff216ab8
@@ -623,20 +709,17 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 626.25,
-          "y": 2060
+          "x": 1125,
+          "y": 1005
         }
       }
   "15":
-    continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "15"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "29"
       '#none#':
       - "14"
     note: false
@@ -664,20 +747,21 @@ tasks:
     task:
       brand: Builtin
       description: commands.local.cmd.add.values.to.indicator.multi.select.field
-      id: 4bbbb815-008f-4d0c-8ec2-54259dd88260
+      id: 8e6165ed-cc2e-4820-8ae4-c73fd82a3088
       iscommand: true
       name: Tag bad indicators
+      playbooktaskmissingcomponent: null
       script: Builtin|||appendIndicatorField
       type: regular
       version: -1
-    taskid: 4bbbb815-008f-4d0c-8ec2-54259dd88260
+    taskid: 8e6165ed-cc2e-4820-8ae4-c73fd82a3088
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 50,
-          "y": 1720
+          "x": 1390,
+          "y": 820
         }
       }
   "19":
@@ -838,6 +922,7 @@ tasks:
       id: 0d20c35f-5bdf-4b27-8b63-f5334f9342f5
       iscommand: false
       name: Which indicators would you like to block?
+      playbooktaskmissingcomponent: null
       type: collection
       version: -1
     taskid: 0d20c35f-5bdf-4b27-8b63-f5334f9342f5
@@ -846,8 +931,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1252.5,
-          "y": 550
+          "x": 680,
+          "y": -330
         }
       }
   "20":
@@ -884,6 +969,7 @@ tasks:
       id: 8a156613-e43b-4bf2-857c-159220291b3b
       iscommand: false
       name: Block Indicators Automatically?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 8a156613-e43b-4bf2-857c-159220291b3b
@@ -892,20 +978,17 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1493,
-          "y": 380
+          "x": 1125,
+          "y": -500
         }
       }
   "21":
-    continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "21"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "29"
       '#none#':
       - "23"
     note: false
@@ -961,32 +1044,30 @@ tasks:
     task:
       brand: ""
       description: Set a value in context under the key you entered.
-      id: 7a237970-c68f-4a7d-9c8c-41cf65cb611b
+      id: ca92498f-ebc4-4e68-81e9-44e1c6907d9d
       iscommand: false
       name: Set indicators to block - Manual
+      playbooktaskmissingcomponent: null
       script: Set
       type: regular
       version: -1
-    taskid: 7a237970-c68f-4a7d-9c8c-41cf65cb611b
+    taskid: ca92498f-ebc4-4e68-81e9-44e1c6907d9d
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 1252.5,
-          "y": 720
+          "x": 680,
+          "y": -170
         }
       }
   "22":
-    continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "22"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "29"
       '#none#':
       - "23"
     note: false
@@ -1053,20 +1134,21 @@ tasks:
     task:
       brand: ""
       description: Set a value in context under the key you entered.
-      id: 602f76f6-12ce-420f-b62e-4e9b92c0bdc8
+      id: 6cabb94a-1422-4d97-89ee-5b35b328c70b
       iscommand: false
       name: Set indicators to block - Auto
+      playbooktaskmissingcomponent: null
       script: Set
       type: regular
       version: -1
-    taskid: 602f76f6-12ce-420f-b62e-4e9b92c0bdc8
+    taskid: 6cabb94a-1422-4d97-89ee-5b35b328c70b
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 2936,
-          "y": 720
+          "x": 1125,
+          "y": -170
         }
       }
   "23":
@@ -1101,6 +1183,7 @@ tasks:
       id: 92a68f14-96ed-4e6f-880f-dde5980b1fc2
       iscommand: false
       name: Has indicators to block?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 92a68f14-96ed-4e6f-880f-dde5980b1fc2
@@ -1109,8 +1192,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 626.25,
-          "y": 890
+          "x": 1125,
+          "y": 30
         }
       }
   "26":
@@ -1143,6 +1226,7 @@ tasks:
       id: ee795eae-1fc0-4458-864b-91b2f224db89
       iscommand: false
       name: Tag received from inputs?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: ee795eae-1fc0-4458-864b-91b2f224db89
@@ -1151,8 +1235,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1252.5,
-          "y": 1550
+          "x": 1125,
+          "y": 650
         }
       }
   "27":
@@ -1214,7 +1298,7 @@ tasks:
     isoversize: false
     nexttasks:
       '#default#':
-      - "28"
+      - "14"
       "yes":
       - "20"
     note: false
@@ -1227,6 +1311,7 @@ tasks:
       id: 4b64da5f-53b9-4fdd-8e65-5a133c6700d6
       iscommand: false
       name: Are there indicators to block?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 4b64da5f-53b9-4fdd-8e65-5a133c6700d6
@@ -1235,128 +1320,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1733.5,
-          "y": 210
-        }
-      }
-  "28":
-    continueonerrortype: ""
-    id: "28"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: f0a6c388-3821-4ad0-8720-6660caa31997
-      iscommand: false
-      name: Done
-      type: title
-      version: -1
-    taskid: f0a6c388-3821-4ad0-8720-6660caa31997
-    timertriggers: []
-    type: title
-    view: |-
-      {
-        "position": {
-          "x": 1974,
-          "y": 385
-        }
-      }
-  "29":
-    continueonerrortype: ""
-    id: "29"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#none#':
-      - "14"
-    note: false
-    quietmode: 0
-    separatecontext: true
-    skipunavailable: false
-    task:
-      brand: ""
-      id: e3d9bba2-1008-425b-80ef-665efd6006eb
-      iscommand: false
-      name: Foundation - Error Handling
-      playbookId: Foundation - Error Handling
-      type: playbook
-      version: -1
-    taskid: e3d9bba2-1008-425b-80ef-665efd6006eb
-    timertriggers: []
-    type: playbook
-    view: |-
-      {
-        "position": {
-          "x": 2936,
-          "y": 1890
-        }
-      }
-  "30":
-    continueonerrortype: ""
-    id: "30"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#none#':
-      - "2"
-    note: false
-    quietmode: 0
-    separatecontext: true
-    skipunavailable: false
-    task:
-      brand: ""
-      id: 16db567c-9b09-4b62-8964-a0015d02ddcf
-      iscommand: false
-      name: SOC Block Email - Generic v2
-      playbookId: 'SOC Block Email - Generic v2'
-      type: playbook
-      version: -1
-    taskid: 16db567c-9b09-4b62-8964-a0015d02ddcf
-    timertriggers: []
-    type: playbook
-    view: |-
-      {
-        "position": {
-          "x": 50,
-          "y": 1220
-        }
-      }
-  "31":
-    continueonerrortype: ""
-    id: "31"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#none#':
-      - "2"
-    note: false
-    quietmode: 0
-    separatecontext: true
-    skipunavailable: false
-    task:
-      brand: ""
-      id: 4b1be7e4-bfe7-418f-8306-6014e3a211cc
-      iscommand: false
-      name: SOC Block Domain - Generic v2
-      playbookId: 'SOC Block Domain - Generic v2'
-      type: playbook
-      version: -1
-    taskid: 4b1be7e4-bfe7-418f-8306-6014e3a211cc
-    timertriggers: []
-    type: playbook
-    view: |-
-      {
-        "position": {
-          "x": 531,
-          "y": 1220
+          "x": 1125,
+          "y": -700
         }
       }
   "32":
@@ -1365,60 +1330,46 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
     nexttasks:
       '#none#':
       - "2"
     note: false
     quietmode: 0
+    scriptarguments:
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
     separatecontext: true
     skipunavailable: false
     task:
       brand: ""
-      id: 50534538-7551-415d-8f36-61f5b30784e0
+      description: |
+        This playbook will block emails at your mail relay integration.
+
+        Supported integrations for this playbook:
+        * Mimecast
+        * FireEye Email Security (EX)
+        * Cisco Email Security
+        * Symantec Email Security
+      id: ac1dcf02-1ea8-488a-ad60-b31434a0026d
       iscommand: false
-      name: SOC Block URL - Generic v2
-      playbookId: 'SOC Block URL - Generic v2'
+      name: SOC Block Email - Generic v2
+      playbookId: SOC Block Email - Generic v2
+      playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 50534538-7551-415d-8f36-61f5b30784e0
+    taskid: ac1dcf02-1ea8-488a-ad60-b31434a0026d
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 1012,
-          "y": 1220
-        }
-      }
-  "33":
-    continueonerrortype: ""
-    id: "33"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#none#':
-      - "2"
-    note: false
-    quietmode: 0
-    separatecontext: true
-    skipunavailable: false
-    task:
-      brand: ""
-      id: 25f781ac-21ba-460e-8970-e878c304baaa
-      iscommand: false
-      name: SOC Block Account - Generic v2
-      playbookId: 'SOC Block Account - Generic v2'
-      type: playbook
-      version: -1
-    taskid: 25f781ac-21ba-460e-8970-e878c304baaa
-    timertriggers: []
-    type: playbook
-    view: |-
-      {
-        "position": {
-          "x": 1493,
-          "y": 1220
+          "x": 1330,
+          "y": 340
         }
       }
   "34":
@@ -1427,29 +1378,48 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
     nexttasks:
       '#none#':
       - "2"
     note: false
     quietmode: 0
+    scriptarguments:
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
     separatecontext: true
     skipunavailable: false
     task:
       brand: ""
-      id: 8a610129-261b-49be-8d30-28d1db6053a8
+      description: |
+        This playbook blocks malicious Domains using all integrations that are enabled.
+
+        Supported integrations for this playbook:
+        * Zscaler
+        * Symantec Messaging Gateway
+        * FireEye EX
+        * Trend Micro Apex One
+        * Proofpoint Threat Response
+        * Cisco Stealthwatch Cloud
+      id: 65f15302-fd9a-4ee3-9777-312c8350c3e9
       iscommand: false
-      name: SOC Block IP - Generic v3
-      playbookId: 'SOC Block IP - Generic v3'
+      name: SOC Block Domain - Generic v2
+      playbookId: SOC Block Domain - Generic v2
+      playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 8a610129-261b-49be-8d30-28d1db6053a8
+    taskid: 65f15302-fd9a-4ee3-9777-312c8350c3e9
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 1974,
-          "y": 1220
+          "x": 1760,
+          "y": 340
         }
       }
   "35":
@@ -1458,43 +1428,233 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
     nexttasks:
       '#none#':
       - "2"
     note: false
     quietmode: 0
+    scriptarguments:
+      AutoCommit:
+        simple: "No"
+      CustomURLCategory:
+        simple: XSOAR Remediation - Malicious URLs
+      Folder:
+        simple: Shared
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
+      UserVerification:
+        simple: "True"
     separatecontext: true
     skipunavailable: false
     task:
       brand: ""
-      id: 7d96fddd-ea29-44a5-8f5d-d99c20d2908f
+      description: |-
+        This playbook blocks malicious URLs using all integrations that are enabled.
+
+        Supported integrations for this playbook:
+        * Palo Alto Networks PAN-OS
+        * Zscaler
+        * Sophos
+        * Forcepoint
+        * Checkpoint
+        * Netcraft.
+      id: 114d89c6-d66a-4322-af15-50e41e979728
       iscommand: false
-      name: SOC Block File - Generic v2
-      playbookId: 'SOC Block File - Generic v2'
+      name: SOC Block URL - Generic v2
+      playbookId: SOC Block URL - Generic v2
+      playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 7d96fddd-ea29-44a5-8f5d-d99c20d2908f
+    taskid: 114d89c6-d66a-4322-af15-50e41e979728
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 2455,
-          "y": 1220
+          "x": 30,
+          "y": 340
+        }
+      }
+  "36":
+    continueonerrortype: ""
+    id: "36"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
+    nexttasks:
+      '#none#':
+      - "2"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
+      Tag:
+        simple: Bad Account
+      UserVerification:
+        simple: "True"
+    separatecontext: true
+    skipunavailable: false
+    task:
+      brand: ""
+      description: |-
+        This playbook blocks malicious usernames using all integrations that you have enabled.
+
+        Supported integrations for this playbook:
+        * Active Directory
+        * PAN-OS - This requires PAN-OS 9.1 or higher.
+        * SailPoint
+        * PingOne
+        * AWS IAM
+        * Clarizen IAM
+        * Envoy IAM
+        * ExceedLMS IAM
+        * Okta
+        * Microsoft Graph User (Azure Active Directory Users)
+        * Google Workspace Admin
+        * Slack IAM
+        * ServiceNow IAM
+        * Prisma Cloud IAM
+        * Zoom IAM
+        * Atlassian IAM
+        * GitHub IAM.
+      id: bbcc49c4-52a8-400d-ac24-132c221bc0df
+      iscommand: false
+      name: SOC Block Account - Generic v2
+      playbookId: SOC Block Account - Generic v2
+      playbooktaskmissingcomponent: null
+      type: playbook
+      version: -1
+    taskid: bbcc49c4-52a8-400d-ac24-132c221bc0df
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": 460,
+          "y": 340
+        }
+      }
+  "37":
+    continueonerrortype: ""
+    id: "37"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
+    nexttasks:
+      '#none#':
+      - "2"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      MD5:
+        complex:
+          accessor: MD5
+          root: File
+      SHA256:
+        complex:
+          accessor: SHA256
+          root: File
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
+    separatecontext: true
+    skipunavailable: false
+    task:
+      brand: ""
+      description: "This playbook is used to block files from running on endpoints.
+        \nThis playbook supports the following integrations:\n- Palo Alto Networks
+        Traps\n- Palo Alto Networks Cortex XDR\n- Cybereason\n- Carbon Black Enterprise
+        Response\n- Cylance Protect v2\n- Crowdstrike Falcon\n- Microsoft Defender
+        for Endpoint."
+      id: 7c49c3b9-313c-4282-abfd-235baaccd6a6
+      iscommand: false
+      name: SOC Block File - Generic v2
+      playbookId: SOC Block File - Generic v2
+      playbooktaskmissingcomponent: null
+      type: playbook
+      version: -1
+    taskid: 7c49c3b9-313c-4282-abfd-235baaccd6a6
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": 930,
+          "y": 340
+        }
+      }
+  "39":
+    continueonerrortype: ""
+    id: "39"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
+    nexttasks:
+      '#none#':
+      - "2"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      AutoCommit:
+        simple: "No"
+      CustomBlockRule:
+        simple: "True"
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
+    separatecontext: true
+    skipunavailable: false
+    task:
+      brand: ""
+      id: 312289eb-2251-4985-a7a0-7befe2235c5b
+      iscommand: false
+      name: SOC Block IP - Generic v2
+      playbookId: SOC Block IP - Generic v2
+      playbooktaskmissingcomponent: null
+      type: playbook
+      version: -1
+    taskid: 312289eb-2251-4985-a7a0-7befe2235c5b
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": 2170,
+          "y": 340
         }
       }
 version: -1
 view: |-
   {
     "linkLabelsPosition": {
+      "27_14_#default#": 0.88,
       "27_20_yes": 0.4
     },
     "paper": {
       "dimensions": {
-        "height": 2070,
-        "width": 3267,
-        "x": 50,
-        "y": 50
+        "height": 1935,
+        "width": 2520,
+        "x": 30,
+        "y": -870
       }
     }
   }

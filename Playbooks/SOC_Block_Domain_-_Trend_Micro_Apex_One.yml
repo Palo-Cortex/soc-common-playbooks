@@ -2,67 +2,51 @@ adopted: true
 contentitemexportablefields:
   contentitemfields:
     definitionid: ""
-    fromServerVersion: 6.6.0
+    fromServerVersion: 5.5.0
     isoverridable: false
-    itemVersion: 2.7.15
+    itemVersion: 2.0.11
     packID: ""
-    packName: Common Playbooks
+    packName: Trend Micro Apex One
     prevname: ""
-    supportedModules:
-    - X1
-    - X3
-    - X5
-    - ENT_PLUS
+    supportedModules: []
     toServerVersion: ""
-description: "This playbook is one of the sub-playbooks in the eradication plan. \nThis
-  playbook executes actions of file deletion, which is a crucial step in the eradication
-  process."
+description: |-
+  This playbook blocks domains using Trend Micro Apex One.
+  The playbook checks whether the Trend Micro Apex One integration is enabled, whether the Domain input has been provided and if so, blocks the domain.
 dirtyInputs: true
-id: 'SOC Eradication Plan - Delete File'
+id: 'SOC Block Domain - Trend Micro Apex One'
 inputSections:
 - description: Generic group for inputs
   inputs:
-  - FileRemediation
-  - EndpointID
-  - FilePath
+  - Domain
+  - Expiration
   - ShadowMode
   name: General (Inputs group)
 inputs:
-- description: "Choose 'Quarantine' or 'Delete' to avoid file remediation conflicts.
-    \nFor example, choosing 'Delete' ignores the 'Quarantine file' task under the
-    containment playbook and executes only file deletion."
-  key: FileRemediation
+- description: The Domain to block.
+  key: Domain
   playbookInputQuery: null
   required: false
-  value:
-    simple: Delete
-- description: The endpoint ID.
-  key: EndpointID
+  value: {}
+- description: 'The UTC expiration date and time of the suspicious object, for example:
+    2020-01-25T09:00:00Z.'
+  key: Expiration
   playbookInputQuery: null
   required: false
-  value:
-    complex:
-      root: Endpoints
-- description: The file path for the file deletion task.
-  key: FilePath
-  playbookInputQuery: null
-  required: false
-  value:
-    complex:
-      root: Path
+  value: {}
 - description: ""
   key: ShadowMode
   playbookInputQuery: null
   required: false
   value:
     simple: "true"
-name: SOC Eradication Plan - Delete File
+name: SOC Block Domain - Trend Micro Apex One
 outputSections:
 - description: Generic group for outputs
   name: General (Outputs group)
   outputs: []
 outputs: []
-sourceplaybookid: Eradication Plan - Delete File
+sourceplaybookid: Block Domain - Trend Micro Apex One
 starttaskid: "0"
 tags:
 - SOC
@@ -76,70 +60,209 @@ tasks:
     isoversize: false
     nexttasks:
       '#none#':
-      - "21"
+      - "4"
     note: false
     quietmode: 0
     separatecontext: false
     skipunavailable: false
     task:
       brand: ""
-      id: 48cbb13a-a0c0-4a27-815a-66e38f3387ff
+      id: d333e30b-b0ba-4578-820f-116443c2fa50
       iscommand: false
       name: ""
       playbooktaskmissingcomponent: null
       version: -1
-    taskid: 48cbb13a-a0c0-4a27-815a-66e38f3387ff
+    taskid: d333e30b-b0ba-4578-820f-116443c2fa50
     timertriggers: []
     type: start
     view: |-
       {
         "position": {
-          "x": 360,
-          "y": -90
+          "x": 450,
+          "y": -320
         }
       }
-  "3":
+  "1":
+    conditions:
+    - condition:
+      - - ignorecase: true
+          left:
+            iscontext: true
+            value:
+              complex:
+                accessor: brand
+                filters:
+                - - ignorecase: true
+                    left:
+                      iscontext: true
+                      value:
+                        simple: modules.brand
+                    operator: isEqualString
+                    right:
+                      value:
+                        simple: Trend Micro Apex
+                - - ignorecase: true
+                    left:
+                      iscontext: true
+                      value:
+                        simple: modules.state
+                    operator: isEqualString
+                    right:
+                      value:
+                        simple: Active
+                root: modules
+          operator: isExists
+      label: "yes"
+    continueonerrortype: ""
+    id: "1"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#default#':
+      - "3"
+      "yes":
+      - "6"
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      description: Verify that there is a valid instance of Check Point Firewall enabled.
+      id: b414b6be-6e40-48a4-8612-d7cc449eb0cf
+      iscommand: false
+      name: Is Trend Micro Apex One enabled?
+      playbooktaskmissingcomponent: null
+      type: condition
+      version: -1
+    taskid: b414b6be-6e40-48a4-8612-d7cc449eb0cf
+    timertriggers: []
+    type: condition
+    view: |-
+      {
+        "position": {
+          "x": 700,
+          "y": -20
+        }
+      }
+  "2":
     continueonerror: true
     continueonerrortype: errorPath
-    id: "3"
+    id: "2"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
       '#error#':
-      - "22"
+      - "5"
       '#none#':
-      - "19"
+      - "3"
     note: false
     quietmode: 0
     scriptarguments:
-      endpoint_ids:
+      content:
         complex:
-          root: inputs.EndpointID
-      file_path:
+          root: inputs.Domain
+      expiration:
         complex:
-          root: inputs.FilePath
+          root: inputs.Expiration
+      scan_action:
+        simple: block
+      type:
+        simple: domain
     separatecontext: false
     skipunavailable: false
     task:
-      brand: ""
-      description: Initiates a new endpoint script execution to delete the specified
-        file.
-      id: 62686350-448d-4781-9ec5-2276b50dd884
+      brand: Trend Micro Apex
+      description: Add suspicious file SHA-1, IP address, domain, or URL objects to
+        the User-Defined Suspicious Object list.
+      id: 10ba9071-af0d-4729-b7d2-43b8440b292a
       iscommand: true
-      name: Auto file deletion
+      name: Block Domain
       playbooktaskmissingcomponent: null
-      script: '|||core-run-script-delete-file'
+      script: Trend Micro Apex|||trendmicro-apex-udso-add
       type: regular
       version: -1
-    taskid: 62686350-448d-4781-9ec5-2276b50dd884
+    taskid: 10ba9071-af0d-4729-b7d2-43b8440b292a
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 350,
-          "y": 430
+          "x": 730,
+          "y": 360
+        }
+      }
+  "3":
+    continueonerrortype: ""
+    id: "3"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      id: 410a42e0-2997-42fb-8b86-99085fe3168b
+      iscommand: false
+      name: Done
+      playbooktaskmissingcomponent: null
+      type: title
+      version: -1
+    taskid: 410a42e0-2997-42fb-8b86-99085fe3168b
+    timertriggers: []
+    type: title
+    view: |-
+      {
+        "position": {
+          "x": 450,
+          "y": 540
+        }
+      }
+  "4":
+    conditions:
+    - condition:
+      - - left:
+            iscontext: true
+            value:
+              complex:
+                root: inputs.Domain
+          operator: isNotEmpty
+      label: "yes"
+    continueonerrortype: ""
+    id: "4"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#default#':
+      - "3"
+      "yes":
+      - "1"
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      description: Check whether the necessary inputs were provided
+      id: 36454014-dd62-4832-8cfe-f60877860910
+      iscommand: false
+      name: Check if Domain input was provided
+      playbooktaskmissingcomponent: null
+      type: condition
+      version: -1
+    taskid: 36454014-dd62-4832-8cfe-f60877860910
+    timertriggers: []
+    type: condition
+    view: |-
+      {
+        "position": {
+          "x": 450,
+          "y": -180
         }
       }
   "5":
@@ -150,166 +273,38 @@ tasks:
     isoversize: false
     note: false
     quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: 040279ae-6f3d-42a1-8def-2c0565fd669f
-      iscommand: false
-      name: Done - File Deletion
-      playbooktaskmissingcomponent: null
-      type: title
-      version: -1
-    taskid: 040279ae-6f3d-42a1-8def-2c0565fd669f
-    timertriggers: []
-    type: title
-    view: |-
-      {
-        "position": {
-          "x": 350,
-          "y": 790
-        }
-      }
-  "19":
-    continueonerror: true
-    continueonerrortype: errorPath
-    id: "19"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#error#':
-      - "22"
-      '#none#':
-      - "5"
-    note: false
-    quietmode: 0
-    scriptarguments:
-      action_id:
-        complex:
-          accessor: action_id
-          root: Core.GetActionStatus
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Retrieve the results of a script execution action.
-      id: ea39bf65-7f5c-4e0e-b47a-c23fcae7667f
-      iscommand: true
-      name: Get command result
-      playbooktaskmissingcomponent: null
-      script: '|||core-get-script-execution-results'
-      type: regular
-      version: -1
-    taskid: ea39bf65-7f5c-4e0e-b47a-c23fcae7667f
-    timertriggers: []
-    type: regular
-    view: |-
-      {
-        "position": {
-          "x": 350,
-          "y": 600
-        }
-      }
-  "21":
-    conditions:
-    - condition:
-      - - left:
-            iscontext: true
-            value:
-              complex:
-                root: inputs.FilePath
-          operator: isNotEmpty
-      - - left:
-            iscontext: true
-            value:
-              complex:
-                root: inputs.EndpointID
-          operator: isNotEmpty
-      - - ignorecase: true
-          left:
-            iscontext: true
-            value:
-              complex:
-                root: inputs.FileRemediation
-          operator: isEqualString
-          right:
-            value:
-              simple: Delete
-      label: "yes"
-    continueonerrortype: ""
-    id: "21"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#default#':
-      - "5"
-      "yes":
-      - "23"
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Whether to delete the file based on the input values.
-      id: a1a09dd3-d1de-40ae-898b-6fe92bd93c6e
-      iscommand: false
-      name: Should delete the file?
-      playbooktaskmissingcomponent: null
-      type: condition
-      version: -1
-    taskid: a1a09dd3-d1de-40ae-898b-6fe92bd93c6e
-    timertriggers: []
-    type: condition
-    view: |-
-      {
-        "position": {
-          "x": 360,
-          "y": 70
-        }
-      }
-  "22":
-    continueonerrortype: ""
-    id: "22"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    note: false
-    quietmode: 0
     separatecontext: true
     skipunavailable: false
     task:
       brand: ""
-      id: f70aec3b-d083-4117-832d-a75daa678c9b
+      id: 6a0fcac1-eb92-4fec-88c2-50c48b6b03fc
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: f70aec3b-d083-4117-832d-a75daa678c9b
+    taskid: 6a0fcac1-eb92-4fec-88c2-50c48b6b03fc
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 800,
-          "y": 785
+          "x": 1360,
+          "y": 550
         }
       }
-  "23":
+  "6":
     continueonerrortype: ""
-    id: "23"
+    id: "6"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
       Full Run:
-      - "3"
+      - "2"
       Shadow Mode:
-      - "24"
+      - "7"
     note: false
     quietmode: 0
     scriptarguments:
@@ -319,71 +314,73 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: a6bc0525-0fc3-42b5-82dc-f1e60c25a27d
+      id: 44c5c5d3-873f-4ed2-8743-35fae5dce766
       iscommand: false
       name: Run Mode?
       playbooktaskmissingcomponent: null
-      script: 'ShadowModeRouter'
+      script: ShadowModeRouter
       type: condition
       version: -1
-    taskid: a6bc0525-0fc3-42b5-82dc-f1e60c25a27d
+    taskid: 44c5c5d3-873f-4ed2-8743-35fae5dce766
     timertriggers: []
     type: condition
     view: |-
       {
         "position": {
-          "x": 520,
-          "y": 250
+          "x": 800,
+          "y": 190
         }
       }
-  "24":
+  "7":
     continueonerrortype: ""
-    id: "24"
+    id: "7"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
       '#none#':
-      - "5"
+      - "3"
     note: false
     quietmode: 0
     scriptarguments:
       value:
         simple: |-
-          Shadow Mode: Palo XDR Auto File Deletion
-          Command: core-run-script-delete-file
+          Shadow: Trend Micro Apex Block Domain
+          Command: trendmicro-apex-udso-add
     separatecontext: false
     skipunavailable: false
     task:
       brand: ""
       description: Prints text to war room (Markdown supported)
-      id: ffb42258-a95d-40df-811c-b6790521e9d1
+      id: fb2015e7-c26b-4b9b-be73-0115b47753bd
       iscommand: false
-      name: 'Shadow Mode: Palo XDR Auto File Deletion'
+      name: 'Shadow: Trend Micro Apex Block Domain'
       playbooktaskmissingcomponent: null
       script: Print
       type: regular
       version: -1
-    taskid: ffb42258-a95d-40df-811c-b6790521e9d1
+    taskid: fb2015e7-c26b-4b9b-be73-0115b47753bd
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 770,
-          "y": 410
+          "x": 1210,
+          "y": 350
         }
       }
 version: -1
 view: |-
   {
-    "linkLabelsPosition": {},
+    "linkLabelsPosition": {
+      "1_3_#default#": 0.4
+    },
     "paper": {
       "dimensions": {
-        "height": 945,
-        "width": 830,
-        "x": 350,
-        "y": -90
+        "height": 940,
+        "width": 1290,
+        "x": 450,
+        "y": -320
       }
     }
   }

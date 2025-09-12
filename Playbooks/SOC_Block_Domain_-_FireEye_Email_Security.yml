@@ -2,67 +2,44 @@ adopted: true
 contentitemexportablefields:
   contentitemfields:
     definitionid: ""
-    fromServerVersion: 6.6.0
+    fromServerVersion: 6.0.0
     isoverridable: false
-    itemVersion: 2.7.15
+    itemVersion: 2.0.35
     packID: ""
-    packName: Common Playbooks
+    packName: FireEye Email Security (EX)
     prevname: ""
-    supportedModules:
-    - X1
-    - X3
-    - X5
-    - ENT_PLUS
+    supportedModules: []
     toServerVersion: ""
-description: "This playbook is one of the sub-playbooks in the eradication plan. \nThis
-  playbook executes actions of file deletion, which is a crucial step in the eradication
-  process."
+description: |-
+  This playbook blocks domains using FireEye Email Security.
+  The playbook checks whether the FireEye Email Security integration is enabled, whether the Domain input has been provided and if so, blocks the domain.
 dirtyInputs: true
-id: 'SOC Eradication Plan - Delete File'
+id: 'SOC Block Domain - FireEye Email Security'
 inputSections:
 - description: Generic group for inputs
   inputs:
-  - FileRemediation
-  - EndpointID
-  - FilePath
+  - Domain
   - ShadowMode
   name: General (Inputs group)
 inputs:
-- description: "Choose 'Quarantine' or 'Delete' to avoid file remediation conflicts.
-    \nFor example, choosing 'Delete' ignores the 'Quarantine file' task under the
-    containment playbook and executes only file deletion."
-  key: FileRemediation
+- description: The Domain to block.
+  key: Domain
   playbookInputQuery: null
   required: false
-  value:
-    simple: Delete
-- description: The endpoint ID.
-  key: EndpointID
-  playbookInputQuery: null
-  required: false
-  value:
-    complex:
-      root: Endpoints
-- description: The file path for the file deletion task.
-  key: FilePath
-  playbookInputQuery: null
-  required: false
-  value:
-    complex:
-      root: Path
+  value: {}
 - description: ""
   key: ShadowMode
   playbookInputQuery: null
   required: false
   value:
     simple: "true"
-name: SOC Eradication Plan - Delete File
+name: SOC Block Domain - FireEye Email Security
 outputSections:
 - description: Generic group for outputs
   name: General (Outputs group)
   outputs: []
 outputs: []
-sourceplaybookid: Eradication Plan - Delete File
+sourceplaybookid: Block Domain - FireEye Email Security
 starttaskid: "0"
 tags:
 - SOC
@@ -76,70 +53,203 @@ tasks:
     isoversize: false
     nexttasks:
       '#none#':
-      - "21"
+      - "4"
     note: false
     quietmode: 0
     separatecontext: false
     skipunavailable: false
     task:
       brand: ""
-      id: 48cbb13a-a0c0-4a27-815a-66e38f3387ff
+      id: 94163ae0-f7a8-4641-803d-11ce2e35a27a
       iscommand: false
       name: ""
       playbooktaskmissingcomponent: null
       version: -1
-    taskid: 48cbb13a-a0c0-4a27-815a-66e38f3387ff
+    taskid: 94163ae0-f7a8-4641-803d-11ce2e35a27a
     timertriggers: []
     type: start
     view: |-
       {
         "position": {
-          "x": 360,
-          "y": -90
+          "x": 450,
+          "y": -250
         }
       }
-  "3":
+  "1":
+    conditions:
+    - condition:
+      - - ignorecase: true
+          left:
+            iscontext: true
+            value:
+              complex:
+                accessor: brand
+                filters:
+                - - ignorecase: true
+                    left:
+                      iscontext: true
+                      value:
+                        simple: modules.brand
+                    operator: isEqualString
+                    right:
+                      value:
+                        simple: FireEye Email Security
+                - - ignorecase: true
+                    left:
+                      iscontext: true
+                      value:
+                        simple: modules.state
+                    operator: isEqualString
+                    right:
+                      value:
+                        simple: Active
+                root: modules
+          operator: isExists
+      label: "yes"
+    continueonerrortype: ""
+    id: "1"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#default#':
+      - "3"
+      "yes":
+      - "6"
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      description: Verify that there is a valid instance of Check Point Firewall enabled.
+      id: e1a529d9-ad4c-4392-8249-128a5b760eba
+      iscommand: false
+      name: Is FireEye Email Security  enabled?
+      playbooktaskmissingcomponent: null
+      type: condition
+      version: -1
+    taskid: e1a529d9-ad4c-4392-8249-128a5b760eba
+    timertriggers: []
+    type: condition
+    view: |-
+      {
+        "position": {
+          "x": 670,
+          "y": 60
+        }
+      }
+  "2":
     continueonerror: true
     continueonerrortype: errorPath
-    id: "3"
+    id: "2"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
       '#error#':
-      - "22"
+      - "5"
       '#none#':
-      - "19"
+      - "3"
     note: false
     quietmode: 0
     scriptarguments:
-      endpoint_ids:
+      entry_value:
         complex:
-          root: inputs.EndpointID
-      file_path:
-        complex:
-          root: inputs.FilePath
+          root: inputs.Domain
+      type:
+        simple: sender_domain
     separatecontext: false
     skipunavailable: false
     task:
-      brand: ""
-      description: Initiates a new endpoint script execution to delete the specified
-        file.
-      id: 62686350-448d-4781-9ec5-2276b50dd884
+      brand: FireEye Email Security
+      description: Creates the blocked sender domain.
+      id: 47c008a0-3e4a-47f5-a4ab-89b1f7fda908
       iscommand: true
-      name: Auto file deletion
+      name: Block Domain
       playbooktaskmissingcomponent: null
-      script: '|||core-run-script-delete-file'
+      script: FireEye Email Security|||fireeye-ex-create-blockedlist
       type: regular
       version: -1
-    taskid: 62686350-448d-4781-9ec5-2276b50dd884
+    taskid: 47c008a0-3e4a-47f5-a4ab-89b1f7fda908
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 350,
-          "y": 430
+          "x": 710,
+          "y": 380
+        }
+      }
+  "3":
+    continueonerrortype: ""
+    id: "3"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      id: 3b6ec932-ffb3-43c5-8666-13b769935c00
+      iscommand: false
+      name: Done
+      playbooktaskmissingcomponent: null
+      type: title
+      version: -1
+    taskid: 3b6ec932-ffb3-43c5-8666-13b769935c00
+    timertriggers: []
+    type: title
+    view: |-
+      {
+        "position": {
+          "x": 450,
+          "y": 560
+        }
+      }
+  "4":
+    conditions:
+    - condition:
+      - - left:
+            iscontext: true
+            value:
+              complex:
+                root: inputs.Domain
+          operator: isNotEmpty
+      label: "yes"
+    continueonerrortype: ""
+    id: "4"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#default#':
+      - "3"
+      "yes":
+      - "1"
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      description: Check whether the necessary inputs were provided
+      id: 8a98155b-9114-4772-8676-5dea5fa7809c
+      iscommand: false
+      name: Check if Domain input was provided
+      playbooktaskmissingcomponent: null
+      type: condition
+      version: -1
+    taskid: 8a98155b-9114-4772-8676-5dea5fa7809c
+    timertriggers: []
+    type: condition
+    view: |-
+      {
+        "position": {
+          "x": 450,
+          "y": -100
         }
       }
   "5":
@@ -150,166 +260,38 @@ tasks:
     isoversize: false
     note: false
     quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      id: 040279ae-6f3d-42a1-8def-2c0565fd669f
-      iscommand: false
-      name: Done - File Deletion
-      playbooktaskmissingcomponent: null
-      type: title
-      version: -1
-    taskid: 040279ae-6f3d-42a1-8def-2c0565fd669f
-    timertriggers: []
-    type: title
-    view: |-
-      {
-        "position": {
-          "x": 350,
-          "y": 790
-        }
-      }
-  "19":
-    continueonerror: true
-    continueonerrortype: errorPath
-    id: "19"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#error#':
-      - "22"
-      '#none#':
-      - "5"
-    note: false
-    quietmode: 0
-    scriptarguments:
-      action_id:
-        complex:
-          accessor: action_id
-          root: Core.GetActionStatus
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Retrieve the results of a script execution action.
-      id: ea39bf65-7f5c-4e0e-b47a-c23fcae7667f
-      iscommand: true
-      name: Get command result
-      playbooktaskmissingcomponent: null
-      script: '|||core-get-script-execution-results'
-      type: regular
-      version: -1
-    taskid: ea39bf65-7f5c-4e0e-b47a-c23fcae7667f
-    timertriggers: []
-    type: regular
-    view: |-
-      {
-        "position": {
-          "x": 350,
-          "y": 600
-        }
-      }
-  "21":
-    conditions:
-    - condition:
-      - - left:
-            iscontext: true
-            value:
-              complex:
-                root: inputs.FilePath
-          operator: isNotEmpty
-      - - left:
-            iscontext: true
-            value:
-              complex:
-                root: inputs.EndpointID
-          operator: isNotEmpty
-      - - ignorecase: true
-          left:
-            iscontext: true
-            value:
-              complex:
-                root: inputs.FileRemediation
-          operator: isEqualString
-          right:
-            value:
-              simple: Delete
-      label: "yes"
-    continueonerrortype: ""
-    id: "21"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#default#':
-      - "5"
-      "yes":
-      - "23"
-    note: false
-    quietmode: 0
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Whether to delete the file based on the input values.
-      id: a1a09dd3-d1de-40ae-898b-6fe92bd93c6e
-      iscommand: false
-      name: Should delete the file?
-      playbooktaskmissingcomponent: null
-      type: condition
-      version: -1
-    taskid: a1a09dd3-d1de-40ae-898b-6fe92bd93c6e
-    timertriggers: []
-    type: condition
-    view: |-
-      {
-        "position": {
-          "x": 360,
-          "y": 70
-        }
-      }
-  "22":
-    continueonerrortype: ""
-    id: "22"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    note: false
-    quietmode: 0
     separatecontext: true
     skipunavailable: false
     task:
       brand: ""
-      id: f70aec3b-d083-4117-832d-a75daa678c9b
+      id: 0985c48b-dbb2-406f-81fa-da7ed2b65954
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: f70aec3b-d083-4117-832d-a75daa678c9b
+    taskid: 0985c48b-dbb2-406f-81fa-da7ed2b65954
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 800,
-          "y": 785
+          "x": 1200,
+          "y": 555
         }
       }
-  "23":
+  "6":
     continueonerrortype: ""
-    id: "23"
+    id: "6"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
       Full Run:
-      - "3"
+      - "2"
       Shadow Mode:
-      - "24"
+      - "7"
     note: false
     quietmode: 0
     scriptarguments:
@@ -319,59 +301,59 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: a6bc0525-0fc3-42b5-82dc-f1e60c25a27d
+      id: 8eb42e90-87d1-4aaa-92bc-62d8d51a195f
       iscommand: false
       name: Run Mode?
       playbooktaskmissingcomponent: null
-      script: 'ShadowModeRouter'
+      script: ShadowModeRouter
       type: condition
       version: -1
-    taskid: a6bc0525-0fc3-42b5-82dc-f1e60c25a27d
+    taskid: 8eb42e90-87d1-4aaa-92bc-62d8d51a195f
     timertriggers: []
     type: condition
     view: |-
       {
         "position": {
-          "x": 520,
-          "y": 250
+          "x": 820,
+          "y": 210
         }
       }
-  "24":
+  "7":
     continueonerrortype: ""
-    id: "24"
+    id: "7"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
       '#none#':
-      - "5"
+      - "3"
     note: false
     quietmode: 0
     scriptarguments:
       value:
         simple: |-
-          Shadow Mode: Palo XDR Auto File Deletion
-          Command: core-run-script-delete-file
+          Shadow: FireEye Email Security Block Domain
+          Command: fireeye-ex-create-blockedlist
     separatecontext: false
     skipunavailable: false
     task:
       brand: ""
       description: Prints text to war room (Markdown supported)
-      id: ffb42258-a95d-40df-811c-b6790521e9d1
+      id: 3db1b406-a2dd-4b4e-aeaf-8209488d795a
       iscommand: false
-      name: 'Shadow Mode: Palo XDR Auto File Deletion'
+      name: 'Shadow: FireEye Email Security Block Domain'
       playbooktaskmissingcomponent: null
       script: Print
       type: regular
       version: -1
-    taskid: ffb42258-a95d-40df-811c-b6790521e9d1
+    taskid: 3db1b406-a2dd-4b4e-aeaf-8209488d795a
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 770,
-          "y": 410
+          "x": 1160,
+          "y": 380
         }
       }
 version: -1
@@ -380,10 +362,10 @@ view: |-
     "linkLabelsPosition": {},
     "paper": {
       "dimensions": {
-        "height": 945,
-        "width": 830,
-        "x": 350,
-        "y": -90
+        "height": 875,
+        "width": 1130,
+        "x": 450,
+        "y": -250
       }
     }
   }

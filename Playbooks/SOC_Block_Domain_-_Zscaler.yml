@@ -2,67 +2,44 @@ adopted: true
 contentitemexportablefields:
   contentitemfields:
     definitionid: ""
-    fromServerVersion: 6.6.0
+    fromServerVersion: 5.5.0
     isoverridable: false
-    itemVersion: 2.7.15
+    itemVersion: 1.3.32
     packID: ""
-    packName: Common Playbooks
+    packName: Zscaler Internet Access
     prevname: ""
-    supportedModules:
-    - X1
-    - X3
-    - X5
-    - ENT_PLUS
+    supportedModules: []
     toServerVersion: ""
-description: "This playbook is one of the sub-playbooks in the eradication plan. \nThis
-  playbook executes actions of file deletion, which is a crucial step in the eradication
-  process."
+description: |-
+  This playbook blocks domains using Zscaler.
+  The playbook checks whether the Zscaler integration is enabled, whether the Domain input has been provided and if so, blocks the domain.
 dirtyInputs: true
-id: 'SOC Eradication Plan - Delete File'
+id: 'SOC Block Domain - Zscaler'
 inputSections:
 - description: Generic group for inputs
   inputs:
-  - FileRemediation
-  - EndpointID
-  - FilePath
+  - Domain
   - ShadowMode
   name: General (Inputs group)
 inputs:
-- description: "Choose 'Quarantine' or 'Delete' to avoid file remediation conflicts.
-    \nFor example, choosing 'Delete' ignores the 'Quarantine file' task under the
-    containment playbook and executes only file deletion."
-  key: FileRemediation
+- description: The Domain to block.
+  key: Domain
   playbookInputQuery: null
   required: false
-  value:
-    simple: Delete
-- description: The endpoint ID.
-  key: EndpointID
-  playbookInputQuery: null
-  required: false
-  value:
-    complex:
-      root: Endpoints
-- description: The file path for the file deletion task.
-  key: FilePath
-  playbookInputQuery: null
-  required: false
-  value:
-    complex:
-      root: Path
+  value: {}
 - description: ""
   key: ShadowMode
   playbookInputQuery: null
   required: false
   value:
     simple: "true"
-name: SOC Eradication Plan - Delete File
+name: SOC Block Domain - Zscaler
 outputSections:
 - description: Generic group for outputs
   name: General (Outputs group)
   outputs: []
 outputs: []
-sourceplaybookid: Eradication Plan - Delete File
+sourceplaybookid: Block Domain - Zscaler
 starttaskid: "0"
 tags:
 - SOC
@@ -76,26 +53,90 @@ tasks:
     isoversize: false
     nexttasks:
       '#none#':
-      - "21"
+      - "5"
     note: false
     quietmode: 0
     separatecontext: false
     skipunavailable: false
     task:
       brand: ""
-      id: 48cbb13a-a0c0-4a27-815a-66e38f3387ff
+      id: b124cfe7-a56f-4490-880b-78cf3274b99b
       iscommand: false
       name: ""
       playbooktaskmissingcomponent: null
       version: -1
-    taskid: 48cbb13a-a0c0-4a27-815a-66e38f3387ff
+    taskid: b124cfe7-a56f-4490-880b-78cf3274b99b
     timertriggers: []
     type: start
     view: |-
       {
         "position": {
-          "x": 360,
-          "y": -90
+          "x": 450,
+          "y": -210
+        }
+      }
+  "2":
+    conditions:
+    - condition:
+      - - ignorecase: true
+          left:
+            iscontext: true
+            value:
+              complex:
+                accessor: brand
+                filters:
+                - - ignorecase: true
+                    left:
+                      iscontext: true
+                      value:
+                        simple: modules.brand
+                    operator: isEqualString
+                    right:
+                      value:
+                        simple: Zscaler
+                - - ignorecase: true
+                    left:
+                      iscontext: true
+                      value:
+                        simple: modules.state
+                    operator: isEqualString
+                    right:
+                      value:
+                        simple: Active
+                root: modules
+          operator: isExists
+      label: "yes"
+    continueonerrortype: ""
+    id: "2"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#default#':
+      - "4"
+      "yes":
+      - "7"
+    note: false
+    quietmode: 0
+    separatecontext: false
+    skipunavailable: false
+    task:
+      brand: ""
+      description: Verify that there is a valid instance of Check Point Firewall enabled.
+      id: 566639bd-4b4b-47c5-81f5-1665ec447c34
+      iscommand: false
+      name: Is Zscaler enabled?
+      playbooktaskmissingcomponent: null
+      type: condition
+      version: -1
+    taskid: 566639bd-4b4b-47c5-81f5-1665ec447c34
+    timertriggers: []
+    type: condition
+    view: |-
+      {
+        "position": {
+          "x": 700,
+          "y": 170
         }
       }
   "3":
@@ -107,44 +148,40 @@ tasks:
     isoversize: false
     nexttasks:
       '#error#':
-      - "22"
+      - "6"
       '#none#':
-      - "19"
+      - "4"
     note: false
     quietmode: 0
     scriptarguments:
-      endpoint_ids:
+      url:
         complex:
-          root: inputs.EndpointID
-      file_path:
-        complex:
-          root: inputs.FilePath
+          root: inputs.Domain
     separatecontext: false
     skipunavailable: false
     task:
-      brand: ""
-      description: Initiates a new endpoint script execution to delete the specified
-        file.
-      id: 62686350-448d-4781-9ec5-2276b50dd884
+      brand: Zscaler
+      description: Adds the specified URLs to the block list.
+      id: 5c24626d-b1cd-4be5-8925-7d95ffc3b0ec
       iscommand: true
-      name: Auto file deletion
+      name: Block Domain
       playbooktaskmissingcomponent: null
-      script: '|||core-run-script-delete-file'
+      script: Zscaler|||zscaler-blacklist-url
       type: regular
       version: -1
-    taskid: 62686350-448d-4781-9ec5-2276b50dd884
+    taskid: 5c24626d-b1cd-4be5-8925-7d95ffc3b0ec
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 350,
-          "y": 430
+          "x": 780,
+          "y": 460
         }
       }
-  "5":
+  "4":
     continueonerrortype: ""
-    id: "5"
+    id: "4"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
@@ -154,125 +191,68 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: 040279ae-6f3d-42a1-8def-2c0565fd669f
+      id: 897a00db-2a04-48d5-8630-e55b5443f0b9
       iscommand: false
-      name: Done - File Deletion
+      name: Done
       playbooktaskmissingcomponent: null
       type: title
       version: -1
-    taskid: 040279ae-6f3d-42a1-8def-2c0565fd669f
+    taskid: 897a00db-2a04-48d5-8630-e55b5443f0b9
     timertriggers: []
     type: title
     view: |-
       {
         "position": {
-          "x": 350,
-          "y": 790
+          "x": 440,
+          "y": 670
         }
       }
-  "19":
-    continueonerror: true
-    continueonerrortype: errorPath
-    id: "19"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    nexttasks:
-      '#error#':
-      - "22"
-      '#none#':
-      - "5"
-    note: false
-    quietmode: 0
-    scriptarguments:
-      action_id:
-        complex:
-          accessor: action_id
-          root: Core.GetActionStatus
-    separatecontext: false
-    skipunavailable: false
-    task:
-      brand: ""
-      description: Retrieve the results of a script execution action.
-      id: ea39bf65-7f5c-4e0e-b47a-c23fcae7667f
-      iscommand: true
-      name: Get command result
-      playbooktaskmissingcomponent: null
-      script: '|||core-get-script-execution-results'
-      type: regular
-      version: -1
-    taskid: ea39bf65-7f5c-4e0e-b47a-c23fcae7667f
-    timertriggers: []
-    type: regular
-    view: |-
-      {
-        "position": {
-          "x": 350,
-          "y": 600
-        }
-      }
-  "21":
+  "5":
     conditions:
     - condition:
       - - left:
             iscontext: true
             value:
               complex:
-                root: inputs.FilePath
+                root: inputs.Domain
           operator: isNotEmpty
-      - - left:
-            iscontext: true
-            value:
-              complex:
-                root: inputs.EndpointID
-          operator: isNotEmpty
-      - - ignorecase: true
-          left:
-            iscontext: true
-            value:
-              complex:
-                root: inputs.FileRemediation
-          operator: isEqualString
-          right:
-            value:
-              simple: Delete
       label: "yes"
     continueonerrortype: ""
-    id: "21"
+    id: "5"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
       '#default#':
-      - "5"
+      - "4"
       "yes":
-      - "23"
+      - "2"
     note: false
     quietmode: 0
     separatecontext: false
     skipunavailable: false
     task:
       brand: ""
-      description: Whether to delete the file based on the input values.
-      id: a1a09dd3-d1de-40ae-898b-6fe92bd93c6e
+      description: Check whether the necessary inputs were provided
+      id: cfdef7e9-5188-4715-8a20-4cf22f75f1ee
       iscommand: false
-      name: Should delete the file?
+      name: Check if Domain input was provided
       playbooktaskmissingcomponent: null
       type: condition
       version: -1
-    taskid: a1a09dd3-d1de-40ae-898b-6fe92bd93c6e
+    taskid: cfdef7e9-5188-4715-8a20-4cf22f75f1ee
     timertriggers: []
     type: condition
     view: |-
       {
         "position": {
-          "x": 360,
-          "y": 70
+          "x": 450,
+          "y": -20
         }
       }
-  "22":
+  "6":
     continueonerrortype: ""
-    id: "22"
+    id: "6"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
@@ -282,26 +262,26 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: f70aec3b-d083-4117-832d-a75daa678c9b
+      id: 6e77c9b1-f8b7-4d4b-8695-e37a7e1f3441
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: f70aec3b-d083-4117-832d-a75daa678c9b
+    taskid: 6e77c9b1-f8b7-4d4b-8695-e37a7e1f3441
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 800,
-          "y": 785
+          "x": 1020,
+          "y": 665
         }
       }
-  "23":
+  "7":
     continueonerrortype: ""
-    id: "23"
+    id: "7"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
@@ -309,7 +289,7 @@ tasks:
       Full Run:
       - "3"
       Shadow Mode:
-      - "24"
+      - "8"
     note: false
     quietmode: 0
     scriptarguments:
@@ -319,71 +299,75 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      id: a6bc0525-0fc3-42b5-82dc-f1e60c25a27d
+      id: c7719eeb-e2f2-4bcf-9227-6d17ecc3bd4a
       iscommand: false
       name: Run Mode?
       playbooktaskmissingcomponent: null
-      script: 'ShadowModeRouter'
+      script: ShadowModeRouter
       type: condition
       version: -1
-    taskid: a6bc0525-0fc3-42b5-82dc-f1e60c25a27d
+    taskid: c7719eeb-e2f2-4bcf-9227-6d17ecc3bd4a
     timertriggers: []
     type: condition
     view: |-
       {
         "position": {
-          "x": 520,
-          "y": 250
+          "x": 980,
+          "y": 300
         }
       }
-  "24":
+  "8":
     continueonerrortype: ""
-    id: "24"
+    id: "8"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
       '#none#':
-      - "5"
+      - "4"
     note: false
     quietmode: 0
     scriptarguments:
       value:
         simple: |-
-          Shadow Mode: Palo XDR Auto File Deletion
-          Command: core-run-script-delete-file
+          Shadow: Zscaler Block Domain
+          Command: zscaler-blacklist-url
     separatecontext: false
     skipunavailable: false
     task:
       brand: ""
       description: Prints text to war room (Markdown supported)
-      id: ffb42258-a95d-40df-811c-b6790521e9d1
+      id: 7827dd70-3caf-4cd1-8d7c-b3b955049ab8
       iscommand: false
-      name: 'Shadow Mode: Palo XDR Auto File Deletion'
+      name: 'Shadow: Zscaler Block Domain'
       playbooktaskmissingcomponent: null
       script: Print
       type: regular
       version: -1
-    taskid: ffb42258-a95d-40df-811c-b6790521e9d1
+    taskid: 7827dd70-3caf-4cd1-8d7c-b3b955049ab8
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 770,
-          "y": 410
+          "x": 1310,
+          "y": 460
         }
       }
 version: -1
 view: |-
   {
-    "linkLabelsPosition": {},
+    "linkLabelsPosition": {
+      "2_4_#default#": 0.47,
+      "5_2_yes": 0.71,
+      "5_4_#default#": 0.53
+    },
     "paper": {
       "dimensions": {
         "height": 945,
-        "width": 830,
-        "x": 350,
-        "y": -90
+        "width": 1250,
+        "x": 440,
+        "y": -210
       }
     }
   }

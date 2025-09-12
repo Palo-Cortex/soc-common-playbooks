@@ -1,12 +1,19 @@
+adopted: true
 contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 5.0.0
     isoverridable: false
-    itemVersion: 1.0.0
+    itemVersion: 2.7.15
     packID: ""
-    packName: SOC Common Playbooks
+    packName: Common Playbooks
     prevname: ""
+    supportedModules:
+    - X1
+    - X3
+    - X5
+    - ENT_PLUS
+    - agentix
     toServerVersion: ""
 description: |-
   Enrich URLs using one or more integrations.
@@ -16,8 +23,16 @@ description: |-
   * Threat information.
   * Providing of URL screenshots.
   * URL Reputation using !url.
-adopted: true
+dirtyInputs: true
 id: 'SOC URL Enrichment - Generic v2'
+inputSections:
+- description: Generic group for inputs
+  inputs:
+  - URL
+  - Rasterize
+  - VerifyURL
+  - UseReputationCommand
+  name: General (Inputs group)
 inputs:
 - description: The URLs to enrich.
   key: URL
@@ -58,6 +73,32 @@ inputs:
   value:
     simple: "False"
 name: SOC URL Enrichment - Generic v2
+outputSections:
+- description: Generic group for outputs
+  name: General (Outputs group)
+  outputs:
+  - URL
+  - URL.Data
+  - DBotScore
+  - URL.Malicious
+  - URL.Malicious.Vendor
+  - URL.Malicious.Description
+  - DBotScore.Indicator
+  - DBotScore.Type
+  - DBotScore.Vendor
+  - DBotScore.Score
+  - DBotScore.Reliability
+  - URL.Relationships.EntityA
+  - URL.Relationships.EntityB
+  - URL.Relationships.Relationship
+  - URL.Relationships.EntityAType
+  - URL.Relationships.EntityBType
+  - InfoFile.EntryID
+  - InfoFile.Extension
+  - InfoFile.Name
+  - InfoFile.Info
+  - InfoFile.Size
+  - InfoFile.Type
 outputs:
 - contextPath: URL
   description: The URL object.
@@ -76,16 +117,16 @@ outputs:
 - contextPath: URL.Malicious.Description
   description: For malicious URLs, the reason that the vendor made the decision.
 - contextPath: DBotScore.Indicator
-  description: The indicator
+  description: The indicator.
   type: string
 - contextPath: DBotScore.Type
-  description: The indicator's type
+  description: The indicator's type.
   type: string
 - contextPath: DBotScore.Vendor
-  description: The reputation vendor
+  description: The reputation vendor.
   type: string
 - contextPath: DBotScore.Score
-  description: The reputation score
+  description: The reputation score.
   type: number
 - contextPath: DBotScore.Reliability
   description: Reliability of the source providing the intelligence data.
@@ -113,6 +154,9 @@ outputs:
   description: The type of the image/pdf file.
 sourceplaybookid: URL Enrichment - Generic v2
 starttaskid: "0"
+tags:
+- SOC
+- SOC_Framework
 tasks:
   "0":
     continueonerrortype: ""
@@ -132,6 +176,7 @@ tasks:
       id: e1a236ab-b35b-4b70-84a7-3ca08b9bbe95
       iscommand: false
       name: ""
+      playbooktaskmissingcomponent: null
       version: -1
     taskid: e1a236ab-b35b-4b70-84a7-3ca08b9bbe95
     timertriggers: []
@@ -139,8 +184,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 731,
-          "y": 50
+          "x": 490,
+          "y": 41
         }
       }
   "16":
@@ -179,6 +224,7 @@ tasks:
       id: 2e1b93fe-512d-4fba-80dd-2912bf3382f5
       iscommand: false
       name: Is there a URL to enrich?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 2e1b93fe-512d-4fba-80dd-2912bf3382f5
@@ -187,8 +233,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 731,
-          "y": 210
+          "x": 490,
+          "y": 175
         }
       }
   "24":
@@ -206,6 +252,7 @@ tasks:
       id: 7956570c-4a34-462b-84aa-0f8c6d01cf43
       iscommand: false
       name: Done
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 7956570c-4a34-462b-84aa-0f8c6d01cf43
@@ -214,8 +261,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1021.5,
-          "y": 1055
+          "x": 490,
+          "y": 1095
         }
       }
   "25":
@@ -261,6 +308,7 @@ tasks:
       id: 426d5e5a-76ec-4310-8157-e3ce1795f88f
       iscommand: false
       name: 'Is Rasterize integration enabled? '
+      playbooktaskmissingcomponent: null
       script: Exists
       type: condition
       version: -1
@@ -270,7 +318,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 631,
+          "x": -40,
           "y": 710
         }
       }
@@ -290,6 +338,8 @@ tasks:
     quietmode: 0
     reputationcalc: 1
     scriptarguments:
+      execution-timeout:
+        simple: "600"
       url:
         complex:
           root: inputs.URL
@@ -300,22 +350,23 @@ tasks:
     task:
       brand: Rasterize
       description: Gets a screenshot of the URL page.
-      id: 7c00aa2c-93fa-4e37-9352-70f05aa939c2
+      id: 45ed63d2-f583-48a3-8318-92317f597f06
       iscommand: true
       name: Get URL screenshot
+      playbooktaskmissingcomponent: null
       script: Rasterize|||rasterize
       tags:
       - url_screenshots
       type: regular
       version: -1
-    taskid: 7c00aa2c-93fa-4e37-9352-70f05aa939c2
+    taskid: 45ed63d2-f583-48a3-8318-92317f597f06
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 826.25,
-          "y": 880
+          "x": -40,
+          "y": 920
         }
       }
   "27":
@@ -353,6 +404,7 @@ tasks:
       id: 71af55e1-a11a-42f9-84f6-ce3ce93e17ce
       iscommand: false
       name: Capture screenshots of the URL?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 71af55e1-a11a-42f9-84f6-ce3ce93e17ce
@@ -361,8 +413,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 440.5,
-          "y": 540
+          "x": -40,
+          "y": 500
         }
       }
   "29":
@@ -383,6 +435,7 @@ tasks:
       id: 7fc4755c-5a08-4f90-8bab-12c892b21df4
       iscommand: false
       name: URL Screenshots
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 7fc4755c-5a08-4f90-8bab-12c892b21df4
@@ -391,8 +444,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 440.5,
-          "y": 380
+          "x": -40,
+          "y": 360
         }
       }
   "31":
@@ -413,6 +466,7 @@ tasks:
       id: 11224752-fee9-4a8f-82c0-5af370081779
       iscommand: false
       name: URL Verification
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 11224752-fee9-4a8f-82c0-5af370081779
@@ -421,8 +475,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1212,
-          "y": 545
+          "x": 489.5,
+          "y": 360
         }
       }
   "32":
@@ -451,20 +505,21 @@ tasks:
     task:
       brand: ""
       description: Verify URL SSL certificate.
-      id: cd6ac6d6-80a1-4927-907c-3ee69982f56e
+      id: 6238c2cb-a230-4546-9952-c7c51e78faf2
       iscommand: false
       name: Verify SSL for URLs
+      playbooktaskmissingcomponent: null
       script: URLSSLVerification
       type: regular
       version: -1
-    taskid: cd6ac6d6-80a1-4927-907c-3ee69982f56e
+    taskid: 6238c2cb-a230-4546-9952-c7c51e78faf2
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 1502.5,
-          "y": 880
+          "x": 490,
+          "y": 710
         }
       }
   "33":
@@ -502,6 +557,7 @@ tasks:
       id: 0a60d379-a6c4-449e-87e2-4939b8d0ad13
       iscommand: false
       name: Verify URLs?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 0a60d379-a6c4-449e-87e2-4939b8d0ad13
@@ -510,8 +566,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1212,
-          "y": 710
+          "x": 490,
+          "y": 500
         }
       }
   "37":
@@ -532,6 +588,7 @@ tasks:
       id: 395ad908-d5b6-4449-8665-b085546d0d42
       iscommand: false
       name: No URLs
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 395ad908-d5b6-4449-8665-b085546d0d42
@@ -540,8 +597,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 50,
-          "y": 885
+          "x": -510,
+          "y": 360
         }
       }
   "38":
@@ -562,6 +619,7 @@ tasks:
       id: 704516ae-95d9-4ef5-8772-1958046fcac7
       iscommand: false
       name: URL Reputation
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 704516ae-95d9-4ef5-8772-1958046fcac7
@@ -570,8 +628,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1793,
-          "y": 545
+          "x": 1010,
+          "y": 360
         }
       }
   "39":
@@ -599,20 +657,21 @@ tasks:
     task:
       brand: ""
       description: Checks the reputation of a URL.
-      id: 56774fc5-f600-449f-b8eb-4fe58f8e973e
+      id: 9c173500-98f2-46dd-8984-e0990a12ca73
       iscommand: true
       name: Check Reputation
+      playbooktaskmissingcomponent: null
       script: '|||url'
       type: regular
       version: -1
-    taskid: 56774fc5-f600-449f-b8eb-4fe58f8e973e
+    taskid: 9c173500-98f2-46dd-8984-e0990a12ca73
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 2083.5,
-          "y": 880
+          "x": 1010,
+          "y": 710
         }
       }
   "40":
@@ -649,6 +708,7 @@ tasks:
       id: e0db6ab1-2c0e-4859-84eb-e764c3fd01e5
       iscommand: false
       name: Should use !url command?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: e0db6ab1-2c0e-4859-84eb-e764c3fd01e5
@@ -657,8 +717,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1793,
-          "y": 710
+          "x": 1010,
+          "y": 500
         }
       }
   "41":
@@ -667,31 +727,27 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
-    loop:
-      exitCondition: ""
-      iscommand: false
-      max: 100
-      wait: 1
     note: false
     quietmode: 0
     separatecontext: true
-    skipunavailable: true
+    skipunavailable: false
     task:
       brand: ""
-      id: cf572e86-0f4c-4752-a74e-187d5499fef5
+      id: 984fa8e7-a1bb-41f3-8980-b8fbc2556185
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
+      playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: cf572e86-0f4c-4752-a74e-187d5499fef5
+    taskid: 984fa8e7-a1bb-41f3-8980-b8fbc2556185
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 1502.5,
-          "y": 1050
+          "x": 1050,
+          "y": 1090
         }
       }
 version: -1
@@ -707,10 +763,10 @@ view: |-
     },
     "paper": {
       "dimensions": {
-        "height": 1070,
-        "width": 2414.5,
-        "x": 50,
-        "y": 50
+        "height": 1119,
+        "width": 1940,
+        "x": -510,
+        "y": 41
       }
     }
   }

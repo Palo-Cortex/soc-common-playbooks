@@ -2,11 +2,11 @@ adopted: true
 contentitemexportablefields:
   contentitemfields:
     definitionid: ""
-    fromServerVersion: 6.6.0
+    fromServerVersion: ""
     isoverridable: false
-    itemVersion: 1.0.3
+    itemVersion: 2.7.16
     packID: ""
-    packName: SOC Malware Investigation Response
+    packName: SOC Common Playbooks
     prevname: ""
     supportedModules: []
     toServerVersion: ""
@@ -39,7 +39,6 @@ inputSections:
   - UserVerification
   - AutoBlockIndicators
   - ShadowMode
-  - Hostname
   name: General (Inputs group)
 inputs:
 - description: |-
@@ -154,12 +153,7 @@ inputs:
   playbookInputQuery: null
   required: false
   value:
-    simple: "True"
-- description: ""
-  key: Hostname
-  playbookInputQuery: null
-  required: false
-  value: {}
+    simple: "true"
 name: SOC Containment Plan
 outputSections:
 - description: Generic group for outputs
@@ -185,7 +179,6 @@ starttaskid: "0"
 tags:
 - SOC
 - SOC_Framework
-- Containment
 tasks:
   "0":
     continueonerrortype: ""
@@ -213,8 +206,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1347.75,
-          "y": 50
+          "x": 60,
+          "y": -1210
         }
       }
   "48":
@@ -225,7 +218,7 @@ tasks:
     isoversize: false
     nexttasks:
       '#none#':
-      - "153"
+      - "156"
     note: false
     quietmode: 0
     separatecontext: false
@@ -244,8 +237,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 531,
-          "y": 1220
+          "x": -780,
+          "y": 35
         }
       }
   "49":
@@ -256,7 +249,7 @@ tasks:
     isoversize: false
     nexttasks:
       '#none#':
-      - "152"
+      - "157"
     note: false
     quietmode: 0
     separatecontext: false
@@ -275,8 +268,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 50,
-          "y": 1220
+          "x": -360,
+          "y": 35
         }
       }
   "50":
@@ -287,7 +280,7 @@ tasks:
     isoversize: false
     nexttasks:
       '#none#':
-      - "156"
+      - "158"
     note: false
     quietmode: 0
     separatecontext: false
@@ -306,8 +299,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1974,
-          "y": 1220
+          "x": 60,
+          "y": 35
         }
       }
   "51":
@@ -318,7 +311,7 @@ tasks:
     isoversize: false
     nexttasks:
       '#none#':
-      - "155"
+      - "159"
     note: false
     quietmode: 0
     separatecontext: false
@@ -337,8 +330,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1493,
-          "y": 1220
+          "x": 480,
+          "y": 35
         }
       }
   "58":
@@ -349,7 +342,7 @@ tasks:
     isoversize: false
     nexttasks:
       '#none#':
-      - "154"
+      - "160"
     note: false
     quietmode: 0
     separatecontext: false
@@ -368,8 +361,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1012,
-          "y": 1220
+          "x": 900,
+          "y": 35
         }
       }
   "138":
@@ -417,8 +410,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1012,
-          "y": 720
+          "x": 60,
+          "y": -490
         }
       }
   "139":
@@ -641,20 +634,17 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1157.25,
-          "y": 890
+          "x": -190,
+          "y": -300
         }
       }
   "146":
-    continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "146"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "151"
       '#none#':
       - "138"
     note: false
@@ -679,21 +669,21 @@ tasks:
         concatenated using the AND condition (OR is not supported). Maximum result
         set size is 100. Offset is the zero-based number of endpoints from the start
         of the result set (start by counting from 0).
-      id: 03d1b8b6-1f1c-406f-b610-dc4f20236cce
+      id: 953056e0-a248-437e-8498-348287ca39bc
       iscommand: true
       name: Get endpoint info
       playbooktaskmissingcomponent: null
       script: '|||core-get-endpoints'
       type: regular
       version: -1
-    taskid: 03d1b8b6-1f1c-406f-b610-dc4f20236cce
+    taskid: 953056e0-a248-437e-8498-348287ca39bc
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 1347.75,
-          "y": 550
+          "x": 60,
+          "y": -670
         }
       }
   "147":
@@ -727,8 +717,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1012,
-          "y": 1060
+          "x": 60,
+          "y": -120
         }
       }
   "148":
@@ -755,20 +745,17 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 771.5,
-          "y": 1550
+          "x": 60,
+          "y": 340
         }
       }
   "149":
-    continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "149"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "151"
       '#none#':
       - "146"
     note: false
@@ -804,21 +791,21 @@ tasks:
     task:
       brand: ""
       description: Set a value in context under the key you entered.
-      id: 998d44d8-1e99-417c-9499-6f4d81fbc626
+      id: afefe6f1-1bc6-4c69-8fd4-7072d4fa9962
       iscommand: false
       name: Set Process list
       playbooktaskmissingcomponent: null
       script: Set
       type: regular
       version: -1
-    taskid: 998d44d8-1e99-417c-9499-6f4d81fbc626
+    taskid: afefe6f1-1bc6-4c69-8fd4-7072d4fa9962
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 1202.5,
-          "y": 380
+          "x": -190,
+          "y": -870
         }
       }
   "150":
@@ -868,264 +855,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1347.75,
-          "y": 210
-        }
-      }
-  "151":
-    continueonerrortype: ""
-    id: "151"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    loop:
-      exitCondition: ""
-      iscommand: false
-      max: 100
-      wait: 1
-    note: false
-    quietmode: 0
-    separatecontext: true
-    skipunavailable: true
-    task:
-      brand: ""
-      id: aced94f7-fbd0-45d2-a5b7-73ea951d0758
-      iscommand: false
-      name: Foundation - Error Handling
-      playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
-      type: playbook
-      version: -1
-    taskid: aced94f7-fbd0-45d2-a5b7-73ea951d0758
-    timertriggers: []
-    type: playbook
-    view: |-
-      {
-        "position": {
-          "x": 1733.5,
-          "y": 720
-        }
-      }
-  "152":
-    continueonerrortype: ""
-    id: "152"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    loop:
-      exitCondition: ""
-      iscommand: false
-      max: 100
-      wait: 1
-    nexttasks:
-      '#none#':
-      - "148"
-    note: false
-    quietmode: 0
-    scriptarguments:
-      UserContainment:
-        simple: "True"
-      UserVerification:
-        simple: "True"
-      Username:
-        simple: ${inputs.Username}
-    separatecontext: true
-    skipunavailable: false
-    task:
-      brand: ""
-      description: |-
-        ## Containment Plan - Disable Account
-
-        This playbook is a sub-playbook within the containment plan playbook.
-        The playbook disables users by utilizing the sub-playbook "Block Account - Generic v2"
-      id: 284389c2-390e-4ba5-ac67-a93f5a50f9ba
-      iscommand: false
-      name: SOC Containment Plan - Disable Account
-      playbookId: SOC Containment Plan - Disable Account
-      playbooktaskmissingcomponent: null
-      type: playbook
-      version: -1
-    taskid: 284389c2-390e-4ba5-ac67-a93f5a50f9ba
-    timertriggers: []
-    type: playbook
-    view: |-
-      {
-        "position": {
-          "x": 50,
-          "y": 1380
-        }
-      }
-  "153":
-    continueonerrortype: ""
-    id: "153"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    loop:
-      exitCondition: ""
-      iscommand: false
-      max: 100
-      wait: 1
-    nexttasks:
-      '#none#':
-      - "148"
-    note: false
-    quietmode: 0
-    scriptarguments:
-      EndpointHostName:
-        simple: ${inputs.Hostname}
-      EndpointID:
-        simple: ${inputs.EndpointID}
-      HostContainment:
-        simple: "True"
-      ShadowMode:
-        simple: ${inputs.ShadowMode}
-    separatecontext: true
-    skipunavailable: false
-    task:
-      brand: ""
-      description: |-
-        ## Containment Plan - Isolate Device
-
-        This playbook is a sub-playbook within the containment plan playbook.
-        The playbook isolates devices using core commands.
-      id: 3ee128ef-f98a-4212-b1be-ab616ec1cce9
-      iscommand: false
-      name: SOC Containment Plan - Isolate Device
-      playbookId: SOC Containment Plan - Isolate Device
-      playbooktaskmissingcomponent: null
-      type: playbook
-      version: -1
-    taskid: 3ee128ef-f98a-4212-b1be-ab616ec1cce9
-    timertriggers: []
-    type: playbook
-    view: |-
-      {
-        "position": {
-          "x": 531,
-          "y": 1380
-        }
-      }
-  "154":
-    continueonerrortype: ""
-    id: "154"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    loop:
-      exitCondition: ""
-      iscommand: false
-      max: 100
-      wait: 1
-    nexttasks:
-      '#none#':
-      - "148"
-    note: false
-    quietmode: 0
-    scriptarguments:
-      ClearUserSessions:
-        simple: "True"
-      IAMUserDomain:
-        simple: ${inputs.IAMUserDomain}
-      ShadowMode:
-        simple: "true"
-      Username:
-        simple: ${inputs.Username}
-    separatecontext: true
-    skipunavailable: false
-    task:
-      brand: ""
-      description: |-
-        ## Containment Plan - Clear User Sessions
-
-        This playbook is a sub-playbook within the containment plan playbook.
-        The playbook uses the 'Okta v2' and 'MSGraph User' integrations to clear user sessions.
-      id: db9bfcb6-a083-4640-b3fa-663eef655b91
-      iscommand: false
-      name: SOC Containment Plan - Clear User Sessions
-      playbookId: SOC Containment Plan - Clear User Sessions
-      playbooktaskmissingcomponent: null
-      type: playbook
-      version: -1
-    taskid: db9bfcb6-a083-4640-b3fa-663eef655b91
-    timertriggers: []
-    type: playbook
-    view: |-
-      {
-        "position": {
-          "x": 1012,
-          "y": 1380
-        }
-      }
-  "155":
-    continueonerrortype: ""
-    id: "155"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    loop:
-      exitCondition: ""
-      iscommand: false
-      max: 100
-      wait: 1
-    nexttasks:
-      '#none#':
-      - "148"
-    note: false
-    quietmode: 0
-    scriptarguments:
-      AutoBlockIndicators:
-        simple: "True"
-      AutoContainment:
-        simple: "True"
-      BlockIndicators:
-        simple: "True"
-      Domain:
-        simple: ${inputs.Domain}
-      FileHash:
-        simple: ${inputs.FileHash}
-      FilePath:
-        simple: ${inputs.FilePath}
-      IP:
-        simple: ${inputs.IP}
-      ShadowMode:
-        simple: ${inputs.ShadowMode}
-      URL:
-        simple: ${inputs.URL}
-      UserVerification:
-        simple: "False"
-      Username:
-        simple: ${inputs.Username}
-    separatecontext: true
-    skipunavailable: false
-    task:
-      brand: ""
-      description: |-
-        ## Containment Plan - Block Indicators
-
-        This playbook is a sub-playbook within the containment plan playbook.
-
-        ### Indicator Blocking
-
-        The playbook block indicators by two methods:
-
-        1. It adds the malicious hashes into the XSIAM hash block list
-        2. It utilizes the sub-playbook "Block Indicators - Generic v3"
-      id: cc35ff2f-f8b9-404e-932c-a45d42d91943
-      iscommand: false
-      name: SOC Containment Plan - Block Indicators
-      playbookId: SOC Containment Plan - Block Indicators
-      playbooktaskmissingcomponent: null
-      type: playbook
-      version: -1
-    taskid: cc35ff2f-f8b9-404e-932c-a45d42d91943
-    timertriggers: []
-    type: playbook
-    view: |-
-      {
-        "position": {
-          "x": 1493,
-          "y": 1380
+          "x": 60,
+          "y": -1060
         }
       }
   "156":
@@ -1145,8 +876,106 @@ tasks:
     note: false
     quietmode: 0
     scriptarguments:
-      AutoContainment:
+      EndpointID:
+        simple: ${inputs.EndpointID}
+      HostContainment:
         simple: "True"
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
+    separatecontext: true
+    skipunavailable: false
+    task:
+      brand: ""
+      description: |-
+        ## Containment Plan - Isolate Device
+
+        This playbook is a sub-playbook within the containment plan playbook.
+        The playbook isolates devices using core commands.
+      id: 5e594339-7ed0-4b55-8154-bd3032d9b119
+      iscommand: false
+      name: SOC Containment Plan - Isolate Device
+      playbookId: SOC Containment Plan - Isolate Device
+      playbooktaskmissingcomponent: null
+      type: playbook
+      version: -1
+    taskid: 5e594339-7ed0-4b55-8154-bd3032d9b119
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": -780,
+          "y": 170
+        }
+      }
+  "157":
+    continueonerrortype: ""
+    id: "157"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
+    nexttasks:
+      '#none#':
+      - "148"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
+      UserContainment:
+        simple: "True"
+      UserVerification:
+        simple: "True"
+      Username:
+        simple: ${inputs.Username}
+    separatecontext: true
+    skipunavailable: false
+    task:
+      brand: ""
+      description: |-
+        ## Containment Plan - Disable Account
+
+        This playbook is a sub-playbook within the containment plan playbook.
+        The playbook disables users by utilizing the sub-playbook "Block Account - Generic v2"
+      id: b36540a4-821a-4c7f-b2a2-812fea0b6bdc
+      iscommand: false
+      name: SOC Containment Plan - Disable Account
+      playbookId: SOC Containment Plan - Disable Account
+      playbooktaskmissingcomponent: null
+      type: playbook
+      version: -1
+    taskid: b36540a4-821a-4c7f-b2a2-812fea0b6bdc
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": -360,
+          "y": 170
+        }
+      }
+  "158":
+    continueonerrortype: ""
+    id: "158"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
+    nexttasks:
+      '#none#':
+      - "148"
+    note: false
+    quietmode: 0
+    scriptarguments:
       EndpointID:
         simple: ${inputs.EndpointID}
       FileContainment:
@@ -1168,21 +997,378 @@ tasks:
 
         This playbook is a sub-playbook within the containment plan playbook.
         The playbook quarantines files using core commands.
-      id: d4871d7b-437b-4ec6-87be-7ce7091ede6c
+      id: 135667f9-a941-493e-888e-cfdd7ce6b738
       iscommand: false
       name: SOC Containment Plan - Quarantine File
       playbookId: SOC Containment Plan - Quarantine File
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: d4871d7b-437b-4ec6-87be-7ce7091ede6c
+    taskid: 135667f9-a941-493e-888e-cfdd7ce6b738
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 1974,
-          "y": 1380
+          "x": 60,
+          "y": 170
+        }
+      }
+  "159":
+    continueonerrortype: ""
+    id: "159"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
+    nexttasks:
+      '#none#':
+      - "148"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      AutoBlockIndicators:
+        simple: "True"
+      AutoCommit:
+        simple: "No"
+      CustomBlockRule:
+        simple: "True"
+      CustomURLCategory:
+        simple: XSOAR Remediation - Malicious URLs
+      DomainToBlock:
+        complex:
+          accessor: Indicator
+          filters:
+          - - left:
+                iscontext: true
+                value:
+                  simple: DBotScore.Type
+              operator: isEqualString
+              right:
+                value:
+                  simple: domain
+          - - left:
+                iscontext: true
+                value:
+                  simple: DBotScore.Score
+              operator: greaterThanOrEqual
+              right:
+                value:
+                  simple: "3"
+          root: DBotScore
+          transformers:
+          - operator: uniq
+      EmailToBlock:
+        complex:
+          accessor: Indicator
+          filters:
+          - - left:
+                iscontext: true
+                value:
+                  simple: DBotScore.Type
+              operator: isEqualString
+              right:
+                value:
+                  simple: email
+          - - left:
+                iscontext: true
+                value:
+                  simple: DBotScore.Score
+              operator: greaterThanOrEqual
+              right:
+                value:
+                  simple: "3"
+          root: DBotScore
+          transformers:
+          - operator: uniq
+      FilesToBlock:
+        complex:
+          accessor: Indicator
+          filters:
+          - - left:
+                iscontext: true
+                value:
+                  simple: DBotScore.Type
+              operator: isEqualString
+              right:
+                value:
+                  simple: file
+          - - left:
+                iscontext: true
+                value:
+                  simple: DBotScore.Score
+              operator: greaterThanOrEqual
+              right:
+                value:
+                  simple: "3"
+          root: DBotScore
+          transformers:
+          - operator: uniq
+      IP:
+        complex:
+          accessor: Indicator
+          filters:
+          - - ignorecase: true
+              left:
+                iscontext: true
+                value:
+                  simple: DBotScore.Type
+              operator: isEqualString
+              right:
+                value:
+                  simple: ip
+          - - left:
+                iscontext: true
+                value:
+                  simple: DBotScore.Score
+              operator: greaterThanOrEqual
+              right:
+                value:
+                  simple: "3"
+          root: DBotScore
+          transformers:
+          - operator: uniq
+      InputEnrichment:
+        simple: "False"
+      InternalRange:
+        complex:
+          accessor: PrivateIPs
+          root: lists
+          transformers:
+          - args:
+              error_if_no_match: {}
+              ignore_case: {}
+              multi_line: {}
+              period_matches_newline: {}
+              regex:
+                value:
+                  simple: (\b(?:\d{1,3}\.){3}\d{1,3}\b/\d{1,2})
+              unpack_matches: {}
+            operator: RegexExtractAll
+          - args:
+              separator:
+                value:
+                  simple: ','
+            operator: join
+      MD5:
+        complex:
+          accessor: Indicator
+          filters:
+          - - left:
+                iscontext: true
+                value:
+                  simple: DBotScore.Indicator
+              operator: stringHasLength
+              right:
+                value:
+                  simple: "32"
+          - - left:
+                iscontext: true
+                value:
+                  simple: DBotScore.Score
+              operator: greaterThanOrEqual
+              right:
+                value:
+                  simple: "3"
+          - - left:
+                iscontext: true
+                value:
+                  simple: DBotScore.Type
+              operator: isEqualString
+              right:
+                value:
+                  simple: file
+            - left:
+                iscontext: true
+                value:
+                  simple: DBotScore.Type
+              operator: isEqualString
+              right:
+                value:
+                  simple: hash
+          root: DBotScore
+          transformers:
+          - operator: uniq
+      RuleDirection:
+        simple: outbound
+      RuleName:
+        simple: XSOAR - Block Indicators playbook - ${alert.id}
+      SHA256:
+        complex:
+          accessor: Indicator
+          filters:
+          - - left:
+                iscontext: true
+                value:
+                  simple: DBotScore.Indicator
+              operator: stringHasLength
+              right:
+                value:
+                  simple: "64"
+          - - left:
+                iscontext: true
+                value:
+                  simple: DBotScore.Score
+              operator: greaterThanOrEqual
+              right:
+                value:
+                  simple: "3"
+          - - left:
+                iscontext: true
+                value:
+                  simple: DBotScore.Type
+              operator: isEqualString
+              right:
+                value:
+                  simple: file
+            - left:
+                iscontext: true
+                value:
+                  simple: DBotScore.Type
+              operator: isEqualString
+              right:
+                value:
+                  simple: hash
+          root: DBotScore
+          transformers:
+          - operator: uniq
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
+      Tag:
+        simple: Blocked Indicator In Systems
+      URL:
+        complex:
+          accessor: Indicator
+          filters:
+          - - ignorecase: true
+              left:
+                iscontext: true
+                value:
+                  simple: DBotScore.Type
+              operator: isEqualString
+              right:
+                value:
+                  simple: url
+          - - left:
+                iscontext: true
+                value:
+                  simple: DBotScore.Score
+              operator: greaterThanOrEqual
+              right:
+                value:
+                  simple: "3"
+          root: DBotScore
+          transformers:
+          - operator: uniq
+      UserVerification:
+        simple: "True"
+      Username:
+        complex:
+          accessor: Indicator
+          filters:
+          - - ignorecase: true
+              left:
+                iscontext: true
+                value:
+                  simple: DBotScore.Type
+              operator: isEqualString
+              right:
+                value:
+                  simple: username
+          - - left:
+                iscontext: true
+                value:
+                  simple: DBotScore.Score
+              operator: greaterThanOrEqual
+              right:
+                value:
+                  simple: "3"
+          root: DBotScore
+          transformers:
+          - operator: uniq
+    separatecontext: true
+    skipunavailable: false
+    task:
+      brand: ""
+      description: |-
+        This playbook blocks malicious indicators using all integrations that are enabled, using the following sub-playbooks:
+
+        - Block URL - Generic v2
+        - Block Account - Generic v2
+        - Block IP - Generic v3
+        - Block File - Generic v2
+        - Block Email - Generic v2
+        - Block Domain - Generic v2.
+      id: de5206e9-177a-4019-8974-546d0803df15
+      iscommand: false
+      name: SOC Block Indicators - Generic v3
+      playbookId: SOC Block Indicators - Generic v3
+      playbooktaskmissingcomponent: null
+      type: playbook
+      version: -1
+    taskid: de5206e9-177a-4019-8974-546d0803df15
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": 480,
+          "y": 170
+        }
+      }
+  "160":
+    continueonerrortype: ""
+    id: "160"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
+    nexttasks:
+      '#none#':
+      - "148"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      ClearUserSessions:
+        simple: "True"
+      IAMUserDomain:
+        simple: ${inputs.Domain}
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
+      Username:
+        simple: ${inputs.Username}
+    separatecontext: true
+    skipunavailable: false
+    task:
+      brand: ""
+      description: |-
+        ## Containment Plan - Clear User Sessions
+
+        This playbook is a sub-playbook within the containment plan playbook.
+        The playbook uses the 'Okta v2' and 'MSGraph User' integrations to clear user sessions.
+      id: b096755b-0d8c-4892-96b5-d8cd3d58452e
+      iscommand: false
+      name: SOC Containment Plan - Clear User Sessions
+      playbookId: SOC Containment Plan - Clear User Sessions
+      playbooktaskmissingcomponent: null
+      type: playbook
+      version: -1
+    taskid: b096755b-0d8c-4892-96b5-d8cd3d58452e
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": 900,
+          "y": 170
         }
       }
 version: -1
@@ -1194,10 +1380,10 @@ view: |-
     },
     "paper": {
       "dimensions": {
-        "height": 1560,
-        "width": 2304,
-        "x": 50,
-        "y": 50
+        "height": 1610,
+        "width": 2060,
+        "x": -780,
+        "y": -1210
       }
     }
   }
