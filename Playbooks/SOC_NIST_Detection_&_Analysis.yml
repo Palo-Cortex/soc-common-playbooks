@@ -4,16 +4,16 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: ""
     isoverridable: false
-    itemVersion: 2.0.0
+    itemVersion: 2.7.17
     packID: ""
-    packName: SOC Framework
+    packName: SOC Common Playbooks
     prevname: ""
     supportedModules: []
     toServerVersion: ""
 description: Detection & Analysis (Endpoint) — chooses actions based on normalized
   entities and alert categories.
 dirtyInputs: true
-id: SOC NIST Detection & Analysis
+id: 'SOC NIST Detection & Analysis'
 inputSections:
 - description: Generic group for inputs
   inputs:
@@ -168,16 +168,14 @@ tasks:
             iscontext: true
             value:
               simple: inputs.endpointIP
-          operator: isExists
-          right:
-            value: {}
+          operator: isNotEmpty
       label: "Yes"
     - condition:
       - - left:
             iscontext: true
             value:
               simple: inputs.endpointIP
-          operator: isNotExists
+          operator: isEmpty
       label: "No"
     continueonerrortype: ""
     id: "5"
@@ -196,13 +194,13 @@ tasks:
     task:
       brand: ""
       description: Check Normalized.host.ip or Normalized.ip.ip.
-      id: ae30387d-0ca0-4f1e-b54f-6b2bbd801940
+      id: 209fde33-66f9-4f67-a8c9-b5e17592cd0f
       iscommand: false
       name: Have an Endpoint IP?
       playbooktaskmissingcomponent: null
       type: condition
       version: -1
-    taskid: ae30387d-0ca0-4f1e-b54f-6b2bbd801940
+    taskid: 209fde33-66f9-4f67-a8c9-b5e17592cd0f
     timertriggers: []
     type: condition
     view: |-
@@ -219,7 +217,7 @@ tasks:
             iscontext: true
             value:
               simple: inputs.username
-          operator: isExists
+          operator: isNotEmpty
           right:
             value: {}
       label: "Yes"
@@ -240,13 +238,13 @@ tasks:
     task:
       brand: ""
       description: Check Normalized.user fields for correlation.
-      id: 2629e4db-726d-47d5-8466-4173ebfba889
+      id: 80d0c66e-af12-43d1-b728-eed21b71d9fb
       iscommand: false
       name: Have a User tied to this endpoint?
       playbooktaskmissingcomponent: null
       type: condition
       version: -1
-    taskid: 2629e4db-726d-47d5-8466-4173ebfba889
+    taskid: 80d0c66e-af12-43d1-b728-eed21b71d9fb
     timertriggers: []
     type: condition
     view: |-
@@ -1302,11 +1300,28 @@ tasks:
     note: false
     quietmode: 0
     scriptarguments:
+      Domain:
+        complex:
+          root: inputs.username
+          transformers:
+          - operator: uniq
+          - args:
+              delimiter:
+                value:
+                  simple: \
+            operator: split
+          - operator: FirstArrayElement
       Username:
         complex:
           root: inputs.username
           transformers:
           - operator: uniq
+          - args:
+              delimiter:
+                value:
+                  simple: \
+            operator: split
+          - operator: LastArrayElement
     separatecontext: true
     skipunavailable: false
     task:
@@ -1324,14 +1339,14 @@ tasks:
         - Cortex XDR (account enrichment and reputation)
 
         Also, the playbook supports the generic command 'iam-get-user' (implemented in IAM integrations). For more information, visit https://xsoar.pan.dev/docs/integrations/iam-integrations.
-      id: 6cc7e1d9-0824-4ba5-a1d5-a8887734c72e
+      id: beafab5d-1aa6-4977-ae00-c9000be07e93
       iscommand: false
       name: SOC Account Enrichment - Generic v2.1
       playbookId: SOC Account Enrichment - Generic v2.1
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 6cc7e1d9-0824-4ba5-a1d5-a8887734c72e
+    taskid: beafab5d-1aa6-4977-ae00-c9000be07e93
     timertriggers: []
     type: playbook
     view: |-
