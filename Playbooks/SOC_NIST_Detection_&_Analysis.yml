@@ -13,7 +13,7 @@ contentitemexportablefields:
 description: Detection & Analysis (Endpoint) — chooses actions based on normalized
   entities and alert categories.
 dirtyInputs: true
-id: SOC NIST Detection & Analysis_NMILES
+id: SOC NIST Detection & Analysis
 inputSections:
 - description: Generic group for inputs
   inputs:
