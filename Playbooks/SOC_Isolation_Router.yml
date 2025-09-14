@@ -4,7 +4,7 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: ""
     isoverridable: false
-    itemVersion: 2.7.17
+    itemVersion: 2.7.18
     packID: ""
     packName: SOC Common Playbooks
     prevname: ""
@@ -136,50 +136,6 @@ tasks:
           "y": 510
         }
       }
-  "4":
-    continueonerrortype: ""
-    id: "4"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    loop:
-      exitCondition: ""
-      iscommand: false
-      max: 100
-      wait: 1
-    nexttasks:
-      '#none#':
-      - "6"
-    note: false
-    quietmode: 0
-    scriptarguments:
-      Device_id:
-        simple: ${inputs.Endpoint ID}
-      ShadowMode:
-        simple: ${inputs.ShadowMode}
-    separatecontext: true
-    skipunavailable: false
-    task:
-      brand: ""
-      description: This playbook will auto isolate endpoints by the device ID that
-        was provided in the playbook.
-      id: fb2f8f6e-2e77-46f6-af92-33cb7dc4612a
-      iscommand: false
-      name: SOC Crowdstrike Falcon - Isolate Endpoint
-      playbookId: Crowdstrike Falcon - Isolate Endpoint
-      playbooktaskmissingcomponent: null
-      type: playbook
-      version: -1
-    taskid: fb2f8f6e-2e77-46f6-af92-33cb7dc4612a
-    timertriggers: []
-    type: playbook
-    view: |-
-      {
-        "position": {
-          "x": 450,
-          "y": 510
-        }
-      }
   "5":
     continueonerrortype: ""
     id: "5"
@@ -249,7 +205,7 @@ tasks:
       "no":
       - "9"
       "yes":
-      - "4"
+      - "13"
     note: false
     quietmode: 0
     scriptarguments:
@@ -446,10 +402,44 @@ tasks:
           "y": 510
         }
       }
+  "13":
+    continueonerrortype: ""
+    id: "13"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    nexttasks:
+      '#none#':
+      - "6"
+    note: false
+    quietmode: 0
+    separatecontext: true
+    skipunavailable: false
+    task:
+      brand: ""
+      id: 05264cd5-48ee-4bc8-859c-a7c66c9b5ffa
+      iscommand: false
+      name: SOC Crowdstrike Falcon - Isolate Endpoint
+      playbookId: SOC Crowdstrike Falcon - Isolate Endpoint
+      playbooktaskmissingcomponent: null
+      type: playbook
+      version: -1
+    taskid: 05264cd5-48ee-4bc8-859c-a7c66c9b5ffa
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": 450,
+          "y": 510
+        }
+      }
 version: -1
 view: |-
   {
-    "linkLabelsPosition": {},
+    "linkLabelsPosition": {
+      "8_13_yes": 0.84
+    },
     "paper": {
       "dimensions": {
         "height": 1810,
