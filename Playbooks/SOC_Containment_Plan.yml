@@ -4,7 +4,7 @@ contentitemexportablefields:
     definitionid: ""
     fromServerVersion: 6.6.0
     isoverridable: false
-    itemVersion: 1.0.4
+    itemVersion: 2.7.17
     packID: ""
     packName: SOC Common Playbooks
     prevname: ""
@@ -17,7 +17,7 @@ description: "This playbook handles the main containment actions available with 
   playbook supports only Okta)\n\nNote: The playbook inputs enable manipulating the
   execution flow. Read the input descriptions for details."
 dirtyInputs: true
-id: SOC Containment Plan
+id: 'SOC Containment Plan'
 inputSections:
 - description: Generic group for inputs
   inputs:
@@ -162,7 +162,7 @@ inputs:
   playbookInputQuery: null
   required: false
   value:
-    simple: "True"
+    simple: "true"
 - description: ""
   key: Hostname
   playbookInputQuery: null
@@ -924,6 +924,8 @@ tasks:
     note: false
     quietmode: 0
     scriptarguments:
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
       UserContainment:
         simple: "True"
       UserVerification:
@@ -939,14 +941,14 @@ tasks:
 
         This playbook is a sub-playbook within the containment plan playbook.
         The playbook disables users by utilizing the sub-playbook "Block Account - Generic v2"
-      id: f5515bce-2538-41db-8d2a-1046dd6d34c7
+      id: bbc1c9b5-3abb-4b20-acab-b19c36485fde
       iscommand: false
       name: SOC Containment Plan - Disable Account
       playbookId: SOC Containment Plan - Disable Account
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: f5515bce-2538-41db-8d2a-1046dd6d34c7
+    taskid: bbc1c9b5-3abb-4b20-acab-b19c36485fde
     timertriggers: []
     type: playbook
     view: |-
@@ -978,7 +980,7 @@ tasks:
       IAMUserDomain:
         simple: ${inputs.IAMUserDomain}
       ShadowMode:
-        simple: "true"
+        simple: ${inputs.ShadowMode}
       Username:
         simple: ${inputs.Username}
     separatecontext: true
@@ -990,14 +992,14 @@ tasks:
 
         This playbook is a sub-playbook within the containment plan playbook.
         The playbook uses the 'Okta v2' and 'MSGraph User' integrations to clear user sessions.
-      id: f5d7f79d-767f-4951-8c9a-3fd202d067cf
+      id: 6db2a243-bb8c-41ae-ad4b-d398c3bdd469
       iscommand: false
       name: SOC Containment Plan - Clear User Sessions
       playbookId: SOC Containment Plan - Clear User Sessions
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: f5d7f79d-767f-4951-8c9a-3fd202d067cf
+    taskid: 6db2a243-bb8c-41ae-ad4b-d398c3bdd469
     timertriggers: []
     type: playbook
     view: |-
@@ -1694,20 +1696,26 @@ tasks:
     scriptarguments:
       Endpoint ID:
         simple: ${inputs.EndpointID}
+      Endpoint IP:
+        simple: ${inputs.IP}
       Endpoint hostname:
         simple: ${inputs.Hostname}
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
     separatecontext: true
     skipunavailable: false
     task:
       brand: ""
-      id: 834970bc-9ef5-4139-8993-200859524f70
+      description: Determine the correct playbook to run for the correct endpoint
+        product.
+      id: a81256dd-ecc9-409b-9b9f-bea93c3844ab
       iscommand: false
       name: SOC Isolation Router
       playbookId: SOC Isolation Router
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 834970bc-9ef5-4139-8993-200859524f70
+    taskid: a81256dd-ecc9-409b-9b9f-bea93c3844ab
     timertriggers: []
     type: playbook
     view: |-

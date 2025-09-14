@@ -1,13 +1,25 @@
 adopted: true
+contentitemexportablefields:
+  contentitemfields:
+    definitionid: ""
+    fromServerVersion: ""
+    isoverridable: false
+    itemVersion: 2.7.17
+    packID: ""
+    packName: SOC Common Playbooks
+    prevname: ""
+    supportedModules: []
+    toServerVersion: ""
 description: Determine the correct playbook to run for the correct endpoint product.
 dirtyInputs: true
-id: SOC Isolation Router
+id: 'SOC Isolation Router'
 inputSections:
 - description: Generic group for inputs
   inputs:
   - Endpoint ID
   - Endpoint hostname
   - Endpoint IP
+  - ShadowMode
   name: General (Inputs group)
 inputs:
 - description: Device/Endpoint ID
@@ -25,12 +37,19 @@ inputs:
   playbookInputQuery: null
   required: false
   value: {}
+- description: ""
+  key: ShadowMode
+  playbookInputQuery: null
+  required: false
+  value:
+    simple: "true"
 name: SOC Isolation Router
 outputSections:
 - description: Generic group for outputs
   name: General (Outputs group)
   outputs: []
 outputs: []
+sourceplaybookid: SOC Isolation Router
 starttaskid: "0"
 tags:
 - SOC
@@ -72,38 +91,6 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
-    nexttasks:
-      '#none#':
-      - "6"
-    note: false
-    quietmode: 0
-    separatecontext: true
-    skipunavailable: false
-    task:
-      brand: ""
-      id: 6ad33fdd-d23b-4c21-8967-655f2968937d
-      iscommand: false
-      name: SOC Containment Plan - Isolate Device
-      playbookId: SOC Containment Plan - Isolate Device
-      playbooktaskmissingcomponent: null
-      type: playbook
-      version: -1
-    taskid: 6ad33fdd-d23b-4c21-8967-655f2968937d
-    timertriggers: []
-    type: playbook
-    view: |-
-      {
-        "position": {
-          "x": 0,
-          "y": 510
-        }
-      }
-  "3":
-    continueonerrortype: ""
-    id: "3"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
     loop:
       exitCondition: ""
       iscommand: false
@@ -115,34 +102,37 @@ tasks:
     note: false
     quietmode: 0
     scriptarguments:
-      Device_IP:
-        simple: ${inputs.Endpoint IP}
-      Device_id:
-        simple: ${inputs.Endpoint ID}
-      Hostname:
+      EndpointHostName:
         simple: ${inputs.Endpoint hostname}
-      Isolation_type:
-        simple: Full
+      EndpointID:
+        simple: ${inputs.Endpoint ID}
+      HostContainment:
+        simple: "True"
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
     separatecontext: true
     skipunavailable: false
     task:
       brand: ""
-      description: This playbook accepts an endpoint ID, IP, or host name and isolates
-        it using the Microsoft Defender For Endpoint integration.
-      id: cfc51e63-4692-4ca1-86a0-38ef20627967
+      description: |-
+        ## Containment Plan - Isolate Device
+
+        This playbook is a sub-playbook within the containment plan playbook.
+        The playbook isolates devices using core commands.
+      id: a9edc2b4-6d58-48d5-979f-2cb7a388a7ae
       iscommand: false
-      name: Microsoft Defender For Endpoint - Isolate Endpoint
-      playbookId: Microsoft Defender For Endpoint - Isolate Endpoint
+      name: SOC Containment Plan - Isolate Device
+      playbookId: SOC Containment Plan - Isolate Device
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: cfc51e63-4692-4ca1-86a0-38ef20627967
+    taskid: a9edc2b4-6d58-48d5-979f-2cb7a388a7ae
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 870,
+          "x": 0,
           "y": 510
         }
       }
@@ -165,20 +155,22 @@ tasks:
     scriptarguments:
       Device_id:
         simple: ${inputs.Endpoint ID}
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
     separatecontext: true
     skipunavailable: false
     task:
       brand: ""
       description: This playbook will auto isolate endpoints by the device ID that
         was provided in the playbook.
-      id: 4e27b5ea-b00b-4509-8bcd-0b34fbf87fd5
+      id: fb2f8f6e-2e77-46f6-af92-33cb7dc4612a
       iscommand: false
       name: SOC Crowdstrike Falcon - Isolate Endpoint
       playbookId: Crowdstrike Falcon - Isolate Endpoint
       playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 4e27b5ea-b00b-4509-8bcd-0b34fbf87fd5
+    taskid: fb2f8f6e-2e77-46f6-af92-33cb7dc4612a
     timertriggers: []
     type: playbook
     view: |-
@@ -215,7 +207,7 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1320,
+          "x": 1310,
           "y": 510
         }
       }
@@ -296,7 +288,7 @@ tasks:
       "no":
       - "5"
       "yes":
-      - "3"
+      - "12"
     note: false
     quietmode: 0
     scriptarguments:
@@ -404,6 +396,56 @@ tasks:
           "y": -450
         }
       }
+  "12":
+    continueonerrortype: ""
+    id: "12"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
+    nexttasks:
+      '#none#':
+      - "6"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      Device_IP:
+        simple: ${inputs.Endpoint IP}
+      Device_id:
+        simple: ${issue.deviceid}
+      Hostname:
+        simple: ${inputs.Endpoint hostname}
+      Isolation_type:
+        simple: Full
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
+    separatecontext: true
+    skipunavailable: false
+    task:
+      brand: ""
+      description: This playbook accepts an endpoint ID, IP, or host name and isolates
+        it using the Microsoft Defender For Endpoint integration.
+      id: e40517f0-b04d-4d49-ba32-5aeb875ffafc
+      iscommand: false
+      name: SOC Microsoft Defender For Endpoint - Isolate Endpoint
+      playbookId: Microsoft Defender For Endpoint - Isolate Endpoint
+      playbooktaskmissingcomponent: null
+      type: playbook
+      version: -1
+    taskid: e40517f0-b04d-4d49-ba32-5aeb875ffafc
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": 890,
+          "y": 510
+        }
+      }
 version: -1
 view: |-
   {
@@ -411,7 +453,7 @@ view: |-
     "paper": {
       "dimensions": {
         "height": 1810,
-        "width": 1700,
+        "width": 1690,
         "x": 0,
         "y": -900
       }
