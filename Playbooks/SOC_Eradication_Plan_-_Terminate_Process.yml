@@ -1,12 +1,18 @@
+adopted: true
 contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 6.6.0
     isoverridable: false
-    itemVersion: 1.0.0
+    itemVersion: 2.7.15
     packID: ""
-    packName: SOC Common Playbooks
+    packName: Common Playbooks
     prevname: ""
+    supportedModules:
+    - X1
+    - X3
+    - X5
+    - ENT_PLUS
     toServerVersion: ""
 description: "This playbook is one of the sub-playbooks in the eradication plan. \nThis
   playbook handles the termination of the processes as a crucial step in the eradication
@@ -48,8 +54,7 @@ inputs:
   playbookInputQuery: null
   required: false
   value: {}
-- description: Shadow Mode is a key safety mechanism. It ensures actions like isolate_endpoint
-    or disable_user are logged but not executed in test scenarios.
+- description: ""
   key: ShadowMode
   playbookInputQuery: null
   required: false
@@ -67,6 +72,9 @@ outputs:
   type: unknown
 sourceplaybookid: Eradication Plan - Terminate Process
 starttaskid: "0"
+tags:
+- SOC
+- SOC_Framework
 tasks:
   "0":
     continueonerrortype: ""
@@ -86,6 +94,7 @@ tasks:
       id: 0c2bd2d8-2747-473f-873c-fdf0258c1425
       iscommand: false
       name: ""
+      playbooktaskmissingcomponent: null
       version: -1
     taskid: 0c2bd2d8-2747-473f-873c-fdf0258c1425
     timertriggers: []
@@ -93,8 +102,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 485.75,
-          "y": 50
+          "x": 190,
+          "y": -180
         }
       }
   "1":
@@ -182,6 +191,7 @@ tasks:
       id: 387a0de2-f9a3-412a-8531-299ba47ac010
       iscommand: false
       name: Should terminate the process?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 387a0de2-f9a3-412a-8531-299ba47ac010
@@ -190,8 +200,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 485.75,
-          "y": 210
+          "x": 190,
+          "y": -40
         }
       }
   "5":
@@ -209,6 +219,7 @@ tasks:
       id: b6c458a7-8533-4692-87af-498de4ea894f
       iscommand: false
       name: Done - Process Termination
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: b6c458a7-8533-4692-87af-498de4ea894f
@@ -217,20 +228,17 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1457.25,
-          "y": 1575
+          "x": 190,
+          "y": 1240
         }
       }
   "8":
-    continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "8"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "23"
       '#none#':
       - "10"
     note: false
@@ -245,20 +253,21 @@ tasks:
     task:
       brand: ""
       description: Retrieve the results of a script execution action.
-      id: 7a78b307-e4c3-43e8-a792-f5aa97aef737
+      id: d1bf1eb3-8962-4fe0-8f37-dd1d6e67fc1d
       iscommand: true
       name: Get command result
+      playbooktaskmissingcomponent: null
       script: '|||core-get-script-execution-results'
       type: regular
       version: -1
-    taskid: 7a78b307-e4c3-43e8-a792-f5aa97aef737
+    taskid: d1bf1eb3-8962-4fe0-8f37-dd1d6e67fc1d
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 921.5,
-          "y": 890
+          "x": -70,
+          "y": 500
         }
       }
   "9":
@@ -299,20 +308,21 @@ tasks:
     task:
       brand: ""
       description: Initiates a new endpoint script execution kill process.
-      id: ef0dd65f-bc20-4019-9c21-80be16c48811
+      id: 9fbfc5a0-d0b7-4354-a968-e8964e4ee45e
       iscommand: true
       name: process termination
+      playbooktaskmissingcomponent: null
       script: '|||core-run-script-kill-process'
       type: regular
       version: -1
-    taskid: ef0dd65f-bc20-4019-9c21-80be16c48811
+    taskid: 9fbfc5a0-d0b7-4354-a968-e8964e4ee45e
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 776.25,
-          "y": 720
+          "x": -70,
+          "y": 320
         }
       }
   "10":
@@ -350,6 +360,7 @@ tasks:
       id: 5bb3ab00-26df-4e11-89b2-a213d1eba8aa
       iscommand: false
       name: Was the process terminated?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 5bb3ab00-26df-4e11-89b2-a213d1eba8aa
@@ -358,20 +369,17 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1112,
-          "y": 1060
+          "x": -70,
+          "y": 670
         }
       }
   "11":
-    continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "11"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "23"
       '#none#':
       - "12"
     note: false
@@ -414,32 +422,30 @@ tasks:
     task:
       brand: ""
       description: Set a value in context under the key you entered.
-      id: 5ea381cd-00ea-42df-b3cd-c54c7eee9f4c
+      id: 960374b2-8b4a-4577-8bf1-ac02f9ceccf4
       iscommand: false
       name: Set terminated process per endpoint ID
+      playbooktaskmissingcomponent: null
       script: Set
       type: regular
       version: -1
-    taskid: 5ea381cd-00ea-42df-b3cd-c54c7eee9f4c
+    taskid: 960374b2-8b4a-4577-8bf1-ac02f9ceccf4
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 1262,
-          "y": 1230
+          "x": -70,
+          "y": 860
         }
       }
   "12":
-    continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "12"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "23"
       '#none#':
       - "5"
     note: false
@@ -457,20 +463,21 @@ tasks:
     task:
       brand: Builtin
       description: commands.local.cmd.set.parent.alert.context
-      id: 1bb11c3b-a4c6-4301-9d8f-ca031e1cd70e
+      id: 42d427fd-6d4a-4b70-8b1a-35c76fdd8d45
       iscommand: true
       name: Set Deleted files per endpoint ID to the Alert context
+      playbooktaskmissingcomponent: null
       script: Builtin|||setParentIncidentContext
       type: regular
       version: -1
-    taskid: 1bb11c3b-a4c6-4301-9d8f-ca031e1cd70e
+    taskid: 42d427fd-6d4a-4b70-8b1a-35c76fdd8d45
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 1407.25,
-          "y": 1400
+          "x": -70,
+          "y": 1040
         }
       }
   "13":
@@ -498,32 +505,30 @@ tasks:
     task:
       brand: ""
       description: Initiate a new endpoint script execution of shell commands.
-      id: dcb93cd0-eb90-435e-87c5-1a81049d7f48
+      id: b55e14c5-51c9-455a-8560-36383f942676
       iscommand: true
       name: process termination
+      playbooktaskmissingcomponent: null
       script: '|||core-run-script-execute-commands'
       type: regular
       version: -1
-    taskid: dcb93cd0-eb90-435e-87c5-1a81049d7f48
+    taskid: b55e14c5-51c9-455a-8560-36383f942676
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 2764.5,
-          "y": 720
+          "x": 440,
+          "y": 320
         }
       }
   "15":
-    continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "15"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "23"
       '#none#':
       - "16"
     note: false
@@ -538,20 +543,21 @@ tasks:
     task:
       brand: ""
       description: Retrieve the results of a script execution action.
-      id: 8a42ce25-88cc-4735-b9a8-f70089cd1182
+      id: 98faa8b1-1539-4e59-8274-c8434226eff7
       iscommand: true
       name: Get command result
+      playbooktaskmissingcomponent: null
       script: '|||core-get-script-execution-results'
       type: regular
       version: -1
-    taskid: 8a42ce25-88cc-4735-b9a8-f70089cd1182
+    taskid: 98faa8b1-1539-4e59-8274-c8434226eff7
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 3000.25,
-          "y": 890
+          "x": 440,
+          "y": 500
         }
       }
   "16":
@@ -589,6 +595,7 @@ tasks:
       id: 1a42b9b2-db4a-4905-8dd5-4b47d18449fc
       iscommand: false
       name: Was the process terminated?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 1a42b9b2-db4a-4905-8dd5-4b47d18449fc
@@ -597,20 +604,17 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3245.5,
-          "y": 1060
+          "x": 440,
+          "y": 670
         }
       }
   "17":
-    continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "17"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "23"
       '#none#':
       - "18"
     note: false
@@ -653,32 +657,30 @@ tasks:
     task:
       brand: ""
       description: Set a value in context under the key you entered.
-      id: 330ebeba-1363-4bbb-aaf9-577b4f2e818f
+      id: 800bc596-f674-43ff-84cf-91da9573954b
       iscommand: false
       name: Set terminated process per endpoint ID
+      playbooktaskmissingcomponent: null
       script: Set
       type: regular
       version: -1
-    taskid: 330ebeba-1363-4bbb-aaf9-577b4f2e818f
+    taskid: 800bc596-f674-43ff-84cf-91da9573954b
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 3390.75,
-          "y": 1230
+          "x": 440,
+          "y": 860
         }
       }
   "18":
-    continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "18"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "23"
       '#none#':
       - "5"
     note: false
@@ -696,32 +698,30 @@ tasks:
     task:
       brand: Builtin
       description: commands.local.cmd.set.parent.alert.context
-      id: 6339d3c1-4982-43aa-a985-705bb5ce42c8
+      id: 0056cbe7-0eda-4bea-832f-9438e1f45936
       iscommand: true
       name: Set Deleted files per endpoint ID to the Alert context
+      playbooktaskmissingcomponent: null
       script: Builtin|||setParentIncidentContext
       type: regular
       version: -1
-    taskid: 6339d3c1-4982-43aa-a985-705bb5ce42c8
+    taskid: 0056cbe7-0eda-4bea-832f-9438e1f45936
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 3536,
-          "y": 1400
+          "x": 440,
+          "y": 1040
         }
       }
   "19":
-    continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "19"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "23"
       '#none#':
       - "5"
     note: false
@@ -734,32 +734,30 @@ tasks:
     task:
       brand: ""
       description: Prints an error entry with a given message
-      id: 87d317e4-6a59-417e-8a49-67b37b1c4a7e
+      id: c7749af3-73ff-4422-87dd-e8caeb84c069
       iscommand: false
       name: Print Error
+      playbooktaskmissingcomponent: null
       script: PrintErrorEntry
       type: regular
       version: -1
-    taskid: 87d317e4-6a59-417e-8a49-67b37b1c4a7e
+    taskid: c7749af3-73ff-4422-87dd-e8caeb84c069
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 2955,
-          "y": 1400
+          "x": 1020,
+          "y": 860
         }
       }
   "20":
-    continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "20"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "23"
       '#none#':
       - "5"
     note: false
@@ -772,32 +770,30 @@ tasks:
     task:
       brand: ""
       description: Prints an error entry with a given message
-      id: 597a7cb9-dae4-42fb-83d6-85ed7a68f898
+      id: 4e7794f3-70a6-4941-8e9e-65ef20777dca
       iscommand: false
       name: Print Error
+      playbooktaskmissingcomponent: null
       script: PrintErrorEntry
       type: regular
       version: -1
-    taskid: 597a7cb9-dae4-42fb-83d6-85ed7a68f898
+    taskid: 4e7794f3-70a6-4941-8e9e-65ef20777dca
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 826.25,
-          "y": 1400
+          "x": -490,
+          "y": 860
         }
       }
   "21":
-    continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "21"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "23"
       '#none#':
       - "26"
     note: false
@@ -831,32 +827,30 @@ tasks:
     task:
       brand: ""
       description: Set a value in context under the key you entered.
-      id: 1b8b945d-813a-4759-92a7-d4ab514e5b06
+      id: e5475bb4-564f-4364-892b-12b130016b7a
       iscommand: false
       name: Set PID
+      playbooktaskmissingcomponent: null
       script: Set
       type: regular
       version: -1
-    taskid: 1b8b945d-813a-4759-92a7-d4ab514e5b06
+    taskid: e5475bb4-564f-4364-892b-12b130016b7a
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 2474,
-          "y": 380
+          "x": 440,
+          "y": 150
         }
       }
   "22":
-    continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "22"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "23"
       '#none#':
       - "24"
     note: false
@@ -890,20 +884,21 @@ tasks:
     task:
       brand: ""
       description: Set a value in context under the key you entered.
-      id: c6e876b7-bdb5-43d9-99e2-37ef4496b624
+      id: 77d2329d-39ac-4e97-8490-b759589f91ad
       iscommand: false
       name: Set Path
+      playbooktaskmissingcomponent: null
       script: Set
       type: regular
       version: -1
-    taskid: c6e876b7-bdb5-43d9-99e2-37ef4496b624
+    taskid: 77d2329d-39ac-4e97-8490-b759589f91ad
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 485.75,
-          "y": 380
+          "x": -70,
+          "y": 150
         }
       }
   "23":
@@ -912,73 +907,64 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
-    loop:
-      exitCondition: ""
-      iscommand: false
-      max: 100
-      wait: 1
     note: false
     quietmode: 0
     separatecontext: true
-    skipunavailable: true
+    skipunavailable: false
     task:
       brand: ""
-      id: b7df908e-dfb8-4d89-9baf-cbe2e3960eb2
+      id: ee7dd725-fe5f-4919-8e7f-46115af0617d
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
+      playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: b7df908e-dfb8-4d89-9baf-cbe2e3960eb2
+    taskid: ee7dd725-fe5f-4919-8e7f-46115af0617d
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 1938.25,
-          "y": 1570
+          "x": 710,
+          "y": 1235
         }
       }
   "24":
-    conditions:
-    - condition:
-      - - left:
-            iscontext: true
-            value:
-              simple: inputs.ShadowMode
-          operator: isFalse
-          right:
-            value: {}
-      label: "no"
     continueonerrortype: ""
     id: "24"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#default#':
-      - "25"
-      "no":
+      Full Run:
       - "9"
+      Shadow Mode:
+      - "25"
     note: false
     quietmode: 0
+    scriptarguments:
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
     separatecontext: false
     skipunavailable: false
     task:
       brand: ""
-      id: 57eecd13-3490-4c1b-87df-640f8d236242
+      id: 91d25756-3c88-49f7-8bf6-165ad92c912c
       iscommand: false
-      name: Shadow Run?
+      name: Run Mode?
+      playbooktaskmissingcomponent: null
+      script: 'ShadowModeRouter'
       type: condition
       version: -1
-    taskid: 57eecd13-3490-4c1b-87df-640f8d236242
+    taskid: 91d25756-3c88-49f7-8bf6-165ad92c912c
     timertriggers: []
     type: condition
     view: |-
       {
         "position": {
-          "x": 631,
-          "y": 550
+          "x": -560,
+          "y": 230
         }
       }
   "25":
@@ -989,75 +975,71 @@ tasks:
     isoversize: false
     nexttasks:
       '#none#':
-      - "5"
+      - "11"
     note: false
     quietmode: 0
     scriptarguments:
       value:
         simple: |-
-          Shadow Mode: XSIAM Terminate Process
-          Command: core-run-script-kill-process
+          Shadow: Palo XDR Kill Process
+          Command: core-run-script-kill-process ${inputs.FilePath}
     separatecontext: false
     skipunavailable: false
     task:
       brand: ""
       description: Prints text to war room (Markdown supported)
-      id: 72b48b1f-cb80-4d89-a17b-c456d7ae6311
+      id: 697fde5c-cab8-4724-96fb-5b82c3e8b5ca
       iscommand: false
-      name: Print To WarRoom
+      name: 'Shadow: Palo XDR Kill Process'
+      playbooktaskmissingcomponent: null
       script: Print
       type: regular
       version: -1
-    taskid: 72b48b1f-cb80-4d89-a17b-c456d7ae6311
+    taskid: 697fde5c-cab8-4724-96fb-5b82c3e8b5ca
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 50,
-          "y": 1400
+          "x": -570,
+          "y": 410
         }
       }
   "26":
-    conditions:
-    - condition:
-      - - left:
-            iscontext: true
-            value:
-              simple: inputs.ShadowMode
-          operator: isFalse
-          right:
-            value: {}
-      label: "no"
     continueonerrortype: ""
     id: "26"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#default#':
-      - "27"
-      "no":
+      Full Run:
       - "13"
+      Shadow Mode:
+      - "27"
     note: false
     quietmode: 0
+    scriptarguments:
+      ShadowMode:
+        simple: ${inputs.ShadowMode}
     separatecontext: false
     skipunavailable: false
     task:
       brand: ""
-      id: 45617e9d-a50c-473b-bfa9-e934232bb8d7
+      id: 923ab99c-7548-4d6e-8b62-b8c1f647b475
       iscommand: false
-      name: Shadow Run?
+      name: Run Mode?
+      playbooktaskmissingcomponent: null
+      script: 'ShadowModeRouter'
       type: condition
       version: -1
-    taskid: 45617e9d-a50c-473b-bfa9-e934232bb8d7
+    taskid: 923ab99c-7548-4d6e-8b62-b8c1f647b475
     timertriggers: []
     type: condition
     view: |-
       {
         "position": {
-          "x": 2619.25,
-          "y": 550
+          "x": 900,
+          "y": 230
         }
       }
   "27":
@@ -1068,33 +1050,34 @@ tasks:
     isoversize: false
     nexttasks:
       '#none#':
-      - "5"
+      - "17"
     note: false
     quietmode: 0
     scriptarguments:
       value:
         simple: |-
-          Shadow Mode: XSIAM Terminate Process
-          Command: core-run-script-execute-commands
+          Shadow: Palo XDR Kill Process
+          Command: core-run-script-execute-commands ${ProcessID}
     separatecontext: false
     skipunavailable: false
     task:
       brand: ""
       description: Prints text to war room (Markdown supported)
-      id: fa7d891a-2b9f-40d2-8b8c-a6da2a0b28db
+      id: 5cb2b236-1d62-4da0-9604-bbc62a733c8a
       iscommand: false
-      name: Print To WarRoom
+      name: 'Shadow: Palo XDR Kill Process'
+      playbooktaskmissingcomponent: null
       script: Print
       type: regular
       version: -1
-    taskid: fa7d891a-2b9f-40d2-8b8c-a6da2a0b28db
+    taskid: 5cb2b236-1d62-4da0-9604-bbc62a733c8a
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 2178.75,
-          "y": 1400
+          "x": 910,
+          "y": 390
         }
       }
 version: -1
@@ -1106,11 +1089,10 @@ view: |-
     },
     "paper": {
       "dimensions": {
-        "height": 1590,
-        "width": 3866,
-        "x": 50,
-        "y": 50
+        "height": 1485,
+        "width": 1970,
+        "x": -570,
+        "y": -180
       }
     }
   }
-adopted: true

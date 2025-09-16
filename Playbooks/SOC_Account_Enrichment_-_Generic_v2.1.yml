@@ -1,12 +1,19 @@
+adopted: true
 contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 6.5.0
     isoverridable: false
-    itemVersion: 1.0.0
+    itemVersion: 2.7.15
     packID: ""
-    packName: SOC Common Playbooks
+    packName: Common Playbooks
     prevname: ""
+    supportedModules:
+    - X1
+    - X3
+    - X5
+    - ENT_PLUS
+    - agentix
     toServerVersion: ""
 description: |-
   Enrich accounts using one or more integrations.
@@ -21,8 +28,14 @@ description: |-
   - Cortex XDR (account enrichment and reputation)
 
   Also, the playbook supports the generic command 'iam-get-user' (implemented in IAM integrations). For more information, visit https://xsoar.pan.dev/docs/integrations/iam-integrations.
-adopted: true
+dirtyInputs: true
 id: 'SOC Account Enrichment - Generic v2.1'
+inputSections:
+- description: Generic group for inputs
+  inputs:
+  - Username
+  - Domain
+  name: General (Inputs group)
 inputs:
 - description: |-
     The usernames to enrich. This input supports multiple usernames.
@@ -45,6 +58,155 @@ inputs:
   required: false
   value: {}
 name: SOC Account Enrichment - Generic v2.1
+outputSections:
+- description: Generic group for outputs
+  name: General (Outputs group)
+  outputs:
+  - Account
+  - ActiveDirectory.Users.sAMAccountName
+  - ActiveDirectory.Users.userAccountControl
+  - ActiveDirectory.Users.mail
+  - ActiveDirectory.Users.memberOf
+  - IAM
+  - IdentityIQ.Identity
+  - PingOne.Account
+  - ActiveDirectory.Users.manager
+  - IAM.Vendor.active
+  - IAM.Vendor.brand
+  - IAM.Vendor.details
+  - IAM.Vendor.email
+  - IAM.Vendor.errorCode
+  - IAM.Vendor.errorMessage
+  - IAM.Vendor.id
+  - IAM.Vendor.instanceName
+  - IAM.Vendor.success
+  - IAM.Vendor.username
+  - IdentityIQ.Identity.userName
+  - IdentityIQ.Identity.id
+  - IdentityIQ.Identity.active
+  - IdentityIQ.Identity.lastModified
+  - IdentityIQ.Identity.displayName
+  - IdentityIQ.Identity.emails
+  - IdentityIQ.Identity.entitlements
+  - IdentityIQ.Identity.roles
+  - IdentityIQ.Identity.capabilities
+  - IdentityIQ.Identity.name
+  - IdentityIQ.Identity.name.formatted
+  - IdentityIQ.Identity.name.familyName
+  - IdentityIQ.Identity.name.givenName
+  - IdentityIQ.Identity.manager
+  - IdentityIQ.Identity.manager.userName
+  - IdentityIQ.Identity.emails.type
+  - IdentityIQ.Identity.emails.value
+  - IdentityIQ.Identity.emails.primary
+  - PingOne.Account.ID
+  - PingOne.Account.Username
+  - PingOne.Account.DisplayName
+  - PingOne.Account.Email
+  - PingOne.Account.Enabled
+  - PingOne.Account.CreatedAt
+  - PingOne.Account.UpdatedAt
+  - Account.PasswordChanged
+  - Account.StatusChanged
+  - Account.Activated
+  - Account.Created
+  - Account.Status
+  - Account.Username
+  - Account.Email
+  - Account.ID
+  - ActiveDirectory.Users.dn
+  - ActiveDirectory.Users.displayName
+  - ActiveDirectory.Users.name
+  - ActiveDirectory.Users.userAccountControlFields
+  - ActiveDirectory.Users.userAccountControlFields.SCRIPT
+  - ActiveDirectory.Users.userAccountControlFields.ACCOUNTDISABLE
+  - ActiveDirectory.Users.userAccountControlFields.HOMEDIR_REQUIRED
+  - ActiveDirectory.Users.userAccountControlFields.LOCKOUT
+  - ActiveDirectory.Users.userAccountControlFields.PASSWD_NOTREQD
+  - ActiveDirectory.Users.userAccountControlFields.PASSWD_CANT_CHANGE
+  - ActiveDirectory.Users.userAccountControlFields.ENCRYPTED_TEXT_PWD_ALLOWED
+  - ActiveDirectory.Users.userAccountControlFields.TEMP_DUPLICATE_ACCOUNT
+  - ActiveDirectory.Users.userAccountControlFields.NORMAL_ACCOUNT
+  - ActiveDirectory.Users.userAccountControlFields.INTERDOMAIN_TRUST_ACCOUNT
+  - ActiveDirectory.Users.userAccountControlFields.WORKSTATION_TRUST_ACCOUNT
+  - Account.Manager
+  - Account.Groups
+  - Account.DisplayName
+  - ActiveDirectory.Users.userAccountControlFields.PARTIAL_SECRETS_ACCOUNT
+  - ActiveDirectory.Users.userAccountControlFields.TRUSTED_TO_AUTH_FOR_DELEGATION
+  - ActiveDirectory.Users.userAccountControlFields.DONT_REQ_PREAUTH
+  - ActiveDirectory.Users.userAccountControlFields.USE_DES_KEY_ONLY
+  - ActiveDirectory.Users.userAccountControlFields.NOT_DELEGATED
+  - ActiveDirectory.Users.userAccountControlFields.TRUSTED_FOR_DELEGATION
+  - ActiveDirectory.Users.userAccountControlFields.SMARTCARD_REQUIRED
+  - ActiveDirectory.Users.userAccountControlFields.MNS_LOGON_ACCOUNT
+  - ActiveDirectory.Users.userAccountControlFields.SERVER_TRUST_ACCOUNT
+  - IAM.Vendor
+  - IAM.Vendor.action
+  - IAM.UserProfile
+  - SailPointIdentityNow.Account
+  - SailPointIdentityNow.Account.id
+  - SailPointIdentityNow.Account.name
+  - SailPointIdentityNow.Account.identityId
+  - SailPointIdentityNow.Account.nativeIdentity
+  - SailPointIdentityNow.Account.sourceId
+  - SailPointIdentityNow.Account.created
+  - SailPointIdentityNow.Account.modified
+  - SailPointIdentityNow.Account.attributes
+  - SailPointIdentityNow.Account.authoritative
+  - SailPointIdentityNow.Account.disabled
+  - SailPointIdentityNow.Account.locked
+  - SailPointIdentityNow.Account.systemAccount
+  - SailPointIdentityNow.Account.uncorrelated
+  - SailPointIdentityNow.Account.manuallyCorrelated
+  - SailPointIdentityNow.Account.hasEntitlements
+  - UserManagerEmail
+  - UserManagerDisplayName
+  - MSGraphUser.ID
+  - MSGraphUser.DisplayName
+  - MSGraphUser.GivenName
+  - MSGraphUser.JobTitle
+  - MSGraphUser.Mail
+  - MSGraphUser.Surname
+  - MSGraphUser.UserPrincipalName
+  - MSGraphUserManager.Manager.ID
+  - MSGraphUserManager.Manager.DisplayName
+  - MSGraphUserManager.Manager.GivenName
+  - MSGraphUserManager.Manager.Mail
+  - MSGraphUserManager.Manager.Surname
+  - MSGraphUserManager.Manager.UserPrincipalName
+  - PaloAltoNetworksXDR.RiskyUser
+  - PaloAltoNetworksXDR.RiskyUser.type
+  - PaloAltoNetworksXDR.RiskyUser.id
+  - PaloAltoNetworksXDR.RiskyUser.score
+  - PaloAltoNetworksXDR.RiskyUser.reasons
+  - PaloAltoNetworksXDR.RiskyUser.reasons.date created
+  - PaloAltoNetworksXDR.RiskyUser.reasons.description
+  - PaloAltoNetworksXDR.RiskyUser.reasons.severity
+  - PaloAltoNetworksXDR.RiskyUser.reasons.status
+  - PaloAltoNetworksXDR.RiskyUser.reasons.points
+  - ActiveDirectory.Users.userAccountControlFields.DONT_EXPIRE_PASSWORD
+  - ActiveDirectory.Users.userAccountControlFields.PASSWORD_EXPIRED
+  - Account.ManagerEmail
+  - AWS.IAM.Users
+  - AWS.IAM.Users.UserName
+  - AWS.IAM.Users.UserId
+  - AWS.IAM.Users.Arn
+  - AWS.IAM.Users.CreateDate
+  - AWS.IAM.Users.Path
+  - AWS.IAM.Users.PasswordLastUsed
+  - MSGraphUser.MobilePhone
+  - MSGraphUser.OfficeLocation
+  - Account.JobTitle
+  - Account.TelephoneNumber
+  - Account.Office
+  - Account.Type
+  - Account.Email.Address
+  - MSGraphUserManager.Manager.BusinessPhones
+  - MSGraphUser.BusinessPhones
+  - MSGraphUserManager.Manager.JobTitle
+  - MSGraphUserManager.Manager.MobilePhone
+  - MSGraphUserManager.Manager.OfficeLocation
 outputs:
 - contextPath: Account
   description: The account object.
@@ -500,6 +662,9 @@ outputs:
   type: string
 sourceplaybookid: Account Enrichment - Generic v2.1
 starttaskid: "0"
+tags:
+- SOC
+- SOC_Framework
 tasks:
   "0":
     continueonerrortype: ""
@@ -520,6 +685,7 @@ tasks:
       id: a6743119-6f7b-4ad2-86f8-d7e6f17415a3
       iscommand: false
       name: ""
+      playbooktaskmissingcomponent: null
       version: -1
     taskid: a6743119-6f7b-4ad2-86f8-d7e6f17415a3
     timertriggers: []
@@ -527,8 +693,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3681.25,
-          "y": 50
+          "x": -1080,
+          "y": -200
         }
       }
   "1":
@@ -572,6 +738,7 @@ tasks:
       id: 7d3036d6-80da-4b4f-8534-c634c6264f50
       iscommand: false
       name: Is there an account to enrich (without domain prefix)?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 7d3036d6-80da-4b4f-8534-c634c6264f50
@@ -580,8 +747,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 5669.5,
-          "y": 210
+          "x": -1080,
+          "y": -7
         }
       }
   "3":
@@ -599,6 +766,7 @@ tasks:
       id: b5a047e4-ca2a-4881-8a80-de3d0886ea64
       iscommand: false
       name: Done
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: b5a047e4-ca2a-4881-8a80-de3d0886ea64
@@ -607,8 +775,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3250.25,
-          "y": 1565
+          "x": -1080,
+          "y": 1560
         }
       }
   "4":
@@ -659,6 +827,7 @@ tasks:
       id: 9b07e7c9-ff70-410d-881c-02389fbf4c1e
       iscommand: false
       name: Is Active Directory Query v2 enabled?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 9b07e7c9-ff70-410d-881c-02389fbf4c1e
@@ -667,8 +836,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2328.75,
-          "y": 1220
+          "x": 230,
+          "y": 565
         }
       }
   "5":
@@ -682,7 +851,7 @@ tasks:
       '#error#':
       - "70"
       '#none#':
-      - "3"
+      - "53"
     note: false
     quietmode: 0
     reputationcalc: 1
@@ -698,20 +867,21 @@ tasks:
       brand: ""
       description: Queries Active Directory and returns information for the specified
         username.
-      id: a023978d-1448-4242-bca4-0f6eec9b8aeb
+      id: 8ced86cc-67bc-45f8-b78c-f24b260cf615
       iscommand: true
       name: Get account info from Active Directory
+      playbooktaskmissingcomponent: null
       script: '|||ad-get-user'
       type: regular
       version: -1
-    taskid: a023978d-1448-4242-bca4-0f6eec9b8aeb
+    taskid: 8ced86cc-67bc-45f8-b78c-f24b260cf615
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 2183.5,
-          "y": 1390
+          "x": 230,
+          "y": 760
         }
       }
   "9":
@@ -732,6 +902,7 @@ tasks:
       id: 148faf68-5ced-41f4-82c0-f98fa9d82037
       iscommand: false
       name: SailPoint IdentityIQ
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 148faf68-5ced-41f4-82c0-f98fa9d82037
@@ -740,8 +911,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1166.75,
-          "y": 1055
+          "x": -640,
+          "y": 435
         }
       }
   "11":
@@ -762,6 +933,7 @@ tasks:
       id: 58620334-72c1-4be6-87a2-84ed544c4a8a
       iscommand: false
       name: PingOne
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 58620334-72c1-4be6-87a2-84ed544c4a8a
@@ -770,8 +942,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3490.75,
-          "y": 1055
+          "x": 650,
+          "y": 435
         }
       }
   "16":
@@ -792,6 +964,7 @@ tasks:
       id: b5887cbc-9c89-47ba-8802-86c66ed0c85a
       iscommand: false
       name: Microsoft Active Directory
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: b5887cbc-9c89-47ba-8802-86c66ed0c85a
@@ -800,8 +973,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2328.75,
-          "y": 1055
+          "x": 230,
+          "y": 435
         }
       }
   "18":
@@ -829,6 +1002,7 @@ tasks:
       id: 93b0d852-2215-4504-8179-64a62951fbcc
       iscommand: false
       name: Is SailPoint IdentityIQ Integration Enabled?
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -838,8 +1012,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1166.75,
-          "y": 1220
+          "x": -640,
+          "y": 565
         }
       }
   "20":
@@ -867,6 +1041,7 @@ tasks:
       id: 82adaccd-d799-44ae-85ec-ee4ca516aab6
       iscommand: false
       name: Is PingOne Integration Enabled
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -876,8 +1051,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 3490.75,
-          "y": 1220
+          "x": 650,
+          "y": 565
         }
       }
   "29":
@@ -903,23 +1078,24 @@ tasks:
     separatecontext: false
     skipunavailable: true
     task:
-      brand: ""
+      brand: SailPointIdentityIQ
       description: Search identities by search/filter parameters (ID, email, risk
         & active) using IdentityIQ SCIM APIs.
-      id: d1802ff6-cfeb-4c99-a9d2-4ce23e475665
+      id: ce8794f6-be60-4731-b21f-f519ae6b530f
       iscommand: true
       name: Get account info from IdentityIQ
-      script: '|||identityiq-search-identities'
+      playbooktaskmissingcomponent: null
+      script: SailPointIdentityIQ|||identityiq-search-identities
       type: regular
       version: -1
-    taskid: d1802ff6-cfeb-4c99-a9d2-4ce23e475665
+    taskid: ce8794f6-be60-4731-b21f-f519ae6b530f
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 1021.5,
-          "y": 1390
+          "x": -640,
+          "y": 760
         }
       }
   "31":
@@ -945,23 +1121,24 @@ tasks:
     separatecontext: false
     skipunavailable: true
     task:
-      brand: ""
+      brand: PingOne
       description: Returns a PingOne user. One of the following has to be given -
         username or userId.
-      id: 285a723b-5ef6-4232-ac9a-0f401a42cd4e
+      id: 1ec22e61-e06f-45d3-8134-ea9ebe1117bc
       iscommand: true
       name: Get account info from PingOne
-      script: '|||pingone-get-user'
+      playbooktaskmissingcomponent: null
+      script: PingOne|||pingone-get-user
       type: regular
       version: -1
-    taskid: 285a723b-5ef6-4232-ac9a-0f401a42cd4e
+    taskid: 1ec22e61-e06f-45d3-8134-ea9ebe1117bc
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 3345.5,
-          "y": 1390
+          "x": 650,
+          "y": 760
         }
       }
   "32":
@@ -982,6 +1159,7 @@ tasks:
       id: 4e5ba461-1f35-4898-8f03-940b3e3dd950
       iscommand: false
       name: OKTA
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 4e5ba461-1f35-4898-8f03-940b3e3dd950
@@ -990,8 +1168,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 4071.75,
-          "y": 1055
+          "x": 1070,
+          "y": 435
         }
       }
   "33":
@@ -1019,6 +1197,7 @@ tasks:
       id: e0b7f17c-70f7-4330-8f06-c3729e226adb
       iscommand: false
       name: Is OKTA v2 integration enabled?
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -1028,8 +1207,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 4071.75,
-          "y": 1220
+          "x": 1070,
+          "y": 565
         }
       }
   "34":
@@ -1058,20 +1237,21 @@ tasks:
       brand: ""
       description: Fetches information for a single user. You must enter one or more
         parameters for the command to run.
-      id: 07a21789-3e33-4a5d-9950-84eac160d4dd
+      id: 43c12bed-2852-4ae0-be49-0deb0073a779
       iscommand: true
       name: Get account info from OKTA v2
+      playbooktaskmissingcomponent: null
       script: '|||okta-get-user'
       type: regular
       version: -1
-    taskid: 07a21789-3e33-4a5d-9950-84eac160d4dd
+    taskid: 43c12bed-2852-4ae0-be49-0deb0073a779
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 3926.5,
-          "y": 1390
+          "x": 1070,
+          "y": 760
         }
       }
   "42":
@@ -1092,6 +1272,7 @@ tasks:
       id: ced5695a-76e7-4f6a-81b8-598925a8ea9d
       iscommand: false
       name: AWS
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: ced5695a-76e7-4f6a-81b8-598925a8ea9d
@@ -1100,8 +1281,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 4652.75,
-          "y": 1055
+          "x": 1490,
+          "y": 435
         }
       }
   "43":
@@ -1129,6 +1310,7 @@ tasks:
       id: 0f630de1-9988-461a-883a-6113d3dd6d2a
       iscommand: false
       name: Is AWS integration enabled?
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -1138,8 +1320,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 4652.75,
-          "y": 1220
+          "x": 1490,
+          "y": 565
         }
       }
   "44":
@@ -1165,23 +1347,24 @@ tasks:
     separatecontext: false
     skipunavailable: true
     task:
-      brand: ""
+      brand: AWS - IAM
       description: Retrieves information about the specified IAM user, including the
         user's creation date, path, unique ID, and ARN.
-      id: d9e54b01-1a69-47d0-aa46-0669007dd53d
+      id: 52a7785d-4ab4-403e-8620-20756bd71cc1
       iscommand: true
       name: Get account info from AWS
-      script: '|||aws-iam-get-user'
+      playbooktaskmissingcomponent: null
+      script: AWS - IAM|||aws-iam-get-user
       type: regular
       version: -1
-    taskid: d9e54b01-1a69-47d0-aa46-0669007dd53d
+    taskid: 52a7785d-4ab4-403e-8620-20756bd71cc1
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 4507.5,
-          "y": 1390
+          "x": 1490,
+          "y": 760
         }
       }
   "48":
@@ -1202,6 +1385,7 @@ tasks:
       id: 4f4d3e42-0ec6-4b22-89b2-0b275eedc3c5
       iscommand: false
       name: IAM
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 4f4d3e42-0ec6-4b22-89b2-0b275eedc3c5
@@ -1210,8 +1394,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 6495.75,
-          "y": 1055
+          "x": -1500,
+          "y": 425
         }
       }
   "50":
@@ -1232,6 +1416,7 @@ tasks:
       id: 61ad53d6-a0fd-4e1e-8608-1c8a9596d965
       iscommand: false
       name: SailPoint IdentityNow
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 61ad53d6-a0fd-4e1e-8608-1c8a9596d965
@@ -1240,8 +1425,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1747.75,
-          "y": 1055
+          "x": -200,
+          "y": 435
         }
       }
   "51":
@@ -1269,6 +1454,7 @@ tasks:
       id: 21d70bb7-8b40-4f49-80ca-b78cb05b24aa
       iscommand: false
       name: Is SailPoint IdentityNow integration enabled?
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -1278,8 +1464,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 1747.75,
-          "y": 1220
+          "x": -200,
+          "y": 565
         }
       }
   "52":
@@ -1305,22 +1491,23 @@ tasks:
     separatecontext: false
     skipunavailable: true
     task:
-      brand: ""
+      brand: SailPointIdentityNow
       description: Get accounts by search/filter parameters (ID, name, native_identity).
-      id: dc639ca3-2889-46a3-8e15-a7c73a8c8324
+      id: c563f279-3529-481b-9a5d-1434947a9dad
       iscommand: true
       name: Get account info from IdentityNow
-      script: '|||identitynow-get-accounts'
+      playbooktaskmissingcomponent: null
+      script: SailPointIdentityNow|||identitynow-get-accounts
       type: regular
       version: -1
-    taskid: dc639ca3-2889-46a3-8e15-a7c73a8c8324
+    taskid: c563f279-3529-481b-9a5d-1434947a9dad
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 1602.5,
-          "y": 1390
+          "x": -200,
+          "y": 760
         }
       }
   "53":
@@ -1343,7 +1530,7 @@ tasks:
       '#default#':
       - "3"
       "yes":
-      - "71"
+      - "54"
     note: false
     quietmode: 0
     separatecontext: false
@@ -1354,6 +1541,7 @@ tasks:
       id: f1700d16-6e63-4a56-8157-42cecfc24657
       iscommand: false
       name: Is there a manager?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: f1700d16-6e63-4a56-8157-42cecfc24657
@@ -1362,8 +1550,62 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 2909.75,
-          "y": 1220
+          "x": 230,
+          "y": 930
+        }
+      }
+  "54":
+    continueonerrortype: ""
+    id: "54"
+    ignoreworker: false
+    isautoswitchedtoquietmode: false
+    isoversize: false
+    loop:
+      exitCondition: ""
+      iscommand: false
+      max: 100
+      wait: 1
+    nexttasks:
+      '#none#':
+      - "3"
+    note: false
+    quietmode: 0
+    scriptarguments:
+      UserEmail:
+        complex:
+          accessor: Email
+          root: Account
+          transformers:
+          - operator: uniq
+          - operator: FirstArrayElement
+      Username:
+        complex:
+          accessor: Username
+          root: Account
+          transformers:
+          - operator: uniq
+          - operator: FirstArrayElement
+    separatecontext: true
+    skipunavailable: true
+    task:
+      brand: ""
+      description: Takes an email address or a username of a user account in Active
+        Directory, and returns the email address of the user's manager.
+      id: 06dcf79d-5c65-4a13-be65-d06b2c465038
+      iscommand: false
+      name: Active Directory - Get User Manager Details
+      playbookId: Active Directory - Get User Manager Details
+      playbooktaskmissingcomponent: null
+      type: playbook
+      version: -1
+    taskid: 06dcf79d-5c65-4a13-be65-d06b2c465038
+    timertriggers: []
+    type: playbook
+    view: |-
+      {
+        "position": {
+          "x": -30,
+          "y": 1100
         }
       }
   "55":
@@ -1384,6 +1626,7 @@ tasks:
       id: 285753ae-d884-4485-881c-3a99f77be4d0
       iscommand: false
       name: MSGraph Users
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 285753ae-d884-4485-881c-3a99f77be4d0
@@ -1392,8 +1635,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 5669.5,
-          "y": 550
+          "x": 1910,
+          "y": 435
         }
       }
   "56":
@@ -1421,6 +1664,7 @@ tasks:
       id: be533930-e327-4945-8fb7-c47ada329a2f
       iscommand: false
       name: Is Azure Active Directory Users integration enabled?
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -1430,8 +1674,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 5669.5,
-          "y": 710
+          "x": 1910,
+          "y": 565
         }
       }
   "57":
@@ -1455,24 +1699,25 @@ tasks:
     separatecontext: false
     skipunavailable: true
     task:
-      brand: ""
+      brand: Microsoft Graph User
       description: |-
         Retrieves the properties and relationships of a user object. For more information, visit: https://docs.microsoft.com/en-us/graph/api/user-update?view=graph-rest-1.0).
         Permissions: - User.Read (Delegated) - User.Read.All (Application)
-      id: 8104947f-a39e-4ae2-8b93-04fa0087b4a5
+      id: a21eb31a-bab2-4069-8a3a-fa9f68a1f8b2
       iscommand: true
       name: Get account info from Azure Active Directory
-      script: '|||msgraph-user-get'
+      playbooktaskmissingcomponent: null
+      script: Microsoft Graph User|||msgraph-user-get
       type: regular
       version: -1
-    taskid: 8104947f-a39e-4ae2-8b93-04fa0087b4a5
+    taskid: a21eb31a-bab2-4069-8a3a-fa9f68a1f8b2
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 5524.25,
-          "y": 880
+          "x": 1910,
+          "y": 760
         }
       }
   "58":
@@ -1511,6 +1756,7 @@ tasks:
       id: 56bea608-c34d-4914-8b16-594603971e22
       iscommand: false
       name: Is there a manager?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 56bea608-c34d-4914-8b16-594603971e22
@@ -1519,8 +1765,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 5379,
-          "y": 1050
+          "x": 1910,
+          "y": 930
         }
       }
   "59":
@@ -1545,34 +1791,32 @@ tasks:
     separatecontext: false
     skipunavailable: true
     task:
-      brand: ""
+      brand: Microsoft Graph User
       description: Retrieves the properties from the manager of a user.
-      id: 175ee766-bbb8-4762-9d1d-659dd5b8eb34
+      id: fcbb5279-9a7c-4230-a897-1e72796add0e
       iscommand: true
       name: Azure Active Directory - Get manager details
-      script: '|||msgraph-user-get-manager'
+      playbooktaskmissingcomponent: null
+      script: Microsoft Graph User|||msgraph-user-get-manager
       type: regular
       version: -1
-    taskid: 175ee766-bbb8-4762-9d1d-659dd5b8eb34
+    taskid: fcbb5279-9a7c-4230-a897-1e72796add0e
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 5233.75,
+          "x": 1910,
           "y": 1220
         }
       }
   "60":
-    continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "60"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "70"
       '#none#':
       - "3"
     note: false
@@ -1589,19 +1833,20 @@ tasks:
     task:
       brand: ""
       description: Set a value in context under the key you entered.
-      id: e2ba46bc-a8ae-4404-a0df-d0f49c50d082
+      id: 83d6879d-694b-4091-84cd-6445167b9c75
       iscommand: false
       name: Set manager email address to context
+      playbooktaskmissingcomponent: null
       script: Set
       type: regular
       version: -1
-    taskid: e2ba46bc-a8ae-4404-a0df-d0f49c50d082
+    taskid: 83d6879d-694b-4091-84cd-6445167b9c75
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 5088.5,
+          "x": 1910,
           "y": 1390
         }
       }
@@ -1652,20 +1897,21 @@ tasks:
     task:
       brand: ""
       description: Retrieves a single user resource.
-      id: 028034d8-88c2-4eb8-badc-baefd5891a3a
+      id: 7b64280f-0fa6-48fb-8cce-58ae35c662ae
       iscommand: true
       name: IAM Get User - Without specifying a domain
+      playbooktaskmissingcomponent: null
       script: '|||iam-get-user'
       type: regular
       version: -1
-    taskid: 028034d8-88c2-4eb8-badc-baefd5891a3a
+    taskid: 7b64280f-0fa6-48fb-8cce-58ae35c662ae
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 6736.25,
-          "y": 1390
+          "x": -1700,
+          "y": 750
         }
       }
   "62":
@@ -1722,20 +1968,21 @@ tasks:
     task:
       brand: ""
       description: Retrieves a single user resource.
-      id: 156b5a8e-18d5-42b0-a894-31733886709f
+      id: 75cd7da4-b58a-4bd0-a146-b3fc058836e1
       iscommand: true
       name: IAM Get User - with a domain
+      playbooktaskmissingcomponent: null
       script: '|||iam-get-user'
       type: regular
       version: -1
-    taskid: 156b5a8e-18d5-42b0-a894-31733886709f
+    taskid: 75cd7da4-b58a-4bd0-a146-b3fc058836e1
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 6255.25,
-          "y": 1390
+          "x": -1290,
+          "y": 750
         }
       }
   "63":
@@ -1769,6 +2016,7 @@ tasks:
       id: e3d4077b-a586-494b-86b3-65e1f408c83a
       iscommand: false
       name: Was a domain provided?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: e3d4077b-a586-494b-86b3-65e1f408c83a
@@ -1777,8 +2025,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 6495.75,
-          "y": 1220
+          "x": -1500,
+          "y": 570
         }
       }
   "64":
@@ -1799,6 +2047,7 @@ tasks:
       id: 30472917-7825-4a09-89d8-b531bf61958c
       iscommand: false
       name: Cortex XDR
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 30472917-7825-4a09-89d8-b531bf61958c
@@ -1807,8 +2056,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 195.25,
-          "y": 1055
+          "x": 2330,
+          "y": 435
         }
       }
   "65":
@@ -1836,6 +2085,7 @@ tasks:
       id: ed860996-40a3-4e32-8c7d-e4a961c6b7d5
       iscommand: false
       name: Is Cortex XDR - IR integration enabled?
+      playbooktaskmissingcomponent: null
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -1845,8 +2095,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 195.25,
-          "y": 1220
+          "x": 2330,
+          "y": 565
         }
       }
   "66":
@@ -1883,41 +2133,40 @@ tasks:
       description: Retrieve the risk score of a specific user or list of users with
         the highest risk score in the environment along with the reason affecting
         each score.
-      id: d5432c2f-b72b-4d25-8a29-d8997b80cebf
+      id: 9c968061-8a6f-4cf1-8647-0e31ce54b4a7
       iscommand: true
       name: Get account risk score
+      playbooktaskmissingcomponent: null
       script: '|||xdr-list-risky-users'
       type: regular
       version: -1
-    taskid: d5432c2f-b72b-4d25-8a29-d8997b80cebf
+    taskid: 9c968061-8a6f-4cf1-8647-0e31ce54b4a7
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 50,
-          "y": 1390
+          "x": 2330,
+          "y": 760
         }
       }
   "67":
-    continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "67"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "70"
       '#none#':
       - "48"
-      - "55"
-      - "42"
-      - "32"
-      - "11"
-      - "16"
-      - "50"
       - "9"
+      - "50"
+      - "16"
+      - "11"
+      - "32"
+      - "42"
+      - "55"
+      - "64"
     note: false
     quietmode: 0
     scriptarguments:
@@ -1942,23 +2191,24 @@ tasks:
       description: "Saves the usernames without domain prefixes under a new context
         key.\n\nThis automation runs using the default Limited User role, unless you
         explicitly change the permissions.\nFor more information, see the section
-        about permissions here:\n- For Cortex see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
-      id: 3b077e00-6754-4787-8f93-de453f29d2a4
+        about permissions here:\n- For Cortex XSOAR 6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+      id: 7212ec41-fb6c-4d2b-86c1-140108b79c04
       iscommand: false
       name: Save account usernames
+      playbooktaskmissingcomponent: null
       script: SetAndHandleEmpty
       type: regular
       version: -1
-    taskid: 3b077e00-6754-4787-8f93-de453f29d2a4
+    taskid: 7212ec41-fb6c-4d2b-86c1-140108b79c04
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 4071.75,
-          "y": 380
+          "x": -1390,
+          "y": 180
         }
       }
   "68":
@@ -2002,6 +2252,7 @@ tasks:
       id: 2524ddf8-40ab-4b7e-8019-8fdf102afc08
       iscommand: false
       name: Is there an account to enrich (with domain prefix)?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 2524ddf8-40ab-4b7e-8019-8fdf102afc08
@@ -2010,20 +2261,17 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 485.75,
-          "y": 710
+          "x": -640,
+          "y": -7
         }
       }
   "69":
-    continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "69"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "70"
       '#none#':
       - "64"
     note: false
@@ -2050,23 +2298,24 @@ tasks:
       description: "Saves the usernames with domain prefixes under a new context key.\n\nThis
         automation runs using the default Limited User role, unless you explicitly
         change the permissions.\nFor more information, see the section about permissions
-        here:\n- For Cortex see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
-      id: e4b7c203-d49f-4a5d-a005-9eda7a79ad04
+        here:\n- For Cortex XSOAR 6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
+        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+      id: 59883712-8f94-4316-870e-21a76ae75517
       iscommand: false
       name: Save account usernames with domains
+      playbooktaskmissingcomponent: null
       script: SetAndHandleEmpty
       type: regular
       version: -1
-    taskid: e4b7c203-d49f-4a5d-a005-9eda7a79ad04
+    taskid: 59883712-8f94-4316-870e-21a76ae75517
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 340.5,
-          "y": 880
+          "x": 2330,
+          "y": 190
         }
       }
   "70":
@@ -2075,82 +2324,27 @@ tasks:
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
-    loop:
-      exitCondition: ""
-      iscommand: false
-      max: 100
-      wait: 1
     note: false
     quietmode: 0
     separatecontext: true
-    skipunavailable: true
+    skipunavailable: false
     task:
       brand: ""
-      id: 8ee49e2f-882e-4e4a-975f-8bb5faad2935
+      id: 92271906-6bfb-4389-82c1-347902dd28e8
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
+      playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: 8ee49e2f-882e-4e4a-975f-8bb5faad2935
+    taskid: 92271906-6bfb-4389-82c1-347902dd28e8
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 4312.25,
-          "y": 1560
-        }
-      }
-  "71":
-    continueonerrortype: ""
-    id: "71"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    loop:
-      exitCondition: ""
-      iscommand: false
-      max: 100
-      wait: 1
-    nexttasks:
-      '#none#':
-      - "3"
-    note: false
-    quietmode: 0
-    scriptarguments:
-      UserEmail:
-        complex:
-          accessor: Email
-          root: Account
-          transformers:
-          - operator: uniq
-          - operator: FirstArrayElement
-      Username:
-        complex:
-          accessor: Username
-          root: Account
-          transformers:
-          - operator: uniq
-          - operator: FirstArrayElement
-    separatecontext: true
-    skipunavailable: true
-    task:
-      brand: ""
-      id: 342df73a-46ad-4f03-a7b7-2aa71faa4ded
-      iscommand: false
-      name: SOC Active Directory - Get User Manager Details
-      playbookId: 'SOC Active Directory - Get User Manager Details'
-      type: playbook
-      version: -1
-    taskid: 342df73a-46ad-4f03-a7b7-2aa71faa4ded
-    timertriggers: []
-    type: playbook
-    view: |-
-      {
-        "position": {
-          "x": 2759.5,
-          "y": 1390
+          "x": -670,
+          "y": 1555
         }
       }
 version: -1
@@ -2164,7 +2358,6 @@ view: |-
       "43_3_#default#": 0.1,
       "4_3_#default#": 0.1,
       "51_3_#default#": 0.1,
-      "53_71_yes": 0.9,
       "56_3_#default#": 0.1,
       "58_3_#default#": 0.1,
       "65_66_yes": 0.59,
@@ -2173,10 +2366,10 @@ view: |-
     },
     "paper": {
       "dimensions": {
-        "height": 1580,
-        "width": 7067.25,
-        "x": 50,
-        "y": 50
+        "height": 1825,
+        "width": 4410,
+        "x": -1700,
+        "y": -200
       }
     }
   }

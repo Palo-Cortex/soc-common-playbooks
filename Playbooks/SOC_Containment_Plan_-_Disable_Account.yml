@@ -1,19 +1,35 @@
+adopted: true
 contentitemexportablefields:
   contentitemfields:
     definitionid: ""
     fromServerVersion: 6.6.0
     isoverridable: false
-    itemVersion: 1.0.0
+    itemVersion: 2.7.16
     packID: ""
     packName: SOC Common Playbooks
     prevname: ""
+    supportedModules:
+    - X1
+    - X3
+    - X5
+    - ENT_PLUS
+    - agentix
     toServerVersion: ""
 description: |-
   ## Containment Plan - Disable Account
 
   This playbook is a sub-playbook within the containment plan playbook.
   The playbook disables users by utilizing the sub-playbook "Block Account - Generic v2"
+dirtyInputs: true
 id: 'SOC Containment Plan - Disable Account'
+inputSections:
+- description: Generic group for inputs
+  inputs:
+  - UserContainment
+  - Username
+  - UserVerification
+  - ShadowMode
+  name: General (Inputs group)
 inputs:
 - description: Set to 'True' to disable the user account.
   key: UserContainment
@@ -34,7 +50,18 @@ inputs:
   required: false
   value:
     simple: "True"
+- description: ""
+  key: ShadowMode
+  playbookInputQuery: null
+  required: false
+  value:
+    simple: "true"
 name: SOC Containment Plan - Disable Account
+outputSections:
+- description: Generic group for outputs
+  name: General (Outputs group)
+  outputs:
+  - Blocklist.Final
 outputs:
 - contextPath: Blocklist.Final
   description: Blocked accounts
@@ -42,6 +69,9 @@ outputs:
 quiet: true
 sourceplaybookid: Containment Plan - Disable Account
 starttaskid: "0"
+tags:
+- SOC
+- SOC_Framework
 tasks:
   "0":
     continueonerrortype: ""
@@ -61,6 +91,7 @@ tasks:
       id: 9fb1ed1d-c22c-48bb-8a3c-4d58bbca6347
       iscommand: false
       name: ""
+      playbooktaskmissingcomponent: null
       version: -1
     taskid: 9fb1ed1d-c22c-48bb-8a3c-4d58bbca6347
     timertriggers: []
@@ -68,8 +99,8 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 265,
-          "y": 50
+          "x": 450,
+          "y": -140
         }
       }
   "2":
@@ -87,6 +118,7 @@ tasks:
       id: 4d874c50-7a1f-489c-8397-3fc3304eeea6
       iscommand: false
       name: Done
+      playbooktaskmissingcomponent: null
       type: title
       version: -1
     taskid: 4d874c50-7a1f-489c-8397-3fc3304eeea6
@@ -95,20 +127,17 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 50,
-          "y": 895
+          "x": 450,
+          "y": 750
         }
       }
   "8":
-    continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "8"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "19"
       '#none#':
       - "2"
     note: false
@@ -125,20 +154,21 @@ tasks:
     task:
       brand: Builtin
       description: commands.local.cmd.set.parent.alert.context
-      id: 0cd4f12b-8840-4d35-ae5a-e6b78e2b9d06
+      id: 73bc4723-d270-4e04-8a74-c13b5b1369f1
       iscommand: true
       name: Set disabled users to the Alert context
+      playbooktaskmissingcomponent: null
       script: Builtin|||setParentIncidentContext
       type: regular
       version: -1
-    taskid: 0cd4f12b-8840-4d35-ae5a-e6b78e2b9d06
+    taskid: 73bc4723-d270-4e04-8a74-c13b5b1369f1
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 592.5,
-          "y": 720
+          "x": 450,
+          "y": 575
         }
       }
   "12":
@@ -181,6 +211,7 @@ tasks:
       id: 073f607c-a924-43c1-8852-d480e1454fdc
       iscommand: false
       name: Should disable the account?
+      playbooktaskmissingcomponent: null
       type: condition
       version: -1
     taskid: 073f607c-a924-43c1-8852-d480e1454fdc
@@ -189,22 +220,19 @@ tasks:
     view: |-
       {
         "position": {
-          "x": 265,
-          "y": 210
+          "x": 450,
+          "y": 0
         }
       }
   "13":
-    continueonerror: true
-    continueonerrortype: errorPath
+    continueonerrortype: ""
     id: "13"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
     nexttasks:
-      '#error#':
-      - "19"
       '#none#':
-      - "21"
+      - "19"
     note: false
     quietmode: 0
     scriptarguments:
@@ -226,58 +254,26 @@ tasks:
         https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
         \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
         For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
-      id: bed0b1e1-e71f-4947-a7d6-4c97d6e5bcd6
+      id: 32ec3207-df33-4d5f-8551-2a49ca677b62
       iscommand: false
       name: Set users to disable
+      playbooktaskmissingcomponent: null
       script: SetAndHandleEmpty
       type: regular
       version: -1
-    taskid: bed0b1e1-e71f-4947-a7d6-4c97d6e5bcd6
+    taskid: 32ec3207-df33-4d5f-8551-2a49ca677b62
     timertriggers: []
     type: regular
     view: |-
       {
         "position": {
-          "x": 480,
-          "y": 380
+          "x": 450,
+          "y": 210
         }
       }
   "19":
     continueonerrortype: ""
     id: "19"
-    ignoreworker: false
-    isautoswitchedtoquietmode: false
-    isoversize: false
-    loop:
-      exitCondition: ""
-      iscommand: false
-      max: 100
-      wait: 1
-    note: false
-    quietmode: 0
-    separatecontext: true
-    skipunavailable: true
-    task:
-      brand: ""
-      id: 396c5310-aca1-4a2d-862c-926e3568e60f
-      iscommand: false
-      name: Foundation - Error Handling
-      playbookId: Foundation - Error Handling
-      type: playbook
-      version: -1
-    taskid: 396c5310-aca1-4a2d-862c-926e3568e60f
-    timertriggers: []
-    type: playbook
-    view: |-
-      {
-        "position": {
-          "x": 480,
-          "y": 890
-        }
-      }
-  "21":
-    continueonerrortype: ""
-    id: "21"
     ignoreworker: false
     isautoswitchedtoquietmode: false
     isoversize: false
@@ -293,29 +289,53 @@ tasks:
     quietmode: 0
     scriptarguments:
       ShadowMode:
-        simple: ${shadow_mode}
+        simple: ${inputs.ShadowMode}
       Tag:
         simple: Bad Account
       UserVerification:
         simple: "True"
+      Username:
+        simple: ${inputs.Username}
     separatecontext: true
     skipunavailable: false
     task:
       brand: ""
-      id: dfba142c-0ea4-4492-9730-27e1713d893d
+      description: |-
+        This playbook blocks malicious usernames using all integrations that you have enabled.
+
+        Supported integrations for this playbook:
+        * Active Directory
+        * PAN-OS - This requires PAN-OS 9.1 or higher.
+        * SailPoint
+        * PingOne
+        * AWS IAM
+        * Clarizen IAM
+        * Envoy IAM
+        * ExceedLMS IAM
+        * Okta
+        * Microsoft Graph User (Azure Active Directory Users)
+        * Google Workspace Admin
+        * Slack IAM
+        * ServiceNow IAM
+        * Prisma Cloud IAM
+        * Zoom IAM
+        * Atlassian IAM
+        * GitHub IAM.
+      id: e950008b-81ae-43d2-94a8-ba011356d113
       iscommand: false
       name: SOC Block Account - Generic v2
-      playbookId: 'SOC Block Account - Generic v2'
+      playbookId: SOC Block Account - Generic v2
+      playbooktaskmissingcomponent: null
       type: playbook
       version: -1
-    taskid: dfba142c-0ea4-4492-9730-27e1713d893d
+    taskid: e950008b-81ae-43d2-94a8-ba011356d113
     timertriggers: []
     type: playbook
     view: |-
       {
         "position": {
-          "x": 592.5,
-          "y": 550
+          "x": 450,
+          "y": 380
         }
       }
 version: -1
@@ -326,11 +346,10 @@ view: |-
     },
     "paper": {
       "dimensions": {
-        "height": 910,
-        "width": 922.5,
-        "x": 50,
-        "y": 50
+        "height": 950,
+        "width": 380,
+        "x": 450,
+        "y": -140
       }
     }
   }
-adopted: true
