@@ -1,5 +1,6 @@
 {
     "name": "SOC Common Playbooks",
+    "id": "soc-common-playbooks",
     "description": "Frequently used playbooks pack.",
     "support": "xsoar",
     "currentVersion": "2.7.18",
