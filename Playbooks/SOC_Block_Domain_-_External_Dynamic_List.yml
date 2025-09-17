@@ -26,17 +26,17 @@ inputSections:
 inputs:
 - description: The domains to block
   key: Domains
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: Indicator tag to assign
   key: Tag
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: ""
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -70,7 +70,7 @@ tasks:
       id: b91dfe71-e177-4ca7-895f-1026172f5dea
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: b91dfe71-e177-4ca7-895f-1026172f5dea
     timertriggers: []
@@ -119,7 +119,7 @@ tasks:
       id: 609eb07b-eea9-4735-83a6-3376a68b64af
       iscommand: false
       name: Use External Dynamic List?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 609eb07b-eea9-4735-83a6-3376a68b64af
@@ -165,7 +165,7 @@ tasks:
       id: f01938b2-2926-4d8e-ad29-3677fb5281ed
       iscommand: true
       name: Update Indicator Tag for EDL
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Builtin|||appendIndicatorField
       type: regular
       version: -1
@@ -194,7 +194,7 @@ tasks:
       id: bc8d3853-6554-4315-8a49-ebe6496d6160
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: bc8d3853-6554-4315-8a49-ebe6496d6160
@@ -223,7 +223,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: d693e9dc-8e41-4d1f-8162-5991e8c58f17
@@ -259,7 +259,7 @@ tasks:
       id: 474ca564-1539-4528-803d-ddea2e2aa1ff
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -300,7 +300,7 @@ tasks:
       id: e2f1c719-682e-412b-8b04-16239f6b65f1
       iscommand: false
       name: 'Shadow: PANW Update Indicator Tag for EDL'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -327,3 +327,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

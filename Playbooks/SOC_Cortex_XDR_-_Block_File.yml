@@ -24,12 +24,12 @@ inputs:
 - description: List of hashed files you want to add to block list. Must be a valid
     SHA256 hash.
   key: HashList
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: ""
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -63,7 +63,7 @@ tasks:
       id: a93b6633-bfe0-4f17-8278-abb9a6ab931d
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: a93b6633-bfe0-4f17-8278-abb9a6ab931d
     timertriggers: []
@@ -102,7 +102,7 @@ tasks:
       id: fc4ecaac-87c0-4991-8072-edada376a47e
       iscommand: true
       name: Cortex XDR add a file SHA256 to block list
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||core-blocklist-files'
       type: regular
       version: -1
@@ -146,7 +146,7 @@ tasks:
       id: 73f0ad54-16ef-4e21-844f-d77e4b0d1af4
       iscommand: false
       name: Is there a file to block?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 73f0ad54-16ef-4e21-844f-d77e4b0d1af4
@@ -174,7 +174,7 @@ tasks:
       id: 2f82d128-202d-45bd-803b-638abe146a38
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 2f82d128-202d-45bd-803b-638abe146a38
@@ -232,7 +232,7 @@ tasks:
       id: 4cc56c7e-927f-4219-8fec-ee36fa0fae5a
       iscommand: false
       name: Is Cortex XDR integration enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 4cc56c7e-927f-4219-8fec-ee36fa0fae5a
@@ -268,7 +268,7 @@ tasks:
       id: 1cf1a934-5d44-4e09-a494-1195be570ae0
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -298,7 +298,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: c82f0d5f-77c6-47fd-8c34-b6e9eabaa67b
@@ -338,7 +338,7 @@ tasks:
       id: 02186a05-4cf9-46bc-90e6-969e2945c90a
       iscommand: false
       name: Cortex XDR Add file to SHA256 Block
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -367,3 +367,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

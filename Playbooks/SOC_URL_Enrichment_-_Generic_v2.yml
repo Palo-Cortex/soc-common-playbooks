@@ -36,7 +36,7 @@ inputSections:
 inputs:
 - description: The URLs to enrich.
   key: URL
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -49,7 +49,7 @@ inputs:
     Possible values: True / False.
     The default value is true.
   key: Rasterize
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "True"
@@ -58,7 +58,7 @@ inputs:
     Possible values: True / False.
     The default value is false.
   key: VerifyURL
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "False"
@@ -68,7 +68,7 @@ inputs:
     Possible values: True / False.
     The default value is false.
   key: UseReputationCommand
-  playbookInputQuery: null
+  playbookInputQuery:
   required: true
   value:
     simple: "False"
@@ -176,7 +176,7 @@ tasks:
       id: e1a236ab-b35b-4b70-84a7-3ca08b9bbe95
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: e1a236ab-b35b-4b70-84a7-3ca08b9bbe95
     timertriggers: []
@@ -224,7 +224,7 @@ tasks:
       id: 2e1b93fe-512d-4fba-80dd-2912bf3382f5
       iscommand: false
       name: Is there a URL to enrich?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 2e1b93fe-512d-4fba-80dd-2912bf3382f5
@@ -252,7 +252,7 @@ tasks:
       id: 7956570c-4a34-462b-84aa-0f8c6d01cf43
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 7956570c-4a34-462b-84aa-0f8c6d01cf43
@@ -308,7 +308,7 @@ tasks:
       id: 426d5e5a-76ec-4310-8157-e3ce1795f88f
       iscommand: false
       name: 'Is Rasterize integration enabled? '
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Exists
       type: condition
       version: -1
@@ -353,7 +353,7 @@ tasks:
       id: 45ed63d2-f583-48a3-8318-92317f597f06
       iscommand: true
       name: Get URL screenshot
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Rasterize|||rasterize
       tags:
       - url_screenshots
@@ -404,7 +404,7 @@ tasks:
       id: 71af55e1-a11a-42f9-84f6-ce3ce93e17ce
       iscommand: false
       name: Capture screenshots of the URL?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 71af55e1-a11a-42f9-84f6-ce3ce93e17ce
@@ -435,7 +435,7 @@ tasks:
       id: 7fc4755c-5a08-4f90-8bab-12c892b21df4
       iscommand: false
       name: URL Screenshots
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 7fc4755c-5a08-4f90-8bab-12c892b21df4
@@ -466,7 +466,7 @@ tasks:
       id: 11224752-fee9-4a8f-82c0-5af370081779
       iscommand: false
       name: URL Verification
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 11224752-fee9-4a8f-82c0-5af370081779
@@ -508,7 +508,7 @@ tasks:
       id: 6238c2cb-a230-4546-9952-c7c51e78faf2
       iscommand: false
       name: Verify SSL for URLs
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: URLSSLVerification
       type: regular
       version: -1
@@ -557,7 +557,7 @@ tasks:
       id: 0a60d379-a6c4-449e-87e2-4939b8d0ad13
       iscommand: false
       name: Verify URLs?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 0a60d379-a6c4-449e-87e2-4939b8d0ad13
@@ -588,7 +588,7 @@ tasks:
       id: 395ad908-d5b6-4449-8665-b085546d0d42
       iscommand: false
       name: No URLs
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 395ad908-d5b6-4449-8665-b085546d0d42
@@ -619,7 +619,7 @@ tasks:
       id: 704516ae-95d9-4ef5-8772-1958046fcac7
       iscommand: false
       name: URL Reputation
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 704516ae-95d9-4ef5-8772-1958046fcac7
@@ -660,7 +660,7 @@ tasks:
       id: 9c173500-98f2-46dd-8984-e0990a12ca73
       iscommand: true
       name: Check Reputation
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||url'
       type: regular
       version: -1
@@ -708,7 +708,7 @@ tasks:
       id: e0db6ab1-2c0e-4859-84eb-e764c3fd01e5
       iscommand: false
       name: Should use !url command?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: e0db6ab1-2c0e-4859-84eb-e764c3fd01e5
@@ -737,7 +737,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 984fa8e7-a1bb-41f3-8980-b8fbc2556185
@@ -770,3 +770,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

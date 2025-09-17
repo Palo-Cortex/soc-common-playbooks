@@ -23,7 +23,7 @@ inputSections:
 inputs:
 - description: The MD5 hash of the file to block.
   key: MD5
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -39,7 +39,7 @@ inputs:
       - operator: uniq
 - description: ""
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -82,7 +82,7 @@ tasks:
       id: 5e4385e3-76c2-48e2-80a4-c3798cdae027
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 5e4385e3-76c2-48e2-80a4-c3798cdae027
     timertriggers: []
@@ -145,7 +145,7 @@ tasks:
       id: 9cf85355-9028-4a01-8304-3a371020c9b3
       iscommand: false
       name: Is Cybereason integration enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 9cf85355-9028-4a01-8304-3a371020c9b3
@@ -190,7 +190,7 @@ tasks:
       id: 0f02e921-eb9a-47bd-8d9c-93759602036f
       iscommand: false
       name: Is there an MD5 to block?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 0f02e921-eb9a-47bd-8d9c-93759602036f
@@ -218,7 +218,7 @@ tasks:
       id: 2c14bf01-7fd9-45f8-8554-86d0c1332d81
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 2c14bf01-7fd9-45f8-8554-86d0c1332d81
@@ -257,7 +257,7 @@ tasks:
       id: 964932d8-a418-488c-ae60-225aec4a50b5
       iscommand: true
       name: Cybereason Prevent File
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Cybereason|||cybereason-prevent-file
       type: regular
       version: -1
@@ -295,7 +295,7 @@ tasks:
       id: 0333bc63-330a-401b-9ebd-574a974b916f
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -325,7 +325,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 4444bcde-43c6-4b09-8741-f6ab024cc3f1
@@ -365,7 +365,7 @@ tasks:
       id: 02ffb955-84eb-4ab1-b9f7-a919795491c8
       iscommand: false
       name: 'Shadow: Cybereason Ban File'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -396,3 +396,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

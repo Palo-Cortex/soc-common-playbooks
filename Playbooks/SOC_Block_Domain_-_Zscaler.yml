@@ -24,12 +24,12 @@ inputSections:
 inputs:
 - description: The Domain to block.
   key: Domain
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: ""
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -63,7 +63,7 @@ tasks:
       id: b124cfe7-a56f-4490-880b-78cf3274b99b
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: b124cfe7-a56f-4490-880b-78cf3274b99b
     timertriggers: []
@@ -126,7 +126,7 @@ tasks:
       id: 566639bd-4b4b-47c5-81f5-1665ec447c34
       iscommand: false
       name: Is Zscaler enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 566639bd-4b4b-47c5-81f5-1665ec447c34
@@ -165,7 +165,7 @@ tasks:
       id: 5c24626d-b1cd-4be5-8925-7d95ffc3b0ec
       iscommand: true
       name: Block Domain
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Zscaler|||zscaler-blacklist-url
       type: regular
       version: -1
@@ -194,7 +194,7 @@ tasks:
       id: 897a00db-2a04-48d5-8630-e55b5443f0b9
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 897a00db-2a04-48d5-8630-e55b5443f0b9
@@ -237,7 +237,7 @@ tasks:
       id: cfdef7e9-5188-4715-8a20-4cf22f75f1ee
       iscommand: false
       name: Check if Domain input was provided
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: cfdef7e9-5188-4715-8a20-4cf22f75f1ee
@@ -266,7 +266,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 6e77c9b1-f8b7-4d4b-8695-e37a7e1f3441
@@ -302,7 +302,7 @@ tasks:
       id: c7719eeb-e2f2-4bcf-9227-6d17ecc3bd4a
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: ShadowModeRouter
       type: condition
       version: -1
@@ -340,7 +340,7 @@ tasks:
       id: 7827dd70-3caf-4cd1-8d7c-b3b955049ab8
       iscommand: false
       name: 'Shadow: Zscaler Block Domain'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -371,3 +371,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

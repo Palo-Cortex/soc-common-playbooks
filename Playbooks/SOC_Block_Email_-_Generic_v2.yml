@@ -34,12 +34,12 @@ inputSections:
 inputs:
 - description: The email address that will be blocked.
   key: EmailToBlock
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: ""
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -70,7 +70,7 @@ tasks:
       id: d583e596-e160-4401-8bbf-544e34372f9e
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: d583e596-e160-4401-8bbf-544e34372f9e
     timertriggers: []
@@ -97,7 +97,7 @@ tasks:
       id: 2a7524dc-dfcd-4dce-8978-5bbb1ba94a67
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 2a7524dc-dfcd-4dce-8978-5bbb1ba94a67
@@ -138,7 +138,7 @@ tasks:
       iscommand: false
       name: Symantec block Email
       playbookId: Symantec block Email
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: f2f94ec5-a4ef-4963-8382-9e334fc350c7
@@ -176,7 +176,7 @@ tasks:
       id: 2c065c72-23f4-41d6-8391-027a43640107
       iscommand: false
       name: Is FireEye Email Security (EX) Available?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -215,7 +215,7 @@ tasks:
       id: 75132291-3638-4f49-8d91-26b4021a87a7
       iscommand: false
       name: Is Mimecast v2 Available?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -257,7 +257,7 @@ tasks:
       id: 7a10672f-b1a2-4910-b775-70fed70f2854
       iscommand: true
       name: FireEye Update Blocklist
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: FireEye Email Security|||fireeye-ex-update-blockedlist
       type: regular
       version: -1
@@ -305,7 +305,7 @@ tasks:
       id: 38a90692-985b-4b44-b475-6cea17fa1509
       iscommand: true
       name: Mimecast - Block Sender Policy
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: MimecastV2|||mimecast-create-policy
       type: regular
       version: -1
@@ -337,7 +337,7 @@ tasks:
       id: ba2daa5c-96f8-462d-8a50-86c84d4d80e8
       iscommand: false
       name: Mimecast
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: ba2daa5c-96f8-462d-8a50-86c84d4d80e8
@@ -368,7 +368,7 @@ tasks:
       id: e38a8e79-0254-4d88-8e98-8d023766523d
       iscommand: false
       name: FireEye Email Security (EX)
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: e38a8e79-0254-4d88-8e98-8d023766523d
@@ -399,7 +399,7 @@ tasks:
       id: 45e2cbf1-08bc-4085-8d3e-a0fe2fd4553e
       iscommand: false
       name: Symantec Email Security
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 45e2cbf1-08bc-4085-8d3e-a0fe2fd4553e
@@ -430,7 +430,7 @@ tasks:
       id: ebbab30d-ccb0-4d3b-8eba-9c953cb7bdb3
       iscommand: false
       name: Cisco Security Management Appliance
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: ebbab30d-ccb0-4d3b-8eba-9c953cb7bdb3
@@ -494,7 +494,7 @@ tasks:
       id: 614bc2e7-b289-44d7-8350-5bc69ace90fa
       iscommand: false
       name: Is Cisco Security Management Appliance Available?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 614bc2e7-b289-44d7-8350-5bc69ace90fa
@@ -537,7 +537,7 @@ tasks:
       id: 7d0cea05-db05-433d-90fb-83f2ab126f12
       iscommand: true
       name: Cisco SMA - Append to Blocklist
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: CiscoSMA|||cisco-sma-list-entry-append
       type: regular
       version: -1
@@ -583,7 +583,7 @@ tasks:
       id: 9e4f3f09-0897-4f18-86ce-22dd8a09b18c
       iscommand: false
       name: Has emails to block?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 9e4f3f09-0897-4f18-86ce-22dd8a09b18c
@@ -612,7 +612,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 531f4aeb-6142-4a24-8983-dfb2f9bb50a5
@@ -648,7 +648,7 @@ tasks:
       id: 82633ac8-e5ed-444b-9249-8feab2db0ed0
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -686,7 +686,7 @@ tasks:
       id: b2ebb744-50f7-4ddf-b022-253a04c799a9
       iscommand: false
       name: 'Shadow: Cisco SMA Email Block List'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -723,7 +723,7 @@ tasks:
       id: 3fbb2e1c-d8ac-432b-84bc-d2f64a8d21ab
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -761,7 +761,7 @@ tasks:
       id: 0717ccc2-7515-41b7-97af-ddde85a23119
       iscommand: false
       name: 'Shadow: FireEye Email Block List'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -798,7 +798,7 @@ tasks:
       id: 644fff35-ada3-4337-8298-61368d09ce9f
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -836,7 +836,7 @@ tasks:
       id: 05aaa92a-f72c-48bf-9421-32fba6f67104
       iscommand: false
       name: 'Shadow: Mimecast Email Block List'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -870,3 +870,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

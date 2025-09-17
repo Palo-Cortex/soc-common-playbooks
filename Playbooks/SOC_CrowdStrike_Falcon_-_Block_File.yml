@@ -11,7 +11,8 @@ contentitemexportablefields:
     supportedModules: []
     toServerVersion: ""
 description: "This playbook receives an MD5 or a SHA256 hash and adds it to the block
-  list in CrowdStrike Falcon. \nThe playbook uses the integration \"CrowdStrike Falcon\"."
+  list in CrowdStrike Falcon. \nThe playbook uses the integration \"CrowdStrike Falcon\"\
+  ."
 dirtyInputs: true
 id: 'SOC CrowdStrike Falcon - Block File'
 inputSections:
@@ -25,19 +26,19 @@ inputs:
 - description: 'The severity of the indicator (informational, low, medium, high and
     critical) '
   key: 'Severity '
-  playbookInputQuery: null
+  playbookInputQuery:
   required: true
   value:
     simple: medium
 - description: In this input you can insert either MD5 or SHA256 to block.
   key: Hash
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: Shadow Mode is a key safety mechanism. It ensures actions like isolate_endpoint
     or disable_user are logged but not executed in test scenarios.
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -68,7 +69,7 @@ tasks:
       id: 0d73b973-bbfc-453b-8f17-48573f846ef8
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 0d73b973-bbfc-453b-8f17-48573f846ef8
     timertriggers: []
@@ -105,7 +106,7 @@ tasks:
       id: 6131ee7b-bdd9-48b7-8ef9-6f4f25520d57
       iscommand: false
       name: 'Is CrowdStrike enabled? '
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 6131ee7b-bdd9-48b7-8ef9-6f4f25520d57
@@ -133,7 +134,7 @@ tasks:
       id: adf1831c-824c-4336-83f7-59df78cb904b
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: adf1831c-824c-4336-83f7-59df78cb904b
@@ -194,7 +195,7 @@ tasks:
       id: fdf5f2a5-206f-41fa-bf97-85c3d12c9860
       iscommand: true
       name: Block by SHA256
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: CrowdstrikeFalcon|||cs-falcon-upload-custom-ioc
       type: regular
       version: -1
@@ -256,7 +257,7 @@ tasks:
       id: e7d425f1-beef-4302-91d8-8fefaa1404e9
       iscommand: true
       name: Block by MD5
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: CrowdstrikeFalcon|||cs-falcon-upload-custom-ioc
       type: regular
       version: -1
@@ -302,7 +303,7 @@ tasks:
       id: 2cd3e8da-b26a-4d7e-8466-567b0c1727dc
       iscommand: false
       name: Is there any file to block?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 2cd3e8da-b26a-4d7e-8466-567b0c1727dc
@@ -349,7 +350,7 @@ tasks:
       id: 03ec2d2d-fe08-4e24-83db-bb3511aa626b
       iscommand: false
       name: Has SHA256 Hashes?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 03ec2d2d-fe08-4e24-83db-bb3511aa626b
@@ -396,7 +397,7 @@ tasks:
       id: 68b13d2c-09d4-48d5-8607-8e9b922cc8ab
       iscommand: false
       name: Has MD5 Hashes?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 68b13d2c-09d4-48d5-8607-8e9b922cc8ab
@@ -428,7 +429,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: e7f16046-9c00-4832-8aec-37614f86ba41
@@ -468,7 +469,7 @@ tasks:
       id: ea89ec84-b71f-416c-aeab-d109b842bf41
       iscommand: false
       name: CrowdStrike Block by MD5
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -509,7 +510,7 @@ tasks:
       id: caf0851a-94f3-489c-84d1-87b89cc9ca2e
       iscommand: false
       name: CrowdStrike Block by SHA256
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -547,7 +548,7 @@ tasks:
       id: d7cd21f4-0e80-451e-bf0c-f879a14bcbfc
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -585,7 +586,7 @@ tasks:
       id: 3f02c51f-6922-4418-8624-930d4280030e
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -618,3 +619,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

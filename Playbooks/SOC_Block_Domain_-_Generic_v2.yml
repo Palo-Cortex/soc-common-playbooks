@@ -39,32 +39,32 @@ inputSections:
 inputs:
 - description: The Domain to block.
   key: Domain
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: |-
     The Domain List ID to add the Domain to.
     product: Proofpoint Threat Response
   key: DomainBlackListID
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: |-
     Tag to assign Domain to the External Dynamic List.
     sub-playbook: Block Domain - External Dynamic List
   key: Tag
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: "The UTC expiration date and time of the suspicious object, for example:
     2020-01-25T09:00:00Z.\nProducts: \nTrend Micro Apex One\nProofpoint Threat Response"
   key: Expiration
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: ""
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -104,7 +104,7 @@ tasks:
       id: 806d142e-f679-48c3-8e95-1bbc49ace64a
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 806d142e-f679-48c3-8e95-1bbc49ace64a
     timertriggers: []
@@ -131,7 +131,7 @@ tasks:
       id: 3c45a271-d018-4dfc-8673-429fb09bc06e
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 3c45a271-d018-4dfc-8673-429fb09bc06e
@@ -163,7 +163,7 @@ tasks:
       iscommand: false
       name: SOC Block Domain - Zscaler
       playbookId: Block Domain - Zscaler
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 44e7a044-1f8e-48c5-825b-349091946c05
@@ -192,7 +192,7 @@ tasks:
       iscommand: false
       name: SOC Block Domain - Symantec Messaging Gateway
       playbookId: Block Domain - Symantec Messaging Gateway
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 31a3d910-b24a-44ef-8db7-44e8b3eb717d
@@ -224,7 +224,7 @@ tasks:
       iscommand: false
       name: SOC Block Domain - FireEye Email Security
       playbookId: Block Domain - FireEye Email Security
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 4d5f09d1-9911-4658-8551-ab5eba031c71
@@ -256,7 +256,7 @@ tasks:
       iscommand: false
       name: SOC Block Domain - Trend Micro Apex One
       playbookId: Block Domain - Trend Micro Apex One
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 67b3f8a0-5508-45ba-8b7f-06a99eeeee0a
@@ -288,7 +288,7 @@ tasks:
       iscommand: false
       name: SOC Block Domain - Proofpoint Threat Response
       playbookId: Block Domain - Proofpoint Threat Response
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 3f71ce78-dc28-4bb2-82a5-aec91df370c6
@@ -320,7 +320,7 @@ tasks:
       iscommand: false
       name: SOC Block Domain - Cisco Stealthwatch
       playbookId: Block Domain - Cisco Stealthwatch
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 12209a16-1801-49f3-8b58-9bfc216b62d7
@@ -352,7 +352,7 @@ tasks:
       iscommand: false
       name: SOC Block Domain - External Dynamic
       playbookId: SOC Block Domain - External Dynamic
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 8e29d096-dceb-48e5-82e6-71774d186005
@@ -378,3 +378,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

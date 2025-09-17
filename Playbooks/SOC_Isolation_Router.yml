@@ -24,22 +24,22 @@ inputSections:
 inputs:
 - description: Device/Endpoint ID
   key: Endpoint ID
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: ""
   key: Endpoint hostname
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: ""
   key: Endpoint IP
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: ""
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -73,7 +73,7 @@ tasks:
       id: 44ba6af3-46b9-4441-84c1-53dff0085128
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 44ba6af3-46b9-4441-84c1-53dff0085128
     timertriggers: []
@@ -123,7 +123,7 @@ tasks:
       iscommand: false
       name: SOC Containment Plan - Isolate Device
       playbookId: SOC Containment Plan - Isolate Device
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: a9edc2b4-6d58-48d5-979f-2cb7a388a7ae
@@ -154,7 +154,7 @@ tasks:
       id: 4730edbe-fbf7-4b3e-8493-6412b77a541c
       iscommand: false
       name: No endpoint agent found
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 4730edbe-fbf7-4b3e-8493-6412b77a541c
@@ -182,7 +182,7 @@ tasks:
       id: e6bedef3-8f7b-4fb9-8362-137ad712aa79
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: e6bedef3-8f7b-4fb9-8362-137ad712aa79
@@ -220,7 +220,7 @@ tasks:
       id: 1ff7d8a6-af00-4ab7-8e0d-63860e481cdd
       iscommand: false
       name: Verify Crowdstrike integration
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -259,7 +259,7 @@ tasks:
       id: 7a5fbae4-f0b0-487b-84ef-956ad7c29b90
       iscommand: false
       name: Verify MDE integration
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -297,7 +297,7 @@ tasks:
       id: 09bcc377-61ab-48e5-843f-16cd3046d704
       iscommand: true
       name: Check XDR for host
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||core-get-endpoints'
       type: regular
       version: -1
@@ -339,7 +339,7 @@ tasks:
       id: d3e1b590-48d4-440b-8fe5-4b93884ff37e
       iscommand: false
       name: XDR Agent found?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: d3e1b590-48d4-440b-8fe5-4b93884ff37e
@@ -389,7 +389,7 @@ tasks:
       iscommand: false
       name: SOC Microsoft Defender For Endpoint - Isolate Endpoint
       playbookId: Microsoft Defender For Endpoint - Isolate Endpoint
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: e40517f0-b04d-4d49-ba32-5aeb875ffafc
@@ -433,7 +433,7 @@ tasks:
       iscommand: false
       name: SOC Crowdstrike Falcon - Isolate Endpoint
       playbookId: SOC Crowdstrike Falcon - Isolate Endpoint
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: fb81e1f1-8573-4018-a9e5-ac987199f858
@@ -461,3 +461,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

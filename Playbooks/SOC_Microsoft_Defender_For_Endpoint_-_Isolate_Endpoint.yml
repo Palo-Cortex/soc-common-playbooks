@@ -30,17 +30,17 @@ inputs:
     !microsoft-atp-get-machine-details
     !microsoft-atp-get-machines
   key: Device_id
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: The host name you want to isolate.
   key: Hostname
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: The device IP you want to isolate.
   key: Device_IP
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: |-
@@ -49,13 +49,13 @@ inputs:
     For more information see Microsoft documentation:
       https://docs.microsoft.com/en-us/microsoft-365/security/defender-endpoint/respond-machine-alerts?view=o365-worldwide#isolate-devices-from-the-network
   key: Isolation_type
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: Full
 - description: ""
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -113,7 +113,7 @@ tasks:
       id: 0c9a3619-7414-4966-860a-3b83f7ae3c9a
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 0c9a3619-7414-4966-860a-3b83f7ae3c9a
     timertriggers: []
@@ -149,7 +149,7 @@ tasks:
       id: f658a709-df9b-463e-8305-7c14c5b68512
       iscommand: false
       name: Is Microsoft Defender For Endpoint Integration Enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -178,7 +178,7 @@ tasks:
       id: 2f36c13b-1511-485c-86e0-0bbf57eba943
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 2f36c13b-1511-485c-86e0-0bbf57eba943
@@ -221,7 +221,7 @@ tasks:
       id: 2c229082-3fd9-43b2-83dc-5ff28a9be1b9
       iscommand: false
       name: Is the device ready for isolation?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 2c229082-3fd9-43b2-83dc-5ff28a9be1b9
@@ -261,7 +261,7 @@ tasks:
       id: 4448d4cc-2c91-4b3a-8aa8-01705c810970
       iscommand: true
       name: Isolate endpoint
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||microsoft-atp-isolate-machine'
       type: regular
       version: -1
@@ -301,7 +301,7 @@ tasks:
       id: f4b67ca6-19e6-492d-84e9-3e93ef002e3e
       iscommand: false
       name: ' Check if Isolate Action Succeeded'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: isError
       type: condition
       version: -1
@@ -357,7 +357,7 @@ tasks:
       id: 6ee8a70d-bd1a-4fe0-8e3f-2ff1a9ac9b89
       iscommand: false
       name: Print a warning to the war room - Device already isolated
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -395,7 +395,7 @@ tasks:
       id: 913c4449-5898-4aaf-87d0-e4454d35c87b
       iscommand: false
       name: Print inactive device
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -445,15 +445,15 @@ tasks:
       brand: ""
       description: "Set a value in context under the key you entered. If no value
         is entered, the script doesn't do anything.\n\nThis automation runs using
-        the default Limited User role, unless you explicitly change the permissions.\nFor
-        more information, see the section about permissions here:\n- For Cortex XSOAR
-        6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+        the default Limited User role, unless you explicitly change the permissions.\n
+        For more information, see the section about permissions here:\n- For Cortex
+        XSOAR 6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n
+        - For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
       id: 7cc2d23d-784c-4029-8d0b-62aebc0b2abd
       iscommand: false
       name: Set Active Device
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: SetAndHandleEmpty
       type: regular
       version: -1
@@ -503,15 +503,15 @@ tasks:
       brand: ""
       description: "Set a value in context under the key you entered. If no value
         is entered, the script doesn't do anything.\n\nThis automation runs using
-        the default Limited User role, unless you explicitly change the permissions.\nFor
-        more information, see the section about permissions here:\n- For Cortex XSOAR
-        6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+        the default Limited User role, unless you explicitly change the permissions.\n
+        For more information, see the section about permissions here:\n- For Cortex
+        XSOAR 6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n
+        - For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
       id: 9543301b-5b6c-4bb5-864c-3d40cd4152dd
       iscommand: false
       name: Set Non-valid Devices
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: SetAndHandleEmpty
       type: regular
       version: -1
@@ -556,7 +556,7 @@ tasks:
       id: ba1c6190-674a-44db-89cd-d8e982093c58
       iscommand: false
       name: Is there any inactive device?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: ba1c6190-674a-44db-89cd-d8e982093c58
@@ -583,7 +583,8 @@ tasks:
     scriptarguments:
       value:
         simple: "Please note that the following ID / Hostname / IP are incorrect.
-          No action was taken on the following Device ID / hostname / IP: \n${MicrosoftATP.IncorrectIDs}\n${MicrosoftATP.IncorrectIPs}\n${MicrosoftATP.IncorrectHostnames}"
+          No action was taken on the following Device ID / hostname / IP: \n${MicrosoftATP.IncorrectIDs}\n\
+          ${MicrosoftATP.IncorrectIPs}\n${MicrosoftATP.IncorrectHostnames}"
     separatecontext: false
     skipunavailable: false
     task:
@@ -593,7 +594,7 @@ tasks:
       id: 30182da7-2783-468c-8d15-4305b8f01d5e
       iscommand: false
       name: Print incorrect Device ID
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -687,7 +688,7 @@ tasks:
       id: 2816c649-e7c3-4f09-8730-e20eb9346ac2
       iscommand: false
       name: Check if there is any provided incorrect info
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 2816c649-e7c3-4f09-8730-e20eb9346ac2
@@ -735,15 +736,15 @@ tasks:
       brand: ""
       description: "Set a value in context under the key you entered. If no value
         is entered, the script doesn't do anything.\n\nThis automation runs using
-        the default Limited User role, unless you explicitly change the permissions.\nFor
-        more information, see the section about permissions here:\n- For Cortex XSOAR
-        6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+        the default Limited User role, unless you explicitly change the permissions.\n
+        For more information, see the section about permissions here:\n- For Cortex
+        XSOAR 6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n
+        - For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
       id: 9b159ca4-130c-4e62-88c4-8b797db390fd
       iscommand: false
       name: Set Incorrect ID
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: SetAndHandleEmpty
       type: regular
       version: -1
@@ -788,15 +789,15 @@ tasks:
       brand: ""
       description: "Set a value in context under the key you entered. If no value
         is entered, the script doesn't do anything.\n\nThis automation runs using
-        the default Limited User role, unless you explicitly change the permissions.\nFor
-        more information, see the section about permissions here:\n- For Cortex XSOAR
-        6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+        the default Limited User role, unless you explicitly change the permissions.\n
+        For more information, see the section about permissions here:\n- For Cortex
+        XSOAR 6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n
+        - For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
       id: 66a8b331-c775-4263-8289-dcedbf3f2799
       iscommand: false
       name: Set Incorrect IP
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: SetAndHandleEmpty
       type: regular
       version: -1
@@ -845,15 +846,15 @@ tasks:
       brand: ""
       description: "Set a value in context under the key you entered. If no value
         is entered, the script doesn't do anything.\n\nThis automation runs using
-        the default Limited User role, unless you explicitly change the permissions.\nFor
-        more information, see the section about permissions here:\n- For Cortex XSOAR
-        6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+        the default Limited User role, unless you explicitly change the permissions.\n
+        For more information, see the section about permissions here:\n- For Cortex
+        XSOAR 6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n
+        - For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
       id: f95ccb2e-09b5-4ae3-88d7-802940ec7bd1
       iscommand: false
       name: Set Incorrect Hostname
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: SetAndHandleEmpty
       type: regular
       version: -1
@@ -887,7 +888,7 @@ tasks:
       id: 93070bb8-0dbd-4a97-842e-f851bba34472
       iscommand: false
       name: Normalizing Device info
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 93070bb8-0dbd-4a97-842e-f851bba34472
@@ -918,7 +919,7 @@ tasks:
       id: 79a55f6a-7ab3-4d04-8b68-cfc13ab442dc
       iscommand: false
       name: Active Device
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 79a55f6a-7ab3-4d04-8b68-cfc13ab442dc
@@ -949,7 +950,7 @@ tasks:
       id: 74d28cdb-2cf4-4d2e-846c-762d094bf01f
       iscommand: false
       name: Inactive Device
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 74d28cdb-2cf4-4d2e-846c-762d094bf01f
@@ -980,7 +981,7 @@ tasks:
       id: 59d101b0-bfca-443a-8cb7-8465d9e44521
       iscommand: false
       name: Incorrect Input
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 59d101b0-bfca-443a-8cb7-8465d9e44521
@@ -1011,7 +1012,7 @@ tasks:
       id: 38e3795b-141d-4aba-820a-4f95e7eb47da
       iscommand: false
       name: Isolate Device
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 38e3795b-141d-4aba-820a-4f95e7eb47da
@@ -1063,7 +1064,7 @@ tasks:
       id: 361b1e36-d71c-4128-83a8-012269159fec
       iscommand: false
       name: Was any data provided?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 361b1e36-d71c-4128-83a8-012269159fec
@@ -1102,7 +1103,7 @@ tasks:
       id: 91926f31-cb8d-4e2a-8d36-11b6b491c6cd
       iscommand: true
       name: Enrich Endpoint info
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||endpoint'
       type: regular
       version: -1
@@ -1139,7 +1140,7 @@ tasks:
       id: 6c848c0e-e355-4d76-9e2c-4a50f0e65d5d
       iscommand: false
       name: Mode Run?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: ShadowModeRouter
       type: condition
       version: -1
@@ -1177,7 +1178,7 @@ tasks:
       id: b89a6ed5-3c24-42fd-ae49-4e0a69a66654
       iscommand: false
       name: 'Shadow: CrowdStrike Isolate EndPoint'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -1212,3 +1213,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

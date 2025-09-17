@@ -21,7 +21,7 @@ inputSections:
 inputs:
 - description: The hostname to enrich.
   key: Hostname
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -62,7 +62,7 @@ tasks:
       id: 1635626d-e92f-49c7-85a7-b4d1632d1e38
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 1635626d-e92f-49c7-85a7-b4d1632d1e38
     timertriggers: []
@@ -122,7 +122,7 @@ tasks:
       id: 50264655-eac1-4439-809b-32f93a19c825
       iscommand: false
       name: Is Cylance Protect v2 enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 50264655-eac1-4439-809b-32f93a19c825
@@ -159,7 +159,7 @@ tasks:
       id: 528d8f5d-cf61-4bc1-b4cc-75887b25ea8d
       iscommand: true
       name: Get all Cylance Protect devices
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Cylance Protect v2|||cylance-protect-get-devices
       type: regular
       version: -1
@@ -218,7 +218,7 @@ tasks:
       id: ec7a9e06-60d0-4c25-8ed4-1cb9d0fe92f6
       iscommand: false
       name: Set enriched device details
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -268,7 +268,7 @@ tasks:
       id: 83e2be36-d5ef-43df-80b3-c77e95e19780
       iscommand: false
       name: Set device list
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -325,7 +325,7 @@ tasks:
       id: 8a61ee6d-786a-4ec3-8f9e-fe49f90c1930
       iscommand: false
       name: Was a device found?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 8a61ee6d-786a-4ec3-8f9e-fe49f90c1930
@@ -353,7 +353,7 @@ tasks:
       id: 3849ea50-af6b-4ce4-8c43-c76f660fa7f6
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 3849ea50-af6b-4ce4-8c43-c76f660fa7f6
@@ -382,7 +382,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 23787797-71ae-4d5d-897c-cda6c152c2dd
@@ -412,3 +412,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

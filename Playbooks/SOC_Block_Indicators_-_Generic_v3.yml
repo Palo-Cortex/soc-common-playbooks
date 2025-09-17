@@ -64,7 +64,7 @@ inputs:
 - description: 'An array of malicious IPs to block. Enter a comma-separated list of
     IPs (i.e.: 1.1.1.1,2.2.2.2).'
   key: IP
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -92,7 +92,7 @@ inputs:
       - operator: uniq
 - description: Array of malicious URLs to block.
   key: URL
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -120,7 +120,7 @@ inputs:
       - operator: uniq
 - description: Array of malicious usernames to block.
   key: Username
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -148,7 +148,7 @@ inputs:
       - operator: uniq
 - description: The MD5 hash of the file you want to block.
   key: MD5
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -191,7 +191,7 @@ inputs:
       - operator: uniq
 - description: The SHA256 hash of the file you want to block.
   key: SHA256
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -234,7 +234,7 @@ inputs:
       - operator: uniq
 - description: Array of malicious file hashes to block.
   key: FilesToBlock
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -261,7 +261,7 @@ inputs:
       - operator: uniq
 - description: The domain that you wish to block.
   key: DomainToBlock
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -288,7 +288,7 @@ inputs:
       - operator: uniq
 - description: The email address that you wish to block.
   key: EmailToBlock
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -319,7 +319,7 @@ inputs:
     indicators will be blocked automatically.\n\nIf set to False - The user will be
     prompted to select which indicators to block."
   key: AutoBlockIndicators
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "True"
@@ -327,20 +327,20 @@ inputs:
     Custom Block Rules are used.\nSpecify \"True\" to create new Custom Block Rules
     (2 FW rules inside the PAN-OS device). \nFor \"False\" - no rules will be created."
   key: CustomBlockRule
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "True"
 - description: Panorama log forwarding object name. Indicate what type of Log Forwarding
     setting will be specified in the PAN-OS custom rules.
   key: LogForwarding
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: "This input determines whether to commit the configuration automatically
     on PAN-OS devices and other FWs. \nYes - Commit automatically.\nNo - Commit manually."
   key: AutoCommit
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "No"
@@ -348,42 +348,42 @@ inputs:
     This input determines whether Palo Alto Networks Panorama or Firewall Static Address Groups are used.
     Specify the Static Address Group name for IPs list handling.
   key: StaticAddressGroup
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: Custom URL Category name.
   key: CustomURLCategory
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: XSOAR Remediation - Malicious URLs
 - description: Custom URL category type. Insert "URL List"/ "Category Match".
   key: type
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: Device group for the Custom URL Category (Panorama instances).
   key: device-group
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: The list of categories. Relevant from PAN-OS v9.x.
   key: categories
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: |-
     The Domain List ID to add the Domain to.
     product: Proofpoint Threat Response
   key: DomainBlackListID
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: Insert a tag name with which indicators will get tagged. This tag can
     be used later in the External Dynamic Lists integration by using the tag for filtering
     IPs in the indicator query.
   key: Tag
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: Blocked Indicator In Systems
@@ -391,7 +391,7 @@ inputs:
     This input determines whether Palo Alto Networks Panorama or Firewall Dynamic Address Groups are used.
     Specify the Dynamic Address Group tag name for IPs list handling.
   key: DAG
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: "Possible values: True/False.  Default: True.\nWhether to provide user
@@ -399,7 +399,7 @@ inputs:
     the user.\nTrue - The server will ask the user for blocking verification and will
     display the blocking list."
   key: UserVerification
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "True"
@@ -407,7 +407,7 @@ inputs:
     list should be provided in CIDR notation. For example, a list of ranges would
     be: "172.16.0.0/12,10.0.0.0/8,192.168.0.0/16" (without quotes).'
   key: InternalRange
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -432,20 +432,20 @@ inputs:
 - description: Signal Sciences WAF - Enter the site name for the integration to be
     applied. The site name can be found in your instance console.
   key: SiteName
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: Akamai's WAF network list ID, which is mandatory to be mentioned for
     the integration. The chosen IPs will be added to this ID.
   key: AkamaiNetworkListID
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: Cisco ASA (firewall) value for the rule's source object in the created
     blocking rule. Can be the value of an IPv4, an address block, or the name of a
     network object.
   key: CiscoFWSource
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: |-
@@ -454,7 +454,7 @@ inputs:
 
     Default input- "XSOAR - Block IP playbook - ${incident.id}"
   key: InputEnrichment
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "False"
@@ -464,7 +464,7 @@ inputs:
 
     Default input- "XSOAR - Block IP playbook - ${incident.id}"
   key: RuleName
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: XSOAR - Block Indicators playbook - ${alert.id}
@@ -473,18 +473,18 @@ inputs:
     Possible values: inbound or outbound
     Default: outbound
   key: RuleDirection
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: outbound
 - description: EDL Server IP Address
   key: EDLServerIP
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: ""
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -606,7 +606,7 @@ tasks:
       id: be855f8e-b0d6-4b33-8898-954bf9ba99cc
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: be855f8e-b0d6-4b33-8898-954bf9ba99cc
     timertriggers: []
@@ -636,7 +636,7 @@ tasks:
       id: c155d55d-f7f3-4af2-8739-3cb6143e0e81
       iscommand: false
       name: Tag Indicators
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: c155d55d-f7f3-4af2-8739-3cb6143e0e81
@@ -672,7 +672,7 @@ tasks:
       id: 15d43128-6c48-4deb-8ed0-044d0454fa7b
       iscommand: false
       name: Block indicators
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 15d43128-6c48-4deb-8ed0-044d0454fa7b
@@ -700,7 +700,7 @@ tasks:
       id: 22f0eb38-c4d3-4e67-889b-6abbff216ab8
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 22f0eb38-c4d3-4e67-889b-6abbff216ab8
@@ -750,7 +750,7 @@ tasks:
       id: 8e6165ed-cc2e-4820-8ae4-c73fd82a3088
       iscommand: true
       name: Tag bad indicators
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Builtin|||appendIndicatorField
       type: regular
       version: -1
@@ -896,19 +896,19 @@ tasks:
     isautoswitchedtoquietmode: false
     isoversize: false
     message:
-      bcc: null
-      body: null
-      cc: null
+      bcc:
+      body:
+      cc:
       format: ""
       methods: []
-      subject: null
+      subject:
       timings:
         completeafterreplies: 1
         completeaftersla: false
         completeafterv2: true
         retriescount: 2
         retriesinterval: 360
-      to: null
+      to:
     nexttasks:
       '#none#':
       - "21"
@@ -922,7 +922,7 @@ tasks:
       id: 0d20c35f-5bdf-4b27-8b63-f5334f9342f5
       iscommand: false
       name: Which indicators would you like to block?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: collection
       version: -1
     taskid: 0d20c35f-5bdf-4b27-8b63-f5334f9342f5
@@ -969,7 +969,7 @@ tasks:
       id: 8a156613-e43b-4bf2-857c-159220291b3b
       iscommand: false
       name: Block Indicators Automatically?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 8a156613-e43b-4bf2-857c-159220291b3b
@@ -1047,7 +1047,7 @@ tasks:
       id: ca92498f-ebc4-4e68-81e9-44e1c6907d9d
       iscommand: false
       name: Set indicators to block - Manual
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -1137,7 +1137,7 @@ tasks:
       id: 6cabb94a-1422-4d97-89ee-5b35b328c70b
       iscommand: false
       name: Set indicators to block - Auto
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -1183,7 +1183,7 @@ tasks:
       id: 92a68f14-96ed-4e6f-880f-dde5980b1fc2
       iscommand: false
       name: Has indicators to block?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 92a68f14-96ed-4e6f-880f-dde5980b1fc2
@@ -1226,7 +1226,7 @@ tasks:
       id: ee795eae-1fc0-4458-864b-91b2f224db89
       iscommand: false
       name: Tag received from inputs?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: ee795eae-1fc0-4458-864b-91b2f224db89
@@ -1311,7 +1311,7 @@ tasks:
       id: 4b64da5f-53b9-4fdd-8e65-5a133c6700d6
       iscommand: false
       name: Are there indicators to block?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 4b64da5f-53b9-4fdd-8e65-5a133c6700d6
@@ -1359,7 +1359,7 @@ tasks:
       iscommand: false
       name: SOC Block Email - Generic v2
       playbookId: SOC Block Email - Generic v2
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: ac1dcf02-1ea8-488a-ad60-b31434a0026d
@@ -1409,7 +1409,7 @@ tasks:
       iscommand: false
       name: SOC Block Domain - Generic v2
       playbookId: SOC Block Domain - Generic v2
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 65f15302-fd9a-4ee3-9777-312c8350c3e9
@@ -1467,7 +1467,7 @@ tasks:
       iscommand: false
       name: SOC Block URL - Generic v2
       playbookId: SOC Block URL - Generic v2
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 114d89c6-d66a-4322-af15-50e41e979728
@@ -1532,7 +1532,7 @@ tasks:
       iscommand: false
       name: SOC Block Account - Generic v2
       playbookId: SOC Block Account - Generic v2
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: bbcc49c4-52a8-400d-ac24-132c221bc0df
@@ -1585,7 +1585,7 @@ tasks:
       iscommand: false
       name: SOC Block File - Generic v2
       playbookId: SOC Block File - Generic v2
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 7c49c3b9-313c-4282-abfd-235baaccd6a6
@@ -1629,7 +1629,7 @@ tasks:
       iscommand: false
       name: SOC Block IP - Generic v2
       playbookId: SOC Block IP - Generic v2
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 312289eb-2251-4985-a7a0-7befe2235c5b
@@ -1658,3 +1658,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

@@ -46,12 +46,12 @@ inputSections:
 inputs:
 - description: Array of malicious URLs to block.
   key: URL
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: Log Forwarding object name.
   key: LogForwarding
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: |-
@@ -59,49 +59,49 @@ inputs:
     Yes - Commit automatically.
     No - Commit manually.
   key: AutoCommit
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "No"
 - description: Custom URL Category name.
   key: CustomURLCategory
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: XSOAR Remediation - Malicious URLs
 - description: Custom URL category type. Insert "URL List"/ "Category Match".
   key: type
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: The list of categories. Relevant from PAN-OS v9.x.
   key: categories
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: |-
     Possible values:True/False. Default:True.
     Specify if User Verification is Requrired
   key: UserVerification
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "True"
 - description: EDL Server IP Address
   key: EDLServerIP
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: Device group for the Custom URL Category (Panorama instances).
   key: device-group
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: Insert a tag name with which indicators will get tagged. This tag can
     be used later in the External Dynamic Lists integration by using the tag for filtering
     IPs in the indicator query.
   key: Tag
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: |-
@@ -109,13 +109,13 @@ inputs:
     Remember, this input will only be used when there is no input to the CategoryName.
     Default: Shared
   key: Folder
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: Shared
 - description: ""
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -149,7 +149,7 @@ tasks:
       id: f7a7452c-dafe-4b3e-8461-4ea61daf5e3b
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: f7a7452c-dafe-4b3e-8461-4ea61daf5e3b
     timertriggers: []
@@ -176,7 +176,7 @@ tasks:
       id: 8f968aa5-26ca-4471-891b-4ac7f9114147
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 8f968aa5-26ca-4471-891b-4ac7f9114147
@@ -213,7 +213,7 @@ tasks:
       id: ecece7aa-0eb6-4f67-8a9b-dfc77bcef34d
       iscommand: false
       name: Block URLs
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: ecece7aa-0eb6-4f67-8a9b-dfc77bcef34d
@@ -257,7 +257,7 @@ tasks:
       id: 0e2e9b54-cbaa-4f8c-85b2-b5927f30f52a
       iscommand: false
       name: Is there a URL to block?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 0e2e9b54-cbaa-4f8c-85b2-b5927f30f52a
@@ -321,7 +321,7 @@ tasks:
       id: efeca267-b6d2-4a08-8325-e8fb7c1dd633
       iscommand: false
       name: Is Zscaler enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: efeca267-b6d2-4a08-8325-e8fb7c1dd633
@@ -360,7 +360,7 @@ tasks:
       id: 5f366f9a-ddac-4072-b304-ecbbbe74499e
       iscommand: true
       name: Block URL with Zscaler
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Zscaler|||zscaler-blacklist-url
       type: regular
       version: -1
@@ -392,7 +392,7 @@ tasks:
       id: 90b64f91-6db0-4a69-86e3-80aa6fc36ebd
       iscommand: false
       name: Checkpoint
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 90b64f91-6db0-4a69-86e3-80aa6fc36ebd
@@ -423,7 +423,7 @@ tasks:
       id: 9e331921-f00a-47d7-8f02-8ab4fbacc053
       iscommand: false
       name: Zscaler
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 9e331921-f00a-47d7-8f02-8ab4fbacc053
@@ -468,7 +468,7 @@ tasks:
       id: b9e7db2b-6985-4410-8e01-ccb9950cd8b7
       iscommand: false
       name: Use EDL?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: b9e7db2b-6985-4410-8e01-ccb9950cd8b7
@@ -506,7 +506,7 @@ tasks:
       id: da7121fa-715d-4010-81ac-e519b88b58e3
       iscommand: false
       name: "Is CheckPoint Integration \nAavailable?"
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -547,7 +547,7 @@ tasks:
       iscommand: false
       name: Checkpoint - Block URL
       playbookId: Checkpoint - Block URL
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 195a51ea-2a0b-47e3-83f6-c6b6a4938847
@@ -589,7 +589,7 @@ tasks:
       iscommand: false
       name: Sophos Firewall - Block URL
       playbookId: Sophos Firewall - Block URL
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 0dd55a58-9d45-449e-8b9f-3c1630188951
@@ -620,7 +620,7 @@ tasks:
       id: 21af0a6a-234a-4061-884a-86f3209ae79e
       iscommand: false
       name: No URL was definded
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 21af0a6a-234a-4061-884a-86f3209ae79e
@@ -651,7 +651,7 @@ tasks:
       id: 42362e33-89e4-4e9a-89ad-8fca62f06425
       iscommand: false
       name: Sophos
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 42362e33-89e4-4e9a-89ad-8fca62f06425
@@ -689,7 +689,7 @@ tasks:
       id: c08fd24c-0333-4f69-8700-69b92c530882
       iscommand: false
       name: Is Sophos Integration Enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -721,7 +721,7 @@ tasks:
       id: 12ce6945-cd09-46e6-8661-748f50ed220c
       iscommand: false
       name: EDL
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 12ce6945-cd09-46e6-8661-748f50ed220c
@@ -766,7 +766,7 @@ tasks:
       id: f5c64bf3-5853-428d-8f8c-8ede36080770
       iscommand: true
       name: Update Tag For URLs
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Builtin|||appendIndicatorField
       type: regular
       version: -1
@@ -811,11 +811,11 @@ tasks:
     isautoswitchedtoquietmode: false
     isoversize: false
     message:
-      bcc: null
+      bcc:
       body:
         simple: Dear XSOAR user, Please approve those URLs that you would like to
           block in your internal systems
-      cc: null
+      cc:
       format: ""
       methods:
       - email
@@ -842,7 +842,7 @@ tasks:
       id: 7948896f-f14b-4e0b-865e-47a3a0c1da3f
       iscommand: false
       name: User Verification
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: collection
       version: -1
     taskid: 7948896f-f14b-4e0b-865e-47a3a0c1da3f
@@ -882,7 +882,7 @@ tasks:
       id: 6a38d62a-b597-4165-87e8-7b5b92953ca5
       iscommand: false
       name: Append the URLs' blocking list
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: SetAndHandleEmpty
       type: regular
       version: -1
@@ -914,7 +914,7 @@ tasks:
       id: d561f0f8-0d4c-4ba3-8560-187751ca5c85
       iscommand: false
       name: Forcepoint
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: d561f0f8-0d4c-4ba3-8560-187751ca5c85
@@ -952,7 +952,7 @@ tasks:
       id: 08e14d34-e96d-422a-8640-f5ef9a6eaa7a
       iscommand: false
       name: Is Forcepoint Integration Enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -989,12 +989,12 @@ tasks:
       brand: Forcepoint
       description: "Append a specific category in Forcepoint with the Blocked URLs.
         \nYou can choose to add those to a default category (For more info - refer
-        to https://www.forcepoint.com/product/feature/master-database-url-categories)\nor
-        specify a custom/user-defined category."
+        to https://www.forcepoint.com/product/feature/master-database-url-categories)\n
+        or specify a custom/user-defined category."
       id: 89279561-a8cd-4cc8-b0fc-98514ebb67a1
       iscommand: true
       name: Forcepoint - Add URL's to a specific category
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Forcepoint|||fp-add-address-to-category
       type: regular
       version: -1
@@ -1042,7 +1042,7 @@ tasks:
       id: 33d5bf90-736a-4228-8307-53b1d58d4550
       iscommand: false
       name: Is User Verification Is Required?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 33d5bf90-736a-4228-8307-53b1d58d4550
@@ -1081,7 +1081,7 @@ tasks:
       id: 76856aa5-7ff2-415b-8f6f-e4bd1e6798a9
       iscommand: false
       name: Set Input URLs as Blocklist.
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: SetAndHandleEmpty
       type: regular
       version: -1
@@ -1113,7 +1113,7 @@ tasks:
       id: e889ae46-04a0-4514-8923-2291cec2883a
       iscommand: false
       name: Netcraft
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: e889ae46-04a0-4514-8923-2291cec2883a
@@ -1151,7 +1151,7 @@ tasks:
       id: 35fcf7d9-19c6-48fe-831d-0b78cbf96323
       iscommand: false
       name: Is Netcraft Integration Enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -1196,7 +1196,7 @@ tasks:
       id: 1ec1007b-cee0-4042-9347-89d34dc15280
       iscommand: true
       name: Block URL with Netcraft
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Netcraft V2|||netcraft-attack-report
       type: regular
       version: -1
@@ -1228,7 +1228,7 @@ tasks:
       id: f840dbdd-478b-445f-8f0b-a5527a54467b
       iscommand: false
       name: Prisma SASE
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: f840dbdd-478b-445f-8f0b-a5527a54467b
@@ -1266,7 +1266,7 @@ tasks:
       id: e5de9af1-33df-4064-82d9-b5b87f472d7f
       iscommand: false
       name: Is Prisma SASE Enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -1328,7 +1328,7 @@ tasks:
       iscommand: false
       name: Prisma SASE - Block URL
       playbookId: Prisma SASE - Block URL
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 44174e4f-4c2f-4b0d-bca9-2d20443cb14a
@@ -1357,7 +1357,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 4dfd2d90-734e-437d-8e77-09c381d690d4
@@ -1393,7 +1393,7 @@ tasks:
       id: 1f389db9-44cc-4d31-8873-af3fabff91ee
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -1431,7 +1431,7 @@ tasks:
       id: 798987c4-a92a-4a46-81d7-8a75673cf91f
       iscommand: false
       name: 'Shadow: Netcraft Block URL'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -1468,7 +1468,7 @@ tasks:
       id: 259b3342-c025-42fb-8968-19a973fc157f
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -1506,7 +1506,7 @@ tasks:
       id: 48b10ee6-14dc-4469-91dd-0c1a415df245
       iscommand: false
       name: 'Shadow: PAN-OS Tag URLs'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -1543,7 +1543,7 @@ tasks:
       id: 83fd5a0e-d619-4718-8a3b-a522e6f8e90d
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -1581,7 +1581,7 @@ tasks:
       id: 312361db-263e-4749-9b40-9e4ad4157c73
       iscommand: false
       name: 'Shadow: Zscaler Block URL'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -1618,7 +1618,7 @@ tasks:
       id: 5e1ec99e-33ed-4ea2-8193-132fe3afc301
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -1656,7 +1656,7 @@ tasks:
       id: 5556e965-ce5f-4845-b81a-30fbca83bdea
       iscommand: false
       name: 'Shadow: Force Add URL to Category'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -1692,3 +1692,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

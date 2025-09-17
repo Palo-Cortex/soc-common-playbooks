@@ -45,16 +45,16 @@ inputSections:
 inputs:
 - description: Set to 'True' to block the indicators.
   key: BlockIndicators
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "True"
 - description: "Possible values: True/False.\nWhether to provide user verification
-    for blocking those IPs. \n\nFalse - No prompt will be displayed to the user.\nTrue
-    - The server will ask the user for blocking verification and will display the
-    blocking list."
+    for blocking those IPs. \n\nFalse - No prompt will be displayed to the user.\n
+    True - The server will ask the user for blocking verification and will display
+    the blocking list."
   key: UserVerification
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "False"
@@ -65,48 +65,48 @@ inputs:
     If set to False - no prompt will appear, and all provided indicators will be blocked automatically.
     If set to True - the user will be prompted to select which indicators to block.
   key: AutoBlockIndicators
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "True"
 - description: The file hash to block.
   key: FileHash
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: The IP indicators.
   key: IP
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: The domain indicators.
   key: Domain
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: The URL indicator.
   key: URL
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: The username to disable.
   key: Username
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: The path of the file to block.
   key: FilePath
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: Whether to execute containment plan automatically.
   key: AutoContainment
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: ""
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -143,7 +143,7 @@ tasks:
       id: 0eab88db-3b97-46e9-8040-fc0e5ccdd72b
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 0eab88db-3b97-46e9-8040-fc0e5ccdd72b
     timertriggers: []
@@ -204,7 +204,7 @@ tasks:
       id: 42177fdd-e676-4494-8430-473b77c4d326
       iscommand: true
       name: Add to XSIAM hash block list
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||core-blocklist-files'
       type: regular
       version: -1
@@ -233,7 +233,7 @@ tasks:
       id: 6555f437-9362-4b64-8416-9a207801acc8
       iscommand: false
       name: Done - Block Indicators
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 6555f437-9362-4b64-8416-9a207801acc8
@@ -280,7 +280,7 @@ tasks:
       id: c769a542-379a-42a7-8cb0-325e6b48e2b4
       iscommand: false
       name: Should block indicators?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: c769a542-379a-42a7-8cb0-325e6b48e2b4
@@ -319,7 +319,7 @@ tasks:
       id: 58da2cac-8a9e-4f4f-88de-623361cde61f
       iscommand: true
       name: Set Block list files to the Alert context
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Builtin|||setParentIncidentContext
       type: regular
       version: -1
@@ -361,7 +361,7 @@ tasks:
       id: b111b0e2-c64f-4ab9-9a4f-772b44a01a20
       iscommand: true
       name: Set Blocked Indicators to the Alert context
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Builtin|||setParentIncidentContext
       type: regular
       version: -1
@@ -414,7 +414,7 @@ tasks:
       id: df934c6a-4169-41f4-8cbe-76de251da626
       iscommand: false
       name: Is file hash exist?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: df934c6a-4169-41f4-8cbe-76de251da626
@@ -462,7 +462,7 @@ tasks:
       id: 56214186-2922-4165-820b-062ad475cf73
       iscommand: false
       name: Should block indicators automatically?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 56214186-2922-4165-820b-062ad475cf73
@@ -507,7 +507,7 @@ tasks:
       id: 6401c6c9-8ff7-4f49-8676-fd99f48da60f
       iscommand: false
       name: Is file hash exist?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 6401c6c9-8ff7-4f49-8676-fd99f48da60f
@@ -569,7 +569,7 @@ tasks:
       id: fca5352e-ba68-4776-8b35-903387490051
       iscommand: true
       name: Add to XSIAM hash block list
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||core-blocklist-files'
       type: regular
       version: -1
@@ -609,7 +609,7 @@ tasks:
       id: cb04e962-15e3-4189-8fcc-73efa9cb71fb
       iscommand: true
       name: Set Block list files to the Alert context
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Builtin|||setParentIncidentContext
       type: regular
       version: -1
@@ -652,7 +652,7 @@ tasks:
       id: 0a63acdb-6497-4f96-8318-5231aefde427
       iscommand: false
       name: Are there any indicators that are blocked?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 0a63acdb-6497-4f96-8318-5231aefde427
@@ -696,7 +696,7 @@ tasks:
       id: 5e12fc6b-2fa0-43d0-8a46-d2f213525a45
       iscommand: false
       name: Is the file hash was added to the block list?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 5e12fc6b-2fa0-43d0-8a46-d2f213525a45
@@ -740,7 +740,7 @@ tasks:
       id: 5df17f17-1825-4ac0-8edf-c0e89f437551
       iscommand: false
       name: Is the file hash was added to the block list?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 5df17f17-1825-4ac0-8edf-c0e89f437551
@@ -1037,7 +1037,7 @@ tasks:
       iscommand: false
       name: SOC Block Indicators - Generic v3
       playbookId: Block Indicators - Generic v3
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 29e6755d-f4a0-4f25-af8d-182c56e423d3
@@ -1066,7 +1066,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 747af5d3-8599-4dc0-8c09-bd995d98e922
@@ -1104,3 +1104,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

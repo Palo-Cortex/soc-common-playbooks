@@ -15,22 +15,22 @@ id: 'SOC Cloud IAM Enrichment - Generic'
 inputs:
 - description: User name.
   key: username
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: The GCP project name.
   key: GCPProjectName
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: The cloud service provider involved.
   key: cloudProvider
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: The cloud identity type.
   key: cloudIdentityType
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 name: SOC Cloud IAM Enrichment - Generic
@@ -1284,3 +1284,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

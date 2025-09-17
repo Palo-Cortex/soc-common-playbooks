@@ -16,9 +16,9 @@ description: "This playbook blocks malicious IP addresses using all integrations
   Note that the appended network objects should be specified in blocking rules inside
   the system later on. \n\n\nSupported integrations for this playbook [Network security
   products such as FW/WAF/IPs/etc.]: \n\n* Check Point Firewall\n* Palo Alto Networks
-  PAN-OS\n* Zscaler\n* FortiGate\n* Aria Packet Intelligence\n* Cisco Firepower \n*
-  Cisco Secure Cloud Analytics\n* Cisco ASA\n* Akamai WAF\n* F5 SilverLine\n* ThreatX\n*
-  Signal Sciences WAF\n* Sophos Firewall."
+  PAN-OS\n* Zscaler\n* FortiGate\n* Aria Packet Intelligence\n* Cisco Firepower \n
+  * Cisco Secure Cloud Analytics\n* Cisco ASA\n* Akamai WAF\n* F5 SilverLine\n* ThreatX\n
+  * Signal Sciences WAF\n* Sophos Firewall."
 dirtyInputs: true
 id: 'SOC Block IP - Generic v3'
 inputSections:
@@ -46,27 +46,27 @@ inputs:
 - description: 'An array of malicious IPs to block. Enter a comma-separated list of
     IPs (i.e.: 1.1.1.1,2.2.2.2).'
   key: IP
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: "This input determines whether Palo Alto Networks Panorama or Firewall
     Custom Block Rules are used.\nSpecify \"True\" to create new Custom Block Rules
     (2 FW rules inside the PAN-OS device). \nFor \"False\" - no rules will be created."
   key: CustomBlockRule
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "True"
 - description: Panorama log forwarding object name. Indicate what type of Log Forwarding
     setting will be specified in the PAN-OS custom rules.
   key: LogForwarding
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: "This input determines whether to commit the configuration automatically
     on PAN-OS devices and other FWs. \nYes - Commit automatically.\nNo - Commit manually."
   key: AutoCommit
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "No"
@@ -74,21 +74,21 @@ inputs:
     This input determines whether Palo Alto Networks Panorama or Firewall Static Address Groups are used.
     Specify the Static Address Group name for IPs list handling.
   key: StaticAddressGroup
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: Insert a tag name with which indicators will get tagged. This tag can
     be used later in the External Dynamic Lists integration by using the tag for filtering
     IPs in the indicator query.
   key: Tag
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: |-
     This input determines whether Palo Alto Networks Panorama or Firewall Dynamic Address Groups are used.
     Determine the Dynamic Address Group tag for IPs list handling.
   key: DAG
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: "Possible values: True/False.  Default: True.\nWhether to provide user
@@ -96,7 +96,7 @@ inputs:
     the user.\nTrue - The server will ask the user for blocking verification and will
     display the blocking list."
   key: UserVerification
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "True"
@@ -104,7 +104,7 @@ inputs:
     list should be provided in CIDR notation. For example, a list of ranges would
     be: "172.16.0.0/12,10.0.0.0/8,192.168.0.0/16" (without quotes).'
   key: InternalRange
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -129,20 +129,20 @@ inputs:
 - description: Signal Sciences WAF - Enter the site name for the integration to be
     applied. The site name can be found in your instance console.
   key: SiteName
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: Akamai's WAF network list ID, which is mandatory to be mentioned for
     the integration. The chosen IPs will be added to this ID.
   key: AkamaiNetworkListID
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: |-
     Possible values: True/False . Default: False
     Enrich the input IP address/es with reputation commands.
   key: InputEnrichment
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "False"
@@ -152,7 +152,7 @@ inputs:
 
     Default input- "XSOAR - Block IP playbook - ${incident.id}"
   key: RuleName
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: XSOAR - Block IP playbook - ${alert.id}
@@ -161,7 +161,7 @@ inputs:
     Possible values: inbound or outbound
     Default: outbound
   key: RuleDirection
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: outbound
@@ -169,7 +169,7 @@ inputs:
     This input determines whether Palo Alto Networks Panorama or Firewall Dynamic Address Groups are used.
     Determine the Dynamic Address Group name for IPs list handling.
   key: DAGName
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: |-
@@ -177,14 +177,14 @@ inputs:
     Remember, this input will only be used when there is no input to the CategoryName.
     Default: Shared
   key: Folder
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: Shared
 - description: Shadow Mode is a key safety mechanism. It ensures actions like isolate_endpoint
     or disable_user are logged but not executed in test scenarios.
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -1125,7 +1125,8 @@ tasks:
                     operator: match
                     right:
                       value:
-                        simple: (\b25[0-5]|\b2[0-4][0-9]|\b[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}
+                        simple: 
+                          (\b25[0-5]|\b2[0-4][0-9]|\b[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}
                 root: inputs.IP
           operator: isExists
       label: "yes"
@@ -1482,7 +1483,7 @@ tasks:
     isautoswitchedtoquietmode: false
     isoversize: false
     message:
-      bcc: null
+      bcc:
       body:
         simple: |-
           <p>Dear XSOAR user,</p>
@@ -1492,7 +1493,7 @@ tasks:
           <p>${BlockList.PIIP}</p>
           <p>&nbsp;</p>
           <p>For more information, click the link below.</p>
-      cc: null
+      cc:
       format: html
       methods:
       - email
@@ -1552,7 +1553,8 @@ tasks:
                     operator: match
                     right:
                       value:
-                        simple: (\b25[0-5]|\b2[0-4][0-9]|\b[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}
+                        simple: 
+                          (\b25[0-5]|\b2[0-4][0-9]|\b[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}
                 - - left:
                       iscontext: true
                       value:
@@ -1641,7 +1643,8 @@ tasks:
               operator: match
               right:
                 value:
-                  simple: (\b25[0-5]|\b2[0-4][0-9]|\b[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}
+                  simple: 
+                    (\b25[0-5]|\b2[0-4][0-9]|\b[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}
           - - left:
                 iscontext: true
                 value:
@@ -3232,7 +3235,7 @@ tasks:
     isautoswitchedtoquietmode: false
     isoversize: false
     message:
-      bcc: null
+      bcc:
       body:
         simple: |-
           <p>Dear XSOAR user,</p>
@@ -3240,7 +3243,7 @@ tasks:
           <p><br />(<strong>Note</strong>: the IPs will be added to your company block list or be blocked in individual rules based on the XSOAR integrated devices).</p>
           <p>&nbsp;</p>
           <p>For more information, click the link below.</p>
-      cc: null
+      cc:
       format: html
       methods:
       - email
@@ -5054,3 +5057,4 @@ view: |-
     }
   }
 adopted: true
+fromversion: 5.0.0

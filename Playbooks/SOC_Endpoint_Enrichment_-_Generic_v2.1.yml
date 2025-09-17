@@ -39,7 +39,7 @@ inputSections:
 inputs:
 - description: The hostname of the endpoint to enrich.
   key: Hostname
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -52,13 +52,13 @@ inputs:
     Note: This input should be used whenever there is no auto-extract enabled in the investigation flow.
     Possible values: True / False.
   key: UseReputationCommand
-  playbookInputQuery: null
+  playbookInputQuery:
   required: true
   value:
     simple: "False"
 - description: The IP address of the endpoint to enrich.
   key: IPAddress
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -68,7 +68,7 @@ inputs:
       - operator: uniq
 - description: The endpoint ID of the endpoint to enrich.
   key: EndpointID
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -923,7 +923,7 @@ tasks:
       id: 29bcd70f-1953-4061-84ce-4cde781ad9f7
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 29bcd70f-1953-4061-84ce-4cde781ad9f7
     timertriggers: []
@@ -958,7 +958,7 @@ tasks:
       id: 54895e0d-9904-4e62-8f45-ebd0d17ad5c9
       iscommand: false
       name: Endpoint Products
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 54895e0d-9904-4e62-8f45-ebd0d17ad5c9
@@ -1005,7 +1005,7 @@ tasks:
       id: ddba13dd-92fc-47a3-8ffe-b849c626eb22
       iscommand: false
       name: Is there an endpoint to enrich?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: ddba13dd-92fc-47a3-8ffe-b849c626eb22
@@ -1033,7 +1033,7 @@ tasks:
       id: ea90c16b-6985-4f28-816f-78608df3fe51
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: ea90c16b-6985-4f28-816f-78608df3fe51
@@ -1092,7 +1092,7 @@ tasks:
       id: 9fa921fa-d196-40ba-8419-ed0c4f838ab8
       iscommand: false
       name: Is Carbon Black Enterprise Response enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 9fa921fa-d196-40ba-8419-ed0c4f838ab8
@@ -1142,7 +1142,7 @@ tasks:
       id: 5e114375-db3d-4267-8f4d-0a411d4bb076
       iscommand: true
       name: Get host information from Carbon Black Enterprise Response
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||cb-edr-sensors-list'
       type: regular
       version: -1
@@ -1202,7 +1202,7 @@ tasks:
       id: 42f088e2-cb74-485a-8318-0dae68cde0f0
       iscommand: false
       name: Is CrowdStrike Falcon enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 42f088e2-cb74-485a-8318-0dae68cde0f0
@@ -1233,7 +1233,7 @@ tasks:
       id: d9d617d9-2efd-466e-8ce7-190f8db83b95
       iscommand: false
       name: McAfee ePolicy Orchestrator
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: d9d617d9-2efd-466e-8ce7-190f8db83b95
@@ -1264,7 +1264,7 @@ tasks:
       id: 6cf08862-644d-479e-89ce-f9e173a8c562
       iscommand: false
       name: Carbon Black Enterprise Response
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 6cf08862-644d-479e-89ce-f9e173a8c562
@@ -1295,7 +1295,7 @@ tasks:
       id: 471d3862-a05c-42b1-871d-c1faa2fbb7a9
       iscommand: false
       name: Cylance Protect v2
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 471d3862-a05c-42b1-871d-c1faa2fbb7a9
@@ -1326,7 +1326,7 @@ tasks:
       id: 5d371f29-3a4c-43c5-8f71-b383db2e5320
       iscommand: false
       name: CrowdStrike Falcon
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 5d371f29-3a4c-43c5-8f71-b383db2e5320
@@ -1387,7 +1387,7 @@ tasks:
       id: f7f190b9-5a39-4d8a-83a5-77d5a023f0d4
       iscommand: false
       name: Is Active Directory Query v2 enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: f7f190b9-5a39-4d8a-83a5-77d5a023f0d4
@@ -1431,7 +1431,7 @@ tasks:
       id: 8da54a09-4c7e-4a26-a5eb-6fbe51fbf3f0
       iscommand: true
       name: Get host information from Active Directory
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||ad-get-computer'
       type: regular
       version: -1
@@ -1463,7 +1463,7 @@ tasks:
       id: 9706cc39-d338-44cd-8ee1-efc5ea95b04d
       iscommand: false
       name: Active Directory
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 9706cc39-d338-44cd-8ee1-efc5ea95b04d
@@ -1494,7 +1494,7 @@ tasks:
       id: ec344482-77f7-42b5-8ee4-34317afd1179
       iscommand: false
       name: ExtraHop Reveal(x)
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: ec344482-77f7-42b5-8ee4-34317afd1179
@@ -1551,7 +1551,7 @@ tasks:
       id: 58c8b4be-657c-45f6-8eca-5a01da85f1f3
       iscommand: false
       name: Is ExtraHop Reveal(x) enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Exists
       type: condition
       version: -1
@@ -1598,7 +1598,7 @@ tasks:
       id: 03a8e3c0-2469-41ee-97c8-b0c792be32ec
       iscommand: true
       name: Get host information from ExtraHop Reveal(x)
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: ExtraHop v2|||extrahop-devices-search
       type: regular
       version: -1
@@ -1661,7 +1661,7 @@ tasks:
       id: bf7d9316-446b-452b-843a-3e5a13b8b741
       iscommand: false
       name: is Mcafee ePolicy Orchestrator v2 enabled
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: bf7d9316-446b-452b-843a-3e5a13b8b741
@@ -1704,7 +1704,7 @@ tasks:
       id: 8e881985-e5e1-4aec-ac66-0cbc1186879d
       iscommand: true
       name: Get- host information from McAfee ePO v2
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||epo-find-system'
       type: regular
       version: -1
@@ -1736,7 +1736,7 @@ tasks:
       id: f2dbaff5-7c92-47ad-80cc-991bfd80ff98
       iscommand: false
       name: Endpoint Reputation
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: f2dbaff5-7c92-47ad-80cc-991bfd80ff98
@@ -1783,7 +1783,7 @@ tasks:
       id: 50fed99c-1eb9-4a6f-85d0-f9d5ee74bc5a
       iscommand: false
       name: Should use !endpoint command?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 50fed99c-1eb9-4a6f-85d0-f9d5ee74bc5a
@@ -1834,7 +1834,7 @@ tasks:
       id: f8a264ea-5bb0-4a34-910b-7e0706f65f1f
       iscommand: true
       name: Check Reputation
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||endpoint'
       type: regular
       version: -1
@@ -1881,7 +1881,7 @@ tasks:
       id: f47666ba-7f37-43aa-a93f-658ca592f44f
       iscommand: true
       name: Crowdstrike Search device
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: CrowdstrikeFalcon|||cs-falcon-search-device
       type: regular
       version: -1
@@ -1942,7 +1942,7 @@ tasks:
       id: 284d5ea3-58c1-4a0f-87c4-5c395d75a65c
       iscommand: false
       name: Is Cortex XDR enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 284d5ea3-58c1-4a0f-87c4-5c395d75a65c
@@ -1974,7 +1974,7 @@ tasks:
       id: 12dd4de8-094d-4760-8284-22e212b5b76d
       iscommand: false
       name: Cortex XDR / Core IR
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 12dd4de8-094d-4760-8284-22e212b5b76d
@@ -2029,7 +2029,7 @@ tasks:
       id: 28d5399e-9856-4c0e-ae6f-26790468a680
       iscommand: true
       name: Cortex XDR Search device
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||xdr-get-endpoints'
       type: regular
       version: -1
@@ -2073,7 +2073,7 @@ tasks:
       id: 00b0ba80-bdc5-4012-8238-334800df9bbd
       iscommand: true
       name: Cortex XDR get endpoint risk score
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||xdr-list-risky-hosts'
       type: regular
       version: -1
@@ -2113,7 +2113,7 @@ tasks:
       id: adb8d36c-cdb3-4676-8d4a-da7fbc43188c
       iscommand: false
       name: Is Cortex Core - IR integration enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -2169,7 +2169,7 @@ tasks:
       id: 28ddac6d-c9fd-4997-9667-6bdd8538d69e
       iscommand: true
       name: Core IR Search device
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||core-get-endpoints'
       type: regular
       version: -1
@@ -2224,7 +2224,7 @@ tasks:
       id: e24e0b83-679a-4e52-828f-b3637fedd2c1
       iscommand: true
       name: Core IR get endpoint risk score
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||core-list-risky-hosts'
       type: regular
       version: -1
@@ -2254,7 +2254,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 1d871fe2-8ca6-4e9b-8165-12554326dcc7
@@ -2286,7 +2286,7 @@ tasks:
       iscommand: false
       name: SOC Endpoint Enrichment - Cylance Protect v2
       playbookId: SOC Endpoint Enrichment - Cylance Protect v2
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: a311d42a-1d50-4464-8a6b-2babd00963a2
@@ -2329,3 +2329,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

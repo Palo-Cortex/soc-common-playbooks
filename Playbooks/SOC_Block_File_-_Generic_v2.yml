@@ -32,7 +32,7 @@ inputSections:
 inputs:
 - description: The MD5 hash of the file you want to block.
   key: MD5
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -40,7 +40,7 @@ inputs:
       root: File
 - description: The SHA256 hash of the file you want to block.
   key: SHA256
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -49,12 +49,12 @@ inputs:
 - description: In this input you can insert either MD5 or SHA256 that you wish to
     block.
   key: Hash
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: ""
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -102,7 +102,7 @@ tasks:
       id: 420a534c-a6e6-4cf5-8b86-ac7dd1a91441
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 420a534c-a6e6-4cf5-8b86-ac7dd1a91441
     timertriggers: []
@@ -129,7 +129,7 @@ tasks:
       id: c8476a84-8d87-4ff2-8d6c-1dd1cccc503a
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: c8476a84-8d87-4ff2-8d6c-1dd1cccc503a
@@ -160,7 +160,7 @@ tasks:
       id: 32d4b47a-e972-4e30-875b-b563130cc4ca
       iscommand: false
       name: Cybereason
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 32d4b47a-e972-4e30-875b-b563130cc4ca
@@ -191,7 +191,7 @@ tasks:
       id: 0c07d0e1-59b1-436c-8e90-f2d0410df813
       iscommand: false
       name: Carbon Black Enterprise Response
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 0c07d0e1-59b1-436c-8e90-f2d0410df813
@@ -222,7 +222,7 @@ tasks:
       id: dcc8e191-213c-4ffd-8bc7-a8e1bc8894d7
       iscommand: false
       name: Cylance Protect v2
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: dcc8e191-213c-4ffd-8bc7-a8e1bc8894d7
@@ -253,7 +253,7 @@ tasks:
       id: b42b03dd-99c1-4149-8c32-336d23b88cf0
       iscommand: false
       name: Palo Alto Cortex XDR
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: b42b03dd-99c1-4149-8c32-336d23b88cf0
@@ -284,7 +284,7 @@ tasks:
       id: b6a4a1eb-e837-400c-890a-aa72fdd866d2
       iscommand: false
       name: CrowdStrike Falcon
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: b6a4a1eb-e837-400c-890a-aa72fdd866d2
@@ -315,7 +315,7 @@ tasks:
       id: c463f54e-7a18-4dba-804f-acf83e449259
       iscommand: false
       name: Microsoft Defender For Endpoint
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: c463f54e-7a18-4dba-804f-acf83e449259
@@ -362,7 +362,7 @@ tasks:
       iscommand: false
       name: SOC CrowdStrike Falcon - Block File
       playbookId: SOC CrowdStrike Falcon - Block File
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 93b14685-53e7-4a05-af58-99f2ddc4f9f7
@@ -434,7 +434,7 @@ tasks:
       iscommand: false
       name: SOC MDE - Block File
       playbookId: SOC MDE - Block File
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: c0151a75-e757-43d0-97d0-22407c890dc0
@@ -468,7 +468,7 @@ tasks:
       iscommand: false
       name: SOC Cortex XDR - Block File
       playbookId: SOC Cortex XDR - Block File
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 8552e4a4-8d86-47e5-8b7c-ee877eaf15d6
@@ -504,7 +504,7 @@ tasks:
       iscommand: false
       name: SOC Block File - Carbon Black Response
       playbookId: SOC Block File - Carbon Black Response
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: ac3fa437-e615-4506-88ec-3b6afab83a58
@@ -536,7 +536,7 @@ tasks:
       iscommand: false
       name: SOC Block File - Cybereason
       playbookId: SOC Block File - Cybereason
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 9c62ac19-3023-44af-8955-b5e2c3ea3b32
@@ -568,7 +568,7 @@ tasks:
       iscommand: false
       name: SOC Block File - Cylance Protect v2
       playbookId: SOC Block File - Cylance Protect v2
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: c7b6c19f-c4f2-4dfd-831c-2e4fd501069b
@@ -594,3 +594,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

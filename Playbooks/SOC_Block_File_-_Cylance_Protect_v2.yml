@@ -24,7 +24,7 @@ inputSections:
 inputs:
 - description: The SHA256 hash of the file to block.
   key: SHA256
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -41,13 +41,13 @@ inputs:
 - description: The list type to which the threat belongs. Can be "GlobalQuarantine"
     or "GlobalSafe".
   key: ListType
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: GlobalQuarantine
 - description: ""
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -87,7 +87,7 @@ tasks:
       id: 5e4385e3-76c2-48e2-80a4-c3798cdae027
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 5e4385e3-76c2-48e2-80a4-c3798cdae027
     timertriggers: []
@@ -150,7 +150,7 @@ tasks:
       id: df41aaaa-8055-4c59-8e9e-a167a7ef7819
       iscommand: false
       name: Is Cylance Protect v2 enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: df41aaaa-8055-4c59-8e9e-a167a7ef7819
@@ -195,7 +195,7 @@ tasks:
       id: 9b14005e-903d-4724-80ec-84e7c42a9e7b
       iscommand: false
       name: Is there a SHA256 to block?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 9b14005e-903d-4724-80ec-84e7c42a9e7b
@@ -223,7 +223,7 @@ tasks:
       id: 2c14bf01-7fd9-45f8-8554-86d0c1332d81
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 2c14bf01-7fd9-45f8-8554-86d0c1332d81
@@ -266,7 +266,7 @@ tasks:
       id: ca946416-a22f-437e-b82f-42d8dab60c32
       iscommand: true
       name: Add hash to Global Quarantine list
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Cylance Protect v2|||cylance-protect-add-hash-to-list
       type: regular
       version: -1
@@ -304,7 +304,7 @@ tasks:
       id: 434ac536-a75f-4d51-9397-ac26ee5d419f
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -345,7 +345,7 @@ tasks:
       id: 9a7a7323-9af3-4955-aca8-c8fe59a63a15
       iscommand: false
       name: 'Shadow: Cylance Add Hash to Global Quarantine list'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -375,7 +375,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: da48fb19-dd12-4fb0-8584-1a3fdfe3c6d9
@@ -404,3 +404,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

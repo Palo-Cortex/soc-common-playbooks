@@ -18,7 +18,7 @@ id: 'SOC Domain Enrichment - Generic v2'
 inputs:
 - description: The domain name to enrich.
   key: Domain
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -31,7 +31,7 @@ inputs:
     Note: This input should be used whenever there is no auto-extract enabled in the investigation flow.
     Possible values: True / False.
   key: UseReputationCommand
-  playbookInputQuery: null
+  playbookInputQuery:
   required: true
   value:
     simple: "False"
@@ -541,3 +541,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

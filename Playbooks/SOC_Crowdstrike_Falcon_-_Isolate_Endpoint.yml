@@ -12,12 +12,12 @@ inputSections:
 inputs:
 - description: The device ID to isolate.
   key: Device_id
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: ""
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -51,7 +51,7 @@ tasks:
       id: d0e090fd-5e1f-4b5c-82e9-eb62105b6220
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: d0e090fd-5e1f-4b5c-82e9-eb62105b6220
     timertriggers: []
@@ -88,7 +88,7 @@ tasks:
       id: ee96dc16-3b22-4d74-83fe-b5a86fb60115
       iscommand: false
       name: Is Crowdstrike Falcon  enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -117,7 +117,7 @@ tasks:
       id: 44f92e5b-01a2-4070-881c-c6a931266009
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 44f92e5b-01a2-4070-881c-c6a931266009
@@ -158,7 +158,7 @@ tasks:
       id: 1fd37726-4b11-46ea-802f-46fc9e2fe715
       iscommand: false
       name: Is there Device ID?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 1fd37726-4b11-46ea-802f-46fc9e2fe715
@@ -193,7 +193,7 @@ tasks:
       id: 66d5a0a9-f7c9-4f23-abf4-a8ab5d888534
       iscommand: true
       name: Get device info
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: CrowdstrikeFalcon|||cs-falcon-search-device
       type: regular
       version: -1
@@ -238,7 +238,7 @@ tasks:
       id: 5255531d-7314-4223-8efc-ac53607d0b52
       iscommand: false
       name: Is the device ready for isolation?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 5255531d-7314-4223-8efc-ac53607d0b52
@@ -278,7 +278,7 @@ tasks:
       id: 8d83b1ad-dbe6-4fe7-ba1c-755241c23a84
       iscommand: true
       name: Isolate endpoint
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: CrowdstrikeFalcon|||cs-falcon-contain-host
       type: regular
       version: -1
@@ -315,7 +315,7 @@ tasks:
       id: 3e9098e5-20d2-40f9-abf9-800a6900cc58
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: ShadowModeRouter
       type: condition
       version: -1
@@ -353,7 +353,7 @@ tasks:
       id: e46e3518-e612-4d9b-ad76-48a9e841cc5d
       iscommand: false
       name: 'Shadow: CrowdStrike Falcon Isolate EndPoint'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -383,7 +383,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: a5744034-b39d-4989-8e3f-e891bf98b1cb
@@ -414,3 +414,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

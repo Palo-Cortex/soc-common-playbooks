@@ -38,7 +38,7 @@ inputSections:
 inputs:
 - description: The IP address to enrich.
   key: IP
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -50,7 +50,7 @@ inputs:
     this list to check if an IP address is found within a set of IP address ranges.
     For example: "172.16.0.0/12,10.0.0.0/8,192.168.0.0/16" (without quotes).'
   key: InternalRange
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -76,7 +76,7 @@ inputs:
     Whether to convert the IP address to a hostname using a DNS query (True/False).
     The default value is true.
   key: ResolveIP
-  playbookInputQuery: null
+  playbookInputQuery:
   required: true
   value:
     simple: "True"
@@ -86,7 +86,7 @@ inputs:
     Possible values: True / False.
     The default value is false.
   key: UseReputationCommand
-  playbookInputQuery: null
+  playbookInputQuery:
   required: true
   value:
     simple: "False"
@@ -95,7 +95,7 @@ inputs:
     Possible values: True / False.
     The default value is false.
   key: extended_data
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "False"
@@ -104,7 +104,7 @@ inputs:
     Possible values: True / False.
     The default value is false.
   key: threat_model_association
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "False"
@@ -114,7 +114,7 @@ inputs:
 
     Setting this to True and using the parent playbook will execute the relevant commands in the main playbook instead of executing them in both sub-playbooks, improving the performance of the playbook and reducing the overfall size of the incident.
   key: ExecutedFromParent
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "False"
@@ -259,7 +259,7 @@ tasks:
       id: 6635b28b-bdf1-42cf-88bc-14ad75e9ebe0
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 6635b28b-bdf1-42cf-88bc-14ad75e9ebe0
     timertriggers: []
@@ -327,7 +327,7 @@ tasks:
       id: c8d8906f-cbf4-4ddd-84e6-1e55570d00a0
       iscommand: false
       name: Is there an external IP address?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: c8d8906f-cbf4-4ddd-84e6-1e55570d00a0
@@ -355,7 +355,7 @@ tasks:
       id: 8149db7c-af8d-41e2-85ee-c9fe2efd5040
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 8149db7c-af8d-41e2-85ee-c9fe2efd5040
@@ -387,7 +387,7 @@ tasks:
       id: 1734f24b-0b27-431e-81b6-89997f08894c
       iscommand: false
       name: Enrich external IP addresses
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 1734f24b-0b27-431e-81b6-89997f08894c
@@ -430,13 +430,13 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      description: "Checks if the IP address is in the internal IP address ranges.\nIf
-        internal, sets the \"InRange\" attribute to \"yes\".\nIf external, sets the
-        \"InRange\" attribute to \"no\". "
+      description: "Checks if the IP address is in the internal IP address ranges.\n
+        If internal, sets the \"InRange\" attribute to \"yes\".\nIf external, sets
+        the \"InRange\" attribute to \"no\". "
       id: 8f96dd19-92e0-421f-bf2c-c89fe6676684
       iscommand: false
       name: Determine whether the IP address is internal or external
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsIPInRanges
       type: regular
       version: -1
@@ -483,7 +483,7 @@ tasks:
       id: 607dafbe-8ee1-47ad-810a-dacf03842673
       iscommand: false
       name: Resolve the IP address?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 607dafbe-8ee1-47ad-810a-dacf03842673
@@ -542,7 +542,7 @@ tasks:
       id: 9a9092a5-a173-4c8d-8a0c-f63960c42451
       iscommand: false
       name: IP to Hostname (DNS)
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IPToHost
       type: regular
       version: -1
@@ -574,7 +574,7 @@ tasks:
       id: 22f7b81d-ea1a-44b3-8b73-c628afaf5cfc
       iscommand: false
       name: Enrich Using VirusTotal Private API
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 22f7b81d-ea1a-44b3-8b73-c628afaf5cfc
@@ -639,7 +639,7 @@ tasks:
       id: 0df4420b-8119-4731-8cb3-4745fd044913
       iscommand: false
       name: Is VirusTotal Private API enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 0df4420b-8119-4731-8cb3-4745fd044913
@@ -710,7 +710,7 @@ tasks:
       id: 2b536b08-f716-4b71-a54d-e0fdb7f1827e
       iscommand: true
       name: Get IP report from VirusTotal Private API
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: VirusTotal - Private API|||vt-private-get-ip-report
       type: regular
       version: -1
@@ -742,7 +742,7 @@ tasks:
       id: 67d938bf-2bd3-4dfd-885f-8dd190cd0b93
       iscommand: false
       name: No External IP Address
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 67d938bf-2bd3-4dfd-885f-8dd190cd0b93
@@ -773,7 +773,7 @@ tasks:
       id: 9bda4dfe-35b9-40ac-8d8c-c6973b2d1d40
       iscommand: false
       name: Check Reputation Using All Available Integrations
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 9bda4dfe-35b9-40ac-8d8c-c6973b2d1d40
@@ -847,7 +847,7 @@ tasks:
       id: 59d18af0-7677-4e10-907f-c480e88d98f9
       iscommand: true
       name: Check Reputation
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||ip'
       type: regular
       version: -1
@@ -894,7 +894,7 @@ tasks:
       id: c55e9651-e6f5-48ec-8bbc-995c4e87808b
       iscommand: false
       name: Should use !IP command?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: c55e9651-e6f5-48ec-8bbc-995c4e87808b
@@ -957,7 +957,7 @@ tasks:
       id: ea6c64c9-4852-47c9-8cfd-d6d6907037cf
       iscommand: false
       name: Are the IPs already classified?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: ea6c64c9-4852-47c9-8cfd-d6d6907037cf
@@ -988,7 +988,7 @@ tasks:
       id: 2e4dbc75-e8f0-4478-8b16-523ba22e1621
       iscommand: false
       name: Classify & Resolve IPs
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 2e4dbc75-e8f0-4478-8b16-523ba22e1621
@@ -1017,7 +1017,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 87c933fe-d5a5-4724-8d7f-ffa5625da08d
@@ -1053,3 +1053,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0
