@@ -29,7 +29,7 @@ inputSections:
 inputs:
 - description: URL to block
   key: URL
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -45,13 +45,13 @@ inputs:
       - operator: uniq
 - description: Custom URL Category name
   key: CustomURLCategory
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: Remediation - Malicious URLs
 - description: Panorama log forwarding object name
   key: LogForwarding
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: |-
@@ -59,35 +59,35 @@ inputs:
     Yes - Commit automatically.
     No - Commit manually.
   key: AutoCommit
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "No"
 - description: Custom URL category type. Insert "URL List"/ "Category Match".
   key: type
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: Device group for the Custom URL Category (Panorama instances).
   key: device-group
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: The list of categories. Relevant from PAN-OS v9.x.
   key: categories
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: Specify pre-rulebase or post-rulebase. (Panorama instances).
   key: pre-post
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: pre-rulebase
 - description: Shadow Mode is a key safety mechanism. It ensures actions like isolate_endpoint
     or disable_user are logged but not executed in test scenarios.
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -1092,3 +1092,4 @@ view: |-
     }
   }
 adopted: true
+fromversion: 5.0.0

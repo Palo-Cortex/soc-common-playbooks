@@ -17,8 +17,8 @@ contentitemexportablefields:
     toServerVersion: ""
 description: "Deprecated. Use the `Block IP - Generic v3` playbook instead. \nThis
   playbook blocks malicious IPs using all integrations that are enabled.\n\nSupported
-  integrations for this playbook:\n* Check Point Firewall\n* Palo Alto Networks Minemeld\n*
-  Palo Alto Networks PAN-OS\n* Zscaler\n* FortiGate"
+  integrations for this playbook:\n* Check Point Firewall\n* Palo Alto Networks Minemeld\n
+  * Palo Alto Networks PAN-OS\n* Zscaler\n* FortiGate"
 dirtyInputs: true
 id: 'SOC Block IP - Generic v2'
 inputSections:
@@ -38,25 +38,25 @@ inputSections:
 inputs:
 - description: The name of the IP block list Miner in  Minemeld.
   key: IPBlacklistMiner
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: Array of malicious IPs to block.
   key: IP
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: |-
     This input determines whether Palo Alto Networks Panorama or Firewall Custom Block Rules are used.
     Specify True to use Custom Block Rules.
   key: CustomBlockRule
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "True"
 - description: Panorama log forwarding object name.
   key: LogForwarding
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: |-
@@ -64,7 +64,7 @@ inputs:
     Yes - Commit automatically.
     No - Commit manually.
   key: AutoCommit
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "No"
@@ -72,14 +72,14 @@ inputs:
     This input determines whether Palo Alto Networks Panorama or Firewall Static Address Groups are used.
     Specify the Static Address Group name for IP handling.
   key: StaticAddressGroup
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: |-
     This input determines whether Palo Alto Networks Panorama or Firewall External Dynamic Lists are used for blocking IPs.
     Specify the EDL name for IP handling.
   key: IPListName
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: |-
@@ -87,19 +87,19 @@ inputs:
     * The IP address of the web server on which the files are stored.
     * The web server IP address is configured in the integration instance.
   key: EDLServerIP
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: |-
     This input determines whether Palo Alto Networks Panorama or Firewall Dynamic Address Groups are used.
     Specify the Dynamic Address Group tag name for IP handling.
   key: DAG
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: ""
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -220,7 +220,7 @@ tasks:
       id: 650804b8-1cd4-4c33-8d83-8f72c789f860
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 650804b8-1cd4-4c33-8d83-8f72c789f860
     timertriggers: []
@@ -247,7 +247,7 @@ tasks:
       id: cbdf2261-0bd1-4856-86f8-c5082a16f3ee
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: cbdf2261-0bd1-4856-86f8-c5082a16f3ee
@@ -281,7 +281,7 @@ tasks:
       id: 47c2b776-5038-453b-8115-48141dbad596
       iscommand: false
       name: Block IPs
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 47c2b776-5038-453b-8115-48141dbad596
@@ -326,7 +326,7 @@ tasks:
       id: 02cce821-5459-460c-be12-786ae1105409
       iscommand: true
       name: Block IP with Check Point Firewall
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Check Point|||checkpoint-block-ip
       type: regular
       version: -1
@@ -391,7 +391,7 @@ tasks:
       id: f74fb6b5-f7c9-42ed-808a-d227355f1e9d
       iscommand: false
       name: Is Check Point Firewall enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: f74fb6b5-f7c9-42ed-808a-d227355f1e9d
@@ -433,7 +433,7 @@ tasks:
       id: 39db44de-9bb1-460e-8b42-023c12aa4778
       iscommand: false
       name: Is there an IP to block?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 39db44de-9bb1-460e-8b42-023c12aa4778
@@ -497,7 +497,7 @@ tasks:
       id: e8c51174-7d85-4248-86b4-6d14eba20ca6
       iscommand: false
       name: Is Zscaler enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: e8c51174-7d85-4248-86b4-6d14eba20ca6
@@ -536,7 +536,7 @@ tasks:
       id: cb843505-bd86-4159-8f3a-0cdd97770c2c
       iscommand: true
       name: Block IP with Zscaler
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Zscaler|||zscaler-blacklist-ip
       type: regular
       version: -1
@@ -575,7 +575,7 @@ tasks:
       name: PAN-OS - Block IP and URL - External Dynamic List
       playbookId: PAN-OS - Block IP and URL - External Dynamic List
       playbookName: PAN-OS - Block IP and URL - External Dynamic List
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 9620e528-42f8-4c0d-8706-b46a73d188be
@@ -607,7 +607,7 @@ tasks:
       id: 9d73fbe9-6b72-4cd3-8a23-235fb61bc197
       iscommand: false
       name: PAN-OS
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 9d73fbe9-6b72-4cd3-8a23-235fb61bc197
@@ -638,7 +638,7 @@ tasks:
       id: fa041b26-6524-4e1f-8aeb-6d6e77e75c5c
       iscommand: false
       name: CheckPoint FW
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: fa041b26-6524-4e1f-8aeb-6d6e77e75c5c
@@ -669,7 +669,7 @@ tasks:
       id: ffef1804-3251-47ce-83d5-f398b82b8fa6
       iscommand: false
       name: Zscaler
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: ffef1804-3251-47ce-83d5-f398b82b8fa6
@@ -706,7 +706,7 @@ tasks:
       iscommand: false
       name: PAN-OS DAG Configuration
       playbookId: PAN-OS DAG Configuration
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 6c3dfdb9-9ac3-4a32-831b-67fc7bec6fd1
@@ -755,7 +755,7 @@ tasks:
       id: 156aee26-31e3-4cba-8846-767ee8a2dc6a
       iscommand: false
       name: Use External Dynamic List?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 156aee26-31e3-4cba-8846-767ee8a2dc6a
@@ -799,7 +799,7 @@ tasks:
       id: 181b1519-8b3e-4296-8cb2-d0f91984b16b
       iscommand: false
       name: Use Dynamic Address Group?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 181b1519-8b3e-4296-8cb2-d0f91984b16b
@@ -830,7 +830,7 @@ tasks:
       id: 65dca814-c04b-40ff-8e32-766432ee9f13
       iscommand: false
       name: Fortinet
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 65dca814-c04b-40ff-8e32-766432ee9f13
@@ -891,7 +891,7 @@ tasks:
       id: 5ec7ae21-1c50-4a72-8a86-daa39ac43f18
       iscommand: false
       name: Is FortiGate enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 5ec7ae21-1c50-4a72-8a86-daa39ac43f18
@@ -930,7 +930,7 @@ tasks:
       id: ac009747-08fb-4e87-ab50-94df18beb0c7
       iscommand: true
       name: 'FortiGate Ban IP '
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: FortiGate|||fortigate-ban-ip
       type: regular
       version: -1
@@ -960,7 +960,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: fe0ffc2c-5608-4262-835c-9f324f6ecc0f
@@ -996,7 +996,7 @@ tasks:
       id: deea2326-e463-4947-a6b3-2436c4f60e40
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -1034,7 +1034,7 @@ tasks:
       id: 3be3f200-a9c7-421b-8841-cfd614c727c5
       iscommand: false
       name: 'Shadow: Fortigate Ban IP'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -1071,7 +1071,7 @@ tasks:
       id: aa139b78-ee9c-4e80-ba18-2fec67326878
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -1109,7 +1109,7 @@ tasks:
       id: e703caf6-6ff5-4e4f-956c-76db08b4ff62
       iscommand: false
       name: 'Shadow: Zscaler Block IP'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -1146,7 +1146,7 @@ tasks:
       id: fa85af38-5950-4ff0-9590-21faf4c2caad
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -1184,7 +1184,7 @@ tasks:
       id: 2aa70143-90c6-46ed-88b9-3e99a9c189b6
       iscommand: false
       name: 'Shadow: Check Point Block IP'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -1220,3 +1220,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

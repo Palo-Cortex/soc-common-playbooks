@@ -14,11 +14,11 @@ contentitemexportablefields:
     - X5
     - ENT_PLUS
     toServerVersion: ""
-description: "This playbook is one of the sub-playbooks in the eradication plan. \nThis
-  playbook handles the termination of the processes as a crucial step in the eradication
-  action.\nThe playbook executes actions of process termination, which is a crucial
-  step in the eradication process.\nThe process termination can be performed based
-  on either the process ID or the process name."
+description: "This playbook is one of the sub-playbooks in the eradication plan. \n
+  This playbook handles the termination of the processes as a crucial step in the
+  eradication action.\nThe playbook executes actions of process termination, which
+  is a crucial step in the eradication process.\nThe process termination can be performed
+  based on either the process ID or the process name."
 dirtyInputs: true
 id: 'SOC Eradication Plan - Terminate Process'
 inputSections:
@@ -35,28 +35,28 @@ inputs:
     the process by process name. \nNote: If neither option is selected, the process
     will not be terminated."
   key: ProcessTermination
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: Name
 - description: The endpoint ID to run commands over.
   key: EndpointID
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: The file path for the process termination.
   key: FilePath
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: The process ID to terminate.
   key: ProcessID
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: ""
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -94,7 +94,7 @@ tasks:
       id: 0c2bd2d8-2747-473f-873c-fdf0258c1425
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 0c2bd2d8-2747-473f-873c-fdf0258c1425
     timertriggers: []
@@ -191,7 +191,7 @@ tasks:
       id: 387a0de2-f9a3-412a-8531-299ba47ac010
       iscommand: false
       name: Should terminate the process?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 387a0de2-f9a3-412a-8531-299ba47ac010
@@ -219,7 +219,7 @@ tasks:
       id: b6c458a7-8533-4692-87af-498de4ea894f
       iscommand: false
       name: Done - Process Termination
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: b6c458a7-8533-4692-87af-498de4ea894f
@@ -256,7 +256,7 @@ tasks:
       id: d1bf1eb3-8962-4fe0-8f37-dd1d6e67fc1d
       iscommand: true
       name: Get command result
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||core-get-script-execution-results'
       type: regular
       version: -1
@@ -311,7 +311,7 @@ tasks:
       id: 9fbfc5a0-d0b7-4354-a968-e8964e4ee45e
       iscommand: true
       name: process termination
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||core-run-script-kill-process'
       type: regular
       version: -1
@@ -360,7 +360,7 @@ tasks:
       id: 5bb3ab00-26df-4e11-89b2-a213d1eba8aa
       iscommand: false
       name: Was the process terminated?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 5bb3ab00-26df-4e11-89b2-a213d1eba8aa
@@ -425,7 +425,7 @@ tasks:
       id: 960374b2-8b4a-4577-8bf1-ac02f9ceccf4
       iscommand: false
       name: Set terminated process per endpoint ID
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -466,7 +466,7 @@ tasks:
       id: 42d427fd-6d4a-4b70-8b1a-35c76fdd8d45
       iscommand: true
       name: Set Deleted files per endpoint ID to the Alert context
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Builtin|||setParentIncidentContext
       type: regular
       version: -1
@@ -508,7 +508,7 @@ tasks:
       id: b55e14c5-51c9-455a-8560-36383f942676
       iscommand: true
       name: process termination
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||core-run-script-execute-commands'
       type: regular
       version: -1
@@ -546,7 +546,7 @@ tasks:
       id: 98faa8b1-1539-4e59-8274-c8434226eff7
       iscommand: true
       name: Get command result
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||core-get-script-execution-results'
       type: regular
       version: -1
@@ -595,7 +595,7 @@ tasks:
       id: 1a42b9b2-db4a-4905-8dd5-4b47d18449fc
       iscommand: false
       name: Was the process terminated?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 1a42b9b2-db4a-4905-8dd5-4b47d18449fc
@@ -660,7 +660,7 @@ tasks:
       id: 800bc596-f674-43ff-84cf-91da9573954b
       iscommand: false
       name: Set terminated process per endpoint ID
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -701,7 +701,7 @@ tasks:
       id: 0056cbe7-0eda-4bea-832f-9438e1f45936
       iscommand: true
       name: Set Deleted files per endpoint ID to the Alert context
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Builtin|||setParentIncidentContext
       type: regular
       version: -1
@@ -737,7 +737,7 @@ tasks:
       id: c7749af3-73ff-4422-87dd-e8caeb84c069
       iscommand: false
       name: Print Error
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: PrintErrorEntry
       type: regular
       version: -1
@@ -773,7 +773,7 @@ tasks:
       id: 4e7794f3-70a6-4941-8e9e-65ef20777dca
       iscommand: false
       name: Print Error
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: PrintErrorEntry
       type: regular
       version: -1
@@ -830,7 +830,7 @@ tasks:
       id: e5475bb4-564f-4364-892b-12b130016b7a
       iscommand: false
       name: Set PID
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -887,7 +887,7 @@ tasks:
       id: 77d2329d-39ac-4e97-8490-b759589f91ad
       iscommand: false
       name: Set Path
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -917,7 +917,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: ee7dd725-fe5f-4919-8e7f-46115af0617d
@@ -953,7 +953,7 @@ tasks:
       id: 91d25756-3c88-49f7-8bf6-165ad92c912c
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -991,7 +991,7 @@ tasks:
       id: 697fde5c-cab8-4724-96fb-5b82c3e8b5ca
       iscommand: false
       name: 'Shadow: Palo XDR Kill Process'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -1028,7 +1028,7 @@ tasks:
       id: 923ab99c-7548-4d6e-8b62-b8c1f647b475
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -1066,7 +1066,7 @@ tasks:
       id: 5cb2b236-1d62-4da0-9604-bbc62a733c8a
       iscommand: false
       name: 'Shadow: Palo XDR Kill Process'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -1096,3 +1096,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

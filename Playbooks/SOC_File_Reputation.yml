@@ -17,13 +17,13 @@ id: 'SOC File Reputation'
 inputs:
 - description: The minimum number of positive engines needed to mark file as malicious.
   key: DetectionThreshold
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "5"
 - description: A list of trusted publishers
   key: TrustedPublishers
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: |-
@@ -31,7 +31,7 @@ inputs:
       Microsoft Code Signing PCA, Microsoft Corporation
 - description: The file SHA256.
   key: FileSHA256
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 name: SOC File Reputation
@@ -1082,3 +1082,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

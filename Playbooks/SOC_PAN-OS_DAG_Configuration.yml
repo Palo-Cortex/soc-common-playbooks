@@ -37,33 +37,33 @@ inputSections:
 inputs:
 - description: The name of the tag to add to PAN-OS. This can be a single tag.
   key: tag_name
-  playbookInputQuery: null
+  playbookInputQuery:
   required: true
   value: {}
 - description: The list of the IP addresses to block.
   key: ip_list
-  playbookInputQuery: null
+  playbookInputQuery:
   required: true
   value: {}
 - description: The name of the group that will be created if the tag does not exist.
   key: address_group_name
-  playbookInputQuery: null
+  playbookInputQuery:
   required: true
   value: {}
 - description: The name of the rule to update, or the name of the rule that will be
     created.
   key: rule_name
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: Whether the rule will be committed automatically.
   key: auto_commit
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: The server address to which to forward logs.
   key: log-forwarding-object-name
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: |-
@@ -75,18 +75,18 @@ inputs:
 
     The default position is 'Top'
   key: rule-position
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: If the rule-position that is chosen is before or after, specify the
     rule name to which it is related.
   key: relative-rule-name
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: Determines if the rule is inbound or outbound.
   key: inbound-or-outbound-rule
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: |-
@@ -95,24 +95,24 @@ inputs:
     * deny
     * drop
   key: action-type
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: Determines whether the rule is a pre-rulebase or post-rulebase rule,
     according to the rule structure. Exists only in panorama!
   key: pre-post-rulebase
-  playbookInputQuery: null
+  playbookInputQuery:
   required: true
   value: {}
 - description: the device group for which to return results. for panorama only!
   key: device-group
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: Shadow Mode is a key safety mechanism. It ensures actions like isolate_endpoint
     or disable_user are logged but not executed in test scenarios.
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -748,3 +748,4 @@ view: |-
     }
   }
 adopted: true
+fromversion: 5.0.0

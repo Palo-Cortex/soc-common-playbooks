@@ -52,7 +52,7 @@ tasks:
       id: f2d8507e-c7b1-46a3-8716-3084a647eb5c
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: f2d8507e-c7b1-46a3-8716-3084a647eb5c
     timertriggers: []
@@ -79,7 +79,7 @@ tasks:
       id: 8b6dab24-5e99-4dbe-88db-034169678fda
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 8b6dab24-5e99-4dbe-88db-034169678fda
@@ -117,7 +117,7 @@ tasks:
       id: 467899ed-97d7-413c-9223-4800c7dea4a2
       iscommand: false
       name: Service Now Integration Up?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -156,7 +156,7 @@ tasks:
       id: c140f091-de39-4990-aff7-404a5a5e0cab
       iscommand: false
       name: Jira Integration Up?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -195,7 +195,7 @@ tasks:
       id: f1a3fa68-cda1-4fff-b2e8-69060130392d
       iscommand: false
       name: Set Ticketing System (Jira)
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -234,7 +234,7 @@ tasks:
       id: 5e090dbf-da3d-4519-a68a-4da8393868ee
       iscommand: false
       name: Set Ticketing System (Service Now)
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -273,7 +273,7 @@ tasks:
       id: e26fd030-ce1a-49ba-8768-132e744bc308
       iscommand: false
       name: Set Ticketing System (No Ticketing)
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -300,3 +300,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

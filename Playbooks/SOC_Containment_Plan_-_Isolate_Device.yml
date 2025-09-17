@@ -28,23 +28,23 @@ inputSections:
 inputs:
 - description: Whether to execute endpoint isolation.
   key: HostContainment
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "True"
 - description: The endpoint ID to run commands over.
   key: EndpointID
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: The endpoint hostname.
   key: EndpointHostName
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: ""
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -81,7 +81,7 @@ tasks:
       id: 972c3692-925c-4f6f-8d88-9f4c2598429d
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 972c3692-925c-4f6f-8d88-9f4c2598429d
     timertriggers: []
@@ -119,7 +119,7 @@ tasks:
       id: c4eeae37-ad05-4376-a36e-961bddd29c14
       iscommand: true
       name: Auto endpoint isolation
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||core-isolate-endpoint'
       type: regular
       version: -1
@@ -161,7 +161,7 @@ tasks:
       id: f1fa1236-07c7-4291-8230-fa48fb2e2d4a
       iscommand: true
       name: Set Isolated endpoint ID to the Alert context
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Builtin|||setParentIncidentContext
       type: regular
       version: -1
@@ -190,7 +190,7 @@ tasks:
       id: 6c786033-9c64-4365-83af-dec8a718764c
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 6c786033-9c64-4365-83af-dec8a718764c
@@ -237,7 +237,7 @@ tasks:
       id: a0690559-7fbb-4a1e-8eb1-051f88912afd
       iscommand: true
       name: Get endpoint info by endpoint ID
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||core-get-endpoints'
       type: regular
       version: -1
@@ -305,15 +305,15 @@ tasks:
       brand: ""
       description: "Set a value in context under the key you entered. If no value
         is entered, the script doesn't do anything.\n\nThis automation runs using
-        the default Limited User role, unless you explicitly change the permissions.\nFor
-        more information, see the section about permissions here:\n- For Cortex XSOAR
-        6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+        the default Limited User role, unless you explicitly change the permissions.\n
+        For more information, see the section about permissions here:\n- For Cortex
+        XSOAR 6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n
+        - For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
       id: f2c0cd47-a6d1-4b54-baff-9111cc14c054
       iscommand: false
       name: Set endpoint IDs to isolate
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: SetAndHandleEmpty
       type: regular
       version: -1
@@ -394,7 +394,7 @@ tasks:
       id: 1b35e319-899a-4a2b-80e4-591c3b92a9ae
       iscommand: false
       name: Should isolate the device?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 1b35e319-899a-4a2b-80e4-591c3b92a9ae
@@ -441,7 +441,7 @@ tasks:
       id: 677be289-10e0-46ea-8380-a44f18e8a047
       iscommand: true
       name: Set Isolated endpoint ID to the Alert context
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Builtin|||setParentIncidentContext
       type: regular
       version: -1
@@ -492,7 +492,7 @@ tasks:
       id: 65bfa257-2884-4787-8dd5-64589ea2ad55
       iscommand: false
       name: Is the endpoint ID or the endpoint name defined?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 65bfa257-2884-4787-8dd5-64589ea2ad55
@@ -539,7 +539,7 @@ tasks:
       id: 6e3d0a66-444e-4d5d-803a-82f81ef2afdf
       iscommand: true
       name: Get endpoint info by endpoint name
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||core-get-endpoints'
       type: regular
       version: -1
@@ -588,7 +588,7 @@ tasks:
       id: 28a11db5-8870-402e-8fee-8d815b2fc6a9
       iscommand: false
       name: is the endpoint already isolated?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 28a11db5-8870-402e-8fee-8d815b2fc6a9
@@ -617,7 +617,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: b1052b5d-3ea3-44ff-8bd6-ec753abf861a
@@ -653,7 +653,7 @@ tasks:
       id: 9de8445b-c4bf-4cb5-9932-e5c7ba0b99ad
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -691,7 +691,7 @@ tasks:
       id: 76549c23-938a-4977-a2fa-a47a8ca8c01e
       iscommand: false
       name: 'Shadow: Palo XDR Isolate Endpoint'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -722,3 +722,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

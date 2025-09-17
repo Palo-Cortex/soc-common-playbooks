@@ -42,7 +42,7 @@ inputs:
     Usernames can be with or without a domain prefix, in the format of "username" or "domain\username".
     Domain usernames will only be enriched in integrations that support  them.
   key: Username
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -54,7 +54,7 @@ inputs:
     Optional - This input is needed for the IAM-get-user command (used in the Account Enrichment - IAM playbook). Please provide the domain name that the user is related to.
     Example: @xsoar.com
   key: Domain
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 name: SOC Account Enrichment - Generic v2.1
@@ -685,7 +685,7 @@ tasks:
       id: a6743119-6f7b-4ad2-86f8-d7e6f17415a3
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: a6743119-6f7b-4ad2-86f8-d7e6f17415a3
     timertriggers: []
@@ -738,7 +738,7 @@ tasks:
       id: 7d3036d6-80da-4b4f-8534-c634c6264f50
       iscommand: false
       name: Is there an account to enrich (without domain prefix)?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 7d3036d6-80da-4b4f-8534-c634c6264f50
@@ -766,7 +766,7 @@ tasks:
       id: b5a047e4-ca2a-4881-8a80-de3d0886ea64
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: b5a047e4-ca2a-4881-8a80-de3d0886ea64
@@ -827,7 +827,7 @@ tasks:
       id: 9b07e7c9-ff70-410d-881c-02389fbf4c1e
       iscommand: false
       name: Is Active Directory Query v2 enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 9b07e7c9-ff70-410d-881c-02389fbf4c1e
@@ -870,7 +870,7 @@ tasks:
       id: 8ced86cc-67bc-45f8-b78c-f24b260cf615
       iscommand: true
       name: Get account info from Active Directory
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||ad-get-user'
       type: regular
       version: -1
@@ -902,7 +902,7 @@ tasks:
       id: 148faf68-5ced-41f4-82c0-f98fa9d82037
       iscommand: false
       name: SailPoint IdentityIQ
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 148faf68-5ced-41f4-82c0-f98fa9d82037
@@ -933,7 +933,7 @@ tasks:
       id: 58620334-72c1-4be6-87a2-84ed544c4a8a
       iscommand: false
       name: PingOne
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 58620334-72c1-4be6-87a2-84ed544c4a8a
@@ -964,7 +964,7 @@ tasks:
       id: b5887cbc-9c89-47ba-8802-86c66ed0c85a
       iscommand: false
       name: Microsoft Active Directory
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: b5887cbc-9c89-47ba-8802-86c66ed0c85a
@@ -1002,7 +1002,7 @@ tasks:
       id: 93b0d852-2215-4504-8179-64a62951fbcc
       iscommand: false
       name: Is SailPoint IdentityIQ Integration Enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -1041,7 +1041,7 @@ tasks:
       id: 82adaccd-d799-44ae-85ec-ee4ca516aab6
       iscommand: false
       name: Is PingOne Integration Enabled
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -1084,7 +1084,7 @@ tasks:
       id: ce8794f6-be60-4731-b21f-f519ae6b530f
       iscommand: true
       name: Get account info from IdentityIQ
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: SailPointIdentityIQ|||identityiq-search-identities
       type: regular
       version: -1
@@ -1127,7 +1127,7 @@ tasks:
       id: 1ec22e61-e06f-45d3-8134-ea9ebe1117bc
       iscommand: true
       name: Get account info from PingOne
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: PingOne|||pingone-get-user
       type: regular
       version: -1
@@ -1159,7 +1159,7 @@ tasks:
       id: 4e5ba461-1f35-4898-8f03-940b3e3dd950
       iscommand: false
       name: OKTA
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 4e5ba461-1f35-4898-8f03-940b3e3dd950
@@ -1197,7 +1197,7 @@ tasks:
       id: e0b7f17c-70f7-4330-8f06-c3729e226adb
       iscommand: false
       name: Is OKTA v2 integration enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -1240,7 +1240,7 @@ tasks:
       id: 43c12bed-2852-4ae0-be49-0deb0073a779
       iscommand: true
       name: Get account info from OKTA v2
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||okta-get-user'
       type: regular
       version: -1
@@ -1272,7 +1272,7 @@ tasks:
       id: ced5695a-76e7-4f6a-81b8-598925a8ea9d
       iscommand: false
       name: AWS
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: ced5695a-76e7-4f6a-81b8-598925a8ea9d
@@ -1310,7 +1310,7 @@ tasks:
       id: 0f630de1-9988-461a-883a-6113d3dd6d2a
       iscommand: false
       name: Is AWS integration enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -1353,7 +1353,7 @@ tasks:
       id: 52a7785d-4ab4-403e-8620-20756bd71cc1
       iscommand: true
       name: Get account info from AWS
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: AWS - IAM|||aws-iam-get-user
       type: regular
       version: -1
@@ -1385,7 +1385,7 @@ tasks:
       id: 4f4d3e42-0ec6-4b22-89b2-0b275eedc3c5
       iscommand: false
       name: IAM
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 4f4d3e42-0ec6-4b22-89b2-0b275eedc3c5
@@ -1416,7 +1416,7 @@ tasks:
       id: 61ad53d6-a0fd-4e1e-8608-1c8a9596d965
       iscommand: false
       name: SailPoint IdentityNow
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 61ad53d6-a0fd-4e1e-8608-1c8a9596d965
@@ -1454,7 +1454,7 @@ tasks:
       id: 21d70bb7-8b40-4f49-80ca-b78cb05b24aa
       iscommand: false
       name: Is SailPoint IdentityNow integration enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -1496,7 +1496,7 @@ tasks:
       id: c563f279-3529-481b-9a5d-1434947a9dad
       iscommand: true
       name: Get account info from IdentityNow
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: SailPointIdentityNow|||identitynow-get-accounts
       type: regular
       version: -1
@@ -1541,7 +1541,7 @@ tasks:
       id: f1700d16-6e63-4a56-8157-42cecfc24657
       iscommand: false
       name: Is there a manager?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: f1700d16-6e63-4a56-8157-42cecfc24657
@@ -1595,7 +1595,7 @@ tasks:
       iscommand: false
       name: Active Directory - Get User Manager Details
       playbookId: Active Directory - Get User Manager Details
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 06dcf79d-5c65-4a13-be65-d06b2c465038
@@ -1626,7 +1626,7 @@ tasks:
       id: 285753ae-d884-4485-881c-3a99f77be4d0
       iscommand: false
       name: MSGraph Users
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 285753ae-d884-4485-881c-3a99f77be4d0
@@ -1664,7 +1664,7 @@ tasks:
       id: be533930-e327-4945-8fb7-c47ada329a2f
       iscommand: false
       name: Is Azure Active Directory Users integration enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -1706,7 +1706,7 @@ tasks:
       id: a21eb31a-bab2-4069-8a3a-fa9f68a1f8b2
       iscommand: true
       name: Get account info from Azure Active Directory
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Microsoft Graph User|||msgraph-user-get
       type: regular
       version: -1
@@ -1756,7 +1756,7 @@ tasks:
       id: 56bea608-c34d-4914-8b16-594603971e22
       iscommand: false
       name: Is there a manager?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 56bea608-c34d-4914-8b16-594603971e22
@@ -1796,7 +1796,7 @@ tasks:
       id: fcbb5279-9a7c-4230-a897-1e72796add0e
       iscommand: true
       name: Azure Active Directory - Get manager details
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Microsoft Graph User|||msgraph-user-get-manager
       type: regular
       version: -1
@@ -1836,7 +1836,7 @@ tasks:
       id: 83d6879d-694b-4091-84cd-6445167b9c75
       iscommand: false
       name: Set manager email address to context
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -1900,7 +1900,7 @@ tasks:
       id: 7b64280f-0fa6-48fb-8cce-58ae35c662ae
       iscommand: true
       name: IAM Get User - Without specifying a domain
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||iam-get-user'
       type: regular
       version: -1
@@ -1971,7 +1971,7 @@ tasks:
       id: 75cd7da4-b58a-4bd0-a146-b3fc058836e1
       iscommand: true
       name: IAM Get User - with a domain
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||iam-get-user'
       type: regular
       version: -1
@@ -2016,7 +2016,7 @@ tasks:
       id: e3d4077b-a586-494b-86b3-65e1f408c83a
       iscommand: false
       name: Was a domain provided?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: e3d4077b-a586-494b-86b3-65e1f408c83a
@@ -2047,7 +2047,7 @@ tasks:
       id: 30472917-7825-4a09-89d8-b531bf61958c
       iscommand: false
       name: Cortex XDR
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 30472917-7825-4a09-89d8-b531bf61958c
@@ -2085,7 +2085,7 @@ tasks:
       id: ed860996-40a3-4e32-8c7d-e4a961c6b7d5
       iscommand: false
       name: Is Cortex XDR - IR integration enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -2136,7 +2136,7 @@ tasks:
       id: 9c968061-8a6f-4cf1-8647-0e31ce54b4a7
       iscommand: true
       name: Get account risk score
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||xdr-list-risky-users'
       type: regular
       version: -1
@@ -2192,12 +2192,12 @@ tasks:
         key.\n\nThis automation runs using the default Limited User role, unless you
         explicitly change the permissions.\nFor more information, see the section
         about permissions here:\n- For Cortex XSOAR 6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n
+        - For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
       id: 7212ec41-fb6c-4d2b-86c1-140108b79c04
       iscommand: false
       name: Save account usernames
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: SetAndHandleEmpty
       type: regular
       version: -1
@@ -2252,7 +2252,7 @@ tasks:
       id: 2524ddf8-40ab-4b7e-8019-8fdf102afc08
       iscommand: false
       name: Is there an account to enrich (with domain prefix)?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 2524ddf8-40ab-4b7e-8019-8fdf102afc08
@@ -2295,16 +2295,16 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      description: "Saves the usernames with domain prefixes under a new context key.\n\nThis
-        automation runs using the default Limited User role, unless you explicitly
+      description: "Saves the usernames with domain prefixes under a new context key.\n
+        \nThis automation runs using the default Limited User role, unless you explicitly
         change the permissions.\nFor more information, see the section about permissions
         here:\n- For Cortex XSOAR 6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n
+        - For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
       id: 59883712-8f94-4316-870e-21a76ae75517
       iscommand: false
       name: Save account usernames with domains
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: SetAndHandleEmpty
       type: regular
       version: -1
@@ -2334,7 +2334,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 92271906-6bfb-4389-82c1-347902dd28e8
@@ -2373,3 +2373,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

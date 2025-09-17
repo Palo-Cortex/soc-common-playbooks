@@ -34,12 +34,12 @@ inputSections:
 inputs:
 - description: List of URLs that are needed to be blocked.
   key: URL
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: The name of the predefined custom URL category.
   key: CategoryName
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: |-
@@ -47,14 +47,14 @@ inputs:
     Remember, this input will only be used when there is no input to the CategoryName.
     Default: Shared
   key: Folder
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: Shared
 - description: Tenant services group ID. If not provided, the tsg_id integration parameter
     will be used as the default.
   key: TSGID
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: |-
@@ -63,12 +63,12 @@ inputs:
     False -> Manual Push will be required.
     Else --> Will ignore the push section and continue the playbook.
   key: AutoCommit
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: ""
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -193,7 +193,7 @@ tasks:
       id: 3f502737-194b-4b60-8b41-49768b2f0897
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 3f502737-194b-4b60-8b41-49768b2f0897
     timertriggers: []
@@ -236,7 +236,7 @@ tasks:
       id: a7b8b8df-e87f-4615-8c21-1473a9eb4c39
       iscommand: false
       name: Check if the URL Custom Category was defined
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: a7b8b8df-e87f-4615-8c21-1473a9eb4c39
@@ -267,7 +267,7 @@ tasks:
       id: f62cd92a-b7d6-41eb-8d0b-82b272c25a91
       iscommand: false
       name: Updating URL Predfiened Category List
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: f62cd92a-b7d6-41eb-8d0b-82b272c25a91
@@ -312,7 +312,7 @@ tasks:
       id: dcbb36bb-ebca-4b0d-a4b2-9366a7db2d84
       iscommand: true
       name: Get the URL category List
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Palo Alto Networks - Prisma SASE|||prisma-sase-custom-url-category-list
       type: regular
       version: -1
@@ -357,7 +357,7 @@ tasks:
       id: 407eba27-5f42-4fe6-80ca-1ddaf41b870b
       iscommand: false
       name: Was a URL to Block provided?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 407eba27-5f42-4fe6-80ca-1ddaf41b870b
@@ -385,7 +385,7 @@ tasks:
       id: 5abb3e14-5dce-4845-8d83-44ff4bfa5c11
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 5abb3e14-5dce-4845-8d83-44ff4bfa5c11
@@ -416,7 +416,7 @@ tasks:
       id: 07b206b2-cab0-4eb1-8ce1-b1cbb870503d
       iscommand: false
       name: Creating a new Category
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 07b206b2-cab0-4eb1-8ce1-b1cbb870503d
@@ -462,7 +462,7 @@ tasks:
       id: 2c56fab1-5200-4cee-8ced-ef3ecda1a04d
       iscommand: false
       name: Is the URL already exist?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 2c56fab1-5200-4cee-8ced-ef3ecda1a04d
@@ -515,7 +515,7 @@ tasks:
       id: a1e0a7ac-2603-46a7-9d20-702e5af492ef
       iscommand: true
       name: Create a new Custom URL Category
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Palo Alto Networks - Prisma SASE|||prisma-sase-custom-url-category-create
       type: regular
       version: -1
@@ -576,7 +576,7 @@ tasks:
       id: ff806252-a58e-4ace-8a87-079745408745
       iscommand: true
       name: Update the URL category
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Palo Alto Networks - Prisma SASE|||prisma-sase-custom-url-category-update
       type: regular
       version: -1
@@ -619,7 +619,7 @@ tasks:
       id: 69ae71ff-3a69-4ed5-9128-a736c2d8b475
       iscommand: true
       name: Push Config
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Palo Alto Networks - Prisma SASE|||prisma-sase-candidate-config-push
       type: regular
       version: -1
@@ -678,7 +678,7 @@ tasks:
       id: 55bb3e8b-0479-4c30-8e6a-3a3edebc5bce
       iscommand: false
       name: Commit and push configuration to folders?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 55bb3e8b-0479-4c30-8e6a-3a3edebc5bce
@@ -746,7 +746,7 @@ tasks:
       iscommand: false
       name: Prisma SASE - Create or Edit Security Policy Rule
       playbookId: Prisma SASE - Create or Edit Security Policy Rule
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: ae2421c9-7bef-47f5-806b-149e3bef1a61
@@ -766,22 +766,22 @@ tasks:
     isautoswitchedtoquietmode: false
     isoversize: false
     message:
-      bcc: null
-      body: null
-      cc: null
+      bcc:
+      body:
+      cc:
       format: ""
       methods: []
       replyOptions:
       - Push
       - "No"
-      subject: null
+      subject:
       timings:
         completeafterreplies: 1
         completeaftersla: false
         completeafterv2: true
         retriescount: 2
         retriesinterval: 360
-      to: null
+      to:
     nexttasks:
       '#default#':
       - "5"
@@ -797,7 +797,7 @@ tasks:
       id: af316618-dc9f-4475-89a4-b7fd5ad0e2f4
       iscommand: false
       name: Choose to commit and push configuration automatically
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: af316618-dc9f-4475-89a4-b7fd5ad0e2f4
@@ -826,7 +826,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: c7325348-7c96-47b0-8e4e-c9fe042a0949
@@ -862,7 +862,7 @@ tasks:
       id: 7f5ff5d6-143c-4f4d-8de1-fbb98068f6d2
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -899,7 +899,7 @@ tasks:
       id: 7eac0f1d-8938-4d3b-8bff-4b9c9c39ec9e
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -937,7 +937,7 @@ tasks:
       id: dc60e040-179d-4b92-a13b-c7094b3e54d9
       iscommand: false
       name: 'Shadow: Prisma SASE Create new URL Category'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -975,7 +975,7 @@ tasks:
       id: 682885e6-e34c-4ce7-b2c9-77d00e233310
       iscommand: false
       name: 'Shadow: Prisma SASE Update URL Category'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -1008,3 +1008,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

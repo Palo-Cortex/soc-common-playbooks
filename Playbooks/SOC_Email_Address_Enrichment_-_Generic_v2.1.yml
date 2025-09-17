@@ -25,12 +25,12 @@ inputs:
 - description: A CSV list of internal domains. The list will be used to determine
     whether an email address is internal or external.
   key: InternalDomains
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: The email addresses to enrich.
   key: Email
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -41,7 +41,7 @@ inputs:
 - description: The domains associated with the incident. These domains will be checked
     for domain-squatting.
   key: Domain
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: |-
@@ -50,7 +50,7 @@ inputs:
     Possible values: True / False.
     The default value is false.
   key: UseReputationCommand
-  playbookInputQuery: null
+  playbookInputQuery:
   required: true
   value:
     simple: "False"
@@ -231,7 +231,7 @@ tasks:
       id: 22a55a7c-c942-4d12-84fb-76bce3695b83
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 22a55a7c-c942-4d12-84fb-76bce3695b83
     timertriggers: []
@@ -261,7 +261,7 @@ tasks:
       id: 8970ccc7-3ca4-4f5a-879e-f9d0c07c3e5b
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 8970ccc7-3ca4-4f5a-879e-f9d0c07c3e5b
@@ -304,7 +304,7 @@ tasks:
       id: dce4e3b8-0986-4a8c-8436-0602977d9f8c
       iscommand: false
       name: Are there email addresses to check?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: dce4e3b8-0986-4a8c-8436-0602977d9f8c
@@ -361,7 +361,7 @@ tasks:
       id: e9c8194c-496a-4b3b-9a08-23d0b4844dc4
       iscommand: false
       name: Classify email addresses as internal or external
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsEmailAddressInternal
       type: regular
       version: -1
@@ -394,7 +394,7 @@ tasks:
       id: 1a9686bb-e22f-46a7-8f5e-adf7acffdf3b
       iscommand: false
       name: Internal
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 1a9686bb-e22f-46a7-8f5e-adf7acffdf3b
@@ -426,7 +426,7 @@ tasks:
       id: 7874c1a7-0bae-43cc-8f13-9234c337f491
       iscommand: false
       name: External
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 7874c1a7-0bae-43cc-8f13-9234c337f491
@@ -480,7 +480,7 @@ tasks:
       id: 7b02649a-5b72-4b6e-a00a-cb054523e36e
       iscommand: true
       name: Get email address info from Active Directory
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||ad-get-user'
       type: regular
       version: -1
@@ -533,7 +533,7 @@ tasks:
       id: 4dbbbdb8-0102-445f-8fc3-d3ed70c32aa3
       iscommand: false
       name: Are there any external email addresses?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Exists
       type: condition
       version: -1
@@ -586,7 +586,7 @@ tasks:
       id: 4bb4197a-cd13-41a6-8882-b8e6c51312c3
       iscommand: false
       name: Are there any internal email addresses?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Exists
       type: condition
       version: -1
@@ -662,7 +662,7 @@ tasks:
       id: 4a1b521d-2b1a-44a3-bdb1-c65c3f1e52d6
       iscommand: false
       name: Check email addresses for domain-squatting
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: EmailDomainSquattingReputation
       type: regular
       version: -1
@@ -722,7 +722,7 @@ tasks:
       id: bc59d675-c18d-44ac-878f-bdc8dc7c578e
       iscommand: false
       name: Is Active Directory Query v2 enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Exists
       type: condition
       version: -1
@@ -769,7 +769,7 @@ tasks:
       id: 82034885-dcb2-4c4a-8fa7-1c1514c27e46
       iscommand: false
       name: Is there a domain list input?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Exists
       type: condition
       version: -1
@@ -801,7 +801,7 @@ tasks:
       id: 358de9fa-efe5-47c2-801f-7c85db0d408b
       iscommand: false
       name: No Email Addresses
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 358de9fa-efe5-47c2-801f-7c85db0d408b
@@ -848,7 +848,7 @@ tasks:
       id: 047c804f-cc74-4eb3-8ea5-7776e5827088
       iscommand: false
       name: Should use !email command?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 047c804f-cc74-4eb3-8ea5-7776e5827088
@@ -900,7 +900,7 @@ tasks:
       id: f9bd1a98-a377-42ff-9b44-beb648ba83fd
       iscommand: true
       name: Check Reputation
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||email'
       type: regular
       version: -1
@@ -939,7 +939,7 @@ tasks:
       id: 766c0f6c-feff-49af-8bfd-62574133e61c
       iscommand: false
       name: Is EWS v2 enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -1001,7 +1001,7 @@ tasks:
       id: 87d44412-38b6-4931-921f-851c0d88f6c7
       iscommand: true
       name: Get full contact info
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: EWS v2|||ews-resolve-name
       type: regular
       version: -1
@@ -1031,7 +1031,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 2894fb80-c79e-44d2-8bb8-1a9a9e89e728
@@ -1066,3 +1066,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

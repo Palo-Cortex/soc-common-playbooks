@@ -28,12 +28,12 @@ inputSections:
 inputs:
 - description: Search for user by the sAMAccountName attribute in Active Directory.
   key: Username
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: Search for user by the email attribute in Active Directory.
   key: UserEmail
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -78,7 +78,7 @@ tasks:
       id: 65b748f8-8d64-4ff1-8e55-f8050fefa13e
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 65b748f8-8d64-4ff1-8e55-f8050fefa13e
     timertriggers: []
@@ -137,7 +137,7 @@ tasks:
       id: 9c6dd8f5-91bb-406f-86c3-add4019fba2c
       iscommand: false
       name: Is Active Directory enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 9c6dd8f5-91bb-406f-86c3-add4019fba2c
@@ -196,7 +196,7 @@ tasks:
       id: c1c98615-ba19-44ef-8aa0-1d50a1ee1c3c
       iscommand: false
       name: By which attribute should the user be searched?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: c1c98615-ba19-44ef-8aa0-1d50a1ee1c3c
@@ -241,7 +241,7 @@ tasks:
       id: 1052e99a-83b1-4978-b238-6a50ed63f068
       iscommand: true
       name: Get user details by username
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Active Directory Query v2|||ad-get-user
       type: regular
       version: -1
@@ -285,7 +285,7 @@ tasks:
       id: fddf5cde-dd7d-4da4-892c-c71ccaf7ead8
       iscommand: true
       name: Get user details by email
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Active Directory Query v2|||ad-get-user
       type: regular
       version: -1
@@ -332,7 +332,7 @@ tasks:
       id: da7d26a1-d686-4030-80a8-0500e919ec09
       iscommand: false
       name: Was a manager found?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: da7d26a1-d686-4030-80a8-0500e919ec09
@@ -381,7 +381,7 @@ tasks:
       id: 6be04fd9-00d5-45c6-badc-460efeee51cc
       iscommand: true
       name: Get manager details by user email or username
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Active Directory Query v2|||ad-get-user
       tags:
       - active_directory_manager_details
@@ -427,15 +427,15 @@ tasks:
       brand: ""
       description: "Set a value in context under the key you entered. If no value
         is entered, the script doesn't do anything.\n\nThis automation runs using
-        the default Limited User role, unless you explicitly change the permissions.\nFor
-        more information, see the section about permissions here:\n- For Cortex XSOAR
-        6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+        the default Limited User role, unless you explicitly change the permissions.\n
+        For more information, see the section about permissions here:\n- For Cortex
+        XSOAR 6 see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex XSOAR 8 Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n
+        - For Cortex XSOAR 8.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
       id: 0ff49df3-e89d-45ef-9470-6f330da1f19d
       iscommand: false
       name: Set manager email to outputs
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: SetAndHandleEmpty
       type: regular
       version: -1
@@ -464,7 +464,7 @@ tasks:
       id: cd103324-58ed-4ef2-8de4-ed223a0831c0
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: cd103324-58ed-4ef2-8de4-ed223a0831c0
@@ -495,7 +495,7 @@ tasks:
       id: 82beca2e-d6ae-43f2-8dbc-60d72893585c
       iscommand: false
       name: Cannot Retrieve Manager Email
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 82beca2e-d6ae-43f2-8dbc-60d72893585c
@@ -541,7 +541,7 @@ tasks:
       id: 2d85cfd8-8c13-441d-a550-a17099a55ea0
       iscommand: false
       name: Set manager display name to outputs
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: SetAndHandleEmpty
       type: regular
       version: -1
@@ -571,7 +571,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 29387c43-9504-4bdc-8e9d-c6a0fdbb2356
@@ -605,3 +605,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

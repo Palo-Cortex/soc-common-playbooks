@@ -35,7 +35,7 @@ inputSections:
 inputs:
 - description: Set to 'True' to quarantine the identified file.
   key: FileContainment
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "True"
@@ -43,33 +43,33 @@ inputs:
     \nFor example, choosing 'Quarantine' ignores the 'Delete file' task under the
     eradication playbook and will execute only file quarantine."
   key: FileRemediation
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: Quarantine
 - description: The path of the file to block.
   key: FilePath
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: The file hash to block.
   key: FileHash
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: The endpoint ID to run commands over.
   key: EndpointID
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: Whether to execute containment plan automatically.
   key: AutoContainment
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: ""
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -107,7 +107,7 @@ tasks:
       id: 0c4f76b8-840e-49d6-83ea-28853fed1128
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 0c4f76b8-840e-49d6-83ea-28853fed1128
     timertriggers: []
@@ -134,7 +134,7 @@ tasks:
       id: 397f4b57-3b4f-40ed-8871-59fb281d5a77
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 397f4b57-3b4f-40ed-8871-59fb281d5a77
@@ -195,7 +195,7 @@ tasks:
       id: a0ceb1ef-9c66-4295-8ab8-8ff9b8cbbf2f
       iscommand: true
       name: Get file quarantine status
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||core-get-quarantine-status'
       type: regular
       version: -1
@@ -281,7 +281,7 @@ tasks:
       id: 30398ddb-5182-4c19-84f2-6f06e62eabca
       iscommand: true
       name: File quarantine
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||core-quarantine-files'
       type: regular
       version: -1
@@ -324,7 +324,7 @@ tasks:
       id: ceb94556-4fbc-4a33-8cfe-3fbe2669a059
       iscommand: true
       name: Set quarantine files per endpoints to the Alert context
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Builtin|||setParentIncidentContext
       type: regular
       version: -1
@@ -394,7 +394,7 @@ tasks:
       id: 1208d3af-a6d7-4126-86f2-1c84f8659895
       iscommand: false
       name: Should quarantine file?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 1208d3af-a6d7-4126-86f2-1c84f8659895
@@ -449,7 +449,7 @@ tasks:
       id: 410c04ef-0afc-4578-8b1b-b1a3de96debf
       iscommand: false
       name: Was the file quarantined?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 410c04ef-0afc-4578-8b1b-b1a3de96debf
@@ -491,7 +491,7 @@ tasks:
       id: c5d82818-9538-471e-9ccc-98507a64ba2c
       iscommand: false
       name: Set quarantine files to the context
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -590,7 +590,7 @@ tasks:
       id: fd83526a-3995-475b-8ea6-60233a3f1636
       iscommand: false
       name: Should isolate automatically?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: fd83526a-3995-475b-8ea6-60233a3f1636
@@ -642,7 +642,7 @@ tasks:
       id: 8395bf84-b9be-42af-8c0b-cdf64c82b8fa
       iscommand: true
       name: Get file quarantine status
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||core-get-quarantine-status'
       type: regular
       version: -1
@@ -712,7 +712,7 @@ tasks:
       id: a04c8ae8-b9a2-4a06-8d64-8463dd6582d9
       iscommand: false
       name: Should quarantine file?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: a04c8ae8-b9a2-4a06-8d64-8463dd6582d9
@@ -769,7 +769,7 @@ tasks:
       id: 48f240fd-334d-4f88-8e66-726f9971ba3c
       iscommand: true
       name: File quarantine
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||core-quarantine-files'
       type: regular
       version: -1
@@ -837,7 +837,7 @@ tasks:
       id: 20bedb31-7ad0-4de2-a1a1-ed12eabd305e
       iscommand: false
       name: Set file path to quarantine
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -896,7 +896,7 @@ tasks:
       id: 68f2e56a-d26e-45a3-847d-75e10d287811
       iscommand: false
       name: Set file hash to quarantine
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -937,7 +937,7 @@ tasks:
       id: 942487c5-0c60-4be2-aa56-4c85d6718a0f
       iscommand: false
       name: Manual action needed – file couldn't be quarantined
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: regular
       version: -1
     taskid: 942487c5-0c60-4be2-aa56-4c85d6718a0f
@@ -966,7 +966,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: d461544a-86db-492d-8df1-aa928c0fd6b9
@@ -1002,7 +1002,7 @@ tasks:
       id: 8fb7eafb-23ef-461b-87ab-e1eaf7098eaa
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -1040,7 +1040,7 @@ tasks:
       id: 00c1159f-3a14-4cce-99d4-19615b7eedc3
       iscommand: false
       name: 'Shadow: Palo XDR File Qurantine'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -1074,3 +1074,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

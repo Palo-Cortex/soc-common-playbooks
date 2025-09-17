@@ -24,12 +24,12 @@ inputSections:
 inputs:
 - description: Panorama log forwarding object name
   key: LogForwarding
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: IP address to block
   key: IP
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -48,14 +48,14 @@ inputs:
     Yes - Commit automatically.
     No - Commit manually.
   key: AutoCommit
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "No"
 - description: Shadow Mode is a key safety mechanism. It ensures actions like isolate_endpoint
     or disable_user are logged but not executed in test scenarios.
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -669,3 +669,4 @@ view: |-
     }
   }
 adopted: true
+fromversion: 5.0.0
