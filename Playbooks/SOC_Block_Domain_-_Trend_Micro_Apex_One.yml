@@ -25,18 +25,18 @@ inputSections:
 inputs:
 - description: The Domain to block.
   key: Domain
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: 'The UTC expiration date and time of the suspicious object, for example:
     2020-01-25T09:00:00Z.'
   key: Expiration
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: ""
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -70,7 +70,7 @@ tasks:
       id: d333e30b-b0ba-4578-820f-116443c2fa50
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: d333e30b-b0ba-4578-820f-116443c2fa50
     timertriggers: []
@@ -133,7 +133,7 @@ tasks:
       id: b414b6be-6e40-48a4-8612-d7cc449eb0cf
       iscommand: false
       name: Is Trend Micro Apex One enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: b414b6be-6e40-48a4-8612-d7cc449eb0cf
@@ -180,7 +180,7 @@ tasks:
       id: 10ba9071-af0d-4729-b7d2-43b8440b292a
       iscommand: true
       name: Block Domain
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Trend Micro Apex|||trendmicro-apex-udso-add
       type: regular
       version: -1
@@ -209,7 +209,7 @@ tasks:
       id: 410a42e0-2997-42fb-8b86-99085fe3168b
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 410a42e0-2997-42fb-8b86-99085fe3168b
@@ -252,7 +252,7 @@ tasks:
       id: 36454014-dd62-4832-8cfe-f60877860910
       iscommand: false
       name: Check if Domain input was provided
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 36454014-dd62-4832-8cfe-f60877860910
@@ -281,7 +281,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 6a0fcac1-eb92-4fec-88c2-50c48b6b03fc
@@ -317,7 +317,7 @@ tasks:
       id: 44c5c5d3-873f-4ed2-8743-35fae5dce766
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: ShadowModeRouter
       type: condition
       version: -1
@@ -355,7 +355,7 @@ tasks:
       id: fb2015e7-c26b-4b9b-be73-0115b47753bd
       iscommand: false
       name: 'Shadow: Trend Micro Apex Block Domain'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -384,3 +384,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

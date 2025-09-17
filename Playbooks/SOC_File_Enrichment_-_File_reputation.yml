@@ -28,7 +28,7 @@ inputSections:
 inputs:
 - description: File MD5 hash to enrich.
   key: MD5
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -36,7 +36,7 @@ inputs:
       root: File
 - description: File SHA-256 hash to enrich.
   key: SHA256
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -44,7 +44,7 @@ inputs:
       root: File
 - description: File SHA-1 hash to enrich.
   key: SHA1
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -120,7 +120,7 @@ tasks:
       id: 214ebf34-1312-43ec-873d-41d45094ba22
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 214ebf34-1312-43ec-873d-41d45094ba22
     timertriggers: []
@@ -152,7 +152,7 @@ tasks:
       id: 4b42764c-31bd-4097-8721-159b73534347
       iscommand: false
       name: Get file hash reputation
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 4b42764c-31bd-4097-8721-159b73534347
@@ -190,7 +190,7 @@ tasks:
       id: 61a4a533-980d-4b46-816e-75bbf2550d0a
       iscommand: false
       name: Get MD5 reputation
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: FileReputation
       type: regular
       version: -1
@@ -219,7 +219,7 @@ tasks:
       id: 66d74bf4-438c-40a8-840f-58052c181d0f
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 66d74bf4-438c-40a8-840f-58052c181d0f
@@ -265,7 +265,7 @@ tasks:
       id: 63bff973-38e4-490f-830e-b9d68f2791ad
       iscommand: false
       name: Is there an MD5 hash?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 63bff973-38e4-490f-830e-b9d68f2791ad
@@ -311,7 +311,7 @@ tasks:
       id: 8e16c355-ee0c-4b2b-86b1-0d2f5916430f
       iscommand: false
       name: Is there a SHA-256 hash?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 8e16c355-ee0c-4b2b-86b1-0d2f5916430f
@@ -349,7 +349,7 @@ tasks:
       id: 092a1e7e-b7d8-4d50-8f6e-021c31701974
       iscommand: false
       name: Get SHA-256 reputation
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: FileReputation
       type: regular
       version: -1
@@ -396,7 +396,7 @@ tasks:
       id: ceddfccc-685c-4392-8955-2c116297ca5f
       iscommand: false
       name: Is there a SHA-1 hash?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: ceddfccc-685c-4392-8955-2c116297ca5f
@@ -434,7 +434,7 @@ tasks:
       id: 9cd10068-c589-4c05-8a22-7ec3528b89de
       iscommand: false
       name: Get SHA-1 reputation
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: FileReputation
       type: regular
       version: -1
@@ -464,3 +464,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

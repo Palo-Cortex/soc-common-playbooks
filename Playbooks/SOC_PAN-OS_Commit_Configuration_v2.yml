@@ -15,7 +15,7 @@ id: 'SOC PAN-OS Commit Configuration v2'
 inputs:
 - description: ""
   key: device-group
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 name: SOC PAN-OS Commit Configuration v2
@@ -728,3 +728,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

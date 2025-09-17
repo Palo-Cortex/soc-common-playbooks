@@ -40,14 +40,14 @@ inputs:
 - description: Tenant services group ID. If not provided, the tsg_id integration parameter
     will be used as the default.
   key: TSGID
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: |-
     The configuration folder group setting.
     The default value is 'Shared'.
   key: Folder
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: Shared
@@ -55,14 +55,14 @@ inputs:
     Possible values:
     allow,deny,drop,reset-both,reset-client,reset-server.
   key: Action
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: |-
     Rule position.
     The default value is 'pre'.
   key: Position
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: pre
@@ -70,7 +70,7 @@ inputs:
     A comma-separated list of source networks.
     The default value is 'any'.
   key: Source
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: any
@@ -78,7 +78,7 @@ inputs:
     A comma-separated list of destination networks.
     The default value is 'any'.
   key: Destination
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: any
@@ -86,7 +86,7 @@ inputs:
     Services the rule applies to.
     Default value is 'any'.
   key: Service
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: any
@@ -94,13 +94,13 @@ inputs:
     A comma-separated list of applications.
     Default value is 'any'.
   key: Application
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: any
 - description: The name of the security rule.
   key: RuleName
-  playbookInputQuery: null
+  playbookInputQuery:
   required: true
   value: {}
 - description: |-
@@ -109,14 +109,14 @@ inputs:
     False -> Manual push will be required.
     Else --> Will ignore the push section and continue the playbook.
   key: AutoCommit
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: |-
     Whether to overwrite the original rule values.
     The default value is 'false'.
   key: Overwrite
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "False"
@@ -124,13 +124,13 @@ inputs:
     A comma-separated list of categories. You can get category values by running the prisma-sase-custom-url-category-list command.
     Default value is 'any'.
   key: Category
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: any
 - description: ""
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -242,7 +242,7 @@ tasks:
       id: 0e6e9db1-9fbc-4c0f-862c-1faa0d7690da
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 0e6e9db1-9fbc-4c0f-862c-1faa0d7690da
     timertriggers: []
@@ -288,7 +288,7 @@ tasks:
       id: fc7c383d-8d57-4161-97c8-1a00b9458e56
       iscommand: true
       name: List Security Policy
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Palo Alto Networks - Prisma SASE|||prisma-sase-security-rule-list
       type: regular
       version: -1
@@ -335,7 +335,7 @@ tasks:
       id: b2325c73-cbd4-49b6-83ab-9cf9eb086d2c
       iscommand: false
       name: Check if the rule was already created
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: b2325c73-cbd4-49b6-83ab-9cf9eb086d2c
@@ -429,7 +429,7 @@ tasks:
       id: 388d5fc9-294b-4923-9eb3-2c4b83c55f14
       iscommand: true
       name: Create New Security Rule
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Palo Alto Networks - Prisma SASE|||prisma-sase-security-rule-create
       type: regular
       version: -1
@@ -458,7 +458,7 @@ tasks:
       id: 903970f1-cd5d-4ca1-8226-bea09e658349
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 903970f1-cd5d-4ca1-8226-bea09e658349
@@ -503,7 +503,7 @@ tasks:
       id: 646535b2-8393-488a-84b0-1002435ca0fb
       iscommand: true
       name: Check if the policy was pushed successfully.
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Palo Alto Networks - Prisma SASE|||prisma-sase-security-rule-list
       type: regular
       version: -1
@@ -550,7 +550,7 @@ tasks:
       id: 50d20336-62eb-4f43-8f6a-7fd4d56dbda9
       iscommand: false
       name: The policy was created successfully?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 50d20336-62eb-4f43-8f6a-7fd4d56dbda9
@@ -582,7 +582,7 @@ tasks:
       id: e06bf245-0bdc-4aa5-8c7f-59efd8e33aa7
       iscommand: false
       name: Raise error on pushing config
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: PrintErrorEntry
       type: regular
       version: -1
@@ -625,7 +625,7 @@ tasks:
       id: ffc15f7e-7a9b-48f6-a709-dd86717053a3
       iscommand: true
       name: Push Config
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Palo Alto Networks - Prisma SASE|||prisma-sase-candidate-config-push
       type: regular
       version: -1
@@ -684,7 +684,7 @@ tasks:
       id: 041a6d58-e043-4069-8e6c-d109b95f81cc
       iscommand: false
       name: Commit and push configuration to folders?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 041a6d58-e043-4069-8e6c-d109b95f81cc
@@ -704,22 +704,22 @@ tasks:
     isautoswitchedtoquietmode: false
     isoversize: false
     message:
-      bcc: null
-      body: null
-      cc: null
+      bcc:
+      body:
+      cc:
       format: ""
       methods: []
       replyOptions:
       - Push
       - "No"
-      subject: null
+      subject:
       timings:
         completeafterreplies: 1
         completeaftersla: false
         completeafterv2: true
         retriescount: 2
         retriesinterval: 360
-      to: null
+      to:
     nexttasks:
       '#default#':
       - "5"
@@ -735,7 +735,7 @@ tasks:
       id: 4c29e35e-13da-4951-85d0-eeafaa74fd2c
       iscommand: false
       name: Choose to commit and push configuration automatically
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 4c29e35e-13da-4951-85d0-eeafaa74fd2c
@@ -833,7 +833,7 @@ tasks:
       id: 30b51d0d-6252-4091-94b2-60d364157ffd
       iscommand: true
       name: Update Security Rule
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Palo Alto Networks - Prisma SASE|||prisma-sase-security-rule-update
       type: regular
       version: -1
@@ -863,7 +863,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 99eea0fb-aca8-4f8a-8dbc-bc00b324b8b3
@@ -899,7 +899,7 @@ tasks:
       id: 2faa06ab-fbff-409e-827b-db6139172e20
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -936,7 +936,7 @@ tasks:
       id: dde78d65-a1e1-491e-8e92-229260d2a969
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -973,7 +973,7 @@ tasks:
       id: 1bbe34e3-b713-464d-8d12-d545ce946591
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -1010,7 +1010,7 @@ tasks:
       id: 6ad5e849-9411-4925-8f6b-3a37d8dbc465
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -1048,7 +1048,7 @@ tasks:
       id: 68989291-5a6d-47d6-8420-004870130c8d
       iscommand: false
       name: 'Shadow: Create New Security Rule'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -1086,7 +1086,7 @@ tasks:
       id: 09a42009-8e6c-44b0-9bef-d5f87dc4a3c0
       iscommand: false
       name: 'Shadow: Update Security Rule'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -1124,7 +1124,7 @@ tasks:
       id: dba45511-5b19-4c46-9679-760366ecde71
       iscommand: false
       name: 'Shadow: Prisma SASE Push Config'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -1156,3 +1156,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

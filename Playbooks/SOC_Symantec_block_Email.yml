@@ -22,12 +22,12 @@ inputSections:
 inputs:
 - description: The email address that will be blocked.
   key: EmailToBlock
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: ""
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: ${inputs.ShadowMode}
@@ -61,7 +61,7 @@ tasks:
       id: 7b8687ab-feda-41dd-8278-57eb915dc305
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 7b8687ab-feda-41dd-8278-57eb915dc305
     timertriggers: []
@@ -98,7 +98,7 @@ tasks:
       id: 1e1d8837-f6b9-4e13-8764-7a6e3437f11a
       iscommand: false
       name: Is Symantec available
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -138,7 +138,7 @@ tasks:
       id: 765d1cfc-e79f-46eb-baa7-77029eb133fe
       iscommand: true
       name: Block email
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Symantec Messaging Gateway|||smg-block-email
       type: regular
       version: -1
@@ -167,7 +167,7 @@ tasks:
       id: ec96196e-14ac-4d19-826f-b68e4fc5fc86
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: ec96196e-14ac-4d19-826f-b68e4fc5fc86
@@ -208,7 +208,7 @@ tasks:
       id: b8c6256c-f6d0-41e6-8dca-c1a2096ccef7
       iscommand: false
       name: 'Is there email to block? '
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: b8c6256c-f6d0-41e6-8dca-c1a2096ccef7
@@ -239,7 +239,7 @@ tasks:
       id: 281ad972-56f1-41e6-8e7d-00d400b079e4
       iscommand: false
       name: Symantec
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 281ad972-56f1-41e6-8e7d-00d400b079e4
@@ -268,7 +268,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 75209827-3790-40b3-8a1b-452765fb148d
@@ -304,7 +304,7 @@ tasks:
       id: 775b8b62-3493-4a55-8692-9335a4d070f7
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -342,7 +342,7 @@ tasks:
       id: cd39f06b-3fe9-4d0d-b438-6f3902e386d7
       iscommand: false
       name: 'Shadow: Symantec Block Email'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -372,3 +372,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

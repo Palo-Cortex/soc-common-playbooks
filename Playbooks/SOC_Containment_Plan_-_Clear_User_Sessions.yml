@@ -28,24 +28,24 @@ inputSections:
 inputs:
 - description: Set to 'True' to clear the user active sessions.
   key: ClearUserSessions
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "True"
 - description: The username to disable.
   key: Username
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: The Okta IAM users domain. The domain will be appended to the username.
     E.g., username@IAMUserDomain.
   key: IAMUserDomain
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: ""
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -79,7 +79,7 @@ tasks:
       id: f2a578bb-7b26-4477-8391-2e40e77fb9d5
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: f2a578bb-7b26-4477-8391-2e40e77fb9d5
     timertriggers: []
@@ -121,7 +121,7 @@ tasks:
       id: 0dbcce9a-afe8-4533-a5c4-368906fd2625
       iscommand: true
       name: Okta clear user sessions
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Okta v2|||okta-clear-user-sessions
       type: regular
       version: -1
@@ -150,7 +150,7 @@ tasks:
       id: 581b7da6-4c88-41a6-8175-a2116add396c
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 581b7da6-4c88-41a6-8175-a2116add396c
@@ -189,7 +189,7 @@ tasks:
       id: d70a5b0e-0686-4ad0-80c1-af9817310138
       iscommand: true
       name: Get Okta user ID
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: '|||okta-get-user'
       type: regular
       version: -1
@@ -229,7 +229,7 @@ tasks:
       id: bda090c7-6749-46e5-8453-31f56d8b778c
       iscommand: true
       name: Set the username to the Alert context
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Builtin|||setParentIncidentContext
       type: regular
       version: -1
@@ -292,7 +292,7 @@ tasks:
       id: 70665d82-a946-4a6c-9201-e8a8c7cfe79a
       iscommand: false
       name: Set users to clear the session with Okta
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -331,7 +331,7 @@ tasks:
       id: 4025c083-2630-4171-889e-5f05b1fc51eb
       iscommand: false
       name: Is Okta enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -386,7 +386,7 @@ tasks:
       id: f1d3409f-55f4-4804-8a48-354971cae04e
       iscommand: false
       name: Should clear the user sessions?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: f1d3409f-55f4-4804-8a48-354971cae04e
@@ -424,7 +424,7 @@ tasks:
       id: 64c30075-eba8-4222-8251-cf075b841898
       iscommand: false
       name: Is MsGraphUser enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -465,7 +465,7 @@ tasks:
       id: 95e4dd34-41f7-4300-a2d9-d021c6779085
       iscommand: true
       name: Get MsGraph user ID
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Microsoft Graph User|||msgraph-user-get
       type: regular
       version: -1
@@ -506,7 +506,7 @@ tasks:
       id: e6092911-c270-4133-8a71-a0fe04050fbd
       iscommand: true
       name: MSGraph clear user sessions
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Microsoft Graph User|||msgraph-user-session-revoke
       type: regular
       version: -1
@@ -544,7 +544,7 @@ tasks:
       id: aaafcc54-e334-42a5-8a5c-f4dea1d0c158
       iscommand: true
       name: Set the username to the Alert context
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Builtin|||setParentIncidentContext
       type: regular
       version: -1
@@ -589,7 +589,7 @@ tasks:
       id: 4655db74-8104-4510-88b0-d9a081911b34
       iscommand: false
       name: Does the username exist?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 4655db74-8104-4510-88b0-d9a081911b34
@@ -645,7 +645,7 @@ tasks:
       id: c1ba5bf5-e37f-41ee-8392-7709acc40e8f
       iscommand: false
       name: Does the username exist?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: c1ba5bf5-e37f-41ee-8392-7709acc40e8f
@@ -707,7 +707,7 @@ tasks:
       id: 4e220d72-c0cf-4e44-b371-b41bea0fd859
       iscommand: false
       name: Set users to clear the session with MsGraph
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -737,7 +737,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 691bab1a-c00d-4a75-8735-043a9eec517b
@@ -774,7 +774,7 @@ tasks:
       id: d8d0bae3-cff1-4511-a902-f81f6f34d5a4
       iscommand: false
       name: 'Shadow: MSGraph clear user sessions'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -811,7 +811,7 @@ tasks:
       id: 0e13479a-07fc-4209-abb1-1ea6dfab3177
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -848,7 +848,7 @@ tasks:
       id: a14222a1-2f3d-45db-80e7-864cde88d15c
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -886,7 +886,7 @@ tasks:
       id: f978e210-7ba2-467c-b20d-d4705a2703ba
       iscommand: false
       name: 'Shadow: Okta clear user sessions'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -921,3 +921,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

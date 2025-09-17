@@ -35,7 +35,7 @@ inputSections:
 inputs:
 - description: The IP address to enrich.
   key: IP
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -47,7 +47,7 @@ inputs:
     this list to check if an IP address is found within a set of IP address ranges.
     \nFor example: \"172.16.0.0/12,10.0.0.0/8,192.168.0.0/16\" (without quotes)."
   key: InternalRange
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -73,7 +73,7 @@ inputs:
     Whether to convert the IP address to a hostname using a DNS query (True/False).
     The default value is true.
   key: ResolveIP
-  playbookInputQuery: null
+  playbookInputQuery:
   required: true
   value:
     complex:
@@ -86,7 +86,7 @@ inputs:
 
     Set this to True in the parent playbook if you are using the parent playbook, as opposed to using the sub-playbooks directly in your playbooks, as this will improve the performance of the playbook and reduce the overfall size of the incident.
   key: ExecutedFromParent
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "False"
@@ -95,7 +95,7 @@ inputs:
     endpoint hostname that you want to enrich, the hostnames defined here will be
     used.
   key: Hostnames
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 name: SOC IP Enrichment - Internal - Generic v2
@@ -791,7 +791,7 @@ tasks:
       id: 6635b28b-bdf1-42cf-88bc-14ad75e9ebe0
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 6635b28b-bdf1-42cf-88bc-14ad75e9ebe0
     timertriggers: []
@@ -818,7 +818,7 @@ tasks:
       id: 8149db7c-af8d-41e2-85ee-c9fe2efd5040
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 8149db7c-af8d-41e2-85ee-c9fe2efd5040
@@ -849,7 +849,7 @@ tasks:
       id: a22c2045-33e0-4ad3-8627-15886227f805
       iscommand: false
       name: Enrich internal IP addresses
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: a22c2045-33e0-4ad3-8627-15886227f805
@@ -912,7 +912,7 @@ tasks:
       id: cd79c4ac-4dec-4872-8ec8-35079ffe9e5d
       iscommand: false
       name: Are the IPs already classified?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: cd79c4ac-4dec-4872-8ec8-35079ffe9e5d
@@ -958,7 +958,7 @@ tasks:
       id: 8556e257-fee3-46d6-8e63-e06c38c3b7af
       iscommand: false
       name: Resolve the IP address?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 8556e257-fee3-46d6-8e63-e06c38c3b7af
@@ -1019,7 +1019,7 @@ tasks:
       id: 9e40d733-6661-4345-9947-653ff0872d69
       iscommand: false
       name: IP to Hostname (DNS)
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IPToHost
       type: regular
       version: -1
@@ -1078,7 +1078,7 @@ tasks:
       id: ac707a9d-ef3d-4dbc-867d-1bef4287be9d
       iscommand: false
       name: Is there an internal IP address?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: ac707a9d-ef3d-4dbc-867d-1bef4287be9d
@@ -1121,13 +1121,13 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      description: "Checks if the IP address is in the internal IP address ranges.\nIf
-        internal, sets the \"InRange\" attribute to \"yes\".\nIf external, sets the
-        \"InRange\" attribute to \"no\". \n"
+      description: "Checks if the IP address is in the internal IP address ranges.\n
+        If internal, sets the \"InRange\" attribute to \"yes\".\nIf external, sets
+        the \"InRange\" attribute to \"no\". \n"
       id: ce1db4c9-4be4-483f-9957-32fe35630b3d
       iscommand: false
       name: Determine whether the IP address is internal or external
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsIPInRanges
       type: regular
       version: -1
@@ -1159,7 +1159,7 @@ tasks:
       id: 3dbd6139-a053-466c-8abf-86544d804022
       iscommand: false
       name: No Internal IP Address
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 3dbd6139-a053-466c-8abf-86544d804022
@@ -1190,7 +1190,7 @@ tasks:
       id: 7be14457-6daf-4880-8ab7-ddc7d9c5f5ea
       iscommand: false
       name: Classify & Resolve IPs
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 7be14457-6daf-4880-8ab7-ddc7d9c5f5ea
@@ -1219,7 +1219,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 01e806da-e272-4832-892f-d0f527a09255
@@ -1251,7 +1251,7 @@ tasks:
       iscommand: false
       name: SOC Endpoint Enrichment - Generic v2.1
       playbookId: SOC Endpoint Enrichment - Generic v2.1
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 58a12bcd-7e4e-4f17-8325-650df12e52fe
@@ -1282,3 +1282,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

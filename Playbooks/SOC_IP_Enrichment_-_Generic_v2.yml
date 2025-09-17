@@ -41,7 +41,7 @@ inputSections:
 inputs:
 - description: The IP address to enrich.
   key: IP
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -53,7 +53,7 @@ inputs:
     list should be provided in CIDR notation. For example, a list of ranges would
     be: "172.16.0.0/12,10.0.0.0/8,192.168.0.0/16" (without quotes).'
   key: InternalRange
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -79,7 +79,7 @@ inputs:
     Determines whether to convert the IP address to a hostname using a DNS query (True/ False).
     The default value is true.
   key: ResolveIP
-  playbookInputQuery: null
+  playbookInputQuery:
   required: true
   value:
     simple: "False"
@@ -89,7 +89,7 @@ inputs:
     Possible values: True / False.
     The default value is false.
   key: UseReputationCommand
-  playbookInputQuery: null
+  playbookInputQuery:
   required: true
   value:
     simple: "False"
@@ -98,7 +98,7 @@ inputs:
     Possible values: True / False.
     The default value is false.
   key: extended_data
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "False"
@@ -107,7 +107,7 @@ inputs:
     Possible values: True / False.
     The default value is false.
   key: threat_model_association
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "False"
@@ -119,7 +119,7 @@ inputs:
 
     Set this to True in the parent playbook if you are using the parent playbook, as opposed to using the sub-playbooks directly in your playbooks, as this will improve the performance of the playbook and reduce the overfall size of the incident.
   key: ExecutedFromParent
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "True"
@@ -901,7 +901,7 @@ tasks:
       id: af133db3-bee0-4542-8d41-042900b926fc
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: af133db3-bee0-4542-8d41-042900b926fc
     timertriggers: []
@@ -928,7 +928,7 @@ tasks:
       id: 7ae24ea0-00d1-4459-8c71-f2cfbaea117f
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 7ae24ea0-00d1-4459-8c71-f2cfbaea117f
@@ -969,13 +969,13 @@ tasks:
     skipunavailable: false
     task:
       brand: ""
-      description: "Checks if the IP address is in the internal IP address ranges.\nIf
-        internal, sets the \"InRange\" attribute to \"yes\".\nIf external, sets the
-        \"InRange\" attribute to \"no\". "
+      description: "Checks if the IP address is in the internal IP address ranges.\n
+        If internal, sets the \"InRange\" attribute to \"yes\".\nIf external, sets
+        the \"InRange\" attribute to \"no\". "
       id: 07923c19-525b-441e-934e-3962dbbb097c
       iscommand: false
       name: Determine whether the IP address is internal or external
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsIPInRanges
       type: regular
       version: -1
@@ -1041,7 +1041,7 @@ tasks:
       id: 6c306aba-243f-4d13-888c-a142fcf86737
       iscommand: false
       name: Can common logic be executed from the parent playbook?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 6c306aba-243f-4d13-888c-a142fcf86737
@@ -1072,7 +1072,7 @@ tasks:
       id: be9d391d-3019-40bc-85da-e72e9e6813a8
       iscommand: false
       name: Resolve IPs
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: be9d391d-3019-40bc-85da-e72e9e6813a8
@@ -1118,7 +1118,7 @@ tasks:
       id: e63254e7-c97e-4b24-8850-4221197dfc53
       iscommand: false
       name: Resolve the IP addresses?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: e63254e7-c97e-4b24-8850-4221197dfc53
@@ -1160,7 +1160,7 @@ tasks:
       id: e7607f9d-d6f9-4112-8b7a-4fb2889e6a92
       iscommand: false
       name: IP to Hostname (DNS)
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IPToHost
       type: regular
       version: -1
@@ -1193,7 +1193,7 @@ tasks:
       id: 1acf343e-137c-4d5e-89e8-dcb88b2ba060
       iscommand: false
       name: Classify & Resolve IPs
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 1acf343e-137c-4d5e-89e8-dcb88b2ba060
@@ -1225,7 +1225,7 @@ tasks:
       id: 3d2c6283-7577-44b8-845f-9c3612c37711
       iscommand: false
       name: Execute Sub-playbooks
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 3d2c6283-7577-44b8-845f-9c3612c37711
@@ -1254,7 +1254,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: fc1cfa94-37e8-4816-85eb-8cfbf493c385
@@ -1286,7 +1286,7 @@ tasks:
       iscommand: false
       name: SOC IP Enrichment - Internal - Generic v2
       playbookId: SOC IP Enrichment - Internal - Generic v2
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: ddeee125-98ff-4d9e-840d-c817f825bf24
@@ -1318,7 +1318,7 @@ tasks:
       iscommand: false
       name: SOC IP Enrichment - External - Generic v2
       playbookId: SOC IP Enrichment - External - Generic v2
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 8c54652f-cc4e-4984-8366-4565590dee43
@@ -1348,3 +1348,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

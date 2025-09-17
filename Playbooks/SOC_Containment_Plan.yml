@@ -11,8 +11,8 @@ contentitemexportablefields:
     supportedModules: []
     toServerVersion: ""
 description: "This playbook handles the main containment actions available with Cortex
-  XSIAM, including the following sub-playbooks:  \n* Containment Plan - Isolate endpoint\n*
-  Containment Plan - Disable account\n* Containment Plan - Quarantine file\n* Containment
+  XSIAM, including the following sub-playbooks:  \n* Containment Plan - Isolate endpoint\n
+  * Containment Plan - Disable account\n* Containment Plan - Quarantine file\n* Containment
   Plan - Block indicators\n* Containment Plan - Clear user session (currently, the
   playbook supports only Okta)\n\nNote: The playbook inputs enable manipulating the
   execution flow. Read the input descriptions for details."
@@ -54,87 +54,87 @@ inputs:
     Whether to execute containment plan (except isolation) automatically.
     The specific containment playbook inputs should also be set to 'True'.
   key: AutoContainment
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "False"
 - description: Whether to execute endpoint isolation.
   key: HostContainment
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "True"
 - description: Set to 'True' to disable the user account.
   key: UserContainment
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "True"
 - description: Set to 'True' to block the indicators.
   key: BlockIndicators
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "True"
 - description: Set to 'True' to quarantine the identified file.
   key: FileContainment
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "True"
 - description: Set to 'True' to clear the user active Okta sessions.
   key: ClearUserSessions
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "True"
 - description: The endpoint ID to run commands over.
   key: EndpointID
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: The username to disable.
   key: Username
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: The file hash to block.
   key: FileHash
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: The path of the file to block.
   key: FilePath
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: The IP indicators.
   key: IP
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: The domain indicators.
   key: Domain
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: The URL indicator.
   key: URL
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: "Choose 'Quarantine' or 'Delete'  to avoid file remediation conflicts.
     \nFor example, choosing 'Quarantine' ignores the 'Delete file' task under the
     eradication playbook and will execute only file quarantine."
   key: FileRemediation
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: Quarantine
 - description: The Okta IAM users domain. The domain will be appended to the username.
     e.g. username@IAMUserDomain.
   key: IAMUserDomain
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: "Possible values: True/False.\nWhether to provide user verification
@@ -142,7 +142,7 @@ inputs:
     displayed to the user.\nTrue - The server will ask the user for blocking verification
     and will display the blocking list."
   key: UserVerification
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "False"
@@ -153,63 +153,63 @@ inputs:
     If set to False - no prompt will appear, and all provided indicators will be blocked automatically.
     If set to True - the user will be prompted to select which indicators to block.
   key: AutoBlockIndicators
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "True"
 - description: ""
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
 - description: ""
   key: Hostname
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: Is this a Featured Host?
   key: FeaturedHost
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "False"
 - description: Is this a Featured User?
   key: FeaturedUser
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "False"
 - description: Is this a Featured IP?
   key: FeaturedIP
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "False"
 - description: Is this a Featured Active Directory Group?
   key: FeaturedAD
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "False"
 - description: File Verdict from Enrichment
   key: FileVerdict
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: IP Verdict from Enrichment
   key: IPVerdict
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: Domain verdict from Enrichment
   key: DomainVerdict
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: URL Verdict from Enrichment
   key: URLVerdict
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 name: SOC Containment Plan
@@ -257,7 +257,7 @@ tasks:
       id: 8b859cdc-d653-40d8-88b5-856b497221a5
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 8b859cdc-d653-40d8-88b5-856b497221a5
     timertriggers: []
@@ -287,7 +287,7 @@ tasks:
       id: 5683bb61-e50c-4fee-8006-76a9d2cd15e6
       iscommand: false
       name: Isolate Device
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 5683bb61-e50c-4fee-8006-76a9d2cd15e6
@@ -318,7 +318,7 @@ tasks:
       id: c1bd31ee-eb02-4d8c-87e1-ccdd6b893660
       iscommand: false
       name: Disable Account
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: c1bd31ee-eb02-4d8c-87e1-ccdd6b893660
@@ -349,7 +349,7 @@ tasks:
       id: 1cc8a082-9506-43d3-86ed-50836d2be721
       iscommand: false
       name: Quarantine File
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 1cc8a082-9506-43d3-86ed-50836d2be721
@@ -380,7 +380,7 @@ tasks:
       id: 5bafc4dc-d080-4f66-8d3b-6b540d65b60d
       iscommand: false
       name: Block Indicators
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 5bafc4dc-d080-4f66-8d3b-6b540d65b60d
@@ -411,7 +411,7 @@ tasks:
       id: 9ab00fc9-7241-4b38-83b8-d1bf0c1bf328
       iscommand: false
       name: Clear User Sessions
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 9ab00fc9-7241-4b38-83b8-d1bf0c1bf328
@@ -460,7 +460,7 @@ tasks:
       id: cb628d2d-29f6-4d2b-8250-f7d20b163239
       iscommand: false
       name: Should containment automatically?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: cb628d2d-29f6-4d2b-8250-f7d20b163239
@@ -658,19 +658,19 @@ tasks:
     isautoswitchedtoquietmode: false
     isoversize: false
     message:
-      bcc: null
-      body: null
-      cc: null
+      bcc:
+      body:
+      cc:
       format: ""
       methods: []
-      subject: null
+      subject:
       timings:
         completeafterreplies: 1
         completeaftersla: false
         completeafterv2: true
         retriescount: 2
         retriesinterval: 360
-      to: null
+      to:
     nexttasks:
       '#none#':
       - "147"
@@ -684,7 +684,7 @@ tasks:
       id: 75cf7bea-9da6-4581-851e-0dea547d2e41
       iscommand: false
       name: Which containment actions would you like to perform?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: collection
       version: -1
     taskid: 75cf7bea-9da6-4581-851e-0dea547d2e41
@@ -719,7 +719,7 @@ tasks:
       id: f486236e-11d4-4d91-8f9d-252577239705
       iscommand: false
       name: Containment
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: f486236e-11d4-4d91-8f9d-252577239705
@@ -747,7 +747,7 @@ tasks:
       id: 48ad472b-5301-4524-899a-41e29d38151d
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 48ad472b-5301-4524-899a-41e29d38151d
@@ -808,7 +808,7 @@ tasks:
       id: f93cc26a-6b45-420b-8ec8-c33e920be3a7
       iscommand: false
       name: Set Process list
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -860,7 +860,7 @@ tasks:
       id: d3750674-0c66-4ecc-8c51-8d01487249d7
       iscommand: false
       name: The file path and file hash defined?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: d3750674-0c66-4ecc-8c51-8d01487249d7
@@ -894,7 +894,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 2bd9441a-09d2-4286-8c0f-b3bfec13291e
@@ -945,7 +945,7 @@ tasks:
       iscommand: false
       name: SOC Containment Plan - Disable Account
       playbookId: SOC Containment Plan - Disable Account
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: bbc1c9b5-3abb-4b20-acab-b19c36485fde
@@ -996,7 +996,7 @@ tasks:
       iscommand: false
       name: SOC Containment Plan - Clear User Sessions
       playbookId: SOC Containment Plan - Clear User Sessions
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 6db2a243-bb8c-41ae-ad4b-d398c3bdd469
@@ -1067,7 +1067,7 @@ tasks:
       iscommand: false
       name: SOC Containment Plan - Block Indicators
       playbookId: SOC Containment Plan - Block Indicators
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 864aadfa-c592-42e0-8603-e66398b381c8
@@ -1124,7 +1124,7 @@ tasks:
       iscommand: false
       name: SOC Containment Plan - Quarantine File
       playbookId: SOC Containment Plan - Quarantine File
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: a23bdec7-a283-472e-8f0e-e2b5a9de1900
@@ -1144,23 +1144,23 @@ tasks:
     isautoswitchedtoquietmode: false
     isoversize: false
     message:
-      bcc: null
+      bcc:
       body:
         simple: Would you like to Disable the account
-      cc: null
+      cc:
       format: ""
       methods: []
       replyOptions:
       - "Yes"
       - "No"
-      subject: null
+      subject:
       timings:
         completeafterreplies: 1
         completeaftersla: false
         completeafterv2: true
         retriescount: 2
         retriesinterval: 360
-      to: null
+      to:
     nexttasks:
       "No":
       - "148"
@@ -1175,7 +1175,7 @@ tasks:
       id: 27724d31-2a6c-4301-8d4a-53cbe0a9e2af
       iscommand: false
       name: Disable Account?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 27724d31-2a6c-4301-8d4a-53cbe0a9e2af
@@ -1195,23 +1195,23 @@ tasks:
     isautoswitchedtoquietmode: false
     isoversize: false
     message:
-      bcc: null
+      bcc:
       body:
         simple: Would you like to Isolate the device ${inputs.Hostname}
-      cc: null
+      cc:
       format: ""
       methods: []
       replyOptions:
       - "Yes"
       - "No"
-      subject: null
+      subject:
       timings:
         completeafterreplies: 1
         completeaftersla: false
         completeafterv2: true
         retriescount: 2
         retriesinterval: 360
-      to: null
+      to:
     nexttasks:
       "No":
       - "148"
@@ -1226,7 +1226,7 @@ tasks:
       id: 6276c905-eedb-4266-8544-042d9051abb3
       iscommand: false
       name: Isolate Device?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 6276c905-eedb-4266-8544-042d9051abb3
@@ -1246,23 +1246,23 @@ tasks:
     isautoswitchedtoquietmode: false
     isoversize: false
     message:
-      bcc: null
+      bcc:
       body:
         simple: Would you like to clear the users sessions?
-      cc: null
+      cc:
       format: ""
       methods: []
       replyOptions:
       - "Yes"
       - "No"
-      subject: null
+      subject:
       timings:
         completeafterreplies: 1
         completeaftersla: false
         completeafterv2: true
         retriescount: 2
         retriesinterval: 360
-      to: null
+      to:
     nexttasks:
       "No":
       - "148"
@@ -1277,7 +1277,7 @@ tasks:
       id: d483fe6a-0a36-450f-8467-9de7bdf3c71e
       iscommand: false
       name: Clear User Sessions?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: d483fe6a-0a36-450f-8467-9de7bdf3c71e
@@ -1297,23 +1297,23 @@ tasks:
     isautoswitchedtoquietmode: false
     isoversize: false
     message:
-      bcc: null
+      bcc:
       body:
         simple: Should we attempt to block these indicators/Add to EDL?
-      cc: null
+      cc:
       format: ""
       methods: []
       replyOptions:
       - "Yes"
       - "No"
-      subject: null
+      subject:
       timings:
         completeafterreplies: 1
         completeaftersla: false
         completeafterv2: true
         retriescount: 2
         retriesinterval: 360
-      to: null
+      to:
     nexttasks:
       "No":
       - "148"
@@ -1328,7 +1328,7 @@ tasks:
       id: 4a454c57-2ae2-445e-8fe1-ef42e76f806b
       iscommand: false
       name: Block Indicators
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 4a454c57-2ae2-445e-8fe1-ef42e76f806b
@@ -1348,23 +1348,23 @@ tasks:
     isautoswitchedtoquietmode: false
     isoversize: false
     message:
-      bcc: null
+      bcc:
       body:
         simple: Should we quarantine the file ${issue.filename}
-      cc: null
+      cc:
       format: ""
       methods: []
       replyOptions:
       - "Yes"
       - "No"
-      subject: null
+      subject:
       timings:
         completeafterreplies: 1
         completeaftersla: false
         completeafterv2: true
         retriescount: 2
         retriesinterval: 360
-      to: null
+      to:
     nexttasks:
       "No":
       - "148"
@@ -1379,7 +1379,7 @@ tasks:
       id: dff486ba-3e4f-42f0-8c29-d767f19b36e2
       iscommand: false
       name: Quarantine File?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: dff486ba-3e4f-42f0-8c29-d767f19b36e2
@@ -1436,7 +1436,7 @@ tasks:
       id: 6e17162a-b3bf-4324-861b-a3fee0bf791c
       iscommand: false
       name: Miter Technique for user account disablement
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 6e17162a-b3bf-4324-861b-a3fee0bf791c
@@ -1495,7 +1495,7 @@ tasks:
       id: ee42b9d3-f370-49c5-8a4e-ca754a7c2211
       iscommand: false
       name: Miter Technique for Isolation
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: ee42b9d3-f370-49c5-8a4e-ca754a7c2211
@@ -1552,7 +1552,7 @@ tasks:
       id: c7bcb661-d702-44b3-8f74-0192cfe976d5
       iscommand: false
       name: Miter Technique for clearing user session
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: c7bcb661-d702-44b3-8f74-0192cfe976d5
@@ -1620,7 +1620,7 @@ tasks:
       id: 7d553915-22bf-4fab-8506-e41273cfb163
       iscommand: false
       name: Suspicious Indicators found?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 7d553915-22bf-4fab-8506-e41273cfb163
@@ -1664,7 +1664,7 @@ tasks:
       id: fe29a7f1-1dd7-4fb3-81af-00704151f661
       iscommand: false
       name: Quarantine file needed?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: fe29a7f1-1dd7-4fb3-81af-00704151f661
@@ -1712,7 +1712,7 @@ tasks:
       iscommand: false
       name: SOC Isolation Router
       playbookId: SOC Isolation Router
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: a81256dd-ecc9-409b-9b9f-bea93c3844ab
@@ -1741,3 +1741,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

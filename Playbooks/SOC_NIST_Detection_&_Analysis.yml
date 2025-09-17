@@ -28,37 +28,37 @@ inputSections:
 inputs:
 - description: ""
   key: sha256
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: ""
   key: hostname
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: ""
   key: endpointIP
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: ""
   key: username
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: ""
   key: email
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: ""
   key: url
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: ""
   key: endpointID
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 name: SOC NIST Detection & Analysis
@@ -98,7 +98,7 @@ tasks:
       id: 10a8914a-28e0-4af1-8982-086e30bedcf1
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 10a8914a-28e0-4af1-8982-086e30bedcf1
     timertriggers: []
@@ -148,7 +148,7 @@ tasks:
       id: 300f4905-fdd7-48fd-99b3-ad76fff28466
       iscommand: false
       name: Have a Process hash?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 300f4905-fdd7-48fd-99b3-ad76fff28466
@@ -197,7 +197,7 @@ tasks:
       id: 209fde33-66f9-4f67-a8c9-b5e17592cd0f
       iscommand: false
       name: Have an Endpoint IP?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 209fde33-66f9-4f67-a8c9-b5e17592cd0f
@@ -241,7 +241,7 @@ tasks:
       id: 80d0c66e-af12-43d1-b728-eed21b71d9fb
       iscommand: false
       name: Have a User tied to this endpoint?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 80d0c66e-af12-43d1-b728-eed21b71d9fb
@@ -307,7 +307,7 @@ tasks:
       iscommand: false
       name: SOC Endpoint Enrichment - Generic v2.1
       playbookId: SOC Endpoint Enrichment - Generic v2.1
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: a91231ac-2b8f-4e1b-a7c2-719c6761e8ad
@@ -350,15 +350,15 @@ tasks:
     task:
       brand: ""
       description: "This playbook checks the file reputation and sets the verdict
-        as a new context key.\n\nThe verdict is composed by 3 main components:\n\n*
-        VirusTotal detection rate\n* Digital certificate signers\n* NSRL DB\n\nNote:
-        a user can provide a list of trusted signers of his own using the playbook
+        as a new context key.\n\nThe verdict is composed by 3 main components:\n\n
+        * VirusTotal detection rate\n* Digital certificate signers\n* NSRL DB\n\n
+        Note: a user can provide a list of trusted signers of his own using the playbook
         inputs\n "
       id: c6f46490-18f1-4db6-91b5-2281b25c50aa
       iscommand: false
       name: SOC File Reputation
       playbookId: SOC File Reputation
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: c6f46490-18f1-4db6-91b5-2281b25c50aa
@@ -441,7 +441,7 @@ tasks:
       iscommand: false
       name: SOC IP Enrichment - Generic v2
       playbookId: SOC IP Enrichment - Generic v2
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 8ff042d7-1994-463d-b377-26482a3de95f
@@ -472,7 +472,7 @@ tasks:
       id: 8d3ffcf1-eaa6-44fb-874a-837619d3c650
       iscommand: false
       name: Host Enrichent
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 8d3ffcf1-eaa6-44fb-874a-837619d3c650
@@ -503,7 +503,7 @@ tasks:
       id: 86b589db-dff1-4110-8727-dacd5f226bf4
       iscommand: false
       name: File Enrichment
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 86b589db-dff1-4110-8727-dacd5f226bf4
@@ -534,7 +534,7 @@ tasks:
       id: 3a31d0d5-9931-448d-8a93-9982602f24ee
       iscommand: false
       name: IP Enrichment
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 3a31d0d5-9931-448d-8a93-9982602f24ee
@@ -565,7 +565,7 @@ tasks:
       id: 4f6d81e1-cc0f-4ed4-8653-2e070219600f
       iscommand: false
       name: Identity Enrichment
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 4f6d81e1-cc0f-4ed4-8653-2e070219600f
@@ -593,7 +593,7 @@ tasks:
       id: 02d0cf85-2394-4ee3-82f3-185f0b5c6d98
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 02d0cf85-2394-4ee3-82f3-185f0b5c6d98
@@ -644,7 +644,7 @@ tasks:
       id: ef5348cb-eee3-479a-b094-6ad2a31f19e7
       iscommand: false
       name: Have a Host entity?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: ef5348cb-eee3-479a-b094-6ad2a31f19e7
@@ -701,7 +701,7 @@ tasks:
       iscommand: false
       name: SOC URL Enrichment - Generic v2
       playbookId: SOC URL Enrichment - Generic v2
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 451c9a9d-9f2d-4540-a291-36c4bdb9e7c5
@@ -752,7 +752,7 @@ tasks:
       id: 658fafbd-ce5c-47e9-adf1-a3426708e717
       iscommand: false
       name: Have an Email?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 658fafbd-ce5c-47e9-adf1-a3426708e717
@@ -783,7 +783,7 @@ tasks:
       id: 5094fe81-2bd3-4386-886c-255a6d7b977c
       iscommand: false
       name: Email Enrichment
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 5094fe81-2bd3-4386-886c-255a6d7b977c
@@ -834,7 +834,7 @@ tasks:
       id: 091aa348-f279-434e-9c7b-722a38adb456
       iscommand: false
       name: Have an URL?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 091aa348-f279-434e-9c7b-722a38adb456
@@ -865,7 +865,7 @@ tasks:
       id: 7b5316e5-b61f-4aa1-8a53-dc52d479be27
       iscommand: false
       name: URL Enrichment
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 7b5316e5-b61f-4aa1-8a53-dc52d479be27
@@ -893,7 +893,7 @@ tasks:
       id: 516edc35-1e34-4521-8c5d-fefed0bb0913
       iscommand: false
       name: Domains
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 516edc35-1e34-4521-8c5d-fefed0bb0913
@@ -921,7 +921,7 @@ tasks:
       id: 6ce4928b-bd06-4f76-8874-e62e23f6edf0
       iscommand: false
       name: CVEs (Nice To Have)
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 6ce4928b-bd06-4f76-8874-e62e23f6edf0
@@ -981,7 +981,7 @@ tasks:
       id: a240b5f4-53e9-4014-81e0-fc318ef4c4de
       iscommand: false
       name: Was the file found as Benign
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: a240b5f4-53e9-4014-81e0-fc318ef4c4de
@@ -1018,7 +1018,7 @@ tasks:
       id: ca5dbd81-70ba-4fc5-8e1c-31e0c4323763
       iscommand: false
       name: Set file verdict benign
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -1056,7 +1056,7 @@ tasks:
       id: 01cbeae6-1096-42c7-8b03-e54932c0f7c3
       iscommand: false
       name: Set file verdict suspicious
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -1126,7 +1126,7 @@ tasks:
       id: 49da9ca8-3c14-447b-851f-613f8a702f16
       iscommand: false
       name: Was the IP found as Suspicious?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 49da9ca8-3c14-447b-851f-613f8a702f16
@@ -1163,7 +1163,7 @@ tasks:
       id: 19aa39f4-4218-493f-83b1-e60d5e7bf014
       iscommand: false
       name: Set SuspectedVerdict to Suspicious IP
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -1232,7 +1232,7 @@ tasks:
       id: 128e26f7-5e75-4d4d-817c-ce3bda9e06a2
       iscommand: false
       name: Was the URL found as Suspicious?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 128e26f7-5e75-4d4d-817c-ce3bda9e06a2
@@ -1269,7 +1269,7 @@ tasks:
       id: 54583fc0-d7bb-415e-8281-1c8b8fdbb319
       iscommand: false
       name: Set Suspected Verdict to Suspicious URL
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -1343,7 +1343,7 @@ tasks:
       iscommand: false
       name: SOC Account Enrichment - Generic v2.1
       playbookId: SOC Account Enrichment - Generic v2.1
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: beafab5d-1aa6-4977-ae00-c9000be07e93
@@ -1393,7 +1393,7 @@ tasks:
       iscommand: false
       name: SOC Email Address Enrichment - Generic v2.1
       playbookId: SOC Email Address Enrichment - Generic v2.1
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 8722b45a-2b50-44ac-8515-b6bf89af7ee1
@@ -1424,3 +1424,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

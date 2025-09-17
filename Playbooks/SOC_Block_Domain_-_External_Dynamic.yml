@@ -17,12 +17,12 @@ id: 'SOC Block Domain - External Dynamic'
 inputs:
 - description: The domains to block
   key: Domains
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: Indicator tag to assign
   key: Tag
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 name: SOC Block Domain - External Dynamic
@@ -226,3 +226,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

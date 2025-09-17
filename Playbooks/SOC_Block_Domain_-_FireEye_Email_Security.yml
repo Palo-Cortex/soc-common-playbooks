@@ -24,12 +24,12 @@ inputSections:
 inputs:
 - description: The Domain to block.
   key: Domain
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: ""
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -63,7 +63,7 @@ tasks:
       id: 94163ae0-f7a8-4641-803d-11ce2e35a27a
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 94163ae0-f7a8-4641-803d-11ce2e35a27a
     timertriggers: []
@@ -126,7 +126,7 @@ tasks:
       id: e1a529d9-ad4c-4392-8249-128a5b760eba
       iscommand: false
       name: Is FireEye Email Security  enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: e1a529d9-ad4c-4392-8249-128a5b760eba
@@ -167,7 +167,7 @@ tasks:
       id: 47c008a0-3e4a-47f5-a4ab-89b1f7fda908
       iscommand: true
       name: Block Domain
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: FireEye Email Security|||fireeye-ex-create-blockedlist
       type: regular
       version: -1
@@ -196,7 +196,7 @@ tasks:
       id: 3b6ec932-ffb3-43c5-8666-13b769935c00
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 3b6ec932-ffb3-43c5-8666-13b769935c00
@@ -239,7 +239,7 @@ tasks:
       id: 8a98155b-9114-4772-8676-5dea5fa7809c
       iscommand: false
       name: Check if Domain input was provided
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 8a98155b-9114-4772-8676-5dea5fa7809c
@@ -268,7 +268,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 0985c48b-dbb2-406f-81fa-da7ed2b65954
@@ -304,7 +304,7 @@ tasks:
       id: 8eb42e90-87d1-4aaa-92bc-62d8d51a195f
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: ShadowModeRouter
       type: condition
       version: -1
@@ -342,7 +342,7 @@ tasks:
       id: 3db1b406-a2dd-4b4e-aeaf-8209488d795a
       iscommand: false
       name: 'Shadow: FireEye Email Security Block Domain'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -369,3 +369,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

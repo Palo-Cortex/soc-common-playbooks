@@ -15,9 +15,9 @@ contentitemexportablefields:
     - ENT_PLUS
     toServerVersion: ""
 description: "This playbook handles all the eradication actions available with Cortex
-  XSIAM, including the following sub-playbooks:\n* Eradication Plan - Reset user password\n*
-  Eradication Plan - Delete file\n* Eradication Plan - Kill process (currently, the
-  playbook supports terminating a process by name)  \n\nNote: The playbook inputs
+  XSIAM, including the following sub-playbooks:\n* Eradication Plan - Reset user password\n
+  * Eradication Plan - Delete file\n* Eradication Plan - Kill process (currently,
+  the playbook supports terminating a process by name)  \n\nNote: The playbook inputs
   enable manipulating the execution flow. Read the input descriptions for details."
 dirtyInputs: true
 id: 'SOC Eradication Plan'
@@ -37,13 +37,13 @@ inputSections:
 inputs:
 - description: Set to True to execute the eradication playbook automatically.
   key: AutoEradicate
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "True"
 - description: The endpoint ID.
   key: EndpointID
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -52,7 +52,7 @@ inputs:
 - description: The file path for the file deletion and for the process termination
     task.
   key: FilePath
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -60,7 +60,7 @@ inputs:
       root: foundIncidents.CustomFields
 - description: The username to reset the password for.
   key: Username
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -70,13 +70,13 @@ inputs:
     \nFor example, choosing 'Delete' ignores the 'Quarantine file' task under the
     containment playbook and executes only file deletion."
   key: FileRemediation
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: Delete
 - description: Set to 'True' to reset the user's password.
   key: UserRemediation
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "True"
@@ -85,18 +85,18 @@ inputs:
     path is mandatory for the process termination. \nIf 'PID' is chosen, the input
     `ProcessID` should not be empty; otherwise, the termination will not proceed."
   key: ProcessTermination
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: Name
 - description: The process ID to terminate.
   key: ProcessID
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: ""
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -134,7 +134,7 @@ tasks:
       id: a565fd6d-2dd4-4f6f-8c41-d80d96fd1a58
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: a565fd6d-2dd4-4f6f-8c41-d80d96fd1a58
     timertriggers: []
@@ -223,19 +223,19 @@ tasks:
     isautoswitchedtoquietmode: false
     isoversize: false
     message:
-      bcc: null
-      body: null
-      cc: null
+      bcc:
+      body:
+      cc:
       format: ""
       methods: []
-      subject: null
+      subject:
       timings:
         completeafterreplies: 1
         completeaftersla: false
         completeafterv2: true
         retriescount: 2
         retriesinterval: 360
-      to: null
+      to:
     nexttasks:
       '#none#':
       - "47"
@@ -249,7 +249,7 @@ tasks:
       id: 0b8d21a3-7d1d-44ac-898f-f7b9dd3c484e
       iscommand: false
       name: Which eradication actions would you like to perform?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: collection
       version: -1
     taskid: 0b8d21a3-7d1d-44ac-898f-f7b9dd3c484e
@@ -282,7 +282,7 @@ tasks:
       id: eac14d54-acee-4628-894b-c3f85ad56381
       iscommand: false
       name: Eradication
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: eac14d54-acee-4628-894b-c3f85ad56381
@@ -329,7 +329,7 @@ tasks:
       id: 7e62a114-2f14-44b9-8fcb-e391078f8112
       iscommand: false
       name: Should Eradicate automatically?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 7e62a114-2f14-44b9-8fcb-e391078f8112
@@ -360,7 +360,7 @@ tasks:
       id: e2ca1e88-b318-4dd3-8cd0-e79bcea8b708
       iscommand: false
       name: Reset Password
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: e2ca1e88-b318-4dd3-8cd0-e79bcea8b708
@@ -391,7 +391,7 @@ tasks:
       id: 55eece77-4b85-418a-85b4-2df675bc6406
       iscommand: false
       name: Delete File
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 55eece77-4b85-418a-85b4-2df675bc6406
@@ -422,7 +422,7 @@ tasks:
       id: 85a5283a-4dcb-4be9-8994-cda1836b671a
       iscommand: false
       name: Terminate Process
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 85a5283a-4dcb-4be9-8994-cda1836b671a
@@ -450,7 +450,7 @@ tasks:
       id: aca6dccc-d750-41e7-8303-cc4cb1d1e1d8
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: aca6dccc-d750-41e7-8303-cc4cb1d1e1d8
@@ -518,7 +518,7 @@ tasks:
       id: d459e56b-3290-44e3-81c7-0a69a339dbbf
       iscommand: false
       name: Set Process list
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -570,7 +570,7 @@ tasks:
       id: e5166636-3899-4c68-8dfa-b2b39ca764ed
       iscommand: false
       name: The file path and PID defined?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: e5166636-3899-4c68-8dfa-b2b39ca764ed
@@ -612,7 +612,7 @@ tasks:
       iscommand: false
       name: SOC Eradication Plan - Reset Password
       playbookId: SOC Eradication Plan - Reset Password
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 6135cf7c-381c-46aa-82ec-0bb7ea483d7d
@@ -660,7 +660,7 @@ tasks:
       iscommand: false
       name: SOC Eradication Plan - Delete File
       playbookId: SOC Eradication Plan - Delete File
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 57716c22-5cef-4f80-bcc0-182cf01a9c05
@@ -702,7 +702,7 @@ tasks:
       iscommand: false
       name: SOC Eradication Plan - Terminate Process
       playbookId: SOC Eradication Plan - Terminate Process
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: ad105024-74f8-4854-a9a1-bce917cb5dd1
@@ -730,3 +730,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

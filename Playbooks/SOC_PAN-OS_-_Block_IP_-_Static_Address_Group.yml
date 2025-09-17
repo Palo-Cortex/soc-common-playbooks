@@ -27,7 +27,7 @@ inputSections:
 inputs:
 - description: IP address to block
   key: IP
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -43,7 +43,7 @@ inputs:
       - operator: uniq
 - description: Static address group name
   key: AddressGroupName
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: Remediation - Static Address Group
@@ -52,13 +52,13 @@ inputs:
     Yes - Commit automatically.
     No - Commit manually.
   key: AutoCommit
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "No"
 - description: The description of the IP in case it will get created by the playbook.
   key: IPDescription
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: Automatically created using "PAN-OS - Block IP - Static Address Group"
@@ -66,7 +66,7 @@ inputs:
 - description: Shadow Mode is a key safety mechanism. It ensures actions like isolate_endpoint
     or disable_user are logged but not executed in test scenarios.
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -755,3 +755,4 @@ view: |-
     }
   }
 adopted: true
+fromversion: 5.0.0

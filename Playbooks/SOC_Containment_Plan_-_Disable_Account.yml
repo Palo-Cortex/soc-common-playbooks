@@ -33,26 +33,26 @@ inputSections:
 inputs:
 - description: Set to 'True' to disable the user account.
   key: UserContainment
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "True"
 - description: The username to disable.
   key: Username
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: |-
     Possible values:True/False. Default:True.
     Specify if User Verification is required to disable users.
   key: UserVerification
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "True"
 - description: ""
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -91,7 +91,7 @@ tasks:
       id: 9fb1ed1d-c22c-48bb-8a3c-4d58bbca6347
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 9fb1ed1d-c22c-48bb-8a3c-4d58bbca6347
     timertriggers: []
@@ -118,7 +118,7 @@ tasks:
       id: 4d874c50-7a1f-489c-8397-3fc3304eeea6
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 4d874c50-7a1f-489c-8397-3fc3304eeea6
@@ -157,7 +157,7 @@ tasks:
       id: 73bc4723-d270-4e04-8a74-c13b5b1369f1
       iscommand: true
       name: Set disabled users to the Alert context
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Builtin|||setParentIncidentContext
       type: regular
       version: -1
@@ -211,7 +211,7 @@ tasks:
       id: 073f607c-a924-43c1-8852-d480e1454fdc
       iscommand: false
       name: Should disable the account?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 073f607c-a924-43c1-8852-d480e1454fdc
@@ -249,15 +249,15 @@ tasks:
       brand: ""
       description: "Set a value in context under the key you entered. If no value
         is entered, the script doesn't do anything.\n\nThis automation runs using
-        the default Limited User role, unless you explicitly change the permissions.\nFor
-        more information, see the section about permissions here:\n- For Cortex see
-        https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
-        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n-
-        For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
+        the default Limited User role, unless you explicitly change the permissions.\n
+        For more information, see the section about permissions here:\n- For Cortex
+        see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/6.x/Cortex-XSOAR-Playbook-Design-Guide/Automations
+        \n- For Cortex Cloud see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8/Cortex-XSOAR-Cloud-Documentation/Create-a-script\n
+        - For Cortex.7 On-prem see https://docs-cortex.paloaltonetworks.com/r/Cortex-XSOAR/8.7/Cortex-XSOAR-On-prem-Documentation/Create-a-script"
       id: 32ec3207-df33-4d5f-8551-2a49ca677b62
       iscommand: false
       name: Set users to disable
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: SetAndHandleEmpty
       type: regular
       version: -1
@@ -325,7 +325,7 @@ tasks:
       iscommand: false
       name: SOC Block Account - Generic v2
       playbookId: SOC Block Account - Generic v2
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: e950008b-81ae-43d2-94a8-ba011356d113
@@ -353,3 +353,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

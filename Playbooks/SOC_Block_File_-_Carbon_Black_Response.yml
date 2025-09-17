@@ -26,7 +26,7 @@ inputSections:
 inputs:
 - description: The MD5 hash of the file you want to block.
   key: MD5
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -34,13 +34,13 @@ inputs:
       root: File
 - description: Text description of block list.
   key: Text
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: Blocked by XSOAR
 - description: ""
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -83,7 +83,7 @@ tasks:
       id: 5e4385e3-76c2-48e2-80a4-c3798cdae027
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 5e4385e3-76c2-48e2-80a4-c3798cdae027
     timertriggers: []
@@ -124,7 +124,7 @@ tasks:
       id: 3abbd606-e6ac-41a4-a783-d0a76e14f3ff
       iscommand: true
       name: Get a list of blacklisted hashes
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: VMware Carbon Black EDR v2|||cb-edr-binary-ban
       type: regular
       version: -1
@@ -192,7 +192,7 @@ tasks:
       id: 83cd8bdb-894a-436d-87df-45889e52da88
       iscommand: false
       name: Is Carbon Black Enterprise Response enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 83cd8bdb-894a-436d-87df-45889e52da88
@@ -236,7 +236,7 @@ tasks:
       id: ff0935b7-054b-4729-82a3-5588d553d9d0
       iscommand: false
       name: Is there an MD5 to block?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: ff0935b7-054b-4729-82a3-5588d553d9d0
@@ -264,7 +264,7 @@ tasks:
       id: 2c14bf01-7fd9-45f8-8554-86d0c1332d81
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 2c14bf01-7fd9-45f8-8554-86d0c1332d81
@@ -301,7 +301,7 @@ tasks:
       id: 7b5460df-d1b3-43a2-92b0-347c5ac4e68a
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -342,7 +342,7 @@ tasks:
       id: e24e3cc8-5a36-4dc1-b7d9-3f227d38e6fd
       iscommand: false
       name: 'Shadow: Carbon Black Ban MD5 Hash'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -372,7 +372,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 0887c687-1ca0-4651-8e75-c22495572248
@@ -401,3 +401,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

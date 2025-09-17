@@ -11,8 +11,8 @@ contentitemexportablefields:
     supportedModules: []
     toServerVersion: ""
 description: "This playbook receives an MD5 or a SHA256 hash and adds it to the block
-  list in Microsoft Defender for Endpoint. \nThe playbook uses the integration \"Microsoft
-  Defender for Endpoint\"."
+  list in Microsoft Defender for Endpoint. \nThe playbook uses the integration \"
+  Microsoft Defender for Endpoint\"."
 dirtyInputs: true
 id: 'SOC MDE - Block File'
 inputSections:
@@ -30,31 +30,31 @@ inputs:
     the indicator, where High is the most severe and Informational is not severe at
     all.
   key: 'Severity '
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: Brief description (100 characters or less) of the threat represented
     by the indicator.
   key: IndicatorDescription
-  playbookInputQuery: null
+  playbookInputQuery:
   required: true
   value:
     simple: Added by Cortex
 - description: The indicator alert title in Defender.
   key: IndicatorTitle
-  playbookInputQuery: null
+  playbookInputQuery:
   required: true
   value:
     simple: Added by Cortex
 - description: Whether to generate an alert or not. The default is true.
   key: GenerateAlert
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
 - description: In this input you can insert either MD5 or SHA256 to block.
   key: Hash
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: |-
@@ -62,7 +62,7 @@ inputs:
     - Made in the Upon Trigger playbook.
     - Stored in the incident’s data context.
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -96,7 +96,7 @@ tasks:
       id: 2301242c-19a0-41b2-8906-2a58c726a8ff
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 2301242c-19a0-41b2-8906-2a58c726a8ff
     timertriggers: []
@@ -136,7 +136,7 @@ tasks:
       id: 8ad41643-eae0-476f-82c8-2e2b3705f363
       iscommand: false
       name: Is Microsoft Defender for Endpoint is enable?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: IsIntegrationAvailable
       type: condition
       version: -1
@@ -165,7 +165,7 @@ tasks:
       id: 32e7827d-3a6f-4154-8ef5-6e3a0d20a518
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 32e7827d-3a6f-4154-8ef5-6e3a0d20a518
@@ -231,7 +231,7 @@ tasks:
       id: f5cd6551-f1a0-47fa-b279-05b7678a6baf
       iscommand: true
       name: Block Indicators by SHA256
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Microsoft Defender Advanced Threat Protection|||microsoft-atp-sc-indicator-create
       type: regular
       version: -1
@@ -298,7 +298,7 @@ tasks:
       id: 752cb3d2-8431-4528-a094-c71252e2f269
       iscommand: true
       name: Block Indicators by MD5
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Microsoft Defender Advanced Threat Protection|||microsoft-atp-sc-indicator-create
       type: regular
       version: -1
@@ -344,7 +344,7 @@ tasks:
       id: aeda8e30-f52c-4e9d-8f10-67e049054750
       iscommand: false
       name: Is there any file to block?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: aeda8e30-f52c-4e9d-8f10-67e049054750
@@ -391,7 +391,7 @@ tasks:
       id: 4b1ab765-8f50-44ab-8f68-1649fec5095c
       iscommand: false
       name: Has MD5 hashes?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 4b1ab765-8f50-44ab-8f68-1649fec5095c
@@ -439,7 +439,7 @@ tasks:
       id: 3d4dde8d-e1ec-4712-8a31-b18d40635b1f
       iscommand: false
       name: Has SHA256 hashes?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 3d4dde8d-e1ec-4712-8a31-b18d40635b1f
@@ -468,7 +468,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 2b6efb40-1f3c-4936-8e3b-05f115ba4102
@@ -505,7 +505,7 @@ tasks:
       id: 0b85e28d-9e0b-4fb1-ab17-90950d94511a
       iscommand: false
       name: Run Mode
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -546,7 +546,7 @@ tasks:
       id: 612406e4-1732-41b2-a11a-34480513f12f
       iscommand: false
       name: 'Shadow Mode: Block Indicators by SHA256'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -586,7 +586,7 @@ tasks:
       id: 08a0fe62-f065-4ddf-855d-8fbe789bb002
       iscommand: false
       name: Run Mode
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: 'ShadowModeRouter'
       type: condition
       version: -1
@@ -626,7 +626,7 @@ tasks:
       id: 5bfdd037-54bd-43d7-b247-626ef423219d
       iscommand: false
       name: 'Shadow Mode: Block Indicators by MD5'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -662,3 +662,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

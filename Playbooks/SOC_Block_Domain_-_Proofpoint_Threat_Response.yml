@@ -26,23 +26,23 @@ inputSections:
 inputs:
 - description: The Domain to block.
   key: Domain
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: The ID of the block list to block the domain in.
   key: DomainBlackListID
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: 'The UTC expiration date and time of the suspicious object, for example:
     2020-01-25T09:00:00Z.'
   key: Expiration
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value: {}
 - description: ""
   key: ShadowMode
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: "true"
@@ -76,7 +76,7 @@ tasks:
       id: 74cfb49a-85e7-4d70-82df-6eec688b84b0
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 74cfb49a-85e7-4d70-82df-6eec688b84b0
     timertriggers: []
@@ -139,7 +139,7 @@ tasks:
       id: 480634cc-137e-4540-8320-57bede8c1434
       iscommand: false
       name: Is Proofpoint Threat Response enabled?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 480634cc-137e-4540-8320-57bede8c1434
@@ -184,7 +184,7 @@ tasks:
       id: 4229de47-31e8-4c87-bcea-9bf972aed621
       iscommand: true
       name: Block Domain
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Proofpoint Threat Response|||proofpoint-tr-block-domain
       type: regular
       version: -1
@@ -213,7 +213,7 @@ tasks:
       id: d9d40cf1-5be4-4d84-8739-27b065949e57
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: d9d40cf1-5be4-4d84-8739-27b065949e57
@@ -262,7 +262,7 @@ tasks:
       id: 43e0f76e-d745-4fd7-810d-761ceba711f2
       iscommand: false
       name: Check if inputs were provided
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 43e0f76e-d745-4fd7-810d-761ceba711f2
@@ -291,7 +291,7 @@ tasks:
       iscommand: false
       name: Foundation - Error Handling
       playbookId: Foundation - Error Handling
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 2f806767-8adb-4630-86bb-826484c4edd6
@@ -327,7 +327,7 @@ tasks:
       id: 99e5f3da-af3f-4df6-9066-ca587bbed325
       iscommand: false
       name: Run Mode?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: ShadowModeRouter
       type: condition
       version: -1
@@ -365,7 +365,7 @@ tasks:
       id: 613f2e01-7d09-4cf6-b255-bb60d80ae563
       iscommand: false
       name: 'Shadow: Proofpoint Threat Response Block Domain'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Print
       type: regular
       version: -1
@@ -396,3 +396,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0
