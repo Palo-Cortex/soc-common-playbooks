@@ -20,7 +20,7 @@ id: 'SOC Calculate Severity By Highest DBotScore'
 inputs:
 - description: 'Array of all DBotScore indicator values associated with the incident. '
   key: DBotScoreIndicators
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -30,7 +30,7 @@ inputs:
       - operator: uniq
 - description: The highest score that was given to a DBotScore indicator.
   key: DBotScoreMaxScore
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -74,7 +74,7 @@ tasks:
       id: 79cbff50-3ae4-48f1-8f6d-785a4c8163de
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 79cbff50-3ae4-48f1-8f6d-785a4c8163de
     timertriggers: []
@@ -101,7 +101,7 @@ tasks:
       id: 9d087581-2976-4b96-887a-27a3a8edd630
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 9d087581-2976-4b96-887a-27a3a8edd630
@@ -144,7 +144,7 @@ tasks:
       id: 2166ae1b-bafb-478b-81f9-c68b98651a63
       iscommand: false
       name: Is there a DBotScore in inputs?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 2166ae1b-bafb-478b-81f9-c68b98651a63
@@ -175,7 +175,7 @@ tasks:
       id: d6b7eccb-3284-460d-8b20-197ea1c62f8a
       iscommand: false
       name: No DBotScore
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: d6b7eccb-3284-460d-8b20-197ea1c62f8a
@@ -316,7 +316,7 @@ tasks:
       id: e66f1b7a-bf4c-4b8c-8995-ba249d9f7600
       iscommand: false
       name: Evaluate severity based on DBotScore of indicators
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: e66f1b7a-bf4c-4b8c-8995-ba249d9f7600
@@ -355,7 +355,7 @@ tasks:
       id: 86bc9089-08a5-44e2-8a0f-03dd11411f9b
       iscommand: false
       name: Set severity to high
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -395,7 +395,7 @@ tasks:
       id: 288ac730-e8e3-4782-805f-e54721977877
       iscommand: false
       name: Set severity to medium
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -435,7 +435,7 @@ tasks:
       id: 3132e114-0841-4c3f-800f-fab492944f7a
       iscommand: false
       name: Set severity to low
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -476,7 +476,7 @@ tasks:
       id: ca3d7b7e-95d9-48b6-87e1-c625b8f53c43
       iscommand: false
       name: Set severity to unknown
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -515,7 +515,7 @@ tasks:
       id: 508c21c3-4362-4dd9-84a7-9efd305c0fef
       iscommand: false
       name: Get DBotScore from XSOAR
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: GetIndicatorDBotScoreFromCache
       type: regular
       version: -1
@@ -548,3 +548,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

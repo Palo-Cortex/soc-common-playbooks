@@ -29,7 +29,7 @@ id: 'SOC Calculate Severity - Generic v2'
 inputs:
 - description: 'Array of all indicator values associated with the incident. '
   key: DBotScoreIndicators
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -39,25 +39,25 @@ inputs:
       - operator: uniq
 - description: CSV of usernames of critical users.
   key: CriticalUsers
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: admin,administrator
 - description: CSV of hostnames of critical endpoints.
   key: CriticalEndpoints
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: admin
 - description: CSV of DN names of critical AD groups.
   key: CriticalGroups
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: admins,administrators
 - description: User accounts to check against the critical lists.
   key: Account
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -66,7 +66,7 @@ inputs:
       - operator: uniq
 - description: Endpoints to check against the CriticalEndpoints list.
   key: Endpoint
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -76,7 +76,7 @@ inputs:
 - description: 'Indicates the email authenticity resulting from the EmailAuthenticityCheck
     script. Possible values are: Pass, Fail, Suspicious, and Undetermined.'
   key: EmailAuthenticityCheck
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -88,14 +88,14 @@ inputs:
     which calculates the severity after processing the PCL, BCL and PCL values inside
     Microsoft's headers.
   key: MicrosoftHeadersSeverityCheck
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: ${Email.MicrosoftHeadersSeverityCheck}
 - description: An object of risky users and their corresponding scores, as outputted
     by the "xdr-list-risky-users" command.
   key: XDRRiskyUsers
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -106,7 +106,7 @@ inputs:
 - description: An object of risky hosts and their corresponding scores, as outputted
     by the "xdr-list-risky-hosts" command.
   key: XDRRiskyHosts
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -116,7 +116,7 @@ inputs:
       - operator: uniq
 - description: The highest score (number) that was given to a DBotScore indicator.
   key: DBotScoreMaxScore
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -176,7 +176,7 @@ tasks:
       id: 04b74656-7f4c-43a2-83fb-b011ea67ddad
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 04b74656-7f4c-43a2-83fb-b011ea67ddad
     timertriggers: []
@@ -211,7 +211,7 @@ tasks:
       id: 7545aa84-84de-4d25-8267-a4869df37f20
       iscommand: true
       name: Set alert severity to "Low"
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Builtin|||setAlert
       type: regular
       version: -1
@@ -248,7 +248,7 @@ tasks:
       id: e85a5537-be94-4bdf-80c5-ecf7578a3bf4
       iscommand: true
       name: Set alert severity to "Medium"
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Builtin|||setAlert
       type: regular
       version: -1
@@ -285,7 +285,7 @@ tasks:
       id: 4bfe9fb2-b2fe-45fb-86ce-929ee39db485
       iscommand: true
       name: Set alert severity to "High"
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Builtin|||setAlert
       type: regular
       version: -1
@@ -314,7 +314,7 @@ tasks:
       id: 38bc2f72-5d8d-4de9-87bd-8661322de56f
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 38bc2f72-5d8d-4de9-87bd-8661322de56f
@@ -350,7 +350,7 @@ tasks:
       id: f8efdce3-590d-400b-8c57-2c759dd30b56
       iscommand: true
       name: Set alert severity to "Critical"
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Builtin|||setAlert
       type: regular
       version: -1
@@ -659,7 +659,7 @@ tasks:
       id: b8bbb253-9e4b-406f-8253-31c2440b2338
       iscommand: false
       name: Determine alert severity
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: b8bbb253-9e4b-406f-8253-31c2440b2338
@@ -701,7 +701,7 @@ tasks:
       id: f1f90aa7-e463-4206-8f96-13c6ff993ffa
       iscommand: false
       name: Get current alert severity
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -745,7 +745,7 @@ tasks:
       iscommand: false
       name: Calculate Severity By Email Authenticity
       playbookId: Calculate Severity By Email Authenticity
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 86c4ba1f-fddb-4f6b-8712-c5b0fc6bb55a
@@ -781,7 +781,7 @@ tasks:
       id: 6f297d0f-4a63-4183-8414-75d3de056b23
       iscommand: true
       name: Set alert severity level to "Unknown"
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Builtin|||setAlert
       type: regular
       version: -1
@@ -821,7 +821,7 @@ tasks:
       id: 2b705d3f-b982-4480-806a-42ab6f3026be
       iscommand: false
       name: Set Microsoft Headers Severity Check
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -865,7 +865,7 @@ tasks:
       id: 6e24dd7e-cb39-474c-87e1-8a94d2e42577
       iscommand: false
       name: Check if MicrosoftHeadersSeverityCheck is not empty
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 6e24dd7e-cb39-474c-87e1-8a94d2e42577
@@ -909,7 +909,7 @@ tasks:
       iscommand: false
       name: Calculate Severity - Cortex XDR Risky Assets
       playbookName: Calculate Severity - Cortex XDR Risky Assets
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: b771e4bf-bbac-4d17-8a2d-e042e64cf9ec
@@ -941,7 +941,7 @@ tasks:
       iscommand: false
       name: SOC Calculate Severity - Critical Assets v2
       playbookId: 'SOC Calculate Severity - Critical Assets v2'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: 11374e30-23e5-4078-890c-d263f4fc8895
@@ -973,7 +973,7 @@ tasks:
       iscommand: false
       name: SOC Calculate Severity By Highest DBotScore
       playbookId: 'SOC Calculate Severity By Highest DBotScore'
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: playbook
       version: -1
     taskid: f84d36f6-b850-49c3-85e7-592c1dc09a5c
@@ -1006,3 +1006,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0

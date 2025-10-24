@@ -2,7 +2,7 @@
     "custom_packs": [
         {
             "id": "soc-common-playbooks.zip",
-            "url": "https://github.com/Palo-Cortex/soc-common-playbooks/archive/refs/tags/v2.7.19.zip",
+            "url": "https://github.com/Palo-Cortex/soc-common-playbooks/archive/refs/tags/v2.7.20.zip",
             "system": "yes"
         }
     ],

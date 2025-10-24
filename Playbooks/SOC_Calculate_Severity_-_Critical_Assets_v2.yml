@@ -22,25 +22,25 @@ id: 'SOC Calculate Severity - Critical Assets v2'
 inputs:
 - description: CSV of critical users.
   key: CriticalUsers
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: admin,administrator
 - description: CSV of critical endpoints.
   key: CriticalEndpoints
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: AdminPC
 - description: CSV of DN names of critical AD groups.
   key: CriticalGroups
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     simple: Administrators, Domain Admins, Enterprise Admins, Schema Admins
 - description: User accounts to check against the critical lists.
   key: Account
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -49,7 +49,7 @@ inputs:
       - operator: uniq
 - description: Endpoints to check against the CriticalEndpoints list.
   key: Endpoint
-  playbookInputQuery: null
+  playbookInputQuery:
   required: false
   value:
     complex:
@@ -102,7 +102,7 @@ tasks:
       id: 3eded69b-617e-4212-86b7-2537474285f3
       iscommand: false
       name: ""
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       version: -1
     taskid: 3eded69b-617e-4212-86b7-2537474285f3
     timertriggers: []
@@ -150,7 +150,7 @@ tasks:
       id: 424aaa79-feb8-4351-8818-b15b2999b7a6
       iscommand: false
       name: Do required user inputs exist?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 424aaa79-feb8-4351-8818-b15b2999b7a6
@@ -204,7 +204,7 @@ tasks:
       id: ae8f3642-3d2e-46e9-80e7-806b6cfbeca3
       iscommand: false
       name: Is a critical user involved in the alert?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: ae8f3642-3d2e-46e9-80e7-806b6cfbeca3
@@ -232,7 +232,7 @@ tasks:
       id: 3e771227-3718-4714-89ac-51e80b242f8b
       iscommand: false
       name: Done
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 3e771227-3718-4714-89ac-51e80b242f8b
@@ -286,7 +286,7 @@ tasks:
       id: e94c9609-239f-4032-827a-8dc4b44b987a
       iscommand: false
       name: Is a critical endpoint involved in the alert?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: e94c9609-239f-4032-827a-8dc4b44b987a
@@ -317,7 +317,7 @@ tasks:
       id: f62d3761-4856-44ee-80f1-668a0d53ce9d
       iscommand: false
       name: Critical Users
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: f62d3761-4856-44ee-80f1-668a0d53ce9d
@@ -348,7 +348,7 @@ tasks:
       id: fd271425-66a0-48f9-8c71-fe1032820013
       iscommand: false
       name: Critical Endpoints
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: fd271425-66a0-48f9-8c71-fe1032820013
@@ -379,7 +379,7 @@ tasks:
       id: c59f6491-e15c-43aa-86ed-dad7d70cdf22
       iscommand: false
       name: Critical Groups
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: c59f6491-e15c-43aa-86ed-dad7d70cdf22
@@ -452,7 +452,7 @@ tasks:
       id: d199396a-b6cd-49e6-8eed-f8c40dbf6022
       iscommand: false
       name: Get all endpoint groups
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -507,7 +507,7 @@ tasks:
       id: 3f7ea2b9-d2c9-400c-8972-e64ec0ec7863
       iscommand: false
       name: Is a critical endpoint group involved in the alert?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 3f7ea2b9-d2c9-400c-8972-e64ec0ec7863
@@ -551,7 +551,7 @@ tasks:
       id: 7160e3e9-7200-4ba5-808f-ac28e7ef86f6
       iscommand: false
       name: Is there a user group?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 7160e3e9-7200-4ba5-808f-ac28e7ef86f6
@@ -595,7 +595,7 @@ tasks:
       id: babf3f91-5d9c-47e8-870d-c236b9c68346
       iscommand: false
       name: Is there an endpoint group?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: babf3f91-5d9c-47e8-870d-c236b9c68346
@@ -641,7 +641,7 @@ tasks:
       id: a0e5a630-df39-4346-846b-d67653fee2ec
       iscommand: false
       name: Get all user-defined critical groups
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -685,7 +685,7 @@ tasks:
       id: f43d598e-ba8f-4dc0-8405-46fbbd12ec79
       iscommand: false
       name: Are there user-defined critical groups?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: f43d598e-ba8f-4dc0-8405-46fbbd12ec79
@@ -758,7 +758,7 @@ tasks:
       id: 80d01617-682f-4dbb-8e9a-5bb7660d03b7
       iscommand: false
       name: Get all user groups
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -812,7 +812,7 @@ tasks:
       id: 09afd6ef-f9b2-4be1-80a6-f294243dc89a
       iscommand: false
       name: Is a critical user group involved in the alert?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: 09afd6ef-f9b2-4be1-80a6-f294243dc89a
@@ -854,7 +854,7 @@ tasks:
       id: b93fb183-5e45-442b-8083-6706d301202c
       iscommand: false
       name: Get all usernames
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -886,7 +886,7 @@ tasks:
       id: 53feba0a-5f2f-410c-882f-b95cbd9c5fbb
       iscommand: false
       name: Critical Endpoint Groups
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 53feba0a-5f2f-410c-882f-b95cbd9c5fbb
@@ -917,7 +917,7 @@ tasks:
       id: 37f291a8-8336-412f-8f0f-26bfa0fa7e7d
       iscommand: false
       name: Critical User Groups
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 37f291a8-8336-412f-8f0f-26bfa0fa7e7d
@@ -968,7 +968,7 @@ tasks:
       id: d0e85e0c-9d5f-46a2-8f7d-37c5cccfb2af
       iscommand: false
       name: Do required endpoint inputs exist?
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: condition
       version: -1
     taskid: d0e85e0c-9d5f-46a2-8f7d-37c5cccfb2af
@@ -1010,7 +1010,7 @@ tasks:
       id: 86e2054c-c8b2-4c83-8d2b-40afd339203a
       iscommand: false
       name: Get all hostnames
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -1042,7 +1042,7 @@ tasks:
       id: fab539ae-ff25-486e-82b4-9c94f0426de4
       iscommand: false
       name: No Critical Endpoints
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: fab539ae-ff25-486e-82b4-9c94f0426de4
@@ -1073,7 +1073,7 @@ tasks:
       id: 33b118b1-2ecc-47bc-8eed-ce8e53b5a160
       iscommand: false
       name: No Critical Users
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 33b118b1-2ecc-47bc-8eed-ce8e53b5a160
@@ -1104,7 +1104,7 @@ tasks:
       id: 008bea76-3889-4e55-894b-058dbb6dda36
       iscommand: false
       name: No Critical Groups
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       type: title
       version: -1
     taskid: 008bea76-3889-4e55-894b-058dbb6dda36
@@ -1142,7 +1142,7 @@ tasks:
       id: 7f151914-046a-4f0a-8594-90ac5447ddca
       iscommand: false
       name: Set severity to critical
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -1189,7 +1189,7 @@ tasks:
       id: 5a9cf941-59dd-4d46-8153-8b76a30c4168
       iscommand: false
       name: Get all critical endpoints
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -1236,7 +1236,7 @@ tasks:
       id: 0db98f70-66d9-4ba3-8616-5af419630189
       iscommand: false
       name: Get all critical usernames
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -1289,7 +1289,7 @@ tasks:
       id: a680f6b3-2306-407d-8a2b-a8a7bf1a4df6
       iscommand: false
       name: Set critical endpoints to output
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -1342,7 +1342,7 @@ tasks:
       id: 7c4d5151-dc5e-40c3-8697-440b4e3e9cae
       iscommand: false
       name: Set critical endpoint groups to output
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -1394,7 +1394,7 @@ tasks:
       id: 82bd69bb-ecc0-4438-8aa3-79626adf62a9
       iscommand: false
       name: Set critical user groups to output
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -1447,7 +1447,7 @@ tasks:
       id: 40a52d56-8468-4161-8832-9f3a8edbdc20
       iscommand: false
       name: Set critical users to output
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: Set
       type: regular
       version: -1
@@ -1488,7 +1488,7 @@ tasks:
       id: 9337a013-1493-4943-8d8f-42fe0feb437e
       iscommand: false
       name: Set critical assets to alert field
-      playbooktaskmissingcomponent: null
+      playbooktaskmissingcomponent:
       script: PopulateCriticalAssets
       type: regular
       version: -1
@@ -1534,3 +1534,4 @@ view: |-
       }
     }
   }
+fromversion: 5.0.0
